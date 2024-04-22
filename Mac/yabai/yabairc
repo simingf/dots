@@ -7,44 +7,39 @@ sudo yabai --load-sa
 
 # mission-control desktop labels
 yabai -m space 1 --label home
-yabai -m space 2 --label msg
-yabai -m space 3 --label web
-yabai -m space 4 --label work1
-yabai -m space 5 --label work2
+yabai -m space 2 --label web
+yabai -m space 3 --label term
+yabai -m space 4 --label work
+yabai -m space 5 --label msg
 yabai -m space 6 --label fun
 
 yabai -m config --space home layout stack
-yabai -m config --space msg layout stack
 yabai -m config --space web layout bsp
-yabai -m config --space work1 layout bsp
-yabai -m config --space work2 layout bsp
+yabai -m config --space term layout bsp
+yabai -m config --space work layout bsp
+yabai -m config --space msg layout stack
 yabai -m config --space fun layout stack
 
-yabai -m rule --add app="^Mail$" space=home
-yabai -m rule --add app="^Calendar$" space=home
-yabai -m rule --add app="^Notion$" space=home
 yabai -m rule --add app="^Microsoft To Do$" space=home
-yabai -m rule --add app="^Calendar$" space=home
-yabai -m rule --add app="^SelfControl$" space=home
-
-yabai -m rule --add app="^Discord$" space=msg manage=off
-yabai -m rule --add app="^Slack$" space=msg manage=off
-yabai -m rule --add app="^WeChat$" space=msg manage=off
-yabai -m rule --add app="^WhatsApp$" space=msg manage=off
-yabai -m rule --add app="^Messages$" space=msg manage=off
-yabai -m rule --add app="^FaceTime$" space=msg manage=off
-yabai -m rule --add app="^zoom.us$" space=msg manage=off
+yabai -m rule --add app="^Notion$" space=home
 
 yabai -m rule --add app="^Arc$" space=web
 
-yabai -m rule --add app="^Code$" space=work1
-yabai -m rule --add app="^Qt Creator$" space=work1
+yabai -m rule --add app="^kitty$" space=term
 
-yabai -m rule --add app="^Docker Desktop$" space=work2
-yabai -m rule --add app="^Microsoft Word$" space=work2
-yabai -m rule --add app="^Microsoft PowerPoint$" space=work2
-yabai -m rule --add app="^Microsoft Excel$" space=work2
-yabai -m rule --add app="^iA Writer$" space=work2
+yabai -m rule --add app="^Code$" space=work
+yabai -m rule --add app="^Docker Desktop$" space=work
+yabai -m rule --add app="^Microsoft Word$" space=work
+yabai -m rule --add app="^Microsoft PowerPoint$" space=work
+yabai -m rule --add app="^Microsoft Excel$" space=work
+
+yabai -m rule --add app="^Messages$" space=msg manage=off
+yabai -m rule --add app="^FaceTime$" space=msg manage=off
+yabai -m rule --add app="^WeChat$" space=msg manage=off
+yabai -m rule --add app="^Discord$" space=msg manage=off
+yabai -m rule --add app="^WhatsApp$" space=msg manage=off
+yabai -m rule --add app="^Slack$" space=msg manage=off
+yabai -m rule --add app="^zoom.us$" space=msg manage=off
 
 yabai -m rule --add app="^Spotify$" space=fun
 yabai -m rule --add app="^IINA$" space=fun
@@ -97,6 +92,5 @@ yabai -m config external_bar                 all:35:00
 # signals
 yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
 yabai -m signal --add event=window_minimized active=yes action="if \$(yabai -m query --windows --window \$YABAI_WINDOW_ID | jq -r '.\"is-floating\"'); then yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null; fi"
-
 
 echo "yabai configuration loaded.."
