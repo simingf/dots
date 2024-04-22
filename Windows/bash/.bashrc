@@ -34,7 +34,7 @@ alias restart='c && builtin cd && source .bashrc && doc'
 alias ..='builtin cd ..'
 alias doc='builtin cd ~/Documents/'
 alias dow='builtin cd ~/Downloads/'
-alias desk='builtin cd ~/Desktop/'
+alias des='builtin cd ~/Desktop/'
 
 # cd function
 cd() {
