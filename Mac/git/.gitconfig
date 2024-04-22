@@ -1,9 +1,8 @@
-[includeIf "gitdir:~/Github/"]
-	path = ~/.gitconfig-github
-[includeIf "gitdir:~/Gitlab/"]
-	path = ~/.gitconfig-gitlab
+[user]
+	name = Siming MBP
+	email = simingrox@gmail.com
 [core]
-	excludesfile = /Users/siming/.gitignore
+	excludesfile = ~/.gitignore_global
 [pull]
 	rebase = false
 [filter "lfs"]
@@ -11,5 +10,3 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
-[user]
-	name = Siming Mac

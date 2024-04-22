@@ -1,5 +1,19 @@
 # Mac Setup
 
+## Symbolic Links
+
+ln -s ~/dots/Mac/zsh/.zshrc ~/.zshrc &&
+ln -s ~/dots/Mac/git/.gitconfig ~/.gitconfig &&
+ln -s ~/dots/Mac/git/.gitignore_global ~/.gitignore_global &&
+ln -s ~/dots/Mac/clang/.clangd ~/.clangd &&
+ln -s ~/dots/Mac/clang/.clang-format ~/.clang-format &&
+mkdir ~/.config/ &&
+ln -s ~/dots/Mac/yabai ~/.config/yabai &&
+ln -s ~/dots/Mac/skhd ~/.config/skhd &&
+ln -s ~/dots/Mac/linearmouse ~/.config/linearmouse &&
+ln -s ~/dots/General/kitty ~/.config/kitty &&
+ln -s ~/dots/General/nvim ~/.config/nvim &&
+
 ## Homebrew Formulae
 
 ack

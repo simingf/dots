@@ -257,38 +257,7 @@ n() {
 }
 
 # go to mac-setup directory
-alias mac='builtin cd ~/Github/mac-setup/ && maccp && ls'
-
-# copy configs to mac-setup
-maccp() {
-    cp ~/.zshrc ~/Github/mac-setup/zsh/
-    echo "zsh config copied"
-
-    cp -r ~/.config/skhd/* ~/Github/mac-setup/config/skhd/
-    echo "skhd config copied"
-    cp -r ~/.config/yabai/* ~/Github/mac-setup/config/yabai/
-    echo "yabai config copied"
-
-    cp -r ~/.config/nvim/* ~/Github/mac-setup/config/nvim/
-    echo "nvim config copied"
-    cp -r ~/.config/kitty/* ~/Github/mac-setup/config/kitty/
-    echo "kitty config copied"
-    cp -r ~/.config/linearmouse/* ~/Github/mac-setup/config/linearmouse/
-    echo "linearmouse config copied"
-
-    cp ~/.gitconfig ~/Github/mac-setup/git/
-    cp ~/.gitconfig-github ~/Github/mac-setup/git/
-    cp ~/.gitconfig-gitlab ~/Github/mac-setup/git/
-    cp ~/.gitignore ~/Github/mac-setup/git/
-    echo "git config copied"
-
-    cp ~/.clangd ~/Github/mac-setup/clang/
-    cp ~/.clang-format ~/Github/mac-setup/clang/
-    echo "clang config copied"
-
-    echo ""
-    echo "all configs copied to mac-setup!"
-}
+alias dots='builtin cd ~/dots && ls'
 
 # fzf support
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
