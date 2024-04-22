@@ -41,10 +41,8 @@
 
 ## HotKeys Setup:
 
--copy 'hotkeys.ahk' from the 'hotkeys' folder into Documents \
 -press Win + R and enter 'shell:startup' \
 -make an alias of 'hotkeys.ahk' in the startup folder (hold alt and drag) \
--use cphotkeys in bash to update the hotkeys file in win-setup with the hotkeys file in Documents
 
 ## Creating Application Shortcuts:
 
