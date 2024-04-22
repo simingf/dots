@@ -47,7 +47,7 @@ yabai -m rule --add app="^qBittorrent$" space=fun
 yabai -m rule --add app="^Steam Helper$" space=fun
 yabai -m rule --add app="^Epic Games Launcher$" space=fun
 
-yabai -m rule --add app="^(Finder|Activity Monitor|Alfred Preferences|AltTab|Installer|Photo Booth|Software Update|System Settings|Stickies|The Unarchiver|MediaMate)$" manage=off
+yabai -m rule --add app="^(Finder|Activity Monitor|Installer|Software Update|System Settings|Photo Booth|Stickies|The Unarchiver|MediaMate|Alfred Preferences)$" manage=off
 
 yabai -m rule --add app=".*" layer=normal
 
