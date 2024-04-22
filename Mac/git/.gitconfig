@@ -1,0 +1,15 @@
+[includeIf "gitdir:~/Github/"]
+	path = ~/.gitconfig-github
+[includeIf "gitdir:~/Gitlab/"]
+	path = ~/.gitconfig-gitlab
+[core]
+	excludesfile = /Users/siming/.gitignore
+[pull]
+	rebase = false
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[user]
+	name = Siming Mac

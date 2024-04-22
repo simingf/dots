@@ -1,0 +1,102 @@
+#!/usr/bin/env sh
+
+# necessary to load scripting-addition during startup on macOS Big Sur
+# *yabai --load-sa* is configured to run through sudo without a password
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# mission-control desktop labels
+yabai -m space 1 --label home
+yabai -m space 2 --label msg
+yabai -m space 3 --label web
+yabai -m space 4 --label work1
+yabai -m space 5 --label work2
+yabai -m space 6 --label fun
+
+yabai -m config --space home layout stack
+yabai -m config --space msg layout stack
+yabai -m config --space web layout bsp
+yabai -m config --space work1 layout bsp
+yabai -m config --space work2 layout bsp
+yabai -m config --space fun layout stack
+
+yabai -m rule --add app="^Mail$" space=home
+yabai -m rule --add app="^Calendar$" space=home
+yabai -m rule --add app="^Notion$" space=home
+yabai -m rule --add app="^Microsoft To Do$" space=home
+yabai -m rule --add app="^Calendar$" space=home
+yabai -m rule --add app="^SelfControl$" space=home
+
+yabai -m rule --add app="^Discord$" space=msg manage=off
+yabai -m rule --add app="^Slack$" space=msg manage=off
+yabai -m rule --add app="^WeChat$" space=msg manage=off
+yabai -m rule --add app="^WhatsApp$" space=msg manage=off
+yabai -m rule --add app="^Messages$" space=msg manage=off
+yabai -m rule --add app="^FaceTime$" space=msg manage=off
+yabai -m rule --add app="^zoom.us$" space=msg manage=off
+
+yabai -m rule --add app="^Arc$" space=web
+
+yabai -m rule --add app="^Code$" space=work1
+yabai -m rule --add app="^Qt Creator$" space=work1
+
+yabai -m rule --add app="^Docker Desktop$" space=work2
+yabai -m rule --add app="^Microsoft Word$" space=work2
+yabai -m rule --add app="^Microsoft PowerPoint$" space=work2
+yabai -m rule --add app="^Microsoft Excel$" space=work2
+yabai -m rule --add app="^iA Writer$" space=work2
+
+yabai -m rule --add app="^Spotify$" space=fun
+yabai -m rule --add app="^IINA$" space=fun
+yabai -m rule --add app="^qBittorrent$" space=fun
+yabai -m rule --add app="^Steam Helper$" space=fun
+yabai -m rule --add app="^Epic Games Launcher$" space=fun
+
+yabai -m rule --add app="^(Finder|Activity Monitor|Alfred Preferences|AltTab|Installer|Photo Booth|Software Update|System Settings|Stickies|The Unarchiver|MediaMate)$" manage=off
+
+yabai -m rule --add app=".*" layer=normal
+
+global settings
+
+yabai -m config                              \
+    mouse_follows_focus         off          \
+    focus_follows_mouse         off          \
+    window_placement            second_child \
+    window_topmost              off          \
+    window_shadow               off          \
+    window_animation_duration   0.25         \
+    window_opacity_duration     0.25         \
+    active_window_opacity       1.0          \
+    normal_window_opacity       1.0          \
+    window_opacity              off          \
+    insert_feedback_color       0xaad75f5f   \
+    active_window_border_color  0xBF775759   \
+    normal_window_border_color  0x7f353535   \
+    window_border_width         3            \
+    window_border_radius        9            \
+    window_border_blur          on           \
+    window_border_hidpi         on           \
+    window_border               off          \
+    split_ratio                 0.50         \
+    split_type                  auto         \
+    auto_balance                off          \
+    mouse_modifier              fn           \
+    mouse_action1               resize       \
+    mouse_action2               resize       \
+    mouse_drop_action           swap
+
+# layout settings
+yabai -m config layout                       bsp
+yabai -m config top_padding                  10
+yabai -m config bottom_padding               10
+yabai -m config left_padding                 10
+yabai -m config right_padding                10
+yabai -m config window_gap                   10
+yabai -m config external_bar                 all:35:00
+
+# signals
+yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
+yabai -m signal --add event=window_minimized active=yes action="if \$(yabai -m query --windows --window \$YABAI_WINDOW_ID | jq -r '.\"is-floating\"'); then yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null; fi"
+
+
+echo "yabai configuration loaded.."
