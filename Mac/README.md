@@ -1,6 +1,6 @@
 # Mac Setup
 
-## Symbolic Link Setup
+## Symbolic Links Setup
 
 touch ~/.hushlogin &&
 ln -s ~/dots/Mac/zsh/.zshrc ~/.zshrc &&
@@ -106,6 +106,7 @@ zoom
 
 oh-my-zsh
 powerlevel10k
+simple-bar
 ani-cli
 mov-cli
 
