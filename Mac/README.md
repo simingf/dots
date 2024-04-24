@@ -26,6 +26,7 @@ cmake
 cmatrix
 cowsay
 curl
+fastfetch
 fd
 ffmpeg
 figlet
@@ -45,7 +46,6 @@ llvm
 lolcat
 lua
 moon-buggy
-neofetch
 neovim
 node
 openjdk
@@ -88,6 +88,8 @@ miniconda
 notion
 parsec
 qbittorrent
+r
+rstudio
 slack
 spotify
 steam
