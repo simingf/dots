@@ -63,6 +63,7 @@ zsh
 
 ## Homebrew Casks
 
+alt-tab
 angry-ip-scanner
 appcleaner
 arc
