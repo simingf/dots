@@ -8,24 +8,20 @@ sudo yabai --load-sa
 # mission-control desktop labels
 yabai -m space 1 --label home
 yabai -m space 2 --label web
-yabai -m space 3 --label term
-yabai -m space 4 --label work
-yabai -m space 5 --label msg
-yabai -m space 6 --label fun
+yabai -m space 3 --label work
+yabai -m space 4 --label msg
+yabai -m space 5 --label fun
 
-yabai -m config --space home layout stack
+yabai -m config --space home layout bsp
 yabai -m config --space web layout bsp
-yabai -m config --space term layout bsp
 yabai -m config --space work layout bsp
-yabai -m config --space msg layout stack
-yabai -m config --space fun layout stack
+yabai -m config --space msg layout float
+yabai -m config --space fun layout float
 
 yabai -m rule --add app="^Microsoft To Do$" space=home
 yabai -m rule --add app="^Notion$" space=home
 
 yabai -m rule --add app="^Arc$" space=web
-
-yabai -m rule --add app="^kitty$" space=term
 
 yabai -m rule --add app="^Code$" space=work
 yabai -m rule --add app="^Docker Desktop$" space=work
@@ -39,7 +35,7 @@ yabai -m rule --add app="^WeChat$" space=msg
 yabai -m rule --add app="^Discord$" space=msg
 yabai -m rule --add app="^WhatsApp$" space=msg
 yabai -m rule --add app="^Slack$" space=msg
-yabai -m rule --add app="^zoom.us$" space=msg manage=off
+yabai -m rule --add app="^zoom.us$" space=msg
 
 yabai -m rule --add app="^Spotify$" space=fun
 yabai -m rule --add app="^IINA$" space=fun
@@ -49,8 +45,6 @@ yabai -m rule --add app="^Epic Games Launcher$" space=fun
 
 yabai -m rule --add app="^(Finder|Activity Monitor|Installer|Software Update|System Settings|Photo Booth|Stickies|The Unarchiver|MediaMate|Alfred Preferences)$" manage=off
 
-#yabai -m rule --add app=".*" layer=normal
-
 global settings
 
 yabai -m config                              \
@@ -59,8 +53,8 @@ yabai -m config                              \
     window_placement            second_child \
     window_topmost              off          \
     window_shadow               off          \
-    window_animation_duration   0.25         \
-    window_opacity_duration     0.25         \
+    window_animation_duration   0.0          \
+    window_opacity_duration     0.0          \
     active_window_opacity       1.0          \
     normal_window_opacity       1.0          \
     window_opacity              off          \
