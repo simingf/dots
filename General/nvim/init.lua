@@ -48,8 +48,8 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 -- make j and k work with wrapped lines
-vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true, silent = true })
 -- bind H to ^ and L to $
 vim.keymap.set('n', 'H', '^', { noremap = true, silent = true })
 vim.keymap.set('n', 'L', '$', { noremap = true, silent = true })
@@ -465,7 +465,7 @@ require("lazy").setup({
                     end
                 },
                 sources = {
-                    -- { name = 'copilot',  keyword_length = 1 },
+                    { name = 'copilot',  keyword_length = 1 },
                     { name = 'luasnip',  keyword_length = 1 },
                     { name = 'nvim_lsp', keyword_length = 1 },
                     { name = 'buffer',   keyword_length = 2 },
