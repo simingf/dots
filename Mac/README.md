@@ -89,8 +89,6 @@ miniconda
 notion
 parsec
 qbittorrent
-r
-rstudio
 slack
 spotify
 steam
