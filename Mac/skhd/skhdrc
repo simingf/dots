@@ -19,10 +19,10 @@ shift + alt - k : yabai -m window --resize top:0:-20
 shift + alt - l : yabai -m window --resize right:20:0
 
 # decrease window size
-# ctrl + alt - left : yabai -m window --resize left:20:0
-# ctrl + alt - down : yabai -m window --resize bottom:0:-20
-# ctrl + alt - up : yabai -m window --resize top:0:20
-# ctrl + alt - right : yabai -m window --resize right:-20:0
+ctrl + alt - l : yabai -m window --resize left:20:0
+ctrl + alt - k : yabai -m window --resize bottom:0:-20
+ctrl + alt - j : yabai -m window --resize top:0:20
+ctrl + alt - h : yabai -m window --resize right:-20:0
 
 # rotate
 alt - r : yabai -m space --rotate 270
