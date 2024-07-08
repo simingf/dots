@@ -9,12 +9,14 @@ sudo yabai --load-sa
 yabai -m space 1 --label home
 yabai -m space 2 --label web
 yabai -m space 3 --label work
-yabai -m space 4 --label msg
-yabai -m space 5 --label fun
+yabai -m space 4 --label work2
+yabai -m space 5 --label msg
+yabai -m space 6 --label fun
 
 yabai -m config --space home layout bsp
 yabai -m config --space web layout bsp
 yabai -m config --space work layout bsp
+yabai -m config --space work2 layout bsp
 yabai -m config --space msg layout float
 yabai -m config --space fun layout float
 

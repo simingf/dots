@@ -23,12 +23,8 @@ else
 fi
 alias v='nvim'
 
-# TA alias
-alias ta='cd ~/CS166HTA/dev-env/ && ./cs1660-run-docker'
-
-# OS alias
-alias os='ssh -Y sfeng22@ssh.cs.brown.edu'
-alias rd='xhost +localhost && ./run-docker'
+# utra alias
+alias utra='kitten ssh sfeng@10.116.60.21'
 
 # directory aliases
 alias ls='ls -AG'
@@ -58,28 +54,35 @@ alias npmg='npm list -g --depth 0'
 
 # config aliases
 alias cf="builtin cd ~/.config && ls"
-alias ch="rm -f ~/.zsh_history && clear"
+# homebrew
+alias bup='brew update && brew upgrade && brew cleanup && brew autoremove'
+# zsh
 alias zrc="nvim ~/.zshrc"
 alias zrs="clear && source ~/.zshrc"
+alias ch="rm -f ~/.zsh_history && clear"
+# nvim
 alias nrc="nvim ~/.config/nvim/init.lua"
+# kitty
 alias krc="nvim ~/.config/kitty/kitty.conf"
+# ubersicht
 alias ub='builtin cd ~/.config/ubersicht/simple-bar && ls'
 urs() {
     osascript -e 'tell application id "tracesOf.Uebersicht" to refresh'
 }
+# yabai
 alias yrc="nvim ~/.config/yabai/yabairc"
 alias yrs="yabai --restart-service && urs"
-# call this function if brew updates yabai
 yup() {
     TEXT="$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa"
     echo $TEXT | sudo tee /private/etc/sudoers.d/yabai
 }
+# skhd
 alias src="nvim ~/.config/skhd/skhdrc"
 alias srs="skhd --restart-service"
 # restarts zshrc, yabai, skhd
 alias rs='zrs && yrs && srs'
 # updates oh my zsh, homebrew and yabai
-alias up='omz update && brew update && brew upgrade && brew cleanup && brew autoremove && yup && yrs'
+alias up='sudo echo && omz update && bup && yup && yrs'
 
 # enter alias
 accept-line() {

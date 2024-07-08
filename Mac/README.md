@@ -121,11 +121,12 @@ Xcode
 
 ## Download Online
 
+MediaMate (Paid)
+SideNotes (Paid)
 BaiduNetdisk
 Bit Slicer
 Calibre
 Logitech G HUB
-MediaMate (Paid)
 Orange
 SelfControl
 Stacher
