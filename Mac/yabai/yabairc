@@ -5,34 +5,40 @@
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
-# mission-control desktop labels
-yabai -m space 1 --label I # messages
-yabai -m space 2 --label II # todo
-yabai -m space 3 --label III # arc
+# make all windows layer normal
+yabai -m rule --add app=".*" layer=normal
+
+# space labels
+yabai -m space 1 --label I # todo, arc, spotify
+yabai -m space 2 --label II # socials
+yabai -m space 3 --label III
 yabai -m space 4 --label IV
 yabai -m space 5 --label V
 yabai -m space 6 --label VI
 
-yabai -m config --space I layout float
-yabai -m config --space II layout bsp
-yabai -m config --space III layout bsp
-yabai -m config --space IV layout bsp
-yabai -m config --space V layout bsp
+# space layouts
+yabai -m config --space I layout stack
+yabai -m config --space II layout stack
+yabai -m config --space III layout stack
+yabai -m config --space IV layout stack
+yabai -m config --space V layout stack
 yabai -m config --space VI layout float
 
-yabai -m rule --add app="^Messages$" space=I
-yabai -m rule --add app="^FaceTime$" space=I
-yabai -m rule --add app="^WeChat$" space=I
-yabai -m rule --add app="^Discord$" space=I
-yabai -m rule --add app="^WhatsApp$" space=I
-yabai -m rule --add app="^Slack$" space=I
-yabai -m rule --add app="^zoom.us$" space=I
+# space windows
+yabai -m rule --add app="^Microsoft To Do$" space=I
+yabai -m rule --add app="^Spotify$" space=I
+yabai -m rule --add app="^Arc$" space=I
 
-yabai -m rule --add app="^Microsoft To Do$" space=II
+yabai -m rule --add app="^Messages$" space=II
+yabai -m rule --add app="^FaceTime$" space=II
+yabai -m rule --add app="^WeChat$" space=II
+yabai -m rule --add app="^Discord$" space=II
+yabai -m rule --add app="^WhatsApp$" space=II
+yabai -m rule --add app="^Slack$" space=II
+yabai -m rule --add app="^zoom.us$" space=II
 
-yabai -m rule --add app="^Arc$" space=III
-
-yabai -m rule --add app="^(Finder|Activity Monitor|Installer|Software Update|System Settings|Photo Booth|Stickies|The Unarchiver|MediaMate|Alfred Preferences)$" manage=off
+# ignored apps
+yabai -m rule --add app="^(Finder|Activity Monitor|Installer|Software Update|System Settings|Photo Booth|Stickies|The Unarchiver|MediaMate|Alfred Preferences)$" manage=off layer=below
 
 global settings
 
@@ -72,7 +78,7 @@ yabai -m config right_padding                10
 yabai -m config window_gap                   10
 yabai -m config external_bar                 all:35:00
 
-# signals
+# signals for window focus
 yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
 yabai -m signal --add event=window_minimized active=yes action="if \$(yabai -m query --windows --window \$YABAI_WINDOW_ID | jq -r '.\"is-floating\"'); then yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null; fi"
 
