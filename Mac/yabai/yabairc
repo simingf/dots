@@ -12,8 +12,8 @@ yabai -m signal --add event=window_created action='yabai -m query --windows --wi
 yabai -m rule --add app=".*" layer=normal
 
 # space labels
-yabai -m space 1 --label I # todo, arc, spotify
-yabai -m space 2 --label II # socials
+yabai -m space 1 --label I
+yabai -m space 2 --label II
 yabai -m space 3 --label III
 yabai -m space 4 --label IV
 yabai -m space 5 --label V
@@ -29,8 +29,8 @@ yabai -m config --space VI layout float
 
 # space windows
 yabai -m rule --add app="^Microsoft To Do$" space=I
-yabai -m rule --add app="^Spotify$" space=I
 yabai -m rule --add app="^Arc$" space=I
+yabai -m rule --add app="^Spotify$" space=I
 
 yabai -m rule --add app="^Messages$" space=II
 yabai -m rule --add app="^FaceTime$" space=II
