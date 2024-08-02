@@ -6,7 +6,7 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
 # automatically float non resizable windows
-yabai -m signal --add event=window_created action='yabai -m query --windows --window $YABAI_WINDOW_ID | jq -er ".\"can-resize\" or .\"is-floating\"" || yabai -m window $YABAI_WINDOW_ID --toggle float'
+# yabai -m signal --add event=window_created action='yabai -m query --windows --window $YABAI_WINDOW_ID | jq -er ".\"can-resize\" or .\"is-floating\"" || yabai -m window $YABAI_WINDOW_ID --toggle float'
 
 # make all windows layer normal
 yabai -m rule --add app=".*" layer=normal
@@ -18,16 +18,21 @@ yabai -m space 3 --label III
 yabai -m space 4 --label IV
 yabai -m space 5 --label V
 yabai -m space 6 --label VI
+yabai -m space 7 --label VII
+yabai -m space 8 --label VIII
+yabai -m space 9 --label IX
+yabai -m space 10 --label X
 
 # space layouts
 yabai -m config --space I layout stack
 yabai -m config --space II layout stack
 yabai -m config --space III layout stack
 yabai -m config --space IV layout stack
-yabai -m config --space V layout stack
+yabai -m config --space V layout float
 yabai -m config --space VI layout float
 
 # space windows
+yabai -m rule --add app="^SelfControl$" space=I
 yabai -m rule --add app="^Microsoft To Do$" space=I
 yabai -m rule --add app="^Arc$" space=I
 yabai -m rule --add app="^Spotify$" space=I
@@ -73,7 +78,7 @@ yabai -m config                              \
     mouse_drop_action           swap
 
 # layout settings
-yabai -m config layout                       bsp
+yabai -m config layout                       stack
 yabai -m config top_padding                  10
 yabai -m config bottom_padding               10
 yabai -m config left_padding                 10
