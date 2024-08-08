@@ -32,6 +32,8 @@ ffmpeg
 figlet
 fortune
 fzf
+gcc
+gh
 git
 git-lfs
 gping
@@ -67,9 +69,16 @@ alt-tab
 angry-ip-scanner
 appcleaner
 arc
+audacity
+aware
+baidunetdisk
+balenaetcher
 basictex
 betterdiscord-installer
+bit-slicer
 burp-suite
+calibre
+chatgpt
 discord
 docker
 epic-games
@@ -79,6 +88,7 @@ hiddenbar
 iina
 kitty
 linearmouse
+logitech-g-hub
 loom
 microsoft-auto-update
 microsoft-excel
@@ -86,9 +96,13 @@ microsoft-powerpoint
 microsoft-word
 minecraft
 miniconda
+moonlight
 notion
+orange
 parsec
 qbittorrent
+qflipper
+selfcontrol
 slack
 spotify
 steam
@@ -113,34 +127,29 @@ mov-cli
 
 ## Download Via App Store
 
-Amphetamine
-Aware
 Microsoft To Do
+Amphetamine
 Pure Paste
 Xcode
 
 ## Download Online
 
-MediaMate (Paid)
-SideNotes (Paid)
-BaiduNetdisk
-Bit Slicer
-Calibre
-Logitech G HUB
-Orange
-SelfControl
+MediaMate (I Paid)
+SideNotes (I Paid)
+WinDiskWriter
 Stacher
 
 ## xclient.info / 52mac.com
 
 Alfred 5
-Gestimer
 Slidepad
+Yoink
+Gestimer
 iA Writer
 Logic Pro
 Melodyne 5
 Octagon
-Yoink
+WizardOfLegend
 
 ## Alfred Workflows
 
