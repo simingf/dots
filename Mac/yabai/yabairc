@@ -22,12 +22,10 @@ yabai -m space 7 --label VII
 yabai -m space 8 --label VIII
 yabai -m space 9 --label IX
 yabai -m space 10 --label X
+yabai -m space 11 --label XI
+yabai -m space 12 --label XII
 
-# space layouts
-yabai -m config --space I layout stack
-yabai -m config --space II layout stack
-yabai -m config --space III layout stack
-yabai -m config --space IV layout stack
+# non-stack space layouts
 yabai -m config --space V layout float
 yabai -m config --space VI layout float
 
