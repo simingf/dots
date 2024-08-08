@@ -135,6 +135,7 @@ Stacher
 
 Alfred 5
 Gestimer
+Slidepad
 iA Writer
 Logic Pro
 Melodyne 5
