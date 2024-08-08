@@ -15,6 +15,11 @@ ln -s ~/dots/Mac/linearmouse ~/.config/linearmouse &&
 ln -s ~/dots/General/kitty ~/.config/kitty &&
 ln -s ~/dots/General/nvim ~/.config/nvim
 
+## Brown Software
+
+FastX3
+Tunnelblick
+
 ## Homebrew Formulae
 
 ack
@@ -136,13 +141,13 @@ Xcode
 
 MediaMate (I Paid)
 SideNotes (I Paid)
+Slidepad
 WinDiskWriter
 Stacher
 
 ## xclient.info / 52mac.com
 
 Alfred 5
-Slidepad
 Yoink
 Gestimer
 iA Writer
@@ -153,10 +158,4 @@ WizardOfLegend
 
 ## Alfred Workflows
 
-Amazon Suggest
-fzf-alfred-workflow
-Google Scholar Suggest
-Google Suggest
-Homebrew
 System Settings
-Urban Dictionary
