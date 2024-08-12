@@ -84,6 +84,7 @@ bit-slicer
 burp-suite
 calibre
 chatgpt
+deepl
 discord
 docker
 epic-games
