@@ -1,3 +1,14 @@
+# disable skhd in moonlight streams
+.blacklist [
+    "Moonlight"
+]
+
+# pause / resume skhd
+:: passthrough
+cmd + shift - p ; passthrough
+passthrough < cmd + shift - p ; default
+
+# open kitty
 cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~ 
 
 # change window focus within space
