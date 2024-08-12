@@ -40,7 +40,6 @@ yabai -m rule --add app="^zoom.us$" space=I
 
 yabai -m rule --add app="^SelfControl$" space=II
 yabai -m rule --add app="^Microsoft To Do$" space=II
-yabai -m rule --add app="^Arc$" space=II
 yabai -m rule --add app="^Spotify$" space=II
 
 # ignored apps
