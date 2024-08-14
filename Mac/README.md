@@ -148,6 +148,7 @@ Xcode
 MediaMate (I Paid)
 SideNotes (I Paid)
 Slidepad
+ProNotes
 KeyboardCleanTool
 WinDiskWriter
 Stacher
