@@ -22,8 +22,8 @@ ln -s ~/dots/General/nvim ~/.config/nvim
 
 ## Brown Software
 
-FastX3
-Tunnelblick
+FastX3 (Remote Desktop)
+Tunnelblick (VPN)
 
 ## Homebrew Formulae (brew leaves)
 
@@ -91,14 +91,12 @@ deepl
 discord
 docker
 epic-games
-firefox
 font-jetbrains-mono-nerd-font
 hiddenbar
 iina
 kitty
 linearmouse
 logitech-g-hub
-loom
 microsoft-auto-update
 microsoft-excel
 microsoft-powerpoint
@@ -126,7 +124,6 @@ visual-studio-code
 wechat
 whatsapp
 wireshark
-xquartz
 zoom
 
 ## Install Via Command Line
