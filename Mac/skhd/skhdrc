@@ -1,6 +1,7 @@
 # disable skhd in moonlight streams
 .blacklist [
     "Moonlight"
+    "steamstreamingclient"
 ]
 
 # pause / resume skhd
