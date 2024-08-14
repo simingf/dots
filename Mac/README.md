@@ -25,7 +25,7 @@ ln -s ~/dots/General/nvim ~/.config/nvim
 FastX3
 Tunnelblick
 
-## Homebrew Formulae
+## Homebrew Formulae (brew leaves)
 
 ack
 aria2
@@ -34,7 +34,6 @@ bear
 cbonsai
 cmake
 cmatrix
-cowsay
 curl
 fastfetch
 fd
@@ -73,7 +72,7 @@ xkcd
 yt-dlp
 zsh
 
-## Homebrew Casks
+## Homebrew Casks (brew list --casks)
 
 alt-tab
 angry-ip-scanner
