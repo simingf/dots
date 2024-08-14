@@ -75,7 +75,6 @@ angry-ip-scanner
 appcleaner
 arc
 audacity
-aware
 baidunetdisk
 balenaetcher
 basictex
@@ -115,6 +114,7 @@ steam
 temurin
 tetrio
 the-unarchiver
+time-out
 ubersicht
 visual-studio-code
 wechat
