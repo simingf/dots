@@ -1,5 +1,10 @@
 # Mac Setup
 
+## Remove Dock
+
+defaults write com.apple.dock autohide-delay -float 1000; killall Dock
+defaults delete com.apple.dock autohide-delay; killall Dock
+
 ## Symbolic Links Setup
 
 touch ~/.hushlogin &&
