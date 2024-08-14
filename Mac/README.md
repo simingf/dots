@@ -31,6 +31,7 @@ ack
 aria2
 arp-scan
 bear
+c2048
 cbonsai
 cmake
 cmatrix
@@ -48,14 +49,17 @@ git-lfs
 gping
 graphviz
 grep
+htop
 imagemagick
 jesseduffield/lazygit/lazygit
 jq
 koekeishiya/formulae/skhd
 koekeishiya/formulae/yabai
+llm
 llvm
 lolcat
 lua
+mas
 moon-buggy
 neovim
 node
@@ -68,6 +72,7 @@ tldr
 tree
 watch
 wget
+wifi-password
 xkcd
 yt-dlp
 zsh
