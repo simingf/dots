@@ -122,7 +122,6 @@ temurin
 tetrio
 the-unarchiver
 time-out
-tomatobar
 ubersicht
 visual-studio-code
 wechat
