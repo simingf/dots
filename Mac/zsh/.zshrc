@@ -44,7 +44,7 @@ alias dp='builtin cd ~/atcoder-dp/ && clear && ls'
 
 # general aliases
 alias e='exit'
-alias f='open . && exit'
+alias f='open .'
 alias rm='rm -r'
 # print out path and copy the path
 alias pwd='pwd && pwd | pbcopy'
