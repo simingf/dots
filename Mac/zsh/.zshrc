@@ -26,6 +26,18 @@ else
 fi
 alias v='nvim'
 
+# enter alias
+accept-line() {
+    if [[ -z $BUFFER ]]; then
+        zle -I
+        # command to run when enter pressed
+        clear && ls && echo
+    else
+        zle ".$WIDGET"
+    fi
+}
+zle -N accept-line
+
 # utra alias
 alias utra='kitten ssh sfeng@10.116.60.21'
 
@@ -86,18 +98,6 @@ alias srs="skhd --restart-service"
 alias rs='zrs && yrs && srs'
 # updates oh my zsh, homebrew and yabai
 alias up='sudo echo && omz update && bup && yup && yrs'
-
-# enter alias
-accept-line() {
-    if [[ -z $BUFFER ]]; then
-        zle -I
-        # command to run when enter pressed
-        clear && ls && echo
-    else
-        zle ".$WIDGET"
-    fi
-}
-zle -N accept-line
 
 # cd function
 cd() {
