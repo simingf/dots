@@ -31,6 +31,7 @@ ack
 aria2
 arp-scan
 bear
+btop
 c2048
 cbonsai
 cmake
@@ -42,14 +43,12 @@ ffmpeg
 figlet
 fortune
 fzf
-gcc
 gh
 git
 git-lfs
 gping
 graphviz
 grep
-htop
 imagemagick
 jesseduffield/lazygit/lazygit
 jq
