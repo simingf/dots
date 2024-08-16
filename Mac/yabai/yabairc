@@ -31,11 +31,9 @@ yabai -m config --space VI layout float
 
 # space windows
 yabai -m rule --add app="^SelfControl$" space=I
-yabai -m rule --add app="^Time Out$" space=I
 yabai -m rule --add app="^Microsoft To Do$" space=I
+yabai -m rule --add app="^Notes$" space=I
 yabai -m rule --add app="^Spotify$" space=I
-yabai -m rule --add app="^ChatGPT$" space=I
-yabai -m rule --add app="^DeepL$" space=I
 
 yabai -m rule --add app="^Messages$" space=II
 yabai -m rule --add app="^FaceTime$" space=II
