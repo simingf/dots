@@ -76,7 +76,7 @@ xkcd
 yt-dlp
 zsh
 
-## Homebrew Casks (brew list --casks)
+## Homebrew Casks (brew list --cask)
 
 alt-tab
 angry-ip-scanner
@@ -121,7 +121,6 @@ steam
 temurin
 tetrio
 the-unarchiver
-time-out
 ubersicht
 visual-studio-code
 wechat
