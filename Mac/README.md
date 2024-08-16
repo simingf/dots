@@ -158,6 +158,8 @@ Stacher
 Alfred 5
 Yoink
 Gestimer
+SoundSource
+Loopback
 iA Writer
 Logic Pro
 Melodyne 5
