@@ -31,7 +31,7 @@ yabai -m config --space VI layout float
 
 # space windows
 yabai -m rule --add app="^SelfControl$" space=I
-yabai -m rule --add app="^Microsoft To Do$" space=I
+yabai -m rule --add app="^Reminders$" space=I
 yabai -m rule --add app="^Notes$" space=I
 yabai -m rule --add app="^Spotify$" space=I
 
