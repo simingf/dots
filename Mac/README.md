@@ -131,7 +131,6 @@ mov-cli
 
 ## Download Via App Store
 
-Microsoft To Do
 Amphetamine
 Pure Paste
 Xcode
