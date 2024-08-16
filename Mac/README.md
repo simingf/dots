@@ -29,7 +29,6 @@ Tunnelblick (VPN)
 
 ack
 aria2
-arp-scan
 bear
 btop
 c2048
@@ -47,7 +46,6 @@ gh
 git
 git-lfs
 gping
-graphviz
 grep
 imagemagick
 jesseduffield/lazygit/lazygit
@@ -71,7 +69,6 @@ tldr
 tree
 watch
 wget
-wifi-password
 xkcd
 yt-dlp
 zsh
@@ -85,13 +82,11 @@ arc
 audacity
 baidunetdisk
 balenaetcher
-basictex
 betterdiscord-installer
 bit-slicer
 burp-suite
 calibre
 chatgpt
-deepl
 discord
 docker
 epic-games
@@ -111,14 +106,12 @@ moonlight
 music-decoy
 notion
 orange
-parsec
 qbittorrent
 qflipper
 selfcontrol
 slack
 spotify
 steam
-temurin
 tetrio
 the-unarchiver
 ubersicht
