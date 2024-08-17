@@ -10,7 +10,7 @@
 # passthrough < cmd + shift - p ; default
 
 # open kitty
-cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~ 
+cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory ~ 
 
 # change window focus within space
 alt - j : yabai -m window --focus south
