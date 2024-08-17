@@ -86,7 +86,6 @@ betterdiscord-installer
 bit-slicer
 burp-suite
 calibre
-chatgpt
 discord
 docker
 epic-games
