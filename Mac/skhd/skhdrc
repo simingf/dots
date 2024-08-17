@@ -18,7 +18,7 @@ alt - k : yabai -m window --focus north
 alt - h : yabai -m window --focus west
 alt - l : yabai -m window --focus east
 
-# swap windows
+# swap window focus
 ctrl - j : yabai -m window --swap south
 ctrl - k : yabai -m window --swap north
 ctrl - h : yabai -m window --swap west
@@ -41,10 +41,10 @@ ctrl + alt - h : yabai -m window --resize right:-20:0
 # shift + alt - r : yabai -m space --rotate 90
 
 # horizontal flip
-# alt - x : yabai -m space --mirror y-axis
+alt - x : yabai -m space --mirror y-axis
 
 # vertical flip
-# alt - y : yabai -m space --mirror x-axis
+alt - y : yabai -m space --mirror x-axis
 
 # rebalance windows
 alt - 0 : yabai -m space --balance
