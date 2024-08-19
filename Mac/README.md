@@ -86,6 +86,7 @@ betterdiscord-installer
 bit-slicer
 burp-suite
 calibre
+chatgpt
 discord
 docker
 epic-games
@@ -104,6 +105,7 @@ miniconda
 moonlight
 music-decoy
 notion
+notion-calendar
 orange
 qbittorrent
 qflipper
