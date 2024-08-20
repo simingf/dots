@@ -105,7 +105,6 @@ miniconda
 moonlight
 music-decoy
 notion
-notion-calendar
 orange
 qbittorrent
 qflipper
