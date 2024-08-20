@@ -35,7 +35,7 @@ yabai -m config --space VI layout float
 
 # space windows
 yabai -m rule --add app="^SelfControl$" space=I
-yabai -m rule --add app="^Notion Calendar$" space=I
+yabai -m rule --add app="^Calendar$" space=I
 yabai -m rule --add app="^Mail$" space=I
 yabai -m rule --add app="^Reminders$" space=I
 yabai -m rule --add app="^Notes$" space=I
