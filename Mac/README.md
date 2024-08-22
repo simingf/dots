@@ -93,6 +93,7 @@ epic-games
 font-jetbrains-mono-nerd-font
 hiddenbar
 iina
+imageoptim
 kitty
 linearmouse
 logitech-g-hub
