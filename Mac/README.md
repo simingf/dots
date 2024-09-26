@@ -25,7 +25,7 @@ ln -s ~/dots/General/nvim ~/.config/nvim
 FastX3 (Remote Desktop)
 Tunnelblick (VPN)
 
-## Homebrew Formulae (brew leaves)
+## Homebrew Formulae (brew leaves | pbcopy)
 
 ack
 aria2
@@ -42,6 +42,7 @@ ffmpeg
 figlet
 fortune
 fzf
+gcc
 gh
 git
 git-lfs
@@ -62,6 +63,7 @@ neovim
 node
 openjdk
 pandoc
+qrencode
 rig
 ripgrep
 sl
@@ -73,7 +75,7 @@ xkcd
 yt-dlp
 zsh
 
-## Homebrew Casks (brew list --cask)
+## Homebrew Casks (brew list --cask | pbcopy)
 
 alt-tab
 angry-ip-scanner
@@ -94,6 +96,7 @@ font-jetbrains-mono-nerd-font
 hiddenbar
 iina
 imageoptim
+itsycal
 kitty
 linearmouse
 logitech-g-hub
