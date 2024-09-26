@@ -38,8 +38,8 @@ accept-line() {
 }
 zle -N accept-line
 
-# utra alias
-alias utra='kitten ssh sfeng@10.116.60.21'
+# vectraflow alias
+alias dbssh='kitten ssh sfeng@10.116.60.21'
 
 # directory aliases
 alias ls='ls -AG'
