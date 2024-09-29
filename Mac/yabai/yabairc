@@ -26,11 +26,11 @@ yabai -m space 11 --label XI
 yabai -m space 12 --label XII
 
 # non-stack space layouts
-yabai -m config --space I layout stack
-yabai -m config --space II layout stack
-yabai -m config --space III layout stack
-yabai -m config --space IV layout bsp
-yabai -m config --space V layout bsp
+yabai -m config --space I layout float
+yabai -m config --space II layout float
+yabai -m config --space III layout float
+yabai -m config --space IV layout float
+yabai -m config --space V layout float
 yabai -m config --space VI layout float
 
 # space windows
