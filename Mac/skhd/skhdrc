@@ -13,16 +13,16 @@
 cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory ~ 
 
 # change window focus within space
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - h : yabai -m window --focus west
-alt - l : yabai -m window --focus east
+# alt - j : yabai -m window --focus south
+# alt - k : yabai -m window --focus north
+# alt - h : yabai -m window --focus west
+# alt - l : yabai -m window --focus east
 
 # swap window focus
-ctrl - j : yabai -m window --swap south
-ctrl - k : yabai -m window --swap north
-ctrl - h : yabai -m window --swap west
-ctrl - l : yabai -m window --swap east
+# ctrl - j : yabai -m window --swap south
+# ctrl - k : yabai -m window --swap north
+# ctrl - h : yabai -m window --swap west
+# ctrl - l : yabai -m window --swap east
 
 # increase window size
 shift + alt - h : yabai -m window --resize left:-20:0
@@ -41,28 +41,34 @@ ctrl + alt - h : yabai -m window --resize right:-20:0
 # shift + alt - r : yabai -m space --rotate 90
 
 # horizontal flip
-alt - x : yabai -m space --mirror y-axis
+# alt - x : yabai -m space --mirror y-axis
 
 # vertical flip
-alt - y : yabai -m space --mirror x-axis
+# alt - y : yabai -m space --mirror x-axis
 
 # rebalance windows
-alt - 0 : yabai -m space --balance
+# alt - 0 : yabai -m space --balance
 
 # maximize a window
-alt - return : yabai -m window --toggle zoom-fullscreen
+# alt - return : yabai -m window --toggle zoom-fullscreen
 
 # toggle window float
-alt - f : yabai -m window --toggle float --grid 4:4:1:1:2:2
+# alt - f : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 # make floating window fill screen
-shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
+alt - return : yabai -m window --grid 1:1:0:0:1:1
 
 # make floating window fill left-half of screen
-shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
+alt - j : yabai -m window --grid 2:1:0:1:1:1
 
 # make floating window fill right-half of screen
-shift + alt - right  : yabai -m window --grid 1:2:1:0:1:1
+alt - k : yabai -m window --grid 2:1:0:0:1:1
+
+# make floating window fill left-half of screen
+alt - h : yabai -m window --grid 1:2:0:0:1:1
+
+# make floating window fill right-half of screen
+alt - l : yabai -m window --grid 1:2:1:0:1:1
 
 # move to most recent space
 alt - tab : yabai -m space --focus recent;
@@ -111,8 +117,8 @@ shift + alt - 9 : yabai -m window --space  9; yabai -m space --focus 9;
 shift + alt - 0 : yabai -m window --space  10; yabai -m space --focus 10;
 
 # change focus between external displays (left and right)
-alt - n: yabai -m display --focus west
-alt - m: yabai -m display --focus east
+# alt - n: yabai -m display --focus west
+# alt - m: yabai -m display --focus east
 
 # move window and follow to display left and right
 shift + alt - n : yabai -m window --display west; yabai -m display --focus west;
