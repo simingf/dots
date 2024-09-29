@@ -58,10 +58,10 @@ ctrl + alt - h : yabai -m window --resize right:-20:0
 # make floating window fill screen
 alt - return : yabai -m window --grid 1:1:0:0:1:1
 
-# make floating window fill left-half of screen
+# make floating window fill bottom-half of screen
 alt - j : yabai -m window --grid 2:1:0:1:1:1
 
-# make floating window fill right-half of screen
+# make floating window fill top-half of screen
 alt - k : yabai -m window --grid 2:1:0:0:1:1
 
 # make floating window fill left-half of screen
