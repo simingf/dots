@@ -141,24 +141,24 @@ Xcode
 
 ## Download Online
 
-MediaMate (I Paid)
-SideNotes (I Paid)
-ProNotes
 KeyboardCleanTool
-WinDiskWriter
+MediaMate (I Paid)
+ProNotes
+SideNotes (I Paid)
 Stacher
+WinDiskWriter
 
 ## xclient.info / 52mac.com
 
 Alfred 5
-Yoink
 Gestimer
-SoundSource
 iA Writer
 Logic Pro
 Melodyne 5
 Octagon
+SoundSource
 WizardOfLegend
+Yoink
 
 ## Alfred Workflows
 
