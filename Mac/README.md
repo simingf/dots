@@ -114,11 +114,11 @@ qbittorrent
 qflipper
 selfcontrol
 slack
+spaceid
 spotify
 steam
 tetrio
 the-unarchiver
-ubersicht
 visual-studio-code
 wechat
 whatsapp
@@ -129,7 +129,6 @@ zoom
 
 oh-my-zsh
 powerlevel10k
-simple-bar
 ani-cli
 mov-cli
 
@@ -151,7 +150,6 @@ WinDiskWriter
 ## xclient.info / 52mac.com
 
 Alfred 5
-Gestimer
 iA Writer
 Logic Pro
 Melodyne 5
