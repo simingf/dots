@@ -80,13 +80,13 @@ alias nrc="nvim ~/.config/nvim/init.lua"
 # kitty
 alias krc="nvim ~/.config/kitty/kitty.conf"
 # ubersicht
-alias ub='builtin cd ~/.config/ubersicht/simple-bar && ls'
-urs() {
-    osascript -e 'tell application id "tracesOf.Uebersicht" to refresh'
-}
+# alias ub='builtin cd ~/.config/ubersicht/simple-bar && ls'
+# urs() {
+#     osascript -e 'tell application id "tracesOf.Uebersicht" to refresh'
+# }
 # yabai
 alias yrc="nvim ~/.config/yabai/yabairc"
-alias yrs="yabai --restart-service && urs"
+alias yrs="yabai --restart-service" # && urs
 yup() {
     TEXT="$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa"
     echo $TEXT | sudo tee /private/etc/sudoers.d/yabai
