@@ -1,52 +1,52 @@
 {
   "schemes" : [
     {
+      "pointer" : {
+        "acceleration" : 0.35,
+        "disableAcceleration" : true
+      },
+      "if" : {
+        "device" : {
+          "vendorID" : "0x46d",
+          "productName" : "USB Receiver",
+          "productID" : "0xc547",
+          "category" : "mouse"
+        }
+      },
       "buttons" : {
         "universalBackForward" : false
       },
       "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        },
+        "speed" : 5,
+        "distance" : "auto",
+        "acceleration" : 0.8,
         "modifiers" : {
           "vertical" : {
-            "option" : {
-              "type" : "auto"
-            },
-            "control" : {
+            "command" : {
               "type" : "auto"
             },
             "shift" : {
               "type" : "auto"
             },
-            "command" : {
+            "control" : {
+              "type" : "auto"
+            },
+            "option" : {
               "type" : "auto"
             }
           }
-        },
-        "distance" : "auto",
-        "reverse" : {
-          "vertical" : true
-        },
-        "acceleration" : 0.8,
-        "speed" : 5
-      },
-      "if" : {
-        "device" : {
-          "productID" : "0xc547",
-          "vendorID" : "0x46d",
-          "productName" : "USB Receiver",
-          "category" : "mouse"
         }
-      },
-      "pointer" : {
-        "acceleration" : 0.35,
-        "disableAcceleration" : true
       }
     },
     {
       "if" : {
         "device" : {
-          "productID" : "0x2fc",
           "productName" : "JLab GO Charge",
           "vendorID" : "0x145f",
+          "productID" : "0x2fc",
           "category" : "mouse"
         }
       },
@@ -55,36 +55,36 @@
       }
     },
     {
-      "if" : {
-        "device" : {
-          "productName" : "USB Optical Mouse",
-          "vendorID" : "0x46d",
-          "category" : "mouse",
-          "productID" : "0xc077"
-        }
-      },
       "pointer" : {
         "speed" : 0.5
+      },
+      "if" : {
+        "device" : {
+          "vendorID" : "0x46d",
+          "productID" : "0xc077",
+          "productName" : "USB Optical Mouse",
+          "category" : "mouse"
+        }
       }
     },
     {
-      "pointer" : {
+      "scrolling" : {
+        "acceleration" : 3,
         "speed" : 0,
+        "distance" : "auto"
+      },
+      "pointer" : {
         "acceleration" : 20,
+        "speed" : 0,
         "disableAcceleration" : false
       },
       "if" : {
         "device" : {
-          "vendorID" : "0x0",
           "category" : "trackpad",
           "productID" : "0x0",
+          "vendorID" : "0x0",
           "productName" : "Apple Internal Keyboard \/ Trackpad"
         }
-      },
-      "scrolling" : {
-        "acceleration" : 3,
-        "distance" : "auto",
-        "speed" : 0
       },
       "buttons" : {
         "universalBackForward" : false
