@@ -35,11 +35,11 @@ cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --
 # alt - l : yabai -m window --grid 1:2:1:0:1:1
 
 # move to most recent space
-alt - tab : yabai -m space --focus recent;
+# alt - tab : yabai -m space --focus recent;
 
 # move to space
-alt - q : yabai -m space --focus prev || yabai -m space --focus last;
-alt - w : yabai -m space --focus next || yabai -m space --focus first;
+# alt - q : yabai -m space --focus prev || yabai -m space --focus last;
+# alt - w : yabai -m space --focus next || yabai -m space --focus first;
 # alt - 1 : yabai -m space --focus 1;
 # alt - 2 : yabai -m space --focus 2;
 # alt - 3 : yabai -m space --focus 3;
