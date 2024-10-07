@@ -77,7 +77,6 @@ zsh
 
 ## Homebrew Casks (brew list --cask | pbcopy)
 
-alt-tab
 angry-ip-scanner
 appcleaner
 arc
@@ -97,6 +96,7 @@ hiddenbar
 iina
 imageoptim
 itsycal
+karabiner-elements
 kitty
 linearmouse
 logitech-g-hub
@@ -112,9 +112,9 @@ notion
 orange
 qbittorrent
 qflipper
+rectangle
 selfcontrol
 slack
-spaceid
 spotify
 steam
 tetrio
