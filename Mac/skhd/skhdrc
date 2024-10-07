@@ -4,8 +4,8 @@
     "steamstreamingclient"
 ]
 
-# open kitty
-cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory ~ 
+cmd + ctrl + shift - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory ~ 
+# cmd + alt + ctrl + shift - a : open -a "Arc"
 
 # increase window size
 # shift + alt - h : yabai -m window --resize left:-20:0
