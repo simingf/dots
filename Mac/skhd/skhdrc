@@ -7,17 +7,7 @@
 cmd + ctrl + shift - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory ~ 
 # cmd + alt + ctrl + shift - a : open -a "Arc"
 
-# increase window size
-# shift + alt - h : yabai -m window --resize left:-20:0
-# shift + alt - j : yabai -m window --resize bottom:0:20
-# shift + alt - k : yabai -m window --resize top:0:-20
-# shift + alt - l : yabai -m window --resize right:20:0
-
-# decrease window size
-# ctrl + alt - l : yabai -m window --resize left:20:0
-# ctrl + alt - k : yabai -m window --resize bottom:0:-20
-# ctrl + alt - j : yabai -m window --resize top:0:20
-# ctrl + alt - h : yabai -m window --resize right:-20:0
+## FLOATING WINDOW TILING
 
 # make floating window fill screen
 # alt - return : yabai -m window --grid 1:1:0:0:1:1
@@ -33,6 +23,8 @@ cmd + ctrl + shift - return : /Applications/kitty.app/Contents/MacOS/kitty --sin
 
 # make floating window fill right-half of screen
 # alt - l : yabai -m window --grid 1:2:1:0:1:1
+
+## SPACES
 
 # move to most recent space
 # alt - tab : yabai -m space --focus recent;
@@ -79,12 +71,3 @@ cmd + ctrl + shift - return : /Applications/kitty.app/Contents/MacOS/kitty --sin
 # shift + alt - 8 : yabai -m window --space  8; yabai -m space --focus 8;
 # shift + alt - 9 : yabai -m window --space  9; yabai -m space --focus 9;
 # shift + alt - 0 : yabai -m window --space  10; yabai -m space --focus 10;
-
-# change focus between external displays (left and right)
-# alt - n: yabai -m display --focus west
-# alt - m: yabai -m display --focus east
-
-# move window and follow to display left and right
-# shift + alt - n : yabai -m window --display west; yabai -m display --focus west;
-# shift + alt - m : yabai -m window --display east; yabai -m display --focus east;
-
