@@ -77,6 +77,7 @@ zsh
 
 ## Homebrew Casks (brew list --cask | pbcopy)
 
+alt-tab
 angry-ip-scanner
 appcleaner
 arc
@@ -115,6 +116,7 @@ qflipper
 rectangle
 selfcontrol
 slack
+spaceid
 spotify
 steam
 tetrio
