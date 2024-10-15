@@ -27,11 +27,14 @@ cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --
 ## SPACES
 
 # move to most recent space
-# alt - tab : yabai -m space --focus recent;
+alt - tab : yabai -m space --focus recent;
 
 # move to space
-alt - h: yabai -m space --focus prev || yabai -m space --focus last;
-alt - l: yabai -m space --focus next || yabai -m space --focus first;
+# alt - h: yabai -m space --focus prev || yabai -m space --focus last;
+# alt - l: yabai -m space --focus next || yabai -m space --focus first;
+cmd + alt + ctrl + shift - a: yabai -m space --focus prev || yabai -m space --focus last;
+cmd + alt + ctrl + shift - d: yabai -m space --focus next || yabai -m space --focus first;
+
 # alt - 1 : yabai -m space --focus 1;
 # alt - 2 : yabai -m space --focus 2;
 # alt - 3 : yabai -m space --focus 3;
