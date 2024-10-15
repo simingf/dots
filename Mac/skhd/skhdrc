@@ -27,7 +27,7 @@ cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --
 ## SPACES
 
 # move to most recent space
-alt - tab : yabai -m space --focus recent;
+# alt - tab : yabai -m space --focus recent;
 
 # move to space
 # alt - h: yabai -m space --focus prev || yabai -m space --focus last;
