@@ -114,6 +114,7 @@ orange
 qbittorrent
 qflipper
 rectangle
+roblox
 selfcontrol
 slack
 spaceid
