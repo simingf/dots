@@ -46,6 +46,7 @@ gcc
 gh
 git
 git-lfs
+go
 gping
 grep
 imagemagick
@@ -93,6 +94,7 @@ discord
 docker
 epic-games
 font-jetbrains-mono-nerd-font
+google-chrome
 hiddenbar
 iina
 imageoptim
@@ -157,7 +159,6 @@ iA Writer
 Logic Pro
 Melodyne 5
 Octagon
-SoundSource
 WizardOfLegend
 Yoink
 
