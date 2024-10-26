@@ -39,7 +39,7 @@ accept-line() {
 zle -N accept-line
 
 # vectraflow alias
-alias dbssh='kitten ssh sfeng@10.116.60.21'
+alias vssh='kitten ssh sfeng@10.116.60.21'
 
 # directory aliases
 alias ls='ls -AG'
