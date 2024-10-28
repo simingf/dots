@@ -11,6 +11,7 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 export SHELL="zsh"
+export PATH=".:${HOME}/bin:${PATH}"
 
 DISABLE_AUTO_TITLE="true"
 
@@ -40,6 +41,7 @@ zle -N accept-line
 
 # vectraflow alias
 alias vssh='kitten ssh sfeng@10.116.60.21'
+alias vscp='scp -r * sfeng@10.116.60.21:~/continuous-query'
 
 # directory aliases
 alias ls='ls -AG'
