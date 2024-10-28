@@ -95,10 +95,8 @@ docker
 epic-games
 font-jetbrains-mono-nerd-font
 google-chrome
-hiddenbar
 iina
 imageoptim
-itsycal
 karabiner-elements
 kitty
 linearmouse
@@ -140,6 +138,7 @@ mov-cli
 ## Download Via App Store
 
 Amphetamine
+iBar
 Pure Paste
 Xcode
 
