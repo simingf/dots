@@ -139,6 +139,7 @@ mov-cli
 
 Amphetamine
 iBar
+Perplexity
 Pure Paste
 Xcode
 
