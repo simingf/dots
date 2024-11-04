@@ -4,7 +4,8 @@
     "steamstreamingclient"
 ]
 
-cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory ~ 
+# cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory ~ 
+cmd - return : open -a "Kitty"
 # cmd + alt + ctrl + shift - a : open -a "Arc"
 
 ## FLOATING WINDOW TILING
