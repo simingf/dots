@@ -91,7 +91,7 @@ accept-line() {
     if [[ -z $BUFFER ]]; then
         zle -I
         # command to run when enter pressed
-        clear && ls -AG && echo
+        clear && ls -AG
     else
         zle ".$WIDGET"
     fi
