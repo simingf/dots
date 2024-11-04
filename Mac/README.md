@@ -74,6 +74,7 @@ watch
 wget
 xkcd
 yt-dlp
+zoxide
 zsh
 
 ## Homebrew Casks (brew list --cask | pbcopy)
@@ -130,8 +131,7 @@ zoom
 
 ## Install Via Command Line
 
-oh-my-zsh
-powerlevel10k
+zinit
 ani-cli
 mov-cli
 
