@@ -75,7 +75,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
-# disable auto title
+# disable automatic window title
 DISABLE_AUTO_TITLE="true"
 
 # Preferred editor for local and remote sessions
@@ -107,8 +107,7 @@ alias pwd='pwd && pwd | pbcopy'
 alias css='rm -f ~/Screenshots/* && echo "screenshots cleared"'
 alias npmg='npm list -g --depth 0'
 
-# git
-alias g='git status'
+# lazygit
 alias lg='lazygit'
 
 # vscode
@@ -129,8 +128,27 @@ p() {
     fi
 }
 
+# conda
+c() {
+    if [[ "$@" == "" ]]; then
+        clear
+    elif [[ "$1" == "a" ]]; then
+        shift
+        conda activate "$@"
+    elif [[ "$@" == "d" ]]; then
+        conda deactivate
+    else
+        conda "$@"
+    fi
+}
+. "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+
 # competitive programming
 alias rr='make && ./sol'
+
+# vectraflow alias
+alias vssh='kitten ssh sfeng@10.116.60.21'
+alias vscp='scp -r * sfeng@10.116.60.21:~/continuous-query'
 
 # directory aliases
 alias ls='ls -AG'
@@ -145,26 +163,6 @@ alias lab='builtin cd ~/Gitlab/ && clear && ls'
 alias euler='builtin cd ~/euler/ && clear && ls'
 alias dp='builtin cd ~/atcoder-dp/ && clear && ls'
 alias dots='builtin cd ~/dots && ls'
-
-# vectraflow alias
-alias vssh='kitten ssh sfeng@10.116.60.21'
-alias vscp='scp -r * sfeng@10.116.60.21:~/continuous-query'
-
-# conda
-. "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-
-c() {
-    if [[ "$@" == "" ]]; then
-        clear
-    elif [[ "$1" == "a" ]]; then
-        shift
-        conda activate "$@"
-    elif [[ "$@" == "d" ]]; then
-        conda deactivate
-    else
-        conda "$@"
-    fi
-}
 
 # config aliases
 alias cf="builtin cd ~/.config && ls"
