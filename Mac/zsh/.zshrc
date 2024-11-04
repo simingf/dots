@@ -100,17 +100,11 @@ zle -N accept-line
 
 # general aliases
 alias e='exit'
-# open in finder
 alias f='open .'
-# rm folders
 alias rm='rm -r'
-# accepts path name
 alias mkdir='mkdir -p'
-# print out path and copy the path
 alias pwd='pwd && pwd | pbcopy'
-# clears screenshot folder
 alias css='rm -f ~/Screenshots/* && echo "screenshots cleared"'
-# lists global node modules
 alias npmg='npm list -g --depth 0'
 
 # git
@@ -135,7 +129,7 @@ p() {
     fi
 }
 
-# competitive programming alias
+# competitive programming
 alias rr='make && ./sol'
 
 # directory aliases
@@ -170,12 +164,6 @@ c() {
     else
         conda "$@"
     fi
-}
-
-# image magick function
-img() {
-    magick "$1" "$2"
-    rm "$1"
 }
 
 # config aliases
