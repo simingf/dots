@@ -75,6 +75,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
+# disable auto title
 DISABLE_AUTO_TITLE="true"
 
 # Preferred editor for local and remote sessions
@@ -90,7 +91,7 @@ accept-line() {
     if [[ -z $BUFFER ]]; then
         zle -I
         # command to run when enter pressed
-        clear && ls && echo
+        clear && ls -AG && echo
     else
         zle ".$WIDGET"
     fi
@@ -186,7 +187,7 @@ alias zrc="nvim ~/.zshrc"
 alias zrs="clear && source ~/.zshrc"
 alias ch="rm -f ~/.zsh_history && clear"
 # zinit
-alias zup="zinit self-update && zinit update --parallel"
+alias zup="zinit self-update && zinit update"
 # nvim
 alias nrc="nvim ~/.config/nvim/init.lua"
 # kitty
@@ -211,33 +212,3 @@ alias up='sudo echo && zup && bup && yup && yrs'
 # urs() {
 #     osascript -e 'tell application id "tracesOf.Uebersicht" to refresh'
 # }
-
-# cd() {
-#     # if no DIR given, go home
-#     if [[ "$@" == "" ]]; then
-#         builtin cd $HOME && clear && ls
-#     # if the path only contains '.' and '/' (moving up dir tree)
-#     elif [[ "$@" =~ ^[./-]+$ ]]; then
-#         builtin cd "$@" && clear && ls
-#     # if the path contains at least one '/' (i tabbed it)
-#     elif [[ "$@" == *"/"* ]]; then
-#         builtin cd "$@" && clear && ls
-#     else
-#         # try to find exact match for dirname first
-#         EXACT=$(find . -maxdepth 1 -type d -iname "$@" -print -quit)
-#         if [[ $EXACT != "" ]]; then
-#             builtin cd "${EXACT}" && clear && ls
-#         else
-#             # find all dirnames that contain search string
-#             DIRS=$(find . -maxdepth 1 -type d -iname "*$@*" -print -quit)
-#             if [[ $DIRS == "" ]]; then
-#                 echo "ERROR: no match found" 
-#             else
-#                 # cd into first match
-#                 DIR=${DIRS%%*"\n"}
-#                 builtin cd "${DIR}" && clear && ls
-#             fi
-#         fi
-#     fi
-# }
-
