@@ -10,7 +10,7 @@ vim.opt.signcolumn = 'yes'
 -- highlight current line
 vim.opt.cursorline = true
 -- minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 5
+vim.opt.scrolloff = 2
 -- line wrapping
 vim.opt.wrap = true
 -- preserve indentation when line wrapping
