@@ -9,8 +9,8 @@ vim.opt.relativenumber = true
 vim.opt.signcolumn = 'yes'
 -- highlight current line
 vim.opt.cursorline = true
--- minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 2
+-- minimal number of screen lines to keep above and below the cursor
+vim.opt.scrolloff = 5
 -- line wrapping
 vim.opt.wrap = true
 -- preserve indentation when line wrapping
@@ -64,11 +64,13 @@ vim.keymap.set('n', 'gp', '"+p')
 -- prevent x or X from modifying the internal register
 vim.keymap.set({ 'n', 'x' }, 'x', '"_x')
 vim.keymap.set({ 'n', 'x' }, 'X', '"_d')
+-- set M to m for setting marks
+-- set m to ` for jumping to marks
+vim.keymap.set('n', 'M', 'm')
+vim.keymap.set('n', 'm', '`')
 -- swap windows
 vim.api.nvim_set_keymap('n', '<Tab>', '<C-w>w', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>w', '<C-w>', { noremap = true, silent = true })
--- swap tabs
-vim.api.nvim_set_keymap('n', '<bs>', '<c-^>zz', { noremap = true, silent = true })
 -- highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight when yanking (copying) text',
@@ -188,7 +190,7 @@ require("lazy").setup({
             vim.keymap.set("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end)
             vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)
             vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end)
-            vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end)
+            vim.keymap.set("n", "glr", function() require("trouble").toggle("lsp_references") end)
         end
     },
     {
@@ -212,15 +214,15 @@ require("lazy").setup({
                     }
                 }
             })
-            vim.keymap.set('n', '<leader>bh', ':bprev<cr>')
-            vim.keymap.set('n', '<leader>bl', ':bnext<cr>')
+            vim.keymap.set('n', '<leader>h', ':bprev<cr>')
+            vim.keymap.set('n', '<leader>l', ':bnext<cr>')
         end
     },
     {
         'echasnovski/mini.bufremove',
         config = function()
             require('mini.bufremove').setup({})
-            vim.keymap.set('n', '<leader>bc', '<cmd>lua pcall(MiniBufremove.delete)<cr>')
+            vim.keymap.set('n', '<leader>cc', '<cmd>lua pcall(MiniBufremove.delete)<cr>')
         end
     },
     {
@@ -268,7 +270,7 @@ require("lazy").setup({
                     },
                 },
                 ensure_installed = {
-                    'lua', 'bash', 'python', 'javascript', 'typescript',
+                    'lua', 'bash', 'python', 'go', 'javascript', 'typescript',
                 },
             })
         end
@@ -305,11 +307,11 @@ require("lazy").setup({
             -- search open files
             vim.keymap.set('n', '<leader>fo', '<cmd>Telescope buffers<cr>')
             -- search files in current directory
-            vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
+            vim.keymap.set('n', '<leader>fd', '<cmd>Telescope find_files<cr>')
             -- search recently opened files
             vim.keymap.set('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>')
             -- search diagnostic messages
-            vim.keymap.set('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>')
+            vim.keymap.set('n', '<leader>fdd', '<cmd>Telescope diagnostics<cr>')
             -- search in clipboard
             vim.keymap.set('n', '<leader>fy', '<cmd>Telescope neoclip<cr>')
             -- search notifications
@@ -387,31 +389,31 @@ require("lazy").setup({
                     bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
 
                     -- Jump to the definition
-                    bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
+                    bufmap('n', 'gdef', '<cmd>lua vim.lsp.buf.definition()<cr>')
 
                     -- Jump to declaration
-                    bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+                    bufmap('n', 'gdec', '<cmd>lua vim.lsp.buf.declaration()<cr>')
 
                     -- Jumps to the definition of the type symbol
-                    bufmap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
+                    bufmap('n', 'gtd', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
 
                     -- Lists all the implementations for the symbol under the cursor
-                    bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
+                    bufmap('n', 'gimp', '<cmd>lua vim.lsp.buf.implementation()<cr>')
 
                     -- Lists all the references
-                    bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
+                    bufmap('n', 'gref', '<cmd>lua vim.lsp.buf.references()<cr>')
 
                     -- Displays a function's signature information
                     bufmap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
 
                     -- Renames all references to the symbol under the cursor
-                    bufmap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>')
+                    bufmap('n', 'grn', '<cmd>lua vim.lsp.buf.rename()<cr>')
 
                     -- Selects a code action available at the current cursor position
-                    bufmap({ 'n', 'v' }, '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+                    bufmap({ 'n', 'v' }, 'gca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
 
                     -- Show diagnostics in a floating window
-                    bufmap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<cr>')
+                    bufmap('n', 'gdd', '<cmd>lua vim.diagnostic.open_float()<cr>')
 
                     -- Move to the previous diagnostic
                     bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
@@ -465,7 +467,7 @@ require("lazy").setup({
                     end
                 },
                 sources = {
-                    { name = 'copilot',  keyword_length = 1 },
+                    -- { name = 'copilot',  keyword_length = 1 },
                     { name = 'luasnip',  keyword_length = 1 },
                     { name = 'nvim_lsp', keyword_length = 1 },
                     { name = 'buffer',   keyword_length = 2 },
@@ -478,7 +480,7 @@ require("lazy").setup({
                     fields = { 'menu', 'abbr', 'kind' },
                     format = function(entry, item)
                         local menu_icon = {
-                            copilot = 'GPT',
+                            -- copilot = 'GPT',
                             nvim_lsp = 'LSP',
                             luasnip = 'SNIP',
                             buffer = 'BUF',
@@ -562,19 +564,19 @@ require("lazy").setup({
     },
 
     -- copilot
-    {
-        'zbirenbaum/copilot.lua',
-        config = function()
-            require("copilot").setup({
-                suggestion = { enabled = false },
-                panel = { enabled = false },
-            })
-        end
-    },
-    {
-        'zbirenbaum/copilot-cmp',
-        config = true
-    },
+    -- {
+    --     'zbirenbaum/copilot.lua',
+    --     config = function()
+    --         require("copilot").setup({
+    --             suggestion = { enabled = false },
+    --             panel = { enabled = false },
+    --         })
+    --     end
+    -- },
+    -- {
+    --     'zbirenbaum/copilot-cmp',
+    --     config = true
+    -- },
 })
 
 -- ========================================================================== --
