@@ -23,8 +23,6 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # Add in snippets
-zinit snippet OMZL::git.zsh
-zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 
@@ -101,9 +99,6 @@ alias css='rm -f ~/Screenshots/* && echo "screenshots cleared"'
 alias npmg='npm list -g --depth 0'
 alias icat="kitten icat"
 alias rg="rg --hyperlink-format=kitty"
-
-# git status
-alias g='git status'
 
 # lazygit
 alias lg='lazygit'
