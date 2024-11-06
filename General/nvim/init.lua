@@ -39,6 +39,36 @@ vim.opt.splitbelow = true
 -- disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+-- diagnostic icons
+local sign = function(opts)
+    vim.fn.sign_define(opts.name, {
+        texthl = opts.name,
+        text = opts.text,
+        numhl = ''
+    })
+end
+sign({ name = 'DiagnosticSignError', text = '' })
+sign({ name = 'DiagnosticSignWarn', text = '' })
+sign({ name = 'DiagnosticSignHint', text = '' })
+sign({ name = 'DiagnosticSignInfo', text = '' })
+-- diagnostic config
+vim.diagnostic.config({
+    -- Show diagnostic message using virtual text.
+    virtual_text = false,
+    -- Show a sign next to the line with a diagnostic.
+    signs = true,
+    -- Update diagnostics while editing in insert mode.
+    update_in_insert = false,
+    -- Use an underline to show a diagnostic location.
+    underline = true,
+    -- Order diagnostics by severity.
+    severity_sort = true,
+    -- Show diagnostic messages in floating windows.
+    float = {
+        border = 'rounded',
+        source = 'always',
+    },
+})
 
 -- ========================================================================== --
 -- ==                           KEY BINDINGS                               == --
@@ -78,43 +108,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function()
         vim.highlight.on_yank()
     end,
-})
-
--- ========================================================================== --
--- ==                           DIAGNOSTICS                                == --
--- ========================================================================== --
-
--- change diagnostic icons
-local sign = function(opts)
-    vim.fn.sign_define(opts.name, {
-        texthl = opts.name,
-        text = opts.text,
-        numhl = ''
-    })
-end
-
-sign({ name = 'DiagnosticSignError', text = '' })
-sign({ name = 'DiagnosticSignWarn', text = '' })
-sign({ name = 'DiagnosticSignHint', text = '' })
-sign({ name = 'DiagnosticSignInfo', text = '' })
-
--- configure diagnostic options
-vim.diagnostic.config({
-    -- Show diagnostic message using virtual text.
-    virtual_text = false,
-    -- Show a sign next to the line with a diagnostic.
-    signs = true,
-    -- Update diagnostics while editing in insert mode.
-    update_in_insert = false,
-    -- Use an underline to show a diagnostic location.
-    underline = true,
-    -- Order diagnostics by severity.
-    severity_sort = true,
-    -- Show diagnostic messages in floating windows.
-    float = {
-        border = 'rounded',
-        source = 'always',
-    },
 })
 
 -- ========================================================================== --
@@ -163,7 +156,7 @@ require("lazy").setup({
         end
     },
 
-    -- editor ui
+    -- status line at bottom
     {
         'nvim-lualine/lualine.nvim',
         config = function()
@@ -177,22 +170,81 @@ require("lazy").setup({
             })
         end
     },
+
+    -- git indicators on the left
     {
         'lewis6991/gitsigns.nvim',
         config = true
     },
+
+    -- indentation indicators on the left
     {
-        'folke/trouble.nvim',
+        "lukas-reineke/indent-blankline.nvim",
         config = function()
-            require('trouble').setup({})
-            vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)
-            vim.keymap.set("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end)
-            vim.keymap.set("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end)
-            vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)
-            vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end)
-            vim.keymap.set("n", "glr", function() require("trouble").toggle("lsp_references") end)
+            require('ibl').setup({
+                enabled = true,
+                scope = {
+                    enabled = true
+                },
+                indent = {
+                    char = '▏'
+                }
+            })
         end
     },
+
+    -- highlight TODOs
+    {
+        "folke/todo-comments.nvim"
+    },
+
+    -- highlight all occurences of a word
+    {
+        'echasnovski/mini.cursorword',
+        config = true
+    },
+
+    -- comments! normal: gcc, gbc. visual: gc, gb.
+    {
+        'numToStr/Comment.nvim',
+        config = true
+    },
+
+    -- automatic closing brackets
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+    },
+
+    -- file system navigation
+    {
+        'kyazdani42/nvim-tree.lua',
+        config = function()
+            require('nvim-tree').setup({
+                view = {
+                    width = 25,
+                },
+                hijack_cursor = false,
+                on_attach = function(bufnr)
+                    local bufmap = function(lhs, rhs, desc)
+                        vim.keymap.set('n', lhs, rhs, { buffer = bufnr, desc = desc })
+                    end
+
+                    -- See :help nvim-tree.api
+                    local api = require('nvim-tree.api')
+                    bufmap('<cr>', api.node.open.edit, 'Expand folder or go to file')
+                    bufmap('cd', api.tree.change_root_to_node, 'Set current directory as root')
+                    bufmap('..', api.node.navigate.parent, 'Move to parent directory')
+                    bufmap('hh', api.tree.toggle_hidden_filter, 'Toggle hidden files')
+                end
+            })
+            vim.cmd [[hi NvimTreeNormal guibg=NONE ctermbg=NONE]]
+            vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>')
+        end
+    },
+
+    -- tabs
     {
         'akinsho/bufferline.nvim',
         config = function()
@@ -222,32 +274,61 @@ require("lazy").setup({
         'echasnovski/mini.bufremove',
         config = function()
             require('mini.bufremove').setup({})
-            vim.keymap.set('n', '<leader>cc', '<cmd>lua pcall(MiniBufremove.delete)<cr>')
+            vim.keymap.set('n', '<leader>ww', '<cmd>lua pcall(MiniBufremove.delete)<cr>')
         end
-    },
-    {
-        'echasnovski/mini.cursorword',
-        config = true
-    },
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        config = function()
-            require('ibl').setup({
-                enabled = true,
-                scope = {
-                    enabled = true
-                },
-                indent = {
-                    char = '▏'
-                }
-            })
-        end
-    },
-    {
-        "folke/todo-comments.nvim"
     },
 
-    -- editor utilities
+    -- trouble: diagnostics windows
+    {
+        "folke/trouble.nvim",
+        opts = {}, -- for default options, refer to the configuration section for custom setup.
+        cmd = "Trouble",
+        keys = {
+            {
+                "<leader>xx",
+                "<cmd>Trouble diagnostics toggle<cr>",
+                desc = "Diagnostics (Trouble)",
+            },
+            {
+                "<leader>xX",
+                "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+                desc = "Buffer Diagnostics (Trouble)",
+            },
+            {
+                "<leader>xs",
+                "<cmd>Trouble symbols toggle focus=false<cr>",
+                desc = "Symbols (Trouble)",
+            },
+            {
+                "<leader>xl",
+                "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+                desc = "LSP Definitions / references / ... (Trouble)",
+            },
+            {
+                "<leader>xL",
+                "<cmd>Trouble loclist toggle<cr>",
+                desc = "Location List (Trouble)",
+            },
+            {
+                "<leader>xQ",
+                "<cmd>Trouble qflist toggle<cr>",
+                desc = "Quickfix List (Trouble)",
+            },
+        },
+    },
+
+    -- leap: easy navigation with 's'
+    {
+        'ggandor/leap.nvim',
+        config = function()
+            require('leap').create_default_mappings()
+            require('leap').opts.special_keys.prev_target = '<bs>'
+            require('leap').opts.special_keys.prev_group = '<bs>'
+            require('leap.user').set_repeat_keys('<cr>', '<bs>')
+        end
+    },
+
+    -- treesitter: vim motions for classes and functions
     {
         'nvim-treesitter/nvim-treesitter',
         config = function()
@@ -270,7 +351,7 @@ require("lazy").setup({
                     },
                 },
                 ensure_installed = {
-                    'lua', 'bash', 'python', 'go', 'javascript', 'typescript',
+                    'lua', 'bash', 'c', 'cpp', 'python', 'go', 'javascript', 'typescript',
                 },
             })
         end
@@ -278,24 +359,8 @@ require("lazy").setup({
     {
         'nvim-treesitter/nvim-treesitter-textobjects'
     },
-    {
-        'ggandor/leap.nvim',
-        config = function()
-            require('leap').create_default_mappings()
-            require('leap').opts.special_keys.prev_target = '<bs>'
-            require('leap').opts.special_keys.prev_group = '<bs>'
-            require('leap.user').set_repeat_keys('<cr>', '<bs>')
-        end
-    },
-    {
-        'numToStr/Comment.nvim',
-        config = true
-    },
-    {
-        'windwp/nvim-autopairs',
-        event = "InsertEnter",
-        config = true
-    },
+
+    -- telescope: fzf search for EVERYTHING
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     {
         'nvim-telescope/telescope.nvim',
@@ -323,34 +388,7 @@ require("lazy").setup({
         config = true
     },
 
-    -- file system
-    {
-        'kyazdani42/nvim-tree.lua',
-        config = function()
-            require('nvim-tree').setup({
-                view = {
-                    width = 25,
-                },
-                hijack_cursor = false,
-                on_attach = function(bufnr)
-                    local bufmap = function(lhs, rhs, desc)
-                        vim.keymap.set('n', lhs, rhs, { buffer = bufnr, desc = desc })
-                    end
-
-                    -- See :help nvim-tree.api
-                    local api = require('nvim-tree.api')
-                    bufmap('<cr>', api.node.open.edit, 'Expand folder or go to file')
-                    bufmap('cd', api.tree.change_root_to_node, 'Set current directory as root')
-                    bufmap('..', api.node.navigate.parent, 'Move to parent directory')
-                    bufmap('hh', api.tree.toggle_hidden_filter, 'Toggle hidden files')
-                end
-            })
-            vim.cmd [[hi NvimTreeNormal guibg=NONE ctermbg=NONE]]
-            vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>')
-        end
-    },
-
-    -- mason
+    -- mason: easy managing of installed LSPs / Formatters
     {
         'williamboman/mason.nvim',
         config = true
@@ -373,7 +411,7 @@ require("lazy").setup({
         end
     },
 
-    -- lsp
+    -- lspconfig: setup commands to interact with LSPs
     {
         'neovim/nvim-lspconfig',
         config = function()
@@ -389,31 +427,31 @@ require("lazy").setup({
                     bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
 
                     -- Jump to the definition
-                    bufmap('n', 'gdef', '<cmd>lua vim.lsp.buf.definition()<cr>')
+                    bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
 
                     -- Jump to declaration
-                    bufmap('n', 'gdec', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+                    -- bufmap('n', 'gdd', '<cmd>lua vim.lsp.buf.declaration()<cr>')
 
                     -- Jumps to the definition of the type symbol
-                    bufmap('n', 'gtd', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
+                    -- bufmap('n', 'gtd', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
 
                     -- Lists all the implementations for the symbol under the cursor
-                    bufmap('n', 'gimp', '<cmd>lua vim.lsp.buf.implementation()<cr>')
+                    -- bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
 
                     -- Lists all the references
-                    bufmap('n', 'gref', '<cmd>lua vim.lsp.buf.references()<cr>')
+                    bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
 
                     -- Displays a function's signature information
-                    bufmap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+                    -- bufmap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
 
                     -- Renames all references to the symbol under the cursor
-                    bufmap('n', 'grn', '<cmd>lua vim.lsp.buf.rename()<cr>')
+                    bufmap('n', 'gR', '<cmd>lua vim.lsp.buf.rename()<cr>')
 
                     -- Selects a code action available at the current cursor position
-                    bufmap({ 'n', 'v' }, 'gca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+                    -- bufmap({ 'n', 'v' }, 'gca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
 
                     -- Show diagnostics in a floating window
-                    bufmap('n', 'gdd', '<cmd>lua vim.diagnostic.open_float()<cr>')
+                    bufmap('n', 'gD', '<cmd>lua vim.diagnostic.open_float()<cr>')
 
                     -- Move to the previous diagnostic
                     bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
@@ -425,7 +463,7 @@ require("lazy").setup({
         end
     },
 
-    -- formatter
+    -- conform: indicate which formatters to use, and automatic formatting
     {
         'stevearc/conform.nvim',
         config = function()
@@ -448,7 +486,7 @@ require("lazy").setup({
         end
     },
 
-    -- cmp (autocompletion)
+    -- cmp: autocomplete!
     {
         'hrsh7th/nvim-cmp',
         config = function()
@@ -550,7 +588,7 @@ require("lazy").setup({
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-path' },
 
-    -- snippets
+    -- snippets! (they show up in autocomplete)
     {
         'L3MON4D3/LuaSnip',
         config = true
@@ -594,6 +632,7 @@ require('lspconfig').lua_ls.setup({
     }
 })
 
+-- clangd lsp setup
 require("lspconfig").clangd.setup {
     cmd = {
         "clangd",
@@ -601,7 +640,7 @@ require("lspconfig").clangd.setup {
     },
 }
 
--- custom python provider
+-- use python LSP from conda if in virtual env
 local function isempty(s)
     return s == nil or s == ""
 end
