@@ -78,8 +78,8 @@ vim.diagnostic.config({
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 -- make j and k work with wrapped lines
--- vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true, silent = true })
 -- bind H to ^ and L to $
 vim.keymap.set('n', 'H', '^', { noremap = true, silent = true })
 vim.keymap.set('n', 'L', '$', { noremap = true, silent = true })
@@ -94,10 +94,10 @@ vim.keymap.set('n', 'gp', '"+p')
 -- prevent x or X from modifying the internal register
 vim.keymap.set({ 'n', 'x' }, 'x', '"_x')
 vim.keymap.set({ 'n', 'x' }, 'X', '"_d')
--- set M to m for setting marks
--- set m to ` for jumping to marks
-vim.keymap.set('n', 'M', 'm')
-vim.keymap.set('n', 'm', '`')
+-- m is for defining marks, set M to ` for jumping to marks
+vim.keymap.set('n', 'M', '`')
+-- q is for recording macros, set Q to @ to play macros
+vim.keymap.set('n', 'Q', '@')
 -- swap windows
 vim.api.nvim_set_keymap('n', '<Tab>', '<C-w>w', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>w', '<C-w>', { noremap = true, silent = true })
@@ -109,6 +109,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank()
     end,
 })
+-- ctrl u / d centers afterwards
+local function lazy(keys)
+    keys = vim.api.nvim_replace_termcodes(keys, true, false, true)
+    return function()
+        local old = vim.o.lazyredraw
+        vim.o.lazyredraw = true
+        vim.api.nvim_feedkeys(keys, 'nx', false)
+        vim.o.lazyredraw = old
+    end
+end
+vim.keymap.set('n', '<c-u>', lazy('<c-u>zz'), { desc = 'Scroll up half screen' })
+vim.keymap.set('n', '<c-d>', lazy('<c-d>zz'), { desc = 'Scroll down half screen' })
 
 -- ========================================================================== --
 -- ==                               PLUGINS                                == --
@@ -195,7 +207,16 @@ require("lazy").setup({
 
     -- highlight TODOs
     {
-        "folke/todo-comments.nvim"
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {
+            keywords = {
+                FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "FIXIT", "ISSUE" } },
+                TODO = { icon = " ", color = "info", alt = { "NYI" } },
+                HINT = { icon = " ", color = "hint", alt = { "INFO", "NOTE" } },
+                TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASS", "PASSED", "FAIL", "FAILED" } },
+            },
+        }
     },
 
     -- highlight all occurences of a word
@@ -286,22 +307,22 @@ require("lazy").setup({
         keys = {
             {
                 "<leader>xx",
-                "<cmd>Trouble diagnostics toggle<cr>",
+                "<cmd>Trouble diagnostics toggle win.size=0.1<cr>",
                 desc = "Diagnostics (Trouble)",
             },
             {
                 "<leader>xX",
-                "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+                "<cmd>Trouble diagnostics toggle win.size=0.1 filter.buf=0<cr>",
                 desc = "Buffer Diagnostics (Trouble)",
             },
             {
                 "<leader>xs",
-                "<cmd>Trouble symbols toggle focus=false<cr>",
+                "<cmd>Trouble symbols toggle focus=false win.size=0.25 win.position=right<cr>",
                 desc = "Symbols (Trouble)",
             },
             {
                 "<leader>xl",
-                "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+                "<cmd>Trouble lsp toggle focus=false win.size=0.25 win.position=right<cr>",
                 desc = "LSP Definitions / references / ... (Trouble)",
             },
             {
@@ -372,15 +393,13 @@ require("lazy").setup({
             -- search open files
             vim.keymap.set('n', '<leader>fo', '<cmd>Telescope buffers<cr>')
             -- search files in current directory
-            vim.keymap.set('n', '<leader>fd', '<cmd>Telescope find_files<cr>')
+            vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
             -- search recently opened files
             vim.keymap.set('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>')
             -- search diagnostic messages
-            vim.keymap.set('n', '<leader>fdd', '<cmd>Telescope diagnostics<cr>')
+            vim.keymap.set('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>')
             -- search in clipboard
             vim.keymap.set('n', '<leader>fy', '<cmd>Telescope neoclip<cr>')
-            -- search notifications
-            vim.keymap.set('n', '<leader>fn', '<cmd>Telescope notify<cr>')
         end
     },
     {
@@ -427,31 +446,31 @@ require("lazy").setup({
                     bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
 
                     -- Jump to the definition
-                    bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
+                    bufmap('n', '<leader>jd', '<cmd>lua vim.lsp.buf.definition()<cr>')
 
                     -- Jump to declaration
-                    -- bufmap('n', 'gdd', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+                    bufmap('n', '<leader>jD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
 
                     -- Jumps to the definition of the type symbol
-                    -- bufmap('n', 'gtd', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
+                    bufmap('n', '<leader>jtd', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
 
                     -- Lists all the implementations for the symbol under the cursor
-                    -- bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
+                    bufmap('n', '<leader>ji', '<cmd>lua vim.lsp.buf.implementation()<cr>')
 
                     -- Lists all the references
-                    bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
+                    bufmap('n', '<leader>jr', '<cmd>lua vim.lsp.buf.references()<cr>')
 
                     -- Displays a function's signature information
-                    -- bufmap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+                    bufmap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
 
                     -- Renames all references to the symbol under the cursor
-                    bufmap('n', 'gR', '<cmd>lua vim.lsp.buf.rename()<cr>')
+                    bufmap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>')
 
                     -- Selects a code action available at the current cursor position
-                    -- bufmap({ 'n', 'v' }, 'gca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+                    bufmap({ 'n', 'v' }, '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
 
                     -- Show diagnostics in a floating window
-                    bufmap('n', 'gD', '<cmd>lua vim.diagnostic.open_float()<cr>')
+                    bufmap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<cr>')
 
                     -- Move to the previous diagnostic
                     bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
