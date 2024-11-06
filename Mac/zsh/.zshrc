@@ -99,6 +99,8 @@ alias mkdir='mkdir -p'
 alias pwd='pwd && pwd | pbcopy'
 alias css='rm -f ~/Screenshots/* && echo "screenshots cleared"'
 alias npmg='npm list -g --depth 0'
+alias icat="kitten icat"
+alias rg="rg --hyperlink-format=kitty"
 
 # git status
 alias g='git status'
