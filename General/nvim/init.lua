@@ -81,13 +81,13 @@ vim.g.maplocalleader = ' '
 vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true, silent = true })
 -- bind H to ^ and L to $
-vim.keymap.set('n', 'H', '^', { noremap = true, silent = true })
-vim.keymap.set('n', 'L', '$', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'x' }, 'H', '^', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'x' }, 'L', '$', { noremap = true, silent = true })
 -- shift up and down to move line
 vim.keymap.set('n', '<S-Up>', 'ddkP', { noremap = true, silent = true })
 vim.keymap.set('n', '<S-Down>', 'ddp', { noremap = true, silent = true })
 -- yank and paste from clipboard
-vim.keymap.set('v', 'gy', '"+y')
+vim.keymap.set({ 'n', 'x' }, 'gy', '"+y')
 vim.keymap.set('n', 'gp', '"+p')
 -- prevent x or X from modifying the internal register
 vim.keymap.set({ 'n', 'x' }, 'x', '"_x')
@@ -526,7 +526,7 @@ require("lazy").setup({
                     bufmap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>')
 
                     -- Selects a code action available at the current cursor position
-                    bufmap({ 'n', 'v' }, '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+                    bufmap({ 'n', 'x' }, '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
 
                     -- Show diagnostics in a floating window
                     bufmap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<cr>')
