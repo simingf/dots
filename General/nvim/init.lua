@@ -242,11 +242,38 @@ require("lazy").setup({
     {
         'kyazdani42/nvim-tree.lua',
         config = function()
+            local HEIGHT_RATIO = 0.8
+            local WIDTH_RATIO = 0.5
             require('nvim-tree').setup({
+                hijack_netrw = true,   -- default
+                hijack_cursor = false, -- default
+                disable_netrw = true,
+                respect_buf_cwd = true,
+                sync_root_with_cwd = true,
                 view = {
-                    width = 25,
+                    relativenumber = true,
+                    float = {
+                        enable = true,
+                        open_win_config = function()
+                            local screen_w = vim.opt.columns:get()
+                            local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
+                            local window_w = screen_w * WIDTH_RATIO
+                            local window_h = screen_h * HEIGHT_RATIO
+                            local window_w_int = math.floor(window_w)
+                            local window_h_int = math.floor(window_h)
+                            local center_x = (screen_w - window_w) / 2
+                            local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
+                            return {
+                                border = "rounded",
+                                relative = "editor",
+                                row = center_y,
+                                col = center_x,
+                                width = window_w_int,
+                                height = window_h_int,
+                            }
+                        end,
+                    },
                 },
-                hijack_cursor = false,
                 on_attach = function(bufnr)
                     local bufmap = function(lhs, rhs, desc)
                         vim.keymap.set('n', lhs, rhs, { buffer = bufnr, desc = desc })
@@ -258,9 +285,12 @@ require("lazy").setup({
                     bufmap('cd', api.tree.change_root_to_node, 'Set current directory as root')
                     bufmap('..', api.node.navigate.parent, 'Move to parent directory')
                     bufmap('hh', api.tree.toggle_hidden_filter, 'Toggle hidden files')
-                end
+                end,
+                -- hide certain files
+                -- filters = {
+                --     custom = { "^.git$" },
+                -- },
             })
-            vim.cmd [[hi NvimTreeNormal guibg=NONE ctermbg=NONE]]
             vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>')
         end
     },
@@ -269,22 +299,17 @@ require("lazy").setup({
     {
         'akinsho/bufferline.nvim',
         config = function()
-            require('bufferline').setup({
+            local bufferline = require('bufferline')
+            bufferline.setup({
                 options = {
                     -- one tab per file
                     mode = 'buffers',
-                    offsets = {
-                        { filetype = 'NvimTree' }
-                    },
                 },
                 highlights = {
-                    buffer_selected = {
-                        italic = false
+                    background = {
+                        fg = '',
+                        bg = '',
                     },
-                    indicator_selected = {
-                        fg = { attribute = 'fg', highlight = 'Function' },
-                        italic = false
-                    }
                 }
             })
             vim.keymap.set('n', '<leader>h', ':bprev<cr>')
@@ -294,7 +319,7 @@ require("lazy").setup({
     {
         'echasnovski/mini.bufremove',
         config = function()
-            require('mini.bufremove').setup({})
+            require('mini.bufremove').setup()
             vim.keymap.set('n', '<leader>ww', '<cmd>lua pcall(MiniBufremove.delete)<cr>')
         end
     },
@@ -371,9 +396,9 @@ require("lazy").setup({
                         }
                     },
                 },
-                ensure_installed = {
-                    'lua', 'bash', 'c', 'cpp', 'python', 'go', 'javascript', 'typescript',
-                },
+                -- ensure_installed = {
+                --     'lua', 'bash', 'c', 'cpp', 'python', 'go', 'javascript', 'typescript',
+                -- },
             })
         end
     },
