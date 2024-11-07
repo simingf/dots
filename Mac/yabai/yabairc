@@ -8,10 +8,16 @@ sudo yabai --load-sa
 # make all windows layer normal
 yabai -m rule --add app=".*" layer=normal
 
+# global settings
 global settings
-
 yabai -m config                              \
-    layout                      float        \
+    layout                      stack        \
+    top_padding                 5            \
+    bottom_padding              5            \
+    left_padding                5            \
+    right_padding               5            \
+    window_gap                  5            \
+    window_placement            second_child \
     mouse_follows_focus         off          \
     focus_follows_mouse         off          \
     window_topmost              off          \
@@ -20,10 +26,11 @@ yabai -m config                              \
     window_opacity_duration     0.0          \
     active_window_opacity       1.0          \
     normal_window_opacity       1.0          \
-    window_opacity              off          \
+    window_opacity              on           \
     window_border_blur          off          \
     window_border_hidpi         off          \
     window_border               off          \
+    auto_balance                on           \
     split_ratio                 0.50         \
     split_type                  auto         \
     auto_balance                off          \
