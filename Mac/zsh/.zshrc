@@ -75,7 +75,6 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
     export EDITOR='nvim'
 fi
-alias v='nvim'
 
 # Execute on Enter
 accept-line() {
@@ -102,6 +101,15 @@ alias rg="rg --hyperlink-format=kitty"
 
 # lazygit
 alias lg='lazygit'
+
+# nvim
+v() {
+    if [[ "$@" == "" ]]; then
+        nvim .
+    else
+        nvim "$@"
+    fi
+}
 
 # vscode
 k() {
