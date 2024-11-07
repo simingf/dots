@@ -63,7 +63,8 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Shell integrations
-eval "$(fzf --zsh)"
+# eval "$(fzf --zsh)"
+source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
 
 # disable automatic window title
@@ -103,7 +104,7 @@ export RIPGREP_CONFIG_PATH=~/.config/ripgrep/rg.conf
 alias rg="rg --hyperlink-format=kitty"
 
 # ranger
-alias rr='ranger'
+alias rr='. ranger'
 
 # lazygit
 alias lg='lazygit'
