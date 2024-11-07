@@ -48,9 +48,11 @@ gh
 git
 git-lfs
 go
+go@1.22
 gping
 grep
 imagemagick
+jandedobbeleer/oh-my-posh/oh-my-posh
 jesseduffield/lazygit/lazygit
 jq
 koekeishiya/formulae/skhd
@@ -66,6 +68,7 @@ node
 openjdk
 pandoc
 qrencode
+ranger
 rig
 ripgrep
 sl
@@ -103,6 +106,7 @@ karabiner-elements
 kitty
 linearmouse
 logitech-g-hub
+mactex-no-gui
 microsoft-auto-update
 microsoft-excel
 microsoft-powerpoint
