@@ -8,7 +8,7 @@ defaults delete com.apple.dock autohide-delay; killall Dock
 ## Symbolic Links Setup
 
 touch ~/.hushlogin &&
-ln -s ~/dots/Mac/zsh/.zshrc ~/.zshrc &&
+ln -s ~/dots/General/zsh/.zshrc ~/.zshrc &&
 ln -s ~/dots/Mac/git/.gitconfig ~/.gitconfig &&
 ln -s ~/dots/Mac/git/.gitignore_global ~/.gitignore_global &&
 ln -s ~/dots/Mac/clang/.clangd ~/.clangd &&
@@ -18,6 +18,7 @@ ln -s ~/dots/Mac/yabai ~/.config/yabai &&
 ln -s ~/dots/Mac/skhd ~/.config/skhd &&
 ln -s ~/dots/General/kitty ~/.config/kitty &&
 ln -s ~/dots/General/nvim ~/.config/nvim &&
+ln -s ~/dots/General/ripgrep ~/.config/ripgrep &&
 ln -s ~/dots/Mac/linearmouse ~/.config/linearmouse
 
 ## Brown Software
