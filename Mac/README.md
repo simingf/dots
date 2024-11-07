@@ -19,6 +19,7 @@ ln -s ~/dots/Mac/skhd ~/.config/skhd &&
 ln -s ~/dots/General/kitty ~/.config/kitty &&
 ln -s ~/dots/General/nvim ~/.config/nvim &&
 ln -s ~/dots/General/ripgrep ~/.config/ripgrep &&
+ln -s ~/dots/Mac/karabiner ~/.config/karabiner &&
 ln -s ~/dots/Mac/linearmouse ~/.config/linearmouse
 
 ## Brown Software
