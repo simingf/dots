@@ -6,7 +6,10 @@
 
 # cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory ~ 
 cmd - return : open -a "Kitty"
-# cmd + alt + ctrl + shift - a : open -a "Arc"
+
+## CHANGE LAYOUT
+cmd + alt + ctrl + shift - q : yabai -m space --layout stack
+cmd + alt + ctrl + shift - e : yabai -m space --layout bsp
 
 ## FLOATING WINDOW TILING
 
