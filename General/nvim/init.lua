@@ -86,8 +86,6 @@ vim.keymap.set('n', 'L', '$', { noremap = true, silent = true })
 -- shift up and down to move line
 vim.keymap.set('n', '<S-Up>', 'ddkP', { noremap = true, silent = true })
 vim.keymap.set('n', '<S-Down>', 'ddp', { noremap = true, silent = true })
--- select all text in current buffer
-vim.keymap.set('n', '<leader>a', ':keepjumps normal! ggVG<cr>')
 -- yank and paste from clipboard
 vim.keymap.set('v', 'gy', '"+y')
 vim.keymap.set('n', 'gp', '"+p')
@@ -100,7 +98,7 @@ vim.keymap.set('n', 'M', '`')
 vim.keymap.set('n', 'Q', '@')
 -- swap windows
 vim.api.nvim_set_keymap('n', '<Tab>', '<C-w>w', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>w', '<C-w>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>g', '<C-w>', { noremap = true, silent = true })
 -- highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight when yanking (copying) text',
@@ -142,6 +140,22 @@ require("lazy").setup({
     { 'kyazdani42/nvim-web-devicons' },
     { 'MunifTanjim/nui.nvim' },
     { 'tpope/vim-repeat' },
+
+    -- which key
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        opts = {},
+        keys = {
+            {
+                "<leader><leader>",
+                function()
+                    require("which-key").show({ global = false })
+                end,
+                desc = "Buffer Local Keymaps (which-key)",
+            },
+        },
+    },
 
     -- theme
     {
@@ -302,15 +316,35 @@ require("lazy").setup({
             local bufferline = require('bufferline')
             bufferline.setup({
                 options = {
-                    -- one tab per file
                     mode = 'buffers',
-                },
-                highlights = {
-                    background = {
-                        fg = '',
-                        bg = '',
+                    max_name_length = 15,
+                    max_prefix_length = 15,
+                    tab_size = 15,
+                    show_tab_indicators = false,
+                    show_close_icon = false,
+                    show_buffer_close_icons = false,
+                    separator_style = "thin",
+                    always_show_bufferline = true,
+                    diagnostics = false,
+                    themable = true,
+                    highlights = {
+                        background = {
+                            guibg = "NONE",
+                        },
+                        fill = {
+                            guibg = "NONE",
+                        },
+                        close_button = {
+                            guibg = "NONE",
+                        },
+                        separator_visible = {
+                            guibg = "NONE",
+                        },
+                        tab_close = {
+                            guibg = "NONE",
+                        },
                     },
-                }
+                },
             })
             vim.keymap.set('n', '<leader>h', ':bprev<cr>')
             vim.keymap.set('n', '<leader>l', ':bnext<cr>')
@@ -320,7 +354,7 @@ require("lazy").setup({
         'echasnovski/mini.bufremove',
         config = function()
             require('mini.bufremove').setup()
-            vim.keymap.set('n', '<leader>ww', '<cmd>lua pcall(MiniBufremove.delete)<cr>')
+            vim.keymap.set('n', '<leader>w', '<cmd>lua pcall(MiniBufremove.delete)<cr>')
         end
     },
 
@@ -412,14 +446,14 @@ require("lazy").setup({
         'nvim-telescope/telescope.nvim',
         config = function()
             -- fzf for a pattern in the current file
-            vim.keymap.set('n', '<leader><space>', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
+            vim.keymap.set('n', '<leader>fs', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
             -- grep for a pattern in current directory
             vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
-            -- search open files
-            vim.keymap.set('n', '<leader>fo', '<cmd>Telescope buffers<cr>')
+            -- search buffers
+            vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
             -- search files in current directory
             vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
-            -- search recently opened files
+            -- search recent files
             vim.keymap.set('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>')
             -- search diagnostic messages
             vim.keymap.set('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>')
