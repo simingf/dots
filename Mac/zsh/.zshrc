@@ -97,7 +97,13 @@ alias pwd='pwd && pwd | pbcopy'
 alias css='rm -f ~/Screenshots/* && echo "screenshots cleared"'
 alias npmg='npm list -g --depth 0'
 alias icat="kitten icat"
+
+# ripgrep
+export RIPGREP_CONFIG_PATH=~/.config/ripgrep/rg.conf
 alias rg="rg --hyperlink-format=kitty"
+
+# ranger
+alias rr='ranger'
 
 # lazygit
 alias lg='lazygit'
@@ -145,7 +151,7 @@ c() {
 . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
 
 # competitive programming
-alias rr='make && ./sol'
+alias cpr='make && ./sol'
 
 # vectraflow alias
 alias vssh='kitten ssh sfeng@10.116.60.21'
