@@ -495,9 +495,9 @@ require("lazy").setup({
         config = function()
             vim.api.nvim_create_autocmd('LspAttach', {
                 desc = 'LSP actions',
-                callback = function()
+                callback = function(event)
                     local bufmap = function(mode, lhs, rhs)
-                        local opts = { buffer = true }
+                        local opts = { buffer = event.buf }
                         vim.keymap.set(mode, lhs, rhs, opts)
                     end
 
@@ -583,11 +583,12 @@ require("lazy").setup({
                     end
                 },
                 sources = {
-                    -- { name = 'copilot',  keyword_length = 1 },
-                    { name = 'luasnip',  keyword_length = 1 },
+                    -- keyword_length is how many chars needed for suggestions to appear
+                    { name = 'copilot',  keyword_length = 3 },
                     { name = 'nvim_lsp', keyword_length = 1 },
-                    { name = 'buffer',   keyword_length = 2 },
-                    { name = 'path',     keyword_length = 3 },
+                    { name = 'luasnip',  keyword_length = 1 },
+                    { name = 'buffer',   keyword_length = 1 },
+                    { name = 'path',     keyword_length = 1 },
                 },
                 window = {
                     documentation = cmp.config.window.bordered()
@@ -596,7 +597,7 @@ require("lazy").setup({
                     fields = { 'menu', 'abbr', 'kind' },
                     format = function(entry, item)
                         local menu_icon = {
-                            -- copilot = 'GPT',
+                            copilot = 'GPT',
                             nvim_lsp = 'LSP',
                             luasnip = 'SNIP',
                             buffer = 'BUF',
@@ -666,7 +667,7 @@ require("lazy").setup({
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-path' },
 
-    -- snippets! (they show up in autocomplete)
+    -- snippets! (for autocomplete)
     {
         'L3MON4D3/LuaSnip',
         config = true
@@ -680,19 +681,19 @@ require("lazy").setup({
     },
 
     -- copilot
-    -- {
-    --     'zbirenbaum/copilot.lua',
-    --     config = function()
-    --         require("copilot").setup({
-    --             suggestion = { enabled = false },
-    --             panel = { enabled = false },
-    --         })
-    --     end
-    -- },
-    -- {
-    --     'zbirenbaum/copilot-cmp',
-    --     config = true
-    -- },
+    {
+        'zbirenbaum/copilot.lua',
+        config = function()
+            require("copilot").setup({
+                suggestion = { enabled = false },
+                panel = { enabled = false },
+            })
+        end
+    },
+    {
+        'zbirenbaum/copilot-cmp',
+        config = true
+    },
 })
 
 -- ========================================================================== --
