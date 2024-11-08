@@ -1,16 +1,52 @@
 # ~/.config/kitty/kitty.conf
+shell             /opt/homebrew/bin/zsh
 
-font_family      JetbrainsMono Nerd Font Mono
-bold_font        auto
-italic_font      auto
-bold_italic_font auto
-font_size        18.0
+# Keybinds
+map super+v             paste_from_clipboard
+map super+c             copy_to_clipboard
+map super++             increase_font_size
+map super+-             decrease_font_size
+map super+0             restore_font_size
+map super+t             new_tab_with_cwd
+map super+shift+t       new_tab
+map super+s             new_window_with_cwd
+map super+shift+s       new_window
+map super+w             close_window
+map super+h             neighboring_window left
+map super+j             neighboring_window down
+map super+k             neighboring_window up
+map super+l             neighboring_window right
+map super+shift+r       next_layout
+map super+shift+l       next_tab
+map super+shift+h       previous_tab
+map super+d             detach_window new-tab
+map super+shift+d       detach_window
+map super+f             close_other_windows_in_tab
+
+# layouts
+enabled_layouts horizontal, vertical
+
+# window transparency
+background_opacity 0.95
+
+# wallpaper
+# background_image FILEPATH
+# background_image_layout scaled
+
+# macos settings
+hide_window_decorations titlebar-only
+# hide_window_decorations true
+macos_option_as_alt yes
+allow_remote_control yes
+paste_actions confirm-if-large
+
+# fonts
+font_family       JetbrainsMono Nerd Font Mono
+bold_font         auto
+italic_font       auto
+bold_italic_font  auto
+font_size         18.0
 disable_ligatures cursor
-
-background_opacity 0.8
-background_blur 500
-
-enabled_layouts vertical, horizontal
 
 # Number of lines of history to keep in memory for scrolling back
 scrollback_lines 2000
@@ -30,9 +66,7 @@ cursor_shape block
 # If enabled, the window size will be remembered so that new instances of kitty will have the same
 # size as the previous instance. If disabled, the window will initially have size configured
 # by initial_window_width/height, in pixels.
-remember_window_size   no
-initial_window_width   1200
-initial_window_height  800
+remember_window_size   yes
 
 # Delay (in milliseconds) between screen updates. Decreasing it, increases fps
 # at the cost of more CPU usage. The default value yields ~100fps which is more
@@ -68,32 +102,7 @@ window_border_width 0
 window_padding_width 15 20 15
 window_margin_width 0
 
-map super+v             paste_from_clipboard
-map super+c             copy_to_clipboard
-map super++             increase_font_size
-map super+-             decrease_font_size
-map super+t             new_tab_with_cwd
-map super+shift+t       new_tab
-map super+s             new_window_with_cwd
-map super+shift+s       new_window
-map super+w             close_window
-map super+h             neighboring_window left
-map super+j             neighboring_window down
-map super+k             neighboring_window up
-map super+l             neighboring_window right
-map ctrl+tab            next_tab
-map ctrl+shift+tab      previous_tab
-map super+d             detach_window new-tab
-map super+shift+d       detach_window
-map super+f             close_other_windows_in_tab
-map super+n             next_layout
-
-hide_window_decorations titlebar-only
-# hide_window_decorations true
-macos_option_as_alt yes
-allow_remote_control yes
-
 # BEGIN_KITTY_THEME
-# Catppuccin-Macchiato
+# Aquarium Light
 include current-theme.conf
 # END_KITTY_THEME
