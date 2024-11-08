@@ -8,7 +8,7 @@ vim.opt.relativenumber = true
 -- keep sign column on
 vim.opt.signcolumn = 'yes'
 -- highlight current line
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 -- minimal number of screen lines to keep above and below the cursor
 vim.opt.scrolloff = 5
 -- line wrapping
@@ -83,6 +83,9 @@ vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true, silent = true })
 -- bind H to ^ and L to $
 vim.keymap.set({ 'n', 'x' }, 'H', '^', { noremap = true, silent = true })
 vim.keymap.set({ 'n', 'x' }, 'L', '$', { noremap = true, silent = true })
+-- switch buffers
+vim.keymap.set('n', '<leader>h', ':bprev<cr>')
+vim.keymap.set('n', '<leader>l', ':bnext<cr>')
 -- shift up and down to move line
 vim.keymap.set('n', '<S-Up>', 'ddkP', { noremap = true, silent = true })
 vim.keymap.set('n', '<S-Down>', 'ddp', { noremap = true, silent = true })
@@ -315,39 +318,8 @@ require("lazy").setup({
         config = function()
             local bufferline = require('bufferline')
             bufferline.setup({
-                options = {
-                    mode = 'buffers',
-                    max_name_length = 15,
-                    max_prefix_length = 15,
-                    tab_size = 15,
-                    show_tab_indicators = false,
-                    show_close_icon = false,
-                    show_buffer_close_icons = false,
-                    separator_style = "thin",
-                    always_show_bufferline = true,
-                    diagnostics = false,
-                    themable = true,
-                    highlights = {
-                        background = {
-                            guibg = "NONE",
-                        },
-                        fill = {
-                            guibg = "NONE",
-                        },
-                        close_button = {
-                            guibg = "NONE",
-                        },
-                        separator_visible = {
-                            guibg = "NONE",
-                        },
-                        tab_close = {
-                            guibg = "NONE",
-                        },
-                    },
-                },
+                options = { mode = 'buffers' },
             })
-            vim.keymap.set('n', '<leader>h', ':bprev<cr>')
-            vim.keymap.set('n', '<leader>l', ':bnext<cr>')
         end
     },
     {
@@ -449,8 +421,8 @@ require("lazy").setup({
             vim.keymap.set('n', '<leader>fs', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
             -- grep for a pattern in current directory
             vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
-            -- search buffers
-            vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
+            -- search opened buffers
+            vim.keymap.set('n', '<leader>fo', '<cmd>Telescope buffers<cr>')
             -- search files in current directory
             vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
             -- search recent files
@@ -583,12 +555,12 @@ require("lazy").setup({
                     end
                 },
                 sources = {
-                    -- keyword_length is how many chars needed for suggestions to appear
-                    { name = 'copilot',  keyword_length = 3 },
-                    { name = 'nvim_lsp', keyword_length = 1 },
-                    { name = 'luasnip',  keyword_length = 1 },
-                    { name = 'buffer',   keyword_length = 1 },
-                    { name = 'path',     keyword_length = 1 },
+                    -- keyword_length = # of chars needed for suggestions
+                    { name = 'copilot',  keyword_length = 1 },
+                    { name = 'nvim_lsp', keyword_length = 2 },
+                    { name = 'buffer',   keyword_length = 2 },
+                    { name = 'luasnip',  keyword_length = 2 },
+                    { name = 'path',     keyword_length = 2 },
                 },
                 window = {
                     documentation = cmp.config.window.bordered()
@@ -632,7 +604,8 @@ require("lazy").setup({
                             fallback()
                         end
                     end, { "i", "s" }),
-                }
+                },
+                experimental = { ghost_text = true }
             })
         end
     },
