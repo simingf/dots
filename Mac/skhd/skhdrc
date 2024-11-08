@@ -10,6 +10,7 @@ cmd - return : open -a "Kitty"
 ## CHANGE LAYOUT
 cmd + alt + ctrl + shift - q : yabai -m space --layout stack
 cmd + alt + ctrl + shift - e : yabai -m space --layout bsp
+cmd + alt + ctrl + shift - f : yabai -m space --layout float
 
 ## FLOATING WINDOW TILING
 
