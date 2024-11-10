@@ -301,6 +301,17 @@ require("lazy").setup({
         config = true
     },
 
+    -- leap: easy file navigation with 's'
+    {
+        'ggandor/leap.nvim',
+        config = function()
+            require('leap').create_default_mappings()
+            require('leap').opts.special_keys.prev_target = '<bs>'
+            require('leap').opts.special_keys.prev_group = '<bs>'
+            require('leap.user').set_repeat_keys('<cr>', '<bs>')
+        end
+    },
+
     -- file system navigation
     {
         'kyazdani42/nvim-tree.lua',
@@ -413,17 +424,6 @@ require("lazy").setup({
                 desc = "Quickfix List (Trouble)",
             },
         },
-    },
-
-    -- leap: easy navigation with 's'
-    {
-        'ggandor/leap.nvim',
-        config = function()
-            require('leap').create_default_mappings()
-            require('leap').opts.special_keys.prev_target = '<bs>'
-            require('leap').opts.special_keys.prev_group = '<bs>'
-            require('leap.user').set_repeat_keys('<cr>', '<bs>')
-        end
     },
 
     -- telescope: fzf search for EVERYTHING
