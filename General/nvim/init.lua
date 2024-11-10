@@ -95,10 +95,6 @@ vim.keymap.set('n', 'gp', '"+p')
 -- prevent x or X from modifying the internal register
 vim.keymap.set({ 'n', 'x' }, 'x', '"_x')
 vim.keymap.set({ 'n', 'x' }, 'X', '"_d')
--- m is for defining marks, set M to ` for jumping to marks
-vim.keymap.set('n', 'M', '`')
--- q is for recording macros, set Q to @ to play macros
-vim.keymap.set('n', 'Q', '@')
 -- swap windows
 vim.api.nvim_set_keymap('n', '<Tab>', '<C-w>w', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>g', '<C-w>', { noremap = true, silent = true })
@@ -310,6 +306,19 @@ require("lazy").setup({
             require('leap').opts.special_keys.prev_group = '<bs>'
             require('leap.user').set_repeat_keys('<cr>', '<bs>')
         end
+    },
+
+    -- arrow: bookmark files and directories
+    {
+        "otavioschwanck/arrow.nvim",
+        dependencies = {
+            { "nvim-tree/nvim-web-devicons" },
+        },
+        opts = {
+            show_icons = true,
+            leader_key = ';',        -- Recommended to be a single key
+            buffer_leader_key = 'm', -- Per Buffer Mappings
+        }
     },
 
     -- file system navigation
