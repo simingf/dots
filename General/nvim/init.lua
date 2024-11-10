@@ -426,7 +426,33 @@ require("lazy").setup({
         end
     },
 
-    -- treesitter: vim motions for classes and functions
+    -- telescope: fzf search for EVERYTHING
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    {
+        'nvim-telescope/telescope.nvim',
+        config = function()
+            -- fzf for a pattern in the current file
+            vim.keymap.set('n', '<leader>fs', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
+            -- grep for a pattern in current directory
+            vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
+            -- search opened buffers
+            vim.keymap.set('n', '<leader>fo', '<cmd>Telescope buffers<cr>')
+            -- search files in current directory
+            vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
+            -- search recent files
+            vim.keymap.set('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>')
+            -- search diagnostic messages
+            vim.keymap.set('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>')
+            -- search in clipboard
+            vim.keymap.set('n', '<leader>fy', '<cmd>Telescope neoclip<cr>')
+        end
+    },
+    {
+        'AckslD/nvim-neoclip.lua',
+        config = true
+    },
+
+    -- treesitter: syntax highlighting, indentation, class and function objects
     {
         'nvim-treesitter/nvim-treesitter',
         config = function()
@@ -458,32 +484,6 @@ require("lazy").setup({
         'nvim-treesitter/nvim-treesitter-textobjects'
     },
 
-    -- telescope: fzf search for EVERYTHING
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-    {
-        'nvim-telescope/telescope.nvim',
-        config = function()
-            -- fzf for a pattern in the current file
-            vim.keymap.set('n', '<leader>fs', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
-            -- grep for a pattern in current directory
-            vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
-            -- search opened buffers
-            vim.keymap.set('n', '<leader>fo', '<cmd>Telescope buffers<cr>')
-            -- search files in current directory
-            vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
-            -- search recent files
-            vim.keymap.set('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>')
-            -- search diagnostic messages
-            vim.keymap.set('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>')
-            -- search in clipboard
-            vim.keymap.set('n', '<leader>fy', '<cmd>Telescope neoclip<cr>')
-        end
-    },
-    {
-        'AckslD/nvim-neoclip.lua',
-        config = true
-    },
-
     -- mason: easy managing of installed LSPs / Formatters
     {
         'williamboman/mason.nvim',
@@ -507,7 +507,7 @@ require("lazy").setup({
         end
     },
 
-    -- lspconfig: setup commands to interact with LSPs
+    -- lspconfig: setup commands to interact with LSPs - code completion, diagnostics, etc.
     {
         'neovim/nvim-lspconfig',
         config = function()
