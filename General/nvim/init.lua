@@ -143,7 +143,6 @@ require("lazy").setup({
     -- which key
     {
         "folke/which-key.nvim",
-        event = "VeryLazy",
         opts = {},
         keys = {
             {
@@ -184,7 +183,6 @@ require("lazy").setup({
     -- noice: improved UI
     {
         "folke/noice.nvim",
-        event = "VeryLazy",
         opts = {},
         dependencies = {
             "MunifTanjim/nui.nvim",
