@@ -308,7 +308,7 @@ require("lazy").setup({
         end
     },
 
-    -- arrow: bookmark files and directories
+    -- arrow: bookmark files and locations in files
     {
         "otavioschwanck/arrow.nvim",
         dependencies = {
@@ -316,7 +316,7 @@ require("lazy").setup({
         },
         opts = {
             show_icons = true,
-            leader_key = ';',        -- Recommended to be a single key
+            leader_key = 'M',        -- Recommended to be a single key
             buffer_leader_key = 'm', -- Per Buffer Mappings
         }
     },
