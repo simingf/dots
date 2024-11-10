@@ -83,9 +83,6 @@ vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true, silent = true })
 -- bind H to ^ and L to $
 vim.keymap.set({ 'n', 'x' }, 'H', '^', { noremap = true, silent = true })
 vim.keymap.set({ 'n', 'x' }, 'L', '$', { noremap = true, silent = true })
--- switch buffers
-vim.keymap.set('n', '<leader>h', ':bprev<cr>')
-vim.keymap.set('n', '<leader>l', ':bnext<cr>')
 -- shift up and down to move line
 vim.keymap.set('n', '<S-Up>', 'ddkP', { noremap = true, silent = true })
 vim.keymap.set('n', '<S-Down>', 'ddp', { noremap = true, silent = true })
@@ -377,16 +374,7 @@ require("lazy").setup({
         end
     },
 
-    -- tabs
-    {
-        'akinsho/bufferline.nvim',
-        config = function()
-            local bufferline = require('bufferline')
-            bufferline.setup({
-                options = { mode = 'buffers' },
-            })
-        end
-    },
+    -- close buffers
     {
         'echasnovski/mini.bufremove',
         config = function()
