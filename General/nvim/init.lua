@@ -36,9 +36,6 @@ vim.opt.termguicolors = true
 -- configure how new splits should be opened
 vim.opt.splitright = true
 vim.opt.splitbelow = true
--- disable netrw
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 -- diagnostic icons
 local sign = function(opts)
     vim.fn.sign_define(opts.name, {
@@ -323,8 +320,6 @@ require("lazy").setup({
             local HEIGHT_RATIO = 0.8
             local WIDTH_RATIO = 0.5
             require('nvim-tree').setup({
-                hijack_netrw = true,   -- default
-                hijack_cursor = false, -- default
                 disable_netrw = true,
                 respect_buf_cwd = true,
                 sync_root_with_cwd = true,
@@ -378,7 +373,7 @@ require("lazy").setup({
         'echasnovski/mini.bufremove',
         config = function()
             require('mini.bufremove').setup()
-            vim.keymap.set('n', '<leader>dd', '<cmd>lua pcall(MiniBufremove.delete)<cr>')
+            vim.keymap.set('n', '<leader>bc', '<cmd>lua pcall(MiniBufremove.delete)<cr>')
         end
     },
 
@@ -542,7 +537,7 @@ require("lazy").setup({
                     bufmap({ 'n', 'x' }, '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
 
                     -- Show diagnostics in a floating window
-                    bufmap('n', '<leader>dg', '<cmd>lua vim.diagnostic.open_float()<cr>')
+                    bufmap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<cr>')
 
                     -- Move to the previous diagnostic
                     bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
