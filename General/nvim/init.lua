@@ -757,7 +757,7 @@ end
 local conda_prefix = os.getenv("CONDA_PREFIX")
 if not isempty(conda_prefix) then
     vim.g.python_host_prog = use_if_defined(vim.g.python_host_prog, conda_prefix .. "/bin/python")
-    vim.g.python3_host_prog = use_if_defined(vim.g.python3_host_prog, conda_prefix .. "/bin/python")
+    vim.g.python3_host_prog = use_if_defined(vim.g.python3_host_prog, conda_prefix .. "/bin/python3")
 else
     vim.g.python_host_prog = use_if_defined(vim.g.python_host_prog, "python")
     vim.g.python3_host_prog = use_if_defined(vim.g.python3_host_prog, "python3")
