@@ -74,12 +74,6 @@ vim.diagnostic.config({
 -- set the leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
--- make j and k work with wrapped lines
-vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true, silent = true })
--- bind H to ^ and L to $
-vim.keymap.set({ 'n', 'x' }, 'H', '^', { noremap = true, silent = true })
-vim.keymap.set({ 'n', 'x' }, 'L', '$', { noremap = true, silent = true })
 -- shift up and down to move line
 vim.keymap.set('n', '<S-Up>', 'ddkP', { noremap = true, silent = true })
 vim.keymap.set('n', '<S-Down>', 'ddp', { noremap = true, silent = true })
@@ -167,7 +161,8 @@ require("lazy").setup({
         "declancm/cinnamon.nvim",
         version = "*", -- use latest release
         config = function()
-            require("cinnamon").setup({
+            local cinnamon = require("cinnamon")
+            cinnamon.setup({
                 -- Enable all provided keymaps
                 keymaps = {
                     basic = true,
@@ -179,16 +174,21 @@ require("lazy").setup({
                         -- Maximum distance for line movements before scroll
                         -- animation is skipped. Set to `false` to disable
                         line = false,
-                        -- line = 300,
                         -- Maximum distance for column movements before scroll
                         -- animation is skipped. Set to `false` to disable
-                        column = false,
+                        column = 80,
                         -- Maximum duration for a movement (in ms). Automatically scales the
                         -- delay and step size
                         time = 200,
                     }
                 },
             })
+            -- ctrl + u / d centers the screen
+            vim.keymap.set("n", "<C-U>", function() cinnamon.scroll("<C-U>zz") end)
+            vim.keymap.set("n", "<C-D>", function() cinnamon.scroll("<C-D>zz") end)
+            -- bind H to ^ and L to $
+            vim.keymap.set({ 'n', 'x' }, 'H', function() cinnamon.scroll("^") end, { noremap = true, silent = true })
+            vim.keymap.set({ 'n', 'x' }, 'L', function() cinnamon.scroll("$") end, { noremap = true, silent = true })
         end
     },
 
@@ -307,16 +307,30 @@ require("lazy").setup({
         config = true
     },
 
-    -- leap: easy file navigation with 's'
+    -- flash
     {
-        'ggandor/leap.nvim',
-        config = function()
-            require('leap').create_default_mappings()
-            require('leap').opts.special_keys.prev_target = '<bs>'
-            require('leap').opts.special_keys.prev_group = '<bs>'
-            require('leap.user').set_repeat_keys('<cr>', '<bs>')
-        end
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        opts = {},
+        keys = {
+            { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+            { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+            { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+            { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+            { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+        },
     },
+
+    -- leap: easy file navigation with 's'
+    -- {
+    --     'ggandor/leap.nvim',
+    --     config = function()
+    --         require('leap').create_default_mappings()
+    --         require('leap').opts.special_keys.prev_target = '<bs>'
+    --         require('leap').opts.special_keys.prev_group = '<bs>'
+    --         require('leap.user').set_repeat_keys('<cr>', '<bs>')
+    --     end
+    -- },
 
     -- arrow: bookmark files and locations in files
     {
@@ -533,14 +547,16 @@ require("lazy").setup({
                     -- Displays a function's signature information
                     bufmap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
 
+                    -- TODO: cinnamon not working
+
                     -- Jump to the definition
-                    bufmap('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<cr>')
+                    bufmap('n', '<leader>ld', function() require("cinnamon").scroll(vim.lsp.buf.definition) end)
 
                     -- Jump to declaration
-                    bufmap('n', '<leader>lD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+                    bufmap('n', '<leader>lD', function() require("cinnamon").scroll(vim.lsp.buf.declaration) end)
 
                     -- Jumps to the definition of the type symbol
-                    bufmap('n', '<leader>ltd', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
+                    bufmap('n', '<leader>ltd', function() require("cinnamon").scroll(vim.lsp.buf.type_definition) end)
 
                     -- Lists all the implementations for the symbol under the cursor
                     bufmap('n', '<leader>li', '<cmd>lua vim.lsp.buf.implementation()<cr>')
