@@ -183,6 +183,8 @@ require("lazy").setup({
             -- bind H to ^ and L to $
             vim.keymap.set({ 'n', 'x' }, 'H', function() cinnamon.scroll("^") end, { noremap = true, silent = true })
             vim.keymap.set({ 'n', 'x' }, 'L', function() cinnamon.scroll("$") end, { noremap = true, silent = true })
+            vim.keymap.set({ 'o' }, 'H', '^', { noremap = true, silent = true })
+            vim.keymap.set({ 'o' }, 'L', '$', { noremap = true, silent = true })
         end
     },
 
