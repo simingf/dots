@@ -173,7 +173,7 @@ require("lazy").setup({
                         line = false,
                         -- Maximum distance for column movements before scroll
                         -- animation is skipped. Set to `false` to disable
-                        column = 80,
+                        column = false,
                         -- Maximum duration for a movement (in ms). Automatically scales the
                         -- delay and step size
                         time = 200,
@@ -330,12 +330,6 @@ require("lazy").setup({
                 mode = { "o", "x" },
                 function() require("flash").treesitter_search() end,
                 desc = "Treesitter Search"
-            },
-            {
-                "<c-s>",
-                mode = { "c" },
-                function() require("flash").toggle() end,
-                desc = "Toggle Flash Search"
             },
         },
     },
@@ -555,16 +549,14 @@ require("lazy").setup({
                     -- Displays a function's signature information
                     bufmap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
 
-                    -- TODO: cinnamon not working
-
                     -- Jump to the definition
-                    bufmap('n', '<leader>ld', function() require("cinnamon").scroll(vim.lsp.buf.definition) end)
+                    bufmap('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<cr>')
 
                     -- Jump to declaration
-                    bufmap('n', '<leader>lD', function() require("cinnamon").scroll(vim.lsp.buf.declaration) end)
+                    bufmap('n', '<leader>lD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
 
                     -- Jumps to the definition of the type symbol
-                    bufmap('n', '<leader>ltd', function() require("cinnamon").scroll(vim.lsp.buf.type_definition) end)
+                    bufmap('n', '<leader>ltd', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
 
                     -- Lists all the implementations for the symbol under the cursor
                     bufmap('n', '<leader>li', '<cmd>lua vim.lsp.buf.implementation()<cr>')
