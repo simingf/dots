@@ -178,8 +178,8 @@ require("lazy").setup({
                     max_delta = {
                         -- Maximum distance for line movements before scroll
                         -- animation is skipped. Set to `false` to disable
-                        -- line = false,
-                        line = 200,
+                        line = false,
+                        -- line = 300,
                         -- Maximum distance for column movements before scroll
                         -- animation is skipped. Set to `false` to disable
                         column = false,
