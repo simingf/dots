@@ -74,17 +74,14 @@ vim.diagnostic.config({
 -- set the leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
--- shift up and down to move line
-vim.keymap.set('n', '<S-Up>', 'ddkP', { noremap = true, silent = true })
-vim.keymap.set('n', '<S-Down>', 'ddp', { noremap = true, silent = true })
--- yank and paste from clipboard
-vim.keymap.set({ 'n', 'x' }, 'gy', '"+y')
-vim.keymap.set('n', 'gp', '"+p')
+-- window navigation - ctrl w is hard to reach.
+vim.api.nvim_set_keymap('n', '<leader>w', '<C-w>', { noremap = true, silent = true })
 -- prevent x or X from modifying the internal register
 vim.keymap.set({ 'n', 'x' }, 'x', '"_x')
 vim.keymap.set({ 'n', 'x' }, 'X', '"_d')
--- window navigation - ctrl w is hard to reach.
-vim.api.nvim_set_keymap('n', '<leader>w', '<C-w>', { noremap = true, silent = true })
+-- yank and paste from clipboard
+vim.keymap.set({ 'n', 'x' }, 'gy', '"+y')
+vim.keymap.set('n', 'gp', '"+p')
 -- highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight when yanking (copying) text',
@@ -183,9 +180,6 @@ require("lazy").setup({
                     }
                 },
             })
-            -- ctrl + u / d centers the screen
-            vim.keymap.set("n", "<C-U>", function() cinnamon.scroll("<C-U>zz") end)
-            vim.keymap.set("n", "<C-D>", function() cinnamon.scroll("<C-D>zz") end)
             -- bind H to ^ and L to $
             vim.keymap.set({ 'n', 'x' }, 'H', function() cinnamon.scroll("^") end, { noremap = true, silent = true })
             vim.keymap.set({ 'n', 'x' }, 'L', function() cinnamon.scroll("$") end, { noremap = true, silent = true })
