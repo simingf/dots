@@ -307,7 +307,14 @@ require("lazy").setup({
     {
         "folke/flash.nvim",
         event = "VeryLazy",
-        opts = {},
+        opts = {
+            modes = {
+                search = {
+                    enabled = true,
+                    highlight = { backdrop = true }
+                }
+            }
+        },
         keys = {
             {
                 "s",
