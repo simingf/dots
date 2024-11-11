@@ -162,12 +162,32 @@ require("lazy").setup({
         end
     },
 
-    -- neoscroll: smooth scrolling
+    -- cinnamon: smooth scrolling
     {
-        "karb94/neoscroll.nvim",
+        "declancm/cinnamon.nvim",
+        version = "*", -- use latest release
         config = function()
-            require('neoscroll').setup({
-                hide_cursor = false,
+            require("cinnamon").setup({
+                -- Enable all provided keymaps
+                keymaps = {
+                    basic = true,
+                    extra = true,
+                },
+                options = {
+                    -- change default options here
+                    max_delta = {
+                        -- Maximum distance for line movements before scroll
+                        -- animation is skipped. Set to `false` to disable
+                        -- line = false,
+                        line = 200,
+                        -- Maximum distance for column movements before scroll
+                        -- animation is skipped. Set to `false` to disable
+                        column = false,
+                        -- Maximum duration for a movement (in ms). Automatically scales the
+                        -- delay and step size
+                        time = 200,
+                    }
+                },
             })
         end
     },
