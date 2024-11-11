@@ -99,18 +99,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank()
     end,
 })
--- ctrl u / d centers afterwards
-local function lazy(keys)
-    keys = vim.api.nvim_replace_termcodes(keys, true, false, true)
-    return function()
-        local old = vim.o.lazyredraw
-        vim.o.lazyredraw = true
-        vim.api.nvim_feedkeys(keys, 'nx', false)
-        vim.o.lazyredraw = old
-    end
-end
-vim.keymap.set('n', '<c-u>', lazy('<c-u>zz'), { desc = 'Scroll up half screen' })
-vim.keymap.set('n', '<c-d>', lazy('<c-d>zz'), { desc = 'Scroll down half screen' })
 
 -- ========================================================================== --
 -- ==                               PLUGINS                                == --
@@ -171,6 +159,16 @@ require("lazy").setup({
                 },
             })
             vim.cmd.colorscheme "catppuccin"
+        end
+    },
+
+    -- neoscroll: smooth scrolling
+    {
+        "karb94/neoscroll.nvim",
+        config = function()
+            require('neoscroll').setup({
+                hide_cursor = false,
+            })
         end
     },
 
@@ -422,19 +420,19 @@ require("lazy").setup({
         'nvim-telescope/telescope.nvim',
         config = function()
             -- fzf for a pattern in the current file
-            vim.keymap.set('n', '<leader>fs', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
+            vim.keymap.set('n', '<leader>tt', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
             -- grep for a pattern in current directory
-            vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
+            vim.keymap.set('n', '<leader>tg', '<cmd>Telescope live_grep<cr>')
             -- search opened buffers
-            vim.keymap.set('n', '<leader>fo', '<cmd>Telescope buffers<cr>')
+            vim.keymap.set('n', '<leader>tb', '<cmd>Telescope buffers<cr>')
             -- search files in current directory
-            vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
+            vim.keymap.set('n', '<leader>tf', '<cmd>Telescope find_files<cr>')
             -- search recent files
-            vim.keymap.set('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>')
+            vim.keymap.set('n', '<leader>tr', '<cmd>Telescope oldfiles<cr>')
             -- search diagnostic messages
-            vim.keymap.set('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>')
+            vim.keymap.set('n', '<leader>td', '<cmd>Telescope diagnostics<cr>')
             -- search in clipboard
-            vim.keymap.set('n', '<leader>fy', '<cmd>Telescope neoclip<cr>')
+            vim.keymap.set('n', '<leader>ty', '<cmd>Telescope neoclip<cr>')
         end
     },
     {
@@ -512,38 +510,38 @@ require("lazy").setup({
                     -- Displays hover information about the symbol under the cursor
                     bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
 
-                    -- Jump to the definition
-                    bufmap('n', '<leader>jd', '<cmd>lua vim.lsp.buf.definition()<cr>')
-
-                    -- Jump to declaration
-                    bufmap('n', '<leader>jD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
-
-                    -- Jumps to the definition of the type symbol
-                    bufmap('n', '<leader>jtd', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
-
-                    -- Lists all the implementations for the symbol under the cursor
-                    bufmap('n', '<leader>ji', '<cmd>lua vim.lsp.buf.implementation()<cr>')
-
-                    -- Lists all the references
-                    bufmap('n', '<leader>jr', '<cmd>lua vim.lsp.buf.references()<cr>')
-
                     -- Displays a function's signature information
                     bufmap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
 
+                    -- Jump to the definition
+                    bufmap('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<cr>')
+
+                    -- Jump to declaration
+                    bufmap('n', '<leader>lD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+
+                    -- Jumps to the definition of the type symbol
+                    bufmap('n', '<leader>ltd', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
+
+                    -- Lists all the implementations for the symbol under the cursor
+                    bufmap('n', '<leader>li', '<cmd>lua vim.lsp.buf.implementation()<cr>')
+
+                    -- Lists all the references
+                    bufmap('n', '<leader>lrf', '<cmd>lua vim.lsp.buf.references()<cr>')
+
                     -- Renames all references to the symbol under the cursor
-                    bufmap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>')
+                    bufmap('n', '<leader>lrn', '<cmd>lua vim.lsp.buf.rename()<cr>')
 
                     -- Selects a code action available at the current cursor position
-                    bufmap({ 'n', 'x' }, '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+                    bufmap({ 'n', 'x' }, '<leader>lca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
 
                     -- Show diagnostics in a floating window
-                    bufmap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<cr>')
+                    bufmap('n', '<leader>dd', '<cmd>lua vim.diagnostic.open_float()<cr>')
 
                     -- Move to the previous diagnostic
-                    bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
+                    bufmap('n', '<leader>d[', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
 
                     -- Move to the next diagnostic
-                    bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+                    bufmap('n', '<leader>d]', '<cmd>lua vim.diagnostic.goto_next()<cr>')
                 end
             })
         end
