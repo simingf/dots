@@ -122,7 +122,6 @@ qbittorrent
 qflipper
 rectangle
 roblox
-selfcontrol
 slack
 spaceid
 spotify
@@ -151,11 +150,13 @@ Xcode
 
 ## Download Online
 
+Cold Turkey Blocker
 KeyboardCleanTool
 MediaMate (I Paid)
 ProNotes
 SideNotes (I Paid)
 Stacher
+Texts
 WinDiskWriter
 
 ## xclient.info / 52mac.com
