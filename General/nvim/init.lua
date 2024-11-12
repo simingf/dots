@@ -137,15 +137,48 @@ require("lazy").setup({
                 transparent_background = true, -- disables setting the background color.
                 show_end_of_buffer = false,    -- shows the '~' characters after the end of buffers
                 integrations = {
-                    cmp = true,
-                    gitsigns = false,
-                    nvimtree = true,
-                    treesitter = true,
-                    notify = false,
+                    flash = true,
+                    gitsigns = true,
+                    indent_blankline = {
+                        enabled = true,
+                        scope_color = "",
+                        colored_indent_levels = false
+                    },
+                    mason = true,
                     mini = {
                         enabled = true,
                         indentscope_color = "",
                     },
+                    cmp = true,
+                    native_lsp = {
+                        enabled = true,
+                        virtual_text = {
+                            errors = { "italic" },
+                            hints = { "italic" },
+                            warnings = { "italic" },
+                            information = { "italic" },
+                            ok = { "italic" },
+                        },
+                        underlines = {
+                            errors = { "underline" },
+                            hints = { "underline" },
+                            warnings = { "underline" },
+                            information = { "underline" },
+                            ok = { "underline" },
+                        },
+                        inlay_hints = {
+                            background = true,
+                        },
+                    },
+                    notify = true,
+                    nvimtree = true,
+                    treesitter_context = true,
+                    treesitter = true,
+                    telescope = {
+                        enabled = true
+                    },
+                    lsp_trouble = true,
+                    which_key = true,
                     -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
                 },
             })
@@ -175,8 +208,8 @@ require("lazy").setup({
                         -- animation is skipped. Set to `false` to disable
                         column = false,
                         -- Maximum duration for a movement (in ms). Automatically scales the
-                        -- delay and step size
-                        time = 200,
+                        -- delcy and step size
+                        time = 250,
                     }
                 },
             })
@@ -515,6 +548,9 @@ require("lazy").setup({
     },
     {
         'nvim-treesitter/nvim-treesitter-textobjects'
+    },
+    {
+        'nvim-treesitter/nvim-treesitter-context'
     },
 
     -- mason: easy managing of installed LSPs / Formatters
