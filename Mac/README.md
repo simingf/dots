@@ -120,7 +120,6 @@ notion
 orange
 qbittorrent
 qflipper
-rectangle
 roblox
 slack
 spaceid

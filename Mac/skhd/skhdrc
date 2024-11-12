@@ -4,8 +4,8 @@
     "steamstreamingclient"
 ]
 
-# cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory ~ 
-cmd - return : open -a "Kitty"
+# alt - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory ~ 
+alt - return : open -a "Kitty"
 
 ## CHANGE LAYOUT
 cmd + alt + ctrl + shift - q : yabai -m space --layout stack
@@ -15,7 +15,7 @@ cmd + alt + ctrl + shift - f : yabai -m space --layout float
 ## FLOATING WINDOW TILING
 
 # make floating window fill screen
-# alt - return : yabai -m window --grid 1:1:0:0:1:1
+cmd + alt + ctrl + shift - return : yabai -m window --grid 1:1:0:0:1:1
 
 # make floating window fill bottom-half of screen
 # alt - j : yabai -m window --grid 2:1:0:1:1:1
@@ -24,10 +24,10 @@ cmd + alt + ctrl + shift - f : yabai -m space --layout float
 # alt - k : yabai -m window --grid 2:1:0:0:1:1
 
 # make floating window fill left-half of screen
-# alt - h : yabai -m window --grid 1:2:0:0:1:1
+cmd + alt + ctrl + shift - n : yabai -m window --grid 1:2:0:0:1:1
 
 # make floating window fill right-half of screen
-# alt - l : yabai -m window --grid 1:2:1:0:1:1
+cmd + alt + ctrl + shift - m : yabai -m window --grid 1:2:1:0:1:1
 
 ## SPACES
 
