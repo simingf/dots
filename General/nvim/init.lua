@@ -51,7 +51,7 @@ sign({ name = 'DiagnosticSignInfo', text = '' })
 -- diagnostic config
 vim.diagnostic.config({
     -- Show diagnostic message using virtual text.
-    virtual_text = false,
+    virtual_text = true,
     -- Show a sign next to the line with a diagnostic.
     signs = true,
     -- Update diagnostics while editing in insert mode.
