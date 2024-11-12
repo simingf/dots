@@ -427,7 +427,6 @@ require("lazy").setup({
                     local bufmap = function(lhs, rhs, desc)
                         vim.keymap.set('n', lhs, rhs, { buffer = bufnr, desc = desc })
                     end
-
                     -- See :help nvim-tree.api
                     local api = require('nvim-tree.api')
                     bufmap('<cr>', api.node.open.edit, 'Expand folder or go to file')
@@ -587,40 +586,28 @@ require("lazy").setup({
                         local opts = { buffer = event.buf }
                         vim.keymap.set(mode, lhs, rhs, opts)
                     end
-
                     -- Displays hover information about the symbol under the cursor
                     bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
-
                     -- Displays a function's signature information
                     bufmap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
-
                     -- Jump to the definition
                     bufmap('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<cr>')
-
                     -- Jump to declaration
                     bufmap('n', '<leader>lD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
-
                     -- Jumps to the definition of the type symbol
                     bufmap('n', '<leader>ltd', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
-
                     -- Lists all the implementations for the symbol under the cursor
                     bufmap('n', '<leader>li', '<cmd>lua vim.lsp.buf.implementation()<cr>')
-
                     -- Lists all the references
                     bufmap('n', '<leader>lrf', '<cmd>lua vim.lsp.buf.references()<cr>')
-
                     -- Renames all references to the symbol under the cursor
                     bufmap('n', '<leader>lrn', '<cmd>lua vim.lsp.buf.rename()<cr>')
-
                     -- Selects a code action available at the current cursor position
                     bufmap({ 'n', 'x' }, '<leader>lca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-
                     -- Show diagnostics in a floating window
                     bufmap('n', '<leader>dd', '<cmd>lua vim.diagnostic.open_float()<cr>')
-
                     -- Move to the previous diagnostic
                     bufmap('n', '<leader>d[', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
-
                     -- Move to the next diagnostic
                     bufmap('n', '<leader>d]', '<cmd>lua vim.diagnostic.goto_next()<cr>')
                 end
