@@ -8,7 +8,7 @@ vim.opt.relativenumber = true
 -- keep sign column on
 vim.opt.signcolumn = 'yes'
 -- highlight current line
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 -- minimal number of screen lines to keep above and below the cursor
 vim.opt.scrolloff = 5
 -- line wrapping
