@@ -51,7 +51,7 @@ sign({ name = 'DiagnosticSignInfo', text = '' })
 -- diagnostic config
 vim.diagnostic.config({
     -- Show diagnostic message using virtual text.
-    virtual_text = true,
+    virtual_text = false,
     -- Show a sign next to the line with a diagnostic.
     signs = true,
     -- Update diagnostics while editing in insert mode.
@@ -275,10 +275,28 @@ require("lazy").setup({
                     theme = 'catppuccin',
                     icons_enabled = true,
                     section_separators = '',
-                    component_separators = '|'
+                    component_separators = '|',
                 },
+                sections = {
+                    lualine_c = { {
+                        "diagnostic-message",
+                        icons = {
+                            error = "",
+                            warn = "",
+                            info = "",
+                            hint = "",
+                        },
+                        -- Replace '\n' by the separator
+                        line_separator = ". ",
+                        -- Only show the first line of diagnostic message
+                        first_line_only = false,
+                    } },
+                }
             })
         end
+    },
+    {
+        "Isrothy/lualine-diagnostic-message",
     },
 
     -- git indicators on the left
@@ -646,7 +664,7 @@ require("lazy").setup({
             local cmp = require('cmp')
             local luasnip = require('luasnip')
             local has_words_before = function()
-                local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+                local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
                 return col ~= 0 and
                     vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
             end
