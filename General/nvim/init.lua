@@ -209,7 +209,7 @@ require("lazy").setup({
                         column = false,
                         -- Maximum duration for a movement (in ms). Automatically scales the
                         -- delcy and step size
-                        time = 250,
+                        time = 500,
                     }
                 },
             })
@@ -640,6 +640,8 @@ require("lazy").setup({
             require("conform").setup({
                 formatters_by_ft = {
                     python = { "ruff" },
+                    c = { "clang-format" },
+                    cpp = { "clang-format" },
                     javascript = { "prettierd" },
                     typescript = { "prettierd" },
                     javascriptreact = { "prettierd" },
