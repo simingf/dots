@@ -5,7 +5,7 @@
 ]
 
 # alt - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory ~ 
-alt - return : open -a "Kitty"
+cmd + alt + ctrl + shift - return : open -a "Kitty"
 
 ## CHANGE LAYOUT
 cmd + alt + ctrl + shift - q : yabai -m space --layout stack
@@ -15,7 +15,7 @@ cmd + alt + ctrl + shift - f : yabai -m space --layout float
 ## FLOATING WINDOW TILING
 
 # make floating window fill screen
-cmd + alt + ctrl + shift - return : yabai -m window --grid 1:1:0:0:1:1
+cmd + alt + ctrl + shift - space : yabai -m window --grid 1:1:0:0:1:1
 
 # make floating window fill bottom-half of screen
 # alt - j : yabai -m window --grid 2:1:0:1:1:1
