@@ -111,13 +111,7 @@ alias rr='. ranger'
 alias lg='lazygit'
 
 # nvim
-v() {
-    if [[ "$@" == "" ]]; then
-        nvim .
-    else
-        nvim "$@"
-    fi
-}
+alias v='nvim'
 
 # vscode
 k() {
