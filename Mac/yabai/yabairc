@@ -11,7 +11,7 @@ yabai -m rule --add app=".*" layer=normal
 # global settings
 global settings
 yabai -m config                              \
-    layout                      stack        \
+    layout                      float        \
     top_padding                 5            \
     bottom_padding              5            \
     left_padding                5            \
