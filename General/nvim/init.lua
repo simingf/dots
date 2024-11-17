@@ -90,6 +90,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank()
     end,
 })
+-- bind H to ^ and L to $
+vim.keymap.set({ 'n', 'x', 'o' }, 'H', '^', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'x', 'o' }, 'L', '$', { noremap = true, silent = true })
 
 -- ========================================================================== --
 -- ==                               PLUGINS                                == --
@@ -183,41 +186,6 @@ require("lazy").setup({
                 },
             })
             vim.cmd.colorscheme "catppuccin"
-        end
-    },
-
-    -- cinnamon: smooth scrolling
-    {
-        "declancm/cinnamon.nvim",
-        version = "*", -- use latest release
-        config = function()
-            local cinnamon = require("cinnamon")
-            cinnamon.setup({
-                -- Enable all provided keymaps
-                keymaps = {
-                    basic = true,
-                    extra = true,
-                },
-                options = {
-                    -- change default options here
-                    max_delta = {
-                        -- Maximum distance for line movements before scroll
-                        -- animation is skipped. Set to `false` to disable
-                        line = false,
-                        -- Maximum distance for column movements before scroll
-                        -- animation is skipped. Set to `false` to disable
-                        column = false,
-                        -- Maximum duration for a movement (in ms). Automatically scales the
-                        -- delcy and step size
-                        time = 500,
-                    }
-                },
-            })
-            -- bind H to ^ and L to $
-            vim.keymap.set({ 'n', 'x' }, 'H', function() cinnamon.scroll("^") end, { noremap = true, silent = true })
-            vim.keymap.set({ 'n', 'x' }, 'L', function() cinnamon.scroll("$") end, { noremap = true, silent = true })
-            vim.keymap.set({ 'o' }, 'H', '^', { noremap = true, silent = true })
-            vim.keymap.set({ 'o' }, 'L', '$', { noremap = true, silent = true })
         end
     },
 
