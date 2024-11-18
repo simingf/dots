@@ -633,6 +633,7 @@ require("lazy").setup({
             vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
             local cmp = require('cmp')
             local luasnip = require('luasnip')
+            table.unpack = table.unpack or unpack -- 5.1 compatibility
             local has_words_before = function()
                 local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
                 return col ~= 0 and
@@ -646,7 +647,7 @@ require("lazy").setup({
                 },
                 sources = {
                     -- keyword_length = # of chars needed for suggestions
-                    { name = 'copilot',  keyword_length = 1 },
+                    -- { name = 'copilot',  keyword_length = 1 },
                     { name = 'nvim_lsp', keyword_length = 2 },
                     { name = 'buffer',   keyword_length = 2 },
                     { name = 'luasnip',  keyword_length = 2 },
@@ -659,7 +660,7 @@ require("lazy").setup({
                     fields = { 'menu', 'abbr', 'kind' },
                     format = function(entry, item)
                         local menu_icon = {
-                            copilot = 'GPT',
+                            -- copilot = 'GPT',
                             nvim_lsp = 'LSP',
                             luasnip = 'SNIP',
                             buffer = 'BUF',
@@ -744,19 +745,19 @@ require("lazy").setup({
     },
 
     -- copilot
-    {
-        'zbirenbaum/copilot.lua',
-        config = function()
-            require("copilot").setup({
-                suggestion = { enabled = false },
-                panel = { enabled = false },
-            })
-        end
-    },
-    {
-        'zbirenbaum/copilot-cmp',
-        config = true
-    },
+    -- {
+    --     'zbirenbaum/copilot.lua',
+    --     config = function()
+    --         require("copilot").setup({
+    --             suggestion = { enabled = false },
+    --             panel = { enabled = false },
+    --         })
+    --     end
+    -- },
+    -- {
+    --     'zbirenbaum/copilot-cmp',
+    --     config = true
+    -- },
 })
 
 -- ========================================================================== --
