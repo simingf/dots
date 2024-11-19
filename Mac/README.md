@@ -102,6 +102,7 @@ epic-games
 font-jetbrains-mono-nerd-font
 github
 google-chrome
+hiddenbar
 iina
 imageoptim
 karabiner-elements
@@ -143,7 +144,6 @@ mov-cli
 ## Download Via App Store
 
 Amphetamine
-iBar
 Perplexity
 Pure Paste
 Xcode
