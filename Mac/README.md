@@ -61,7 +61,7 @@ koekeishiya/formulae/yabai
 llm
 llvm
 lolcat
-lua
+luarocks
 mas
 moon-buggy
 neovim
@@ -100,6 +100,7 @@ discord
 docker
 epic-games
 font-jetbrains-mono-nerd-font
+github
 google-chrome
 iina
 imageoptim
