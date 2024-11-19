@@ -209,7 +209,7 @@ require("lazy").setup({
                 },
                 -- you can enable a preset for easier configuration
                 presets = {
-                    bottom_search = true,         -- use a classic bottom cmdline for search
+                    bottom_search = false,        -- use a classic bottom cmdline for search
                     command_palette = true,       -- position the cmdline and popupmenu together
                     long_message_to_split = true, -- long messages will be sent to a split
                     inc_rename = false,           -- enables an input dialog for inc-rename.nvim
@@ -277,7 +277,12 @@ require("lazy").setup({
                             -- Only show the first line of diagnostic message
                             first_line_only = false,
                         } },
-                    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+                    lualine_x = {
+                        {
+                            require("noice").api.statusline.mode.get,
+                            cond = require("noice").api.statusline.mode.has,
+                            color = { fg = "#ff9e64" },
+                        }, 'encoding', 'fileformat', 'filetype' },
                     lualine_y = { 'progress' },
                     lualine_z = { 'location' }
                 },
