@@ -151,12 +151,14 @@ Xcode
 
 Cold Turkey Blocker
 KeyboardCleanTool
-MediaMate (I Paid)
 ProNotes
 SideNotes (I Paid)
 Stacher
 Texts
 WinDiskWriter
+
+No Longer Used:
+MediaMate (I Paid)
 
 ## xclient.info / 52mac.com
 
@@ -164,9 +166,13 @@ Alfred 5
 iA Writer
 Logic Pro
 Melodyne 5
+NotchNook
 Octagon
 WizardOfLegend
 Yoink
+
+Buggy:
+SoundSource
 
 ## Alfred Workflows
 
