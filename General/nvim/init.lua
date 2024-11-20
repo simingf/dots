@@ -277,14 +277,9 @@ require("lazy").setup({
                             -- Only show the first line of diagnostic message
                             first_line_only = false,
                         } },
-                    lualine_x = {
-                        {
-                            require("noice").api.statusline.mode.get,
-                            cond = require("noice").api.statusline.mode.has,
-                            color = { fg = "#ff9e64" },
-                        }, 'encoding', 'fileformat', 'filetype' },
-                    lualine_y = { 'progress' },
-                    lualine_z = { 'location' }
+                    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+                    lualine_y = { 'progress', { require("recorder").displaySlots } },
+                    lualine_z = { 'location', { require("recorder").recordingStatus } },
                 },
                 inactive_sections = {
                     lualine_a = {},
@@ -411,6 +406,35 @@ require("lazy").setup({
             leader_key = 'M',        -- Recommended to be a single key
             buffer_leader_key = 'm', -- Per Buffer Mappings
         }
+    },
+
+    -- recorder: easier macros
+    {
+        "chrisgrieser/nvim-recorder",
+        dependencies = "rcarriga/nvim-notify",
+        keys = {
+            -- these must match the keys in the mapping config below
+            { "q", desc = " Start Recording" },
+            { "Q", desc = " Play Recording" },
+            { "<C-q>", desc = " Switch Recording Slot" },
+            { "cq", desc = " Edit Recording" },
+            { "dq", desc = " Delete All Recordings" },
+            { "yq", desc = " Yank Recording" },
+        },
+        config = function()
+            require("recorder").setup({
+                mapping = {
+                    startStopRecording = "q",
+                    playMacro = "Q",
+                    switchSlot = "<C-q>",
+                    editMacro = "cq",
+                    deleteAllMacros = "dq",
+                    yankMacro = "yq",
+                },
+                -- Clears all macros-slots on startup.
+                clear = true,
+            })
+        end,
     },
 
     -- file system navigation
