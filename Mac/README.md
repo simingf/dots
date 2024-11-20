@@ -110,6 +110,7 @@ kitty
 linearmouse
 logitech-g-hub
 mactex-no-gui
+mediamate
 microsoft-auto-update
 microsoft-excel
 microsoft-powerpoint
@@ -152,7 +153,6 @@ Xcode
 
 Cold Turkey Blocker
 KeyboardCleanTool
-MediaMate (I Paid)
 ProNotes
 SideNotes (I Paid)
 Stacher
