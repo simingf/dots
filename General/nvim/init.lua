@@ -597,7 +597,12 @@ require("lazy").setup({
         'nvim-treesitter/nvim-treesitter-textobjects'
     },
     {
-        'nvim-treesitter/nvim-treesitter-context'
+        'nvim-treesitter/nvim-treesitter-context',
+        config = function()
+            require 'treesitter-context'.setup {
+                max_lines = 1
+            }
+        end
     },
 
     -- mason: easy managing of installed LSPs / Formatters
@@ -680,10 +685,10 @@ require("lazy").setup({
                     json = { "prettierd" },
                     markdown = { "prettierd" },
                 },
-                format_on_save = {
-                    lsp_fallback = true,
-                    timeout_ms = 500,
-                },
+                -- format_on_save = {
+                --     lsp_fallback = true,
+                --     timeout_ms = 500,
+                -- },
             })
         end
     },
