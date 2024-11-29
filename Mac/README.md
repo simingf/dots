@@ -36,6 +36,7 @@ btop
 c2048
 cbonsai
 cmake
+cmake-docs
 cmatrix
 curl
 fastfetch
@@ -153,7 +154,6 @@ Xcode
 
 Cold Turkey Blocker
 KeyboardCleanTool
-ProNotes
 SideNotes (I Paid)
 Stacher
 Texts
