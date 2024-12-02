@@ -558,6 +558,8 @@ require("lazy").setup({
             vim.keymap.set('n', '<leader>td', '<cmd>Telescope diagnostics<cr>')
             -- search in clipboard
             vim.keymap.set('n', '<leader>ty', '<cmd>Telescope neoclip<cr>')
+            -- search notifications
+            vim.keymap.set('n', '<leader>tn', '<cmd>Telescope notify<cr>')
         end
     },
     {
