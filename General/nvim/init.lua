@@ -225,7 +225,7 @@ require("lazy").setup({
         config = function()
             require('notify').setup({
                 background_colour = "#000000",
-                render = "wrapped-compact",
+                render = "minimal",
                 minimum_width = 50,
                 max_width = 100,
                 stages = "fade_in_slide_out",
@@ -363,7 +363,7 @@ require("lazy").setup({
             modes = {
                 search = {
                     enabled = true,
-                    highlight = { backdrop = true }
+                    highlight = { backdrop = false }
                 }
             }
         },
