@@ -8,9 +8,9 @@
 cmd + alt + ctrl + shift - return : open -a "Kitty"
 
 ## CHANGE LAYOUT
-cmd + alt + ctrl + shift - q : yabai -m space --layout stack
-cmd + alt + ctrl + shift - e : yabai -m space --layout bsp
-cmd + alt + ctrl + shift - f : yabai -m space --layout float
+# cmd + alt + ctrl + shift - q : yabai -m space --layout stack
+# cmd + alt + ctrl + shift - t : yabai -m space --layout bsp
+# cmd + alt + ctrl + shift - f : yabai -m space --layout float
 
 ## FLOATING WINDOW TILING
 
@@ -27,7 +27,7 @@ cmd + alt + ctrl + shift - space : yabai -m window --grid 1:1:0:0:1:1
 cmd + alt + ctrl + shift - n : yabai -m window --grid 1:2:0:0:1:1
 
 # make floating window fill right-half of screen
-cmd + alt + ctrl + shift - m : yabai -m window --grid 1:2:1:0:1:1
+cmd + alt + ctrl + shift - e : yabai -m window --grid 1:2:1:0:1:1
 
 ## SPACES
 
@@ -38,7 +38,7 @@ cmd + alt + ctrl + shift - m : yabai -m window --grid 1:2:1:0:1:1
 # alt - h: yabai -m space --focus prev || yabai -m space --focus last;
 # alt - l: yabai -m space --focus next || yabai -m space --focus first;
 cmd + alt + ctrl + shift - a: yabai -m space --focus prev || yabai -m space --focus last;
-cmd + alt + ctrl + shift - d: yabai -m space --focus next || yabai -m space --focus first;
+cmd + alt + ctrl + shift - s: yabai -m space --focus next || yabai -m space --focus first;
 
 # alt - 1 : yabai -m space --focus 1;
 # alt - 2 : yabai -m space --focus 2;
