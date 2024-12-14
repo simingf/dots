@@ -1,11 +1,9 @@
 {
     // https://liaogg.medium.com/minimal-vscode-setup-for-maximized-productivity-part-1-19db1c54697
+
     // Decluttering the Layout
     // Disables the layout control icon at the top right
     "workbench.layoutControl.enabled": false, 
-    // Enables an infinite amount of editors and disables
-    // the useless "Open Editors" panel in the explorer.
-    "explorer.autoReveal": false,
     // Sets the sidebar location to the right
     "workbench.sideBar.location": "left",
     // Disables the useless minimap to the right of our code
@@ -44,7 +42,6 @@
     "editor.inlayHints.enabled": "off",
 
     // Other Layout and Editor Settings
-    "editor.smoothScrolling": true,
     // Removes inline suggestions
     "editor.inlineSuggest.enabled": false,
     // If you find that you don't use line numbers much
@@ -64,8 +61,10 @@
     "workbench.iconTheme": "vscode-icons",
     "editor.fontFamily": "JetBrainsMono Nerd Font",
     "editor.fontLigatures": true,
+    "editor.smoothScrolling": true,
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.cursorBlinking": "solid",
+    "editor.wordWrap": "bounded",
     "explorer.confirmDelete": false,
     "cursor.cpp.disabledLanguages": [
         "plaintext",
