@@ -24,10 +24,10 @@ cmd + alt + ctrl + shift - space : yabai -m window --grid 1:1:0:0:1:1
 # alt - k : yabai -m window --grid 2:1:0:0:1:1
 
 # make floating window fill left-half of screen
-cmd + alt + ctrl + shift - n : yabai -m window --grid 1:2:0:0:1:1
+cmd + alt + ctrl + shift - l : yabai -m window --grid 1:2:0:0:1:1
 
 # make floating window fill right-half of screen
-cmd + alt + ctrl + shift - e : yabai -m window --grid 1:2:1:0:1:1
+cmd + alt + ctrl + shift - u : yabai -m window --grid 1:2:1:0:1:1
 
 ## SPACES
 
