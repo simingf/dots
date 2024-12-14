@@ -20,7 +20,9 @@ ln -s ~/dots/General/kitty ~/.config/kitty &&
 ln -s ~/dots/General/nvim ~/.config/nvim &&
 ln -s ~/dots/General/ripgrep ~/.config/ripgrep &&
 ln -s ~/dots/Mac/karabiner ~/.config/karabiner &&
-ln -s ~/dots/Mac/linearmouse ~/.config/linearmouse
+ln -s ~/dots/Mac/linearmouse ~/.config/linearmouse &&
+ln -s ~/dots/General/cursor/settings.json ~/Library/Application\ Support/Cursor/User/settings.json &&
+ln -s ~/dots/General/cursor/keybindings.json ~/Library/Application\ Support/Cursor/User/keybindings.json
 
 ## Brown Software
 
