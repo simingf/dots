@@ -156,10 +156,6 @@
     {
       "before": ["<leader>", "i"],
       "after": ["i"]
-    },
-    {
-      "before": ["s"],
-      "commands": ["leap.find"]
     }
   ],
   // To improve performance
