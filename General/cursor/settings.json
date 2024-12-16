@@ -47,7 +47,8 @@
   "editor.fontSize": 16,
   "editor.lineHeight": 32,
   // Left Side
-  "editor.lineNumbers": "off",
+  // "editor.lineNumbers": "off",
+  // "editor.lineNumbers": "relative",
   "editor.glyphMargin": false,
   "editor.showFoldingControls": "never",
   "editor.foldingHighlight": false,
