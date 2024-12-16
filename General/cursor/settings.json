@@ -80,6 +80,7 @@
   // MISC SETTINGS
   "git.confirmSync": false,
   "git.autofetch": true,
+  "git.enableSmartCommit": true,
 
   // CURSOR SETTINGS
   "cursor.cpp.disabledLanguages": ["plaintext", "scminput"],
