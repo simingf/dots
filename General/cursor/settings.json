@@ -11,7 +11,6 @@
   // Editor Actions
   "workbench.editor.editorActionsLocation": "hidden",
   // Tabs
-  // "workbench.editor.showTabs": "none",
   "workbench.editor.showTabs": "multiple",
   "workbench.editor.tabActionCloseVisibility": false,
   // Layout Controls
@@ -22,7 +21,7 @@
   // Status Bar
   "workbench.statusBar.visible": false,
   // Activity Bar / Sidebar
-  // "workbench.activityBar.location": "hidden",
+  "workbench.activityBar.location": "bottom",
   "workbench.activityBar.orientation": "vertical",
   "workbench.sideBar.location": "right",
   // Minimap
