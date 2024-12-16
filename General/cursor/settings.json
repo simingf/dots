@@ -19,7 +19,7 @@
   // Breadcrumbs
   "breadcrumbs.enabled": false,
   // Status Bar
-  "workbench.statusBar.visible": false,
+  // "workbench.statusBar.visible": false,
   // Activity Bar / Sidebar
   "workbench.activityBar.location": "bottom",
   "workbench.activityBar.orientation": "vertical",
