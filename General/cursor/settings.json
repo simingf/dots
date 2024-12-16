@@ -1,98 +1,186 @@
 {
-    // https://dev.to/andrewgeorge/minimal-vscode-ui-343e
+  // https://dev.to/andrewgeorge/minimal-vscode-ui-343e
 
-    // UI SETTINGS
-    // Theme
-    "workbench.colorTheme": "Noir Poimandres Dark",
-    "workbench.iconTheme": "vscode-icons",
-    // Window Title
-    "window.title": " ",
-    // Layout Controls
-    "workbench.layoutControl.enabled": false,
-    // "workbench.layoutControl.type": "menu",
-    // Sidebar (cmd + `)
-    "workbench.sideBar.location": "left",
-    // Status Bar
-    "workbench.statusBar.visible": false,
-    // Minimap
-    "editor.minimap.enabled": false,
-    // Scrollbars
-    "editor.hideCursorInOverviewRuler": true,
-    "editor.overviewRulerBorder": false,
-    "editor.scrollbar.horizontal": "hidden",
-    "editor.scrollbar.vertical": "hidden",
-    // Breadcrumbs
-    "breadcrumbs.enabled": false,
-    // Explorer
-    "explorer.confirmDelete": false,
-    "workbench.tree.indent": 12, // default (8)
-    "workbench.tree.renderIndentGuides": "none",
-    "explorer.decorations.colors": false,
+  // UI SETTINGS
+  // Theme
+  "workbench.colorTheme": "Noir Rosé Pine",
+  "workbench.iconTheme": "vscode-icons",
+  // Command Center
+  "window.commandCenter": false,
+  "window.title": " ",
+  // Editor Actions
+  "workbench.editor.editorActionsLocation": "hidden",
+  // Tabs
+  // "workbench.editor.showTabs": "none",
+  "workbench.editor.showTabs": "multiple",
+  "workbench.editor.tabActionCloseVisibility": false,
+  // Layout Controls
+  "workbench.layoutControl.enabled": false,
+  // "workbench.layoutControl.type": "menu",
+  // Breadcrumbs
+  "breadcrumbs.enabled": false,
+  // Status Bar
+  "workbench.statusBar.visible": false,
+  // Activity Bar / Sidebar
+  // "workbench.activityBar.location": "hidden",
+  "workbench.activityBar.orientation": "vertical",
+  "workbench.sideBar.location": "right",
+  // Minimap
+  "editor.minimap.enabled": false,
+  // Overview Ruler
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.overviewRulerBorder": false,
+  // Scrollbars
+  "editor.scrollbar.horizontal": "hidden",
+  // "editor.scrollbar.vertical": "hidden",
+  // Explorer
+  "explorer.confirmDelete": false,
+  "workbench.tree.indent": 16, // default (8)
+  "workbench.tree.renderIndentGuides": "none",
+  "explorer.decorations.colors": false,
+  // Terminal
+  "terminal.integrated.fontSize": 14,
 
-    // EDITOR SETTINGS
-    // Font
-    "editor.fontFamily": "JetBrainsMono Nerd Font",
-    "editor.fontLigatures": true,
-    "editor.fontSize": 16,
-    "editor.lineHeight": 32,
-    // Word Wrap
-    "editor.wordWrap": "bounded",
-    // Padding
-    "editor.padding.bottom": 14,
-    "editor.padding.top": 14,
-    // Brackets
-    "editor.matchBrackets": "never", 
-    "editor.bracketPairColorization.enabled": false,
-    "editor.guides.highlightActiveBracketPair": false,
-    "editor.guides.bracketPairsHorizontal": false,
-    // Indentation Guides
-    "editor.guides.indentation": false,
-    "editor.guides.highlightActiveIndentation": false,
-    // Smooth Cursors
-    "editor.smoothScrolling": true,
-    "editor.cursorBlinking": "solid",
-    "editor.cursorSmoothCaretAnimation": "on",
-    // Active Line Highlights
-    "editor.renderLineHighlight": "none",
-    // Left Side
-    "editor.lineNumbers": "off",
-    "editor.glyphMargin": false,
-    "editor.showFoldingControls": "never",
-    "editor.foldingHighlight": false,
-    // Inline Suggestions
-    "editor.inlineSuggest.enabled": false,
-    // Hints
-    "editor.parameterHints.enabled": false,
-    "editor.inlayHints.enabled": "off",
+  // EDITOR SETTINGS
+  // Font
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 16,
+  "editor.lineHeight": 32,
+  // Left Side
+  "editor.lineNumbers": "off",
+  "editor.glyphMargin": false,
+  "editor.showFoldingControls": "never",
+  "editor.foldingHighlight": false,
+  // Padding
+  "editor.padding.bottom": 14,
+  "editor.padding.top": 14,
+  // Word Wrap
+  "editor.wordWrap": "bounded",
+  // Brackets
+  "editor.matchBrackets": "never",
+  "editor.bracketPairColorization.enabled": false,
+  "editor.guides.highlightActiveBracketPair": false,
+  "editor.guides.bracketPairsHorizontal": false,
+  // Indentation Guides
+  "editor.guides.indentation": false,
+  "editor.guides.highlightActiveIndentation": false,
+  // Smooth Cursors
+  "editor.smoothScrolling": true,
+  "editor.cursorBlinking": "solid",
+  "editor.cursorSmoothCaretAnimation": "on",
+  // Active Line Highlights
+  "editor.renderLineHighlight": "none",
+  // Inline Suggestions
+  "editor.inlineSuggest.enabled": false,
+  // Hints
+  "editor.parameterHints.enabled": false,
+  "editor.inlayHints.enabled": "off",
 
-    // CURSOR SETTINGS
-    "cursor.cpp.disabledLanguages": [
-        "plaintext",
-        "scminput"
-    ],
+  // CURSOR SETTINGS
+  "cursor.cpp.disabledLanguages": ["plaintext", "scminput"],
 
-    // EXTENSION SETTINGS
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": ["s"],
-            "commands": ["leap.find"]
-        },
-    ],
-    "todohighlight.keywords": [
-        {
-            "text": "TODO",
-            "color": "yellow",
-            "backgroundColor": "red"
-        },
-        {
-            "text": "DONE",
-            "color": "cyan",
-            "backgroundColor": "green"
-        },
-        {
-            "text": "HINT",
-            "color": "yellow",
-            "backgroundColor": "blue"
-        }
-    ],
+  // EXTENSION SETTINGS
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.hlsearch": false,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.leader": "<space>",
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["m"],
+      "after": ["h"]
+    },
+    {
+      "before": ["M"],
+      "after": ["0"]
+    },
+    {
+      "before": ["n"],
+      "after": ["j"]
+    },
+    {
+      "before": ["e"],
+      "after": ["k"]
+    },
+    {
+      "before": ["i"],
+      "after": ["l"]
+    },
+    {
+      "before": ["I"],
+      "after": ["$"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["m"],
+      "after": ["h"]
+    },
+    {
+      "before": ["M"],
+      "after": ["0"]
+    },
+    {
+      "before": ["n"],
+      "after": ["j"]
+    },
+    {
+      "before": ["e"],
+      "after": ["k"]
+    },
+    {
+      "before": ["i"],
+      "after": ["l"]
+    },
+    {
+      "before": ["i"],
+      "after": ["l"]
+    },
+    {
+      "before": ["I"],
+      "after": ["$"]
+    },
+    {
+      "before": ["<leader>", "n"],
+      "after": ["n"]
+    },
+    {
+      "before": ["<leader>", "N"],
+      "after": ["N"]
+    },
+    {
+      "before": ["<leader>", "i"],
+      "after": ["i"]
+    },
+    {
+      "before": ["s"],
+      "commands": ["leap.find"]
+    }
+  ],
+  // To improve performance
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+  "todohighlight.keywords": [
+    {
+      "text": "TODO",
+      "color": "yellow",
+      "backgroundColor": "red"
+    },
+    {
+      "text": "DONE",
+      "color": "cyan",
+      "backgroundColor": "green"
+    },
+    {
+      "text": "HINT",
+      "color": "yellow",
+      "backgroundColor": "blue"
+    }
+  ],
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
