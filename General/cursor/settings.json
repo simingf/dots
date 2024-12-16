@@ -77,6 +77,10 @@
   "editor.parameterHints.enabled": false,
   "editor.inlayHints.enabled": "off",
 
+  // MISC SETTINGS
+  "git.confirmSync": false,
+  "git.autofetch": true,
+
   // CURSOR SETTINGS
   "cursor.cpp.disabledLanguages": ["plaintext", "scminput"],
 
