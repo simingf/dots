@@ -3,7 +3,7 @@
 
   // UI SETTINGS
   // Theme
-  "workbench.colorTheme": "Noir Rosé Pine",
+  "workbench.colorTheme": "Ayu Mirage",
   "workbench.iconTheme": "vscode-icons",
   // Command Center
   "window.commandCenter": false,
@@ -21,7 +21,7 @@
   // Status Bar
   // "workbench.statusBar.visible": false,
   // Activity Bar / Sidebar
-  "workbench.activityBar.location": "bottom",
+  // "workbench.activityBar.location": "hidden",
   "workbench.activityBar.orientation": "vertical",
   "workbench.sideBar.location": "right",
   // Minimap
