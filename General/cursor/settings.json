@@ -3,7 +3,7 @@
 
   // UI SETTINGS
   // Theme
-  "workbench.colorTheme": "Ayu Mirage",
+  "workbench.colorTheme": "Ayu Dark",
   "workbench.iconTheme": "vscode-icons",
   // Command Center
   "window.commandCenter": false,
@@ -47,14 +47,14 @@
   "editor.fontSize": 16,
   "editor.lineHeight": 32,
   // Left Side
-  // "editor.lineNumbers": "off",
+  "editor.lineNumbers": "off",
   // "editor.lineNumbers": "relative",
   "editor.glyphMargin": false,
   "editor.showFoldingControls": "never",
   "editor.foldingHighlight": false,
   // Padding
-  "editor.padding.bottom": 14,
-  "editor.padding.top": 14,
+  // "editor.padding.top": 14,
+  // "editor.padding.bottom": 100,
   // Word Wrap
   "editor.wordWrap": "bounded",
   // Brackets
