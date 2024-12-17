@@ -81,11 +81,15 @@
   "git.confirmSync": false,
   "git.autofetch": true,
   "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "never",
 
   // CURSOR SETTINGS
   "cursor.cpp.disabledLanguages": ["plaintext", "scminput"],
 
   // EXTENSION SETTINGS
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "vim.easymotion": true,
   "vim.incsearch": true,
   "vim.hlsearch": false,
@@ -181,9 +185,6 @@
       "backgroundColor": "blue"
     }
   ],
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "C_Cpp.default.compilerPath": "/opt/homebrew/bin/g++-14",
   "C_Cpp.default.intelliSenseMode": "macos-gcc-arm64",
   "C_Cpp.default.cppStandard": "c++20",
