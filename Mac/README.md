@@ -62,7 +62,6 @@ jandedobbeleer/oh-my-posh/oh-my-posh
 jesseduffield/lazygit/lazygit
 jq
 koekeishiya/formulae/skhd
-koekeishiya/formulae/yabai
 llm
 lolcat
 luarocks
