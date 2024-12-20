@@ -61,7 +61,6 @@ imagemagick
 jandedobbeleer/oh-my-posh/oh-my-posh
 jesseduffield/lazygit/lazygit
 jq
-koekeishiya/formulae/skhd
 llm
 lolcat
 luarocks
