@@ -44,6 +44,7 @@ cmatrix
 curl
 fastfetch
 fd
+felixkratz/formulae/borders
 ffmpeg
 figlet
 fortune
@@ -63,13 +64,12 @@ jq
 koekeishiya/formulae/skhd
 koekeishiya/formulae/yabai
 llm
-llvm
 lolcat
 luarocks
 mas
+mongosh
 moon-buggy
 neovim
-node
 openjdk
 pandoc
 qrencode
@@ -88,6 +88,7 @@ zsh
 
 ## Homebrew Casks (brew list --cask | pbcopy)
 
+aerospace
 alt-tab
 angry-ip-scanner
 appcleaner
@@ -100,6 +101,7 @@ bit-slicer
 burp-suite
 calibre
 chatgpt
+cursor
 discord
 docker
 epic-games
@@ -121,6 +123,7 @@ microsoft-powerpoint
 microsoft-word
 minecraft
 miniconda
+mongodb-compass
 moonlight
 music-decoy
 notion
@@ -134,7 +137,6 @@ spotify
 steam
 tetrio
 the-unarchiver
-visual-studio-code
 wechat
 whatsapp
 wireshark
