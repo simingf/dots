@@ -60,12 +60,12 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 0
-inner.vertical =   0
-outer.left =       0
-outer.bottom =     0
-outer.top =        0
-outer.right =      0
+inner.horizontal = 5
+inner.vertical =   5
+outer.left =       5
+outer.bottom =     5
+outer.top =        5
+outer.right =      5
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -127,7 +127,7 @@ alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
-alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
+alt-a = 'workspace A'
 alt-b = 'workspace B'
 alt-c = 'workspace C'
 alt-d = 'workspace D'
