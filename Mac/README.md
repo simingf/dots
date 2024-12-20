@@ -131,7 +131,6 @@ qbittorrent
 qflipper
 roblox
 slack
-spaceid
 spotify
 steam
 tetrio
