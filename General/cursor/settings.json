@@ -39,24 +39,26 @@
   "explorer.decorations.colors": false,
   // Terminal
   "terminal.integrated.fontSize": 14,
+  "terminal.integrated.enableMultiLinePasteWarning": false,
 
   // EDITOR SETTINGS
   // Font
   "editor.fontFamily": "JetBrainsMono Nerd Font",
   "editor.fontLigatures": true,
-  "editor.fontSize": 16,
-  "editor.lineHeight": 32,
+  "editor.fontSize": 14,
+  "editor.lineHeight": 28,
   // Left Side
   "editor.lineNumbers": "off",
   // "editor.lineNumbers": "relative",
   "editor.glyphMargin": false,
-  "editor.showFoldingControls": "never",
+  // "editor.showFoldingControls": "never",
   "editor.foldingHighlight": false,
   // Padding
   // "editor.padding.top": 14,
   // "editor.padding.bottom": 100,
   // Word Wrap
   "editor.wordWrap": "bounded",
+  "editor.wordWrapColumn": 100,
   // Brackets
   "editor.matchBrackets": "never",
   "editor.bracketPairColorization.enabled": false,
@@ -248,5 +250,4 @@
     "pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
     "gleam": "gleam run -m $fileNameWithoutExt"
   },
-
 }
