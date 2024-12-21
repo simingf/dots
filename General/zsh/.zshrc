@@ -116,9 +116,9 @@ alias v='nvim'
 # vscode
 k() {
     if [[ "$@" == "" ]]; then
-        code .
+        cursor .
     else
-        code "$@"
+        cursor "$@"
     fi
 }
 
