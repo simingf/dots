@@ -174,6 +174,7 @@ alias bup='brew update && brew upgrade && brew cleanup && brew autoremove'
 # zsh
 alias zrc="nvim ~/.zshrc"
 alias zrs="clear && source ~/.zshrc"
+alias rs='zrs'
 alias ch="rm -f ~/.zsh_history && clear"
 # zinit
 alias zup="zinit self-update && zinit update"
@@ -182,19 +183,17 @@ alias nrc="nvim ~/.config/nvim/init.lua"
 # kitty
 alias krc="nvim ~/.config/kitty/kitty.conf"
 # yabai
-alias yrc="nvim ~/.config/yabai/yabairc"
-alias yrs="yabai --restart-service" # && urs
-yup() {
-    TEXT="$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa"
-    echo $TEXT | sudo tee /private/etc/sudoers.d/yabai
-}
+# alias yrc="nvim ~/.config/yabai/yabairc"
+# alias yrs="yabai --restart-service" # && urs
+# yup() {
+#     TEXT="$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa"
+#     echo $TEXT | sudo tee /private/etc/sudoers.d/yabai
+# }
 # skhd
-alias src="nvim ~/.config/skhd/skhdrc"
-alias srs="skhd --restart-service"
-# restarts zshrc, yabai, skhd
-alias rs='zrs && yrs && srs'
-# updates zinit, homebrew and yabai
-alias up='sudo echo && zup && bup && yup && yrs'
+# alias src="nvim ~/.config/skhd/skhdrc"
+# alias srs="skhd --restart-service"
+# updates zinit, homebrew
+alias up='sudo echo && zup && bup'
 
 # ubersicht
 # alias ub='builtin cd ~/.config/ubersicht/simple-bar && ls'
