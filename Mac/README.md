@@ -42,7 +42,6 @@ cmatrix
 curl
 fastfetch
 fd
-felixkratz/formulae/borders
 ffmpeg
 figlet
 fortune
@@ -127,6 +126,7 @@ orange
 qbittorrent
 qflipper
 roblox
+robloxstudio
 slack
 spotify
 steam
@@ -167,6 +167,7 @@ Logic Pro
 Melodyne 5
 NotchNook
 Octagon
+Piezo
 WizardOfLegend
 
 Buggy:
