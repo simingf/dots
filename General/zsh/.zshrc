@@ -177,7 +177,7 @@ alias zrs="clear && source ~/.zshrc"
 alias rs='zrs'
 alias ch="rm -f ~/.zsh_history && clear"
 # zinit
-alias zup="zinit self-update && zinit update"
+alias zup="zinit self-update && zinit update --all"
 # nvim
 alias nrc="nvim ~/.config/nvim/init.lua"
 # kitty
@@ -193,7 +193,7 @@ alias krc="nvim ~/.config/kitty/kitty.conf"
 # alias src="nvim ~/.config/skhd/skhdrc"
 # alias srs="skhd --restart-service"
 # updates zinit, homebrew
-alias up='sudo echo && zup && bup'
+alias up='zup && bup'
 
 # ubersicht
 # alias ub='builtin cd ~/.config/ubersicht/simple-bar && ls'
