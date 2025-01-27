@@ -250,4 +250,7 @@
     "pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
     "gleam": "gleam run -m $fileNameWithoutExt"
   },
+  "workbench.statusBar.visible": true,
+  "python.defaultInterpreterPath": "/opt/homebrew/Caskroom/miniconda/base/envs/dl",
+  "liveServer.settings.donotShowInfoMsg": true,
 }
