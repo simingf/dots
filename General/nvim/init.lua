@@ -617,7 +617,7 @@ require("lazy").setup({
         config = function()
             require('mason-lspconfig').setup({
                 ensure_installed = {
-                    "lua_ls", "ruff", "gopls", "eslint"
+                    "lua_ls", "ruff", "gopls"
                 }
             })
             require("mason-lspconfig").setup_handlers {
