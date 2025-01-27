@@ -1,4 +1,5 @@
 {
+  "workbench.colorTheme": "Ayu Dark",
   "workbench.iconTheme": "vscode-icons",
   // Command Center
   "window.commandCenter": false,
