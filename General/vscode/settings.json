@@ -75,12 +75,14 @@
   "editor.inlayHints.enabled": "off",
 
   // MISC SETTINGS
+  "python.defaultInterpreterPath": "/opt/homebrew/Caskroom/miniconda/base/envs/dl",
   "git.confirmSync": false,
   "git.autofetch": true,
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "never",
 
   // EXTENSION SETTINGS
+  "liveServer.settings.donotShowInfoMsg": true,
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -241,7 +243,5 @@
     "spwn": "spwn build",
     "pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
     "gleam": "gleam run -m $fileNameWithoutExt"
-  },
-  "python.defaultInterpreterPath": "/opt/homebrew/Caskroom/miniconda/base/envs/dl",
-  "liveServer.settings.donotShowInfoMsg": true
+  }
 }
