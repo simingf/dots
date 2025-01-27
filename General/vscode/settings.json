@@ -1,9 +1,4 @@
 {
-  // https://dev.to/andrewgeorge/minimal-vscode-ui-343e
-
-  // UI SETTINGS
-  // Theme
-  "workbench.colorTheme": "Ayu Dark",
   "workbench.iconTheme": "vscode-icons",
   // Command Center
   "window.commandCenter": false,
@@ -19,7 +14,7 @@
   // Breadcrumbs
   "breadcrumbs.enabled": false,
   // Status Bar
-  // "workbench.statusBar.visible": false,
+  "workbench.statusBar.visible": true,
   // Activity Bar / Sidebar
   // "workbench.activityBar.location": "hidden",
   "workbench.activityBar.orientation": "vertical",
@@ -27,7 +22,7 @@
   // Minimap
   "editor.minimap.enabled": false,
   // Overview Ruler
-  "editor.hideCursorInOverviewRuler": true,
+  // "editor.hideCursorInOverviewRuler": true,
   "editor.overviewRulerBorder": false,
   // Scrollbars
   "editor.scrollbar.horizontal": "hidden",
@@ -84,9 +79,6 @@
   "git.autofetch": true,
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "never",
-
-  // CURSOR SETTINGS
-  "cursor.cpp.disabledLanguages": ["plaintext", "scminput"],
 
   // EXTENSION SETTINGS
   "[jsonc]": {
@@ -250,7 +242,6 @@
     "pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
     "gleam": "gleam run -m $fileNameWithoutExt"
   },
-  "workbench.statusBar.visible": true,
   "python.defaultInterpreterPath": "/opt/homebrew/Caskroom/miniconda/base/envs/dl",
-  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.donotShowInfoMsg": true
 }
