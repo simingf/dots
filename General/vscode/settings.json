@@ -44,9 +44,9 @@
   "editor.fontSize": 14,
   "editor.lineHeight": 28,
   // Left Side
-  "editor.lineNumbers": "off",
-  // "editor.lineNumbers": "relative",
-  "editor.glyphMargin": false,
+  // "editor.lineNumbers": "off",
+  "editor.lineNumbers": "on",
+  "editor.glyphMargin": true,
   // "editor.showFoldingControls": "never",
   "editor.foldingHighlight": false,
   // Padding
