@@ -1,3 +1,6 @@
+# MacTeX
+path+=/Library/TeX/texbin
+
 # Homebrew
 if [[ -f "/opt/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled
@@ -82,7 +85,8 @@ accept-line() {
     if [[ -z $BUFFER ]]; then
         zle -I
         # command to run when enter pressed
-        clear && ls -AG
+        clear && ls
+        echo
     else
         zle ".$WIDGET"
     fi
@@ -154,7 +158,7 @@ alias vssh='kitten ssh sfeng@10.116.60.21'
 alias vscp='scp -r * sfeng@10.116.60.21:~/continuous-query'
 
 # directory aliases
-alias ls='ls -AG'
+alias ls="ls -AG && printf '_%.0s' {1..$(tput cols)}"
 alias ..='builtin cd .. && clear && ls'
 alias app='builtin cd /Applications/ && clear && ls'
 alias doc='builtin cd ~/Documents/ && clear && ls'
@@ -200,3 +204,7 @@ alias up='zup && bup'
 # urs() {
 #     osascript -e 'tell application id "tracesOf.Uebersicht" to refresh'
 # }
+
+source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+chruby ruby-3.4.1 # run chruby to see actual version
