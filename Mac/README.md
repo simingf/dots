@@ -32,10 +32,13 @@ Tunnelblick (VPN)
 
 ack
 aria2
+automake
 bear
+bison
 btop
 c2048
 cbonsai
+chruby
 cmake
 cmake-docs
 cmatrix
@@ -47,6 +50,7 @@ figlet
 fortune
 fzf
 gcc
+gdbm
 gh
 git
 git-lfs
@@ -58,19 +62,22 @@ imagemagick
 jandedobbeleer/oh-my-posh/oh-my-posh
 jesseduffield/lazygit/lazygit
 jq
-llm
+libffi
+libyaml
 lolcat
 luarocks
 mas
 mongosh
 moon-buggy
 neovim
+ollama
 openjdk
 pandoc
 qrencode
 ranger
 rig
 ripgrep
+ruby-install
 sl
 tldr
 tree
@@ -96,7 +103,6 @@ bit-slicer
 burp-suite
 calibre
 chatgpt
-cursor
 discord
 docker
 epic-games
@@ -110,7 +116,6 @@ karabiner-elements
 kitty
 linearmouse
 logitech-g-hub
-mactex-no-gui
 mediamate
 microsoft-auto-update
 microsoft-excel
@@ -132,6 +137,7 @@ spotify
 steam
 tetrio
 the-unarchiver
+visual-studio-code
 wechat
 whatsapp
 wireshark
@@ -146,6 +152,7 @@ mov-cli
 ## Download Via App Store
 
 Amphetamine
+Enchanted LLM
 Perplexity
 Pure Paste
 Xcode
