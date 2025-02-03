@@ -85,7 +85,7 @@ accept-line() {
     if [[ -z $BUFFER ]]; then
         zle -I
         # command to run when enter pressed
-        clear && ls
+        clear && ls -G
     else
         zle ".$WIDGET"
     fi
@@ -157,6 +157,7 @@ alias vssh='kitten ssh sfeng@10.116.60.21'
 alias vscp='scp -r * sfeng@10.116.60.21:~/continuous-query'
 
 # directory aliases
+alias ls='ls -G'
 alias ..='builtin cd .. && clear && ls'
 alias app='builtin cd /Applications/ && clear && ls'
 alias doc='builtin cd ~/Documents/ && clear && ls'
