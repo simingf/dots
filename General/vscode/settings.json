@@ -54,7 +54,7 @@
   // "editor.padding.bottom": 100,
   // Word Wrap
   "editor.wordWrap": "bounded",
-  "editor.wordWrapColumn": 80,
+  "editor.wordWrapColumn": 100,
   // Brackets
   "editor.matchBrackets": "never",
   "editor.bracketPairColorization.enabled": false,
@@ -84,86 +84,11 @@
 
   // EXTENSION SETTINGS
   "liveServer.settings.donotShowInfoMsg": true,
-  "[jsonc]": {
+  "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "vim.easymotion": true,
-  "vim.incsearch": true,
-  "vim.hlsearch": false,
-  "vim.useSystemClipboard": true,
-  "vim.useCtrlKeys": true,
-  "vim.leader": "<space>",
-  "vim.visualModeKeyBindingsNonRecursive": [
-    {
-      "before": ["m"],
-      "after": ["h"]
-    },
-    {
-      "before": ["M"],
-      "after": ["0"]
-    },
-    {
-      "before": ["n"],
-      "after": ["j"]
-    },
-    {
-      "before": ["e"],
-      "after": ["k"]
-    },
-    {
-      "before": ["i"],
-      "after": ["l"]
-    },
-    {
-      "before": ["I"],
-      "after": ["$"]
-    }
-  ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": ["m"],
-      "after": ["h"]
-    },
-    {
-      "before": ["M"],
-      "after": ["0"]
-    },
-    {
-      "before": ["n"],
-      "after": ["j"]
-    },
-    {
-      "before": ["e"],
-      "after": ["k"]
-    },
-    {
-      "before": ["i"],
-      "after": ["l"]
-    },
-    {
-      "before": ["i"],
-      "after": ["l"]
-    },
-    {
-      "before": ["I"],
-      "after": ["$"]
-    },
-    {
-      "before": ["<leader>", "n"],
-      "after": ["n"]
-    },
-    {
-      "before": ["<leader>", "N"],
-      "after": ["N"]
-    },
-    {
-      "before": ["<leader>", "i"],
-      "after": ["i"]
-    }
-  ],
-  // To improve performance
-  "extensions.experimental.affinity": {
-    "vscodevim.vim": 1
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "todohighlight.keywords": [
     {
@@ -185,68 +110,8 @@
   "C_Cpp.default.compilerPath": "/opt/homebrew/bin/g++-14",
   "C_Cpp.default.intelliSenseMode": "macos-gcc-arm64",
   "C_Cpp.default.cppStandard": "c++20",
-  "code-runner.runInTerminal": true,
-  "code-runner.executorMap": {
-    "javascript": "node",
-    "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
-    "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-    "zig": "zig run",
-    "cpp": "cd $dir && g++-14 -std=c++20 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-    "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-    "php": "php",
-    "python": "python -u",
-    "perl": "perl",
-    "perl6": "perl6",
-    "ruby": "ruby",
-    "go": "go run",
-    "lua": "lua",
-    "groovy": "groovy",
-    "powershell": "powershell -ExecutionPolicy ByPass -File",
-    "bat": "cmd /c",
-    "shellscript": "bash",
-    "fsharp": "fsi",
-    "csharp": "scriptcs",
-    "vbscript": "cscript //Nologo",
-    "typescript": "ts-node",
-    "coffeescript": "coffee",
-    "scala": "scala",
-    "swift": "swift",
-    "julia": "julia",
-    "crystal": "crystal",
-    "ocaml": "ocaml",
-    "r": "Rscript",
-    "applescript": "osascript",
-    "clojure": "lein exec",
-    "haxe": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
-    "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt",
-    "racket": "racket",
-    "scheme": "csi -script",
-    "ahk": "autohotkey",
-    "autoit": "autoit3",
-    "dart": "dart",
-    "pascal": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
-    "d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
-    "haskell": "runghc",
-    "nim": "nim compile --verbosity:0 --hints:off --run",
-    "lisp": "sbcl --script",
-    "kit": "kitc --run",
-    "v": "v run",
-    "sass": "sass --style expanded",
-    "scss": "scss --style expanded",
-    "less": "cd $dir && lessc $fileName $fileNameWithoutExt.css",
-    "FortranFreeForm": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-    "fortran-modern": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-    "fortran_fixed-form": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-    "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-    "sml": "cd $dir && sml $fileName",
-    "mojo": "mojo run",
-    "erlang": "escript",
-    "spwn": "spwn build",
-    "pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
-    "gleam": "gleam run -m $fileNameWithoutExt"
-  },
   "workbench.editorAssociations": {
     "*.copilotmd": "vscode.markdown.preview.editor",
     "*.pdf": "latex-workshop-pdf-hook"
-  }
+  },
 }
