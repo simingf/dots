@@ -30,117 +30,55 @@ Tunnelblick (VPN)
 
 ## Homebrew Formulae (brew leaves | pbcopy)
 
-ack
-aria2
-automake
-bear
-bison
-btop
-c2048
-cbonsai
-chruby
-cmake
-cmake-docs
-cmatrix
-curl
-fastfetch
-fd
-ffmpeg
-figlet
-fortune
-fzf
-gcc
-gdbm
-gh
-git
-git-lfs
-go
-go@1.22
-gping
-grep
-imagemagick
-jandedobbeleer/oh-my-posh/oh-my-posh
-jesseduffield/lazygit/lazygit
-jq
-libffi
-libyaml
-lolcat
-luarocks
-mas
-mongosh
-moon-buggy
-neovim
-ollama
-openjdk
-pandoc
-qrencode
-ranger
-rig
-ripgrep
-ruby-install
-sl
-tldr
-tree
-watch
-wget
-xkcd
-yt-dlp
-zoxide
+ack \
+ffmpeg \
+fzf \
+gcc \
+git \
+git-lfs \
+jandedobbeleer/oh-my-posh/oh-my-posh \
+jesseduffield/lazygit/lazygit \
+neovim \
+tlrc \
+zoxide \
 zsh
 
 ## Homebrew Casks (brew list --cask | pbcopy)
 
-aerospace
-alt-tab
-angry-ip-scanner
-appcleaner
-arc
-audacity
-baidunetdisk
-balenaetcher
-betterdiscord-installer
-bit-slicer
-burp-suite
-calibre
-chatgpt
-discord
-docker
-epic-games
-font-jetbrains-mono-nerd-font
-github
-google-chrome
-hiddenbar
-iina
-imageoptim
-karabiner-elements
-kitty
-linearmouse
-logitech-g-hub
-mediamate
-microsoft-auto-update
-microsoft-excel
-microsoft-powerpoint
-microsoft-word
-minecraft
-miniconda
-mongodb-compass
-moonlight
-music-decoy
-notion
-orange
-qbittorrent
-qflipper
-roblox
-robloxstudio
-slack
-spotify
-steam
-tetrio
-the-unarchiver
-visual-studio-code
-wechat
-whatsapp
-wireshark
+aerospace \
+alt-tab \
+appcleaner \
+arc \
+audacity \
+baidunetdisk \
+chatgpt \
+discord \
+docker \
+epic-games \
+font-jetbrains-mono-nerd-font \
+github \
+hiddenbar \
+iina \
+karabiner-elements \
+kitty \
+linearmouse \
+logitech-g-hub \
+mediamate \
+microsoft-auto-update \
+microsoft-excel \
+microsoft-powerpoint \
+microsoft-word \
+miniconda \
+moonlight \
+music-decoy \
+qbittorrent \
+qflipper \
+slack \
+spotify \
+steam \
+visual-studio-code \
+wechat \
+whatsapp \
 zoom
 
 ## Install Via Command Line
