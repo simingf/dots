@@ -45,7 +45,7 @@ zsh
 
 ## Homebrew Casks (brew list --cask | pbcopy)
 
-aerospace \
+nikitabobko/tap/aerospace \
 alt-tab \
 appcleaner \
 arc \
@@ -62,7 +62,7 @@ iina \
 karabiner-elements \
 kitty \
 linearmouse \
-logitech-g-hub \
+mactex \
 mediamate \
 microsoft-auto-update \
 microsoft-excel \
@@ -71,6 +71,7 @@ microsoft-word \
 miniconda \
 moonlight \
 music-decoy \
+protonvpn \
 qbittorrent \
 qflipper \
 slack \
@@ -81,16 +82,9 @@ wechat \
 whatsapp \
 zoom
 
-## Install Via Command Line
-
-zinit
-ani-cli
-mov-cli
-
 ## Download Via App Store
 
 Amphetamine
-Enchanted LLM
 Perplexity
 Pure Paste
 Xcode
@@ -101,8 +95,6 @@ Cold Turkey Blocker
 KeyboardCleanTool
 SideNotes (I Paid)
 Stacher
-Texts
-WinDiskWriter
 
 ## xclient.info / 52mac.com
 
