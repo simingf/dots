@@ -147,7 +147,6 @@ c() {
         conda "$@"
     fi
 }
-. "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
 
 # competitive programming
 alias cpr='make && ./sol'
@@ -204,6 +203,18 @@ alias up='zup && bup'
 #     osascript -e 'tell application id "tracesOf.Uebersicht" to refresh'
 # }
 
-source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-chruby ruby-3.4.1 # run chruby to see actual version
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
