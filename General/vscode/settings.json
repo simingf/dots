@@ -18,7 +18,7 @@
   "workbench.statusBar.visible": true,
   // Activity Bar / Sidebar
   // "workbench.activityBar.location": "hidden",
-  "workbench.activityBar.orientation": "vertical",
+  // "workbench.activityBar.orientation": "vertical",
   "workbench.sideBar.location": "right",
   // Minimap
   "editor.minimap.enabled": false,
@@ -28,6 +28,7 @@
   // Scrollbars
   "editor.scrollbar.horizontal": "hidden",
   // "editor.scrollbar.vertical": "hidden",
+  "editor.scrollbar.verticalScrollbarSize": 14,
   // Explorer
   "explorer.confirmDelete": false,
   "workbench.tree.indent": 16, // default (8)
@@ -35,7 +36,7 @@
   "explorer.decorations.colors": false,
   // Terminal
   "terminal.integrated.fontSize": 14,
-  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
 
   // EDITOR SETTINGS
   // Font
@@ -46,12 +47,13 @@
   // Left Side
   // "editor.lineNumbers": "off",
   "editor.lineNumbers": "on",
+  // "editor.glyphMargin": false,
   "editor.glyphMargin": true,
   // "editor.showFoldingControls": "never",
   "editor.foldingHighlight": false,
   // Padding
-  // "editor.padding.top": 14,
-  // "editor.padding.bottom": 100,
+  "editor.padding.top": 14,
+  "editor.padding.bottom": 14,
   // Word Wrap
   "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 100,
@@ -70,19 +72,20 @@
   // Active Line Highlights
   "editor.renderLineHighlight": "none",
   // Inline Suggestions
-  "editor.inlineSuggest.enabled": false,
+  "editor.inlineSuggest.enabled": true,
   // Hints
   "editor.parameterHints.enabled": false,
   "editor.inlayHints.enabled": "off",
 
   // MISC SETTINGS
-  "python.defaultInterpreterPath": "/opt/homebrew/Caskroom/miniconda/base/envs/1430",
+  "python.defaultInterpreterPath": "/opt/homebrew/Caskroom/miniconda/base/envs/dl/bin/python",
   "git.confirmSync": false,
   "git.autofetch": true,
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "never",
 
   // EXTENSION SETTINGS
+  "github.copilot.editor.enableAutoCompletions": true,
   "liveServer.settings.donotShowInfoMsg": true,
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
