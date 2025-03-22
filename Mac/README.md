@@ -1,5 +1,9 @@
 # Mac Setup
 
+## Disable Hold Key For Tilde
+
+defaults write -g ApplePressAndHoldEnabled -bool false
+
 ## Remove Dock
 
 defaults write com.apple.dock autohide-delay -float 1000; killall Dock
@@ -56,7 +60,6 @@ discord \
 docker \
 epic-games \
 font-jetbrains-mono-nerd-font \
-github \
 hiddenbar \
 iina \
 karabiner-elements \
@@ -102,16 +105,12 @@ Alfred 5
 iA Writer
 Logic Pro
 Melodyne 5
-NotchNook
 Octagon
-Piezo
 WizardOfLegend
+Yoink
 
 Buggy:
 SoundSource
-
-No Longer Used:
-Yoink
 
 ## Alfred Workflows
 
