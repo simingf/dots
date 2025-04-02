@@ -56,7 +56,7 @@
   "editor.padding.bottom": 14,
   // Word Wrap
   "editor.wordWrap": "bounded",
-  "editor.wordWrapColumn": 100,
+  "editor.wordWrapColumn": 80,
   // Brackets
   "editor.matchBrackets": "never",
   "editor.bracketPairColorization.enabled": false,
@@ -117,4 +117,5 @@
     "*.copilotmd": "vscode.markdown.preview.editor",
     "*.pdf": "latex-workshop-pdf-hook"
   },
+  "editor.accessibilitySupport": "off",
 }
