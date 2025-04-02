@@ -94,6 +94,7 @@ Xcode
 
 ## Download Online
 
+Homerow (I Paid)
 Cold Turkey Blocker
 KeyboardCleanTool
 SideNotes (I Paid)
