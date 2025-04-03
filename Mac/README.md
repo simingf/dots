@@ -11,6 +11,8 @@ defaults delete com.apple.dock autohide-delay; killall Dock
 
 ## Symbolic Links Setup
 
+ln -s ~/dots/General/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json &&
+ln -s ~/dots/General/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 touch ~/.hushlogin &&
 ln -s ~/dots/General/zsh/.zshrc ~/.zshrc &&
 ln -s ~/dots/Mac/git/.gitconfig ~/.gitconfig &&
@@ -18,14 +20,12 @@ ln -s ~/dots/Mac/git/.gitignore_global ~/.gitignore_global &&
 ln -s ~/dots/Mac/clang/.clangd ~/.clangd &&
 ln -s ~/dots/Mac/clang/.clang-format ~/.clang-format &&
 mkdir ~/.config/ &&
-ln -s ~/dots/Mac/aerospace ~/.config/aerospace &&
 ln -s ~/dots/General/kitty ~/.config/kitty &&
 ln -s ~/dots/General/nvim ~/.config/nvim &&
 ln -s ~/dots/General/ripgrep ~/.config/ripgrep &&
+ln -s ~/dots/Mac/aerospace ~/.config/aerospace &&
 ln -s ~/dots/Mac/karabiner ~/.config/karabiner &&
 ln -s ~/dots/Mac/linearmouse ~/.config/linearmouse &&
-ln -s ~/dots/General/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json &&
-ln -s ~/dots/General/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 
 ## Brown Software
 
