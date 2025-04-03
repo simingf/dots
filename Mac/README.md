@@ -90,6 +90,7 @@ zoom
 
 ## Download Via App Store
 
+Yoink (I Paid)
 Klack (I Paid)
 Amphetamine
 Xcode
@@ -97,18 +98,16 @@ Xcode
 ## Download Online
 
 Homerow (I Paid)
+SideNotes (I Paid)
 Cold Turkey Blocker
 KeyboardCleanTool
-SideNotes (I Paid)
 Stacher
 
 ## xclient.info / 52mac.com
 
-iA Writer
 Logic Pro
 Melodyne 5
 WizardOfLegend
-Yoink
 
 ## Alfred Workflows
 
