@@ -76,6 +76,8 @@
   // Hints
   "editor.parameterHints.enabled": false,
   "editor.inlayHints.enabled": "off",
+  // Accessibility
+  "editor.accessibilitySupport": "off",
 
   // MISC SETTINGS
   "python.defaultInterpreterPath": "/opt/homebrew/Caskroom/miniconda/base/envs/dl/bin/python",
@@ -117,5 +119,14 @@
     "*.copilotmd": "vscode.markdown.preview.editor",
     "*.pdf": "latex-workshop-pdf-hook"
   },
-  "editor.accessibilitySupport": "off",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["s"],
+      "commands": ["leap.findForward"]
+    },
+    {
+      "before": ["S"],
+      "commands": ["leap.findBackward"]
+    }
+  ]
 }
