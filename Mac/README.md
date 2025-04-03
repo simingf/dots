@@ -40,6 +40,7 @@ fzf \
 gcc \
 git \
 git-lfs \
+go \
 jandedobbeleer/oh-my-posh/oh-my-posh \
 jesseduffield/lazygit/lazygit \
 neovim \
@@ -50,6 +51,7 @@ zsh
 ## Homebrew Casks (brew list --cask | pbcopy)
 
 nikitabobko/tap/aerospace \
+alfred \
 alt-tab \
 appcleaner \
 arc \
@@ -60,6 +62,7 @@ discord \
 docker \
 epic-games \
 font-jetbrains-mono-nerd-font \
+github \
 hiddenbar \
 iina \
 karabiner-elements \
@@ -87,9 +90,8 @@ zoom
 
 ## Download Via App Store
 
+Klack (I Paid)
 Amphetamine
-Perplexity
-Pure Paste
 Xcode
 
 ## Download Online
@@ -102,17 +104,13 @@ Stacher
 
 ## xclient.info / 52mac.com
 
-Alfred 5
 iA Writer
 Logic Pro
 Melodyne 5
-Octagon
 WizardOfLegend
 Yoink
-
-Buggy:
-SoundSource
 
 ## Alfred Workflows
 
 System Settings
+Amphetamine Dose
