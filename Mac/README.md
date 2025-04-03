@@ -94,6 +94,7 @@ zoom
 Yoink (I Paid)
 Klack (I Paid)
 Amphetamine
+Googly Eyes
 Xcode
 
 ## Download Online
