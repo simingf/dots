@@ -44,6 +44,7 @@ go \
 jandedobbeleer/oh-my-posh/oh-my-posh \
 jesseduffield/lazygit/lazygit \
 neovim \
+ripgrep \
 tlrc \
 zoxide \
 zsh
