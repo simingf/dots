@@ -108,7 +108,6 @@ Stacher
 
 Logic Pro
 Melodyne 5
-WizardOfLegend
 
 ## Alfred Workflows
 
