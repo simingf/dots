@@ -113,4 +113,4 @@ Melodyne 5
 ## Alfred Workflows
 
 System Settings
-Amphetamine Dose
+Send to Yoink
