@@ -65,10 +65,12 @@ epic-games \
 font-jetbrains-mono-nerd-font \
 github \
 hiddenbar \
+homerow \
 iina \
 karabiner-elements \
 kitty \
 linearmouse \
+lunar \
 mactex \
 mediamate \
 microsoft-auto-update \
@@ -89,18 +91,23 @@ wechat \
 whatsapp \
 zoom
 
+Paid Casks:
+Alfred
+Homerow
+Lunar (using Free version)
+MediaMate
+
 ## Download Via App Store
 
-Yoink (I Paid)
-Klack (I Paid)
+Yoink (Paid)
+Klack (Paid)
 Amphetamine
 Googly Eyes
 Xcode
 
 ## Download Online
 
-Homerow (I Paid)
-SideNotes (I Paid)
+SideNotes (Paid)
 Cold Turkey Blocker
 KeyboardCleanTool
 Stacher
