@@ -34,7 +34,6 @@ Tunnelblick (VPN)
 
 ## Homebrew Formulae (brew leaves | pbcopy)
 
-ack \
 ffmpeg \
 fzf \
 gcc \
