@@ -182,6 +182,16 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-semicolon = 'mode service'
 
+# For when I use iPad as secondary monitor
+[workspace-to-monitor-force-assignment]
+J = ['secondary', 'main']
+L = ['secondary', 'main']
+U = ['secondary', 'main']
+Y = ['secondary', 'main']
+O = ['secondary', 'main']
+K = ['secondary', 'main']
+H = ['secondary', 'main']
+
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
