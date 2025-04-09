@@ -58,6 +58,7 @@ arc \
 audacity \
 baidunetdisk \
 chatgpt \
+clop \
 discord \
 docker \
 epic-games \
@@ -92,6 +93,7 @@ zoom
 
 Paid Casks:
 Alfred
+Clop (using Free version)
 Homerow
 Lunar (using Free version)
 MediaMate
