@@ -1,15 +1,14 @@
 {
+  // UI SETTINGS
   "workbench.colorTheme": "Ayu Dark",
   "workbench.iconTheme": "vscode-icons",
-  // Command Center
-  "window.commandCenter": false,
   "window.title": " ",
+  "window.commandCenter": false,
   // Editor Actions
   "workbench.editor.editorActionsLocation": "hidden",
   // Tabs
   "workbench.editor.showTabs": "multiple",
   "workbench.editor.tabActionCloseVisibility": false,
-  // Layout Controls
   "workbench.layoutControl.enabled": false,
   // "workbench.layoutControl.type": "menu",
   // Breadcrumbs
@@ -37,6 +36,7 @@
   // Terminal
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "terminal.integrated.inheritEnv": false,
 
   // EDITOR SETTINGS
   // Font
@@ -79,8 +79,13 @@
   // Accessibility
   "editor.accessibilitySupport": "off",
 
-  // MISC SETTINGS
+  // LANGUAGE SETTINGS
+  "C_Cpp.default.compilerPath": "/opt/homebrew/bin/g++-14",
+  "C_Cpp.default.intelliSenseMode": "macos-gcc-arm64",
+  "C_Cpp.default.cppStandard": "c++20",
   "python.defaultInterpreterPath": "/opt/homebrew/Caskroom/miniconda/base/envs/dl/bin/python",
+
+  // GIT SETTINGS
   "git.confirmSync": false,
   "git.autofetch": true,
   "git.enableSmartCommit": true,
@@ -88,6 +93,7 @@
 
   // EXTENSION SETTINGS
   "github.copilot.editor.enableAutoCompletions": true,
+  "chat.commandCenter.enabled": false,
   "liveServer.settings.donotShowInfoMsg": true,
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -112,9 +118,6 @@
       "backgroundColor": "blue"
     }
   ],
-  "C_Cpp.default.compilerPath": "/opt/homebrew/bin/g++-14",
-  "C_Cpp.default.intelliSenseMode": "macos-gcc-arm64",
-  "C_Cpp.default.cppStandard": "c++20",
   "workbench.editorAssociations": {
     "*.copilotmd": "vscode.markdown.preview.editor",
     "*.pdf": "latex-workshop-pdf-hook"
@@ -128,5 +131,5 @@
       "before": ["S"],
       "commands": ["leap.findBackward"]
     }
-  ]
+  ],
 }
