@@ -58,7 +58,6 @@ arc \
 audacity \
 baidunetdisk \
 chatgpt \
-clop \
 discord \
 docker \
 epic-games \
@@ -70,7 +69,6 @@ iina \
 karabiner-elements \
 kitty \
 linearmouse \
-lunar \
 mactex \
 mediamate \
 microsoft-auto-update \
@@ -78,6 +76,7 @@ microsoft-excel \
 microsoft-powerpoint \
 microsoft-word \
 miniconda \
+monitorcontrol \
 moonlight \
 music-decoy \
 protonvpn \
@@ -93,9 +92,7 @@ zoom
 
 Paid Casks:
 Alfred
-Clop (using Free version)
 Homerow
-Lunar (using Free version)
 MediaMate
 
 ## Download Via App Store
