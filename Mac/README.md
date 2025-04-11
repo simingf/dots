@@ -71,6 +71,7 @@ karabiner-elements \
 kitty \
 linearmouse \
 mactex \
+maintenance \
 mediamate \
 microsoft-auto-update \
 microsoft-excel \
