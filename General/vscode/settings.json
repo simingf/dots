@@ -56,7 +56,7 @@
   "editor.padding.bottom": 14,
   // Word Wrap
   "editor.wordWrap": "bounded",
-  "editor.wordWrapColumn": 80,
+  "editor.wordWrapColumn": 100,
   // Brackets
   "editor.matchBrackets": "never",
   "editor.bracketPairColorization.enabled": false,
