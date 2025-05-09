@@ -30,6 +30,7 @@
   "editor.scrollbar.verticalScrollbarSize": 14,
   // Explorer
   "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
   "workbench.tree.indent": 16, // default (8)
   "workbench.tree.renderIndentGuides": "none",
   "explorer.decorations.colors": false,
@@ -90,6 +91,7 @@
   "git.autofetch": true,
   "git.enableSmartCommit": true,
   "git.openRepositoryInParentFolders": "never",
+  "git.ignoreRebaseWarning": true,
 
   // EXTENSION SETTINGS
   "github.copilot.editor.enableAutoCompletions": true,
@@ -131,5 +133,5 @@
       "before": ["S"],
       "commands": ["leap.findBackward"]
     }
-  ],
+  ]
 }
