@@ -40,6 +40,7 @@ gcc \
 git \
 git-lfs \
 go \
+imagemagick \
 jandedobbeleer/oh-my-posh/oh-my-posh \
 jesseduffield/lazygit/lazygit \
 neovim \
@@ -85,6 +86,8 @@ protonvpn \
 qbittorrent \
 qflipper \
 reminders-menubar \
+roblox \
+selfcontrol \
 slack \
 spotify \
 steam \
