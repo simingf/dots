@@ -44,8 +44,10 @@ imagemagick \
 jandedobbeleer/oh-my-posh/oh-my-posh \
 jesseduffield/lazygit/lazygit \
 neovim \
+pandoc \
 ripgrep \
 tlrc \
+yt-dlp \
 zoxide \
 zsh
 
