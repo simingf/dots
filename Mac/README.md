@@ -60,6 +60,7 @@ appcleaner \
 arc \
 audacity \
 baidunetdisk \
+bitwarden \
 chatgpt \
 discord \
 docker \
@@ -80,6 +81,7 @@ microsoft-auto-update \
 microsoft-excel \
 microsoft-powerpoint \
 microsoft-word \
+middleclick \
 miniconda \
 monitorcontrol \
 moonlight \
