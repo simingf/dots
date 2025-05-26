@@ -32,7 +32,7 @@ ln -s ~/dots/Mac/linearmouse ~/.config/linearmouse &&
 FastX3 (Remote Desktop)
 Tunnelblick (VPN)
 
-## Homebrew Formulae (brew leaves | pbcopy) 16
+## Homebrew Formulae (brew leaves | pbcopy) 17
 
 ffmpeg \
 fzf \
@@ -43,6 +43,7 @@ go \
 imagemagick \
 jandedobbeleer/oh-my-posh/oh-my-posh \
 jesseduffield/lazygit/lazygit \
+luarocks \
 neovim \
 pandoc \
 ripgrep \
@@ -108,6 +109,7 @@ MediaMate
 ## Download Via App Store
 
 Yoink (Paid)
+rcmd (Paid)
 Klack (Paid)
 Amphetamine
 Googly Eyes
