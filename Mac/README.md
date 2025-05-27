@@ -55,6 +55,7 @@ zsh
 ## Homebrew Casks (brew list --cask | pbcopy) 46
 
 nikitabobko/tap/aerospace \
+aldente \
 alfred \
 alt-tab \
 appcleaner \
@@ -102,6 +103,7 @@ whatsapp \
 zoom
 
 Paid Casks:
+AlDente
 Alfred
 Homerow
 MediaMate
