@@ -128,6 +128,7 @@ Stacher
 
 ## xclient.info / 52mac.com
 
+Cleanshot X
 Logic Pro
 Melodyne 5
 
