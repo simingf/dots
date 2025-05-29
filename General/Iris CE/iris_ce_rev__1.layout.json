@@ -63,7 +63,7 @@
       "KC_ENT",
       "KC_BSPC",
       "LT(1,KC_SPC)",
-      "KC_MS_BTN1"
+      "KC_NO"
     ],
     [
       "KC_ESC",
@@ -92,10 +92,10 @@
       "KC_RBRC",
       "KC_NO",
       "KC_NO",
+      "KC_MS_BTN1",
+      "KC_MS_BTN2",
       "KC_MS_WH_UP",
       "KC_MS_WH_DOWN",
-      "KC_NO",
-      "KC_NO",
       "KC_F11",
       "KC_F10",
       "KC_F9",
@@ -125,7 +125,7 @@
       "KC_NO",
       "KC_NO",
       "KC_NO",
-      "KC_MS_BTN2"
+      "KC_NO"
     ],
     [
       "KC_NO",
