@@ -1,0 +1,228 @@
+{
+  "enableStaticCycle" : false,
+  "windowTriggerKeys" : [
+    5
+  ],
+  "fnWindowSwitching" : false,
+  "zeroAsLastFocusedWindow" : false,
+  "appSort" : "name",
+  "appSortReverse" : false,
+  "hideOnlyFocusedAppOnMinus" : false,
+  "appSwitcherUseNumbersForWindows" : false,
+  "alwaysHideOthers" : false,
+  "triggerKeys" : [
+    2
+  ],
+  "whenAlreadyFocusedAction" : 2,
+  "focusOnKeyUp" : true,
+  "enableHideOnFocusHotkey" : false,
+  "windowSwitcherDimFocused" : false,
+  "showAppSwitcher" : true,
+  "hideStaticSettings" : true,
+  "windowSwitcherFeatures" : 57,
+  "activateAllWindows" : true,
+  "enableCycleHotkey" : false,
+  "showWindowSwitcher" : true,
+  "ignoredApps" : [
+    "com.apphousekitchen.aldente-pro",
+    "ch.protonvpn.mac"
+  ],
+  "appSwitcherFeatures" : 6,
+  "minimizeKey" : "minus",
+  "windowKeyPatterns" : [
+    {
+      "id" : "com.sublimetext.4",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.sublimetext.3",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.sublimetext.2",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.sublimetext.",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.visualstudio.code.oss",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.visualstudio.code",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.microsoft.VSCodiumInsiders",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.microsoft.VSCode",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.microsoft.VSCodeInsiders",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.microsoft.VSCod",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    },
+    {
+      "id" : "com.todesktop.",
+      "pattern" : ".* — [^\\w\\d]*(.)"
+    }
+  ],
+  "allowWindowSwitcher" : false,
+  "notificationsPermissionsGranted" : false,
+  "switcherScreenPlacement" : 1,
+  "windowSwitchOSDDelay" : 0,
+  "minimizeOnlyFocusedWindowOnMinus" : true,
+  "windowSwitcherAppearance" : "compact",
+  "windowKeyAssignments" : [
+
+  ],
+  "enableAssignHotkey" : false,
+  "specialKey" : "equal",
+  "keyTapThreshold" : 0.14,
+  "ignoredKeys" : [
+
+  ],
+  "appKeyAssignments" : [
+    {
+      "index" : 0,
+      "whenAlreadyFocusedAction" : 2,
+      "app" : {
+        "switchCount" : 0,
+        "originalName" : "Arc",
+        "useCount" : 5453,
+        "identifier" : "company.thebrowser.Browser:937",
+        "path" : "/Applications/Arc.app"
+      },
+      "key" : "a"
+    },
+    {
+      "index" : 0,
+      "whenAlreadyFocusedAction" : 2,
+      "app" : {
+        "path" : "/System/Applications/Notes.app",
+        "originalName" : "Notes",
+        "useCount" : 502,
+        "switchCount" : 0,
+        "identifier" : "com.apple.Notes:7158"
+      },
+      "key" : "n"
+    },
+    {
+      "index" : 0,
+      "whenAlreadyFocusedAction" : 2,
+      "app" : {
+        "path" : "/System/Applications/Reminders.app",
+        "switchCount" : 0,
+        "identifier" : "com.apple.reminders:7174",
+        "useCount" : 599,
+        "originalName" : "Reminders"
+      },
+      "key" : "r"
+    },
+    {
+      "index" : 0,
+      "whenAlreadyFocusedAction" : 2,
+      "app" : {
+        "useCount" : 705,
+        "identifier" : "com.apple.iCal:7203",
+        "originalName" : "Calendar",
+        "path" : "/System/Applications/Calendar.app",
+        "switchCount" : 0
+      },
+      "key" : "c"
+    },
+    {
+      "index" : 0,
+      "whenAlreadyFocusedAction" : 2,
+      "app" : {
+        "path" : "/System/Applications/Mail.app",
+        "useCount" : 1459,
+        "identifier" : "com.apple.mail:7289",
+        "switchCount" : 0,
+        "originalName" : "Mail"
+      },
+      "key" : "e"
+    },
+    {
+      "index" : 0,
+      "whenAlreadyFocusedAction" : 2,
+      "app" : {
+        "path" : "/Applications/Discord.app",
+        "switchCount" : 0,
+        "useCount" : 69,
+        "identifier" : "com.hnc.Discord:7452",
+        "originalName" : "Discord"
+      },
+      "key" : "d"
+    },
+    {
+      "index" : 0,
+      "whenAlreadyFocusedAction" : 2,
+      "app" : {
+        "path" : "/Applications/WeChat.app",
+        "originalName" : "WeChat",
+        "identifier" : "com.tencent.xinWeChat:7518",
+        "useCount" : 2361,
+        "switchCount" : 0
+      },
+      "key" : "w"
+    },
+    {
+      "index" : 0,
+      "whenAlreadyFocusedAction" : 2,
+      "app" : {
+        "useCount" : 152,
+        "path" : "/System/Library/CoreServices/Finder.app",
+        "originalName" : "Finder",
+        "identifier" : "com.apple.finder:374",
+        "switchCount" : 0
+      },
+      "key" : "f"
+    },
+    {
+      "index" : 0,
+      "whenAlreadyFocusedAction" : 2,
+      "app" : {
+        "useCount" : 2193,
+        "switchCount" : 1,
+        "originalName" : "Messages",
+        "identifier" : "com.apple.MobileSMS:6749",
+        "path" : "/System/Applications/Messages.app"
+      },
+      "key" : "m"
+    },
+    {
+      "index" : 0,
+      "whenAlreadyFocusedAction" : 2,
+      "app" : {
+        "identifier" : "net.kovidgoyal.kitty:14549",
+        "originalName" : "kitty",
+        "switchCount" : 0,
+        "path" : "/Applications/kitty.app",
+        "useCount" : 2161
+      },
+      "key" : "k"
+    },
+    {
+      "index" : 0,
+      "whenAlreadyFocusedAction" : 2,
+      "app" : {
+        "identifier" : "com.spotify.client:21786",
+        "originalName" : "Spotify",
+        "switchCount" : 0,
+        "path" : "/Applications/Spotify.app",
+        "useCount" : 33
+      },
+      "key" : "s"
+    }
+  ],
+  "windowOnlySwitchOSDDelay" : 0
+}
