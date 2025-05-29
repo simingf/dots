@@ -52,7 +52,7 @@ yt-dlp \
 zoxide \
 zsh
 
-## Homebrew Casks (brew list --cask | pbcopy) 46
+## Homebrew Casks (brew list --cask | pbcopy) 48
 
 nikitabobko/tap/aerospace \
 aldente \
@@ -64,6 +64,7 @@ audacity \
 baidunetdisk \
 bitwarden \
 chatgpt \
+clop \
 discord \
 docker \
 epic-games \
@@ -105,6 +106,7 @@ zoom
 Paid Casks:
 AlDente
 Alfred
+Clop
 Homerow
 MediaMate
 
