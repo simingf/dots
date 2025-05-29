@@ -128,7 +128,8 @@ Stacher
 
 ## xclient.info / 52mac.com
 
-Cleanshot X
+Cleanshot X (4.7.6, 5/6)
+DynamicLake Pro (1.6, 5/19)
 Logic Pro
 Melodyne 5
 
