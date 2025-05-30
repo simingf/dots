@@ -55,6 +55,7 @@ zsh
 ## Homebrew Casks (brew list --cask | pbcopy) 48
 
 nikitabobko/tap/aerospace \
+alcove \
 aldente \
 alfred \
 alt-tab \
@@ -102,6 +103,7 @@ whatsapp \
 zoom
 
 Paid Casks:
+Alcove
 AlDente
 Alfred
 Clop
