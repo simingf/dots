@@ -73,7 +73,6 @@ github \
 hiddenbar \
 homerow \
 iina \
-itsycal \
 karabiner-elements \
 kitty \
 linearmouse \
@@ -92,7 +91,6 @@ music-decoy \
 protonvpn \
 qbittorrent \
 qflipper \
-reminders-menubar \
 roblox \
 selfcontrol \
 slack \
