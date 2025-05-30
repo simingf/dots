@@ -108,7 +108,7 @@ AlDente
 Alfred
 Clop
 Homerow
-MediaMate
+MediaMate (Not Using)
 
 ## Download Via App Store
 
