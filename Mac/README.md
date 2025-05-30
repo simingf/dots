@@ -130,7 +130,6 @@ Stacher
 
 LookAway (1.12.2)
 Cleanshot X (4.7.6, 5/6)
-DynamicLake Pro (1.6, 5/19)
 Logic Pro
 Melodyne 5
 
