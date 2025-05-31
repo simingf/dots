@@ -32,7 +32,7 @@ ln -s ~/dots/Mac/linearmouse ~/.config/linearmouse &&
 FastX3 (Remote Desktop)
 Tunnelblick (VPN)
 
-## Homebrew Formulae (brew leaves | pbcopy) 17
+## Homebrew Formulae (brew leaves | pbcopy) 18
 
 ffmpeg \
 fzf \
@@ -45,6 +45,7 @@ jandedobbeleer/oh-my-posh/oh-my-posh \
 jesseduffield/lazygit/lazygit \
 luarocks \
 neovim \
+node \
 pandoc \
 ripgrep \
 tlrc \
@@ -52,7 +53,7 @@ yt-dlp \
 zoxide \
 zsh
 
-## Homebrew Casks (brew list --cask | pbcopy) 48
+## Homebrew Casks (brew list --cask | pbcopy) 47
 
 nikitabobko/tap/aerospace \
 alcove \
