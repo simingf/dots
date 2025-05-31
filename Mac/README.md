@@ -72,9 +72,9 @@ docker \
 epic-games \
 font-jetbrains-mono-nerd-font \
 github \
-hiddenbar \
 homerow \
 iina \
+jordanbaird-ice \
 karabiner-elements \
 kitty \
 linearmouse \
@@ -131,6 +131,7 @@ Stacher
 
 LookAway (1.12.2) (NO LIFETIME LICENSE)
 Cleanshot X (4.7.6, 5/6) (NO LIFETIME LICENSE)
+Bartender (5.3.6, 5/15)
 Logic Pro
 Melodyne 5
 
