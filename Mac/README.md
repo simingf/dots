@@ -129,8 +129,8 @@ Stacher
 
 ## xclient.info / 52mac.com / macked.app
 
-LookAway (1.12.2)
-Cleanshot X (4.7.6, 5/6)
+LookAway (1.12.2) (NO LIFETIME LICENSE)
+Cleanshot X (4.7.6, 5/6) (NO LIFETIME LICENSE)
 Logic Pro
 Melodyne 5
 
