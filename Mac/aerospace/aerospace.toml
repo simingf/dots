@@ -53,12 +53,12 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 7
-inner.vertical =   7
-outer.left =       7
-outer.bottom =     7
-outer.top =        7
-outer.right =      7
+inner.horizontal = 15
+inner.vertical =   15
+outer.left =       15
+outer.right =      15
+outer.bottom =     15
+outer.top =        15
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -81,8 +81,8 @@ outer.right =      7
 # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-alt-slash = 'layout tiles horizontal' #'layout tiles horizontal vertical'
-alt-comma = 'layout accordion horizontal' #'layout accordion horizontal vertical'
+# alt-slash = 'layout tiles horizontal' #'layout tiles horizontal vertical'
+# alt-comma = 'layout accordion horizontal' #'layout accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 alt-left = 'focus left'
