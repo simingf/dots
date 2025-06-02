@@ -123,6 +123,7 @@ Xcode
 ## Download Online
 
 SideNotes (Paid)
+Mousecape
 Cold Turkey Blocker
 KeyboardCleanTool
 Stacher
