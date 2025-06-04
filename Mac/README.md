@@ -138,8 +138,10 @@ Melodyne 5
 
 ## Alfred Workflows
 
+2FA-Read Code
 Send to Yoink
 Share with AirDrop
 System Settings
 Thumbnail Navigation
+TimeZones
 Unit Converter
