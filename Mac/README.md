@@ -139,9 +139,12 @@ Melodyne 5
 ## Alfred Workflows
 
 2FA-Read Code
+Amazon Suggest
+Google Suggest
 Send to Yoink
 Share with AirDrop
 System Settings
 Thumbnail Navigation
 TimeZones
 Unit Converter
+Youtube Suggest
