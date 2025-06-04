@@ -79,7 +79,6 @@ karabiner-elements \
 kitty \
 linearmouse \
 mactex \
-maintenance \
 mediamate \
 microsoft-auto-update \
 microsoft-excel \
@@ -90,6 +89,7 @@ miniconda \
 monitorcontrol \
 moonlight \
 music-decoy \
+onyx \
 protonvpn \
 qbittorrent \
 qflipper \
