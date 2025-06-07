@@ -140,6 +140,10 @@ Melodyne 5
 
 2FA-Read Code
 Amazon Suggest
+Amphetamine Dose
+Arc Tabs and Spaces
+Currency Converter
+Device Battery
 Google Suggest
 Send to Yoink
 Share with AirDrop
