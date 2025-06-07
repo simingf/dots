@@ -84,7 +84,7 @@
   "C_Cpp.default.compilerPath": "/opt/homebrew/bin/g++-14",
   "C_Cpp.default.intelliSenseMode": "macos-gcc-arm64",
   "C_Cpp.default.cppStandard": "c++20",
-  "python.defaultInterpreterPath": "/opt/homebrew/Caskroom/miniconda/base/envs/dl/bin/python",
+  "python.defaultInterpreterPath": "/opt/homebrew/Caskroom/miniconda/base",
 
   // GIT SETTINGS
   "git.confirmSync": false,
