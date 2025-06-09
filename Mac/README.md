@@ -53,7 +53,7 @@ yt-dlp \
 zoxide \
 zsh
 
-## Homebrew Casks (brew list --cask | pbcopy) 47
+## Homebrew Casks (brew list --cask | pbcopy) 48
 
 nikitabobko/tap/aerospace \
 alcove \
@@ -76,6 +76,7 @@ homerow \
 iina \
 jordanbaird-ice \
 karabiner-elements \
+keyboardcleantool \
 kitty \
 linearmouse \
 mactex \
@@ -125,7 +126,6 @@ Xcode
 SideNotes (Paid)
 Mousecape
 Cold Turkey Blocker
-KeyboardCleanTool
 Stacher
 
 ## xclient.info / 52mac.com / macked.app
