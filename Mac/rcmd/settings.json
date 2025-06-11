@@ -1,50 +1,19 @@
 {
-  "appSwitcherUseNumbersForWindows" : false,
-  "ignoredApps" : [
-    "com.apple.controlcenter",
-    "com.apphousekitchen.aldente-pro",
-    "com.henrikruscon.Alcove",
-    "ch.protonvpn.mac",
-    "com.apple.finder"
-  ],
-  "zeroAsLastFocusedWindow" : false,
-  "windowTriggerKeys" : [
-    5
-  ],
-  "minimizeOnlyFocusedWindowOnMinus" : true,
-  "triggerKeys" : [
-    2
-  ],
-  "switcherScreenPlacement" : 0,
-  "windowSwitcherAppearance" : "compact",
-  "windowSwitcherDimFocused" : false,
-  "windowSwitchOSDDelay" : 350,
-  "fnWindowSwitching" : false,
+  "specialKey" : "equal",
   "windowKeyAssignments" : [
 
   ],
-  "enableStaticCycle" : false,
-  "alwaysHideOthers" : false,
-  "windowSwitcherFeatures" : 57,
-  "enableCycleHotkey" : false,
-  "notificationsPermissionsGranted" : false,
-  "whenAlreadyFocusedAction" : 2,
-  "allowWindowSwitcher" : false,
-  "specialKey" : "equal",
-  "activateAllWindows" : true,
-  "showWindowSwitcher" : true,
-  "appSortReverse" : false,
-  "focusOnKeyUp" : true,
-  "hideOnlyFocusedAppOnMinus" : false,
-  "windowOnlySwitchOSDDelay" : 0,
-  "ignoredKeys" : [
-
+  "zeroAsLastFocusedWindow" : false,
+  "ignoredApps" : [
+    "ch.protonvpn.mac",
+    "com.bitwarden.desktop",
+    "com.apple.finder",
+    "com.henrikruscon.Alcove",
+    "com.apphousekitchen.aldente-pro",
+    "com.apple.controlcenter"
   ],
-  "appSort" : "name",
+  "whenAlreadyFocusedAction" : 2,
   "enableAssignHotkey" : false,
-  "appSwitcherFeatures" : 6,
-  "showAppSwitcher" : true,
-  "minimizeKey" : "minus",
   "windowKeyPatterns" : [
     {
       "id" : "com.sublimetext.4",
@@ -91,93 +60,101 @@
       "pattern" : ".* — [^\\w\\d]*(.)"
     }
   ],
+  "appSort" : "name",
+  "hideOnlyFocusedAppOnMinus" : false,
+  "ignoredKeys" : [
+
+  ],
+  "hideStaticSettings" : true,
+  "windowOnlySwitchOSDDelay" : 0,
+  "enableHideOnFocusHotkey" : false,
+  "keyTapThreshold" : 0.14,
+  "notificationsPermissionsGranted" : false,
+  "allowWindowSwitcher" : false,
+  "focusOnKeyUp" : true,
+  "enableStaticCycle" : false,
+  "windowSwitcherFeatures" : 57,
+  "windowSwitchOSDDelay" : 350,
+  "enableCycleHotkey" : false,
+  "alwaysHideOthers" : false,
+  "showWindowSwitcher" : true,
+  "switcherScreenPlacement" : 0,
+  "fnWindowSwitching" : false,
+  "windowSwitcherDimFocused" : false,
+  "minimizeOnlyFocusedWindowOnMinus" : true,
+  "triggerKeys" : [
+    2
+  ],
+  "activateAllWindows" : true,
+  "windowTriggerKeys" : [
+    5
+  ],
+  "appSwitcherFeatures" : 6,
+  "appSwitcherUseNumbersForWindows" : false,
+  "minimizeKey" : "minus",
+  "appSortReverse" : false,
+  "showAppSwitcher" : true,
+  "windowSwitcherAppearance" : "compact",
   "appKeyAssignments" : [
     {
-      "whenAlreadyFocusedAction" : 2,
       "index" : 0,
-      "key" : "a",
       "app" : {
         "path" : "/Applications/Arc.app",
         "switchCount" : 0,
-        "useCount" : 5453,
         "identifier" : "company.thebrowser.Browser:937",
-        "originalName" : "Arc"
-      }
+        "originalName" : "Arc",
+        "useCount" : 5453
+      },
+      "whenAlreadyFocusedAction" : 2,
+      "key" : "a"
     },
     {
-      "whenAlreadyFocusedAction" : 2,
       "index" : 0,
-      "key" : "r",
       "app" : {
-        "useCount" : 599,
-        "path" : "/System/Applications/Reminders.app",
-        "identifier" : "com.apple.reminders:7174",
-        "switchCount" : 0,
-        "originalName" : "Reminders"
-      }
-    },
-    {
-      "whenAlreadyFocusedAction" : 2,
-      "index" : 0,
-      "key" : "c",
-      "app" : {
-        "path" : "/System/Applications/Calendar.app",
-        "switchCount" : 0,
-        "identifier" : "com.apple.iCal:7203",
-        "useCount" : 705,
-        "originalName" : "Calendar"
-      }
-    },
-    {
-      "whenAlreadyFocusedAction" : 2,
-      "index" : 0,
-      "key" : "e",
-      "app" : {
-        "identifier" : "com.apple.mail:7289",
-        "useCount" : 1459,
-        "switchCount" : 0,
         "originalName" : "Mail",
-        "path" : "/System/Applications/Mail.app"
-      }
+        "switchCount" : 0,
+        "path" : "/System/Applications/Mail.app",
+        "identifier" : "com.apple.mail:7289",
+        "useCount" : 1459
+      },
+      "whenAlreadyFocusedAction" : 2,
+      "key" : "e"
     },
     {
-      "whenAlreadyFocusedAction" : 2,
       "index" : 0,
-      "key" : "w",
       "app" : {
+        "originalName" : "WeChat",
+        "path" : "/Applications/WeChat.app",
         "switchCount" : 0,
         "useCount" : 2361,
-        "identifier" : "com.tencent.xinWeChat:7518",
-        "originalName" : "WeChat",
-        "path" : "/Applications/WeChat.app"
-      }
+        "identifier" : "com.tencent.xinWeChat:7518"
+      },
+      "whenAlreadyFocusedAction" : 2,
+      "key" : "w"
     },
     {
-      "whenAlreadyFocusedAction" : 2,
       "index" : 0,
-      "key" : "m",
       "app" : {
-        "path" : "/System/Applications/Messages.app",
         "originalName" : "Messages",
+        "path" : "/System/Applications/Messages.app",
+        "useCount" : 2193,
         "identifier" : "com.apple.MobileSMS:6749",
-        "switchCount" : 1,
-        "useCount" : 2193
-      }
+        "switchCount" : 1
+      },
+      "whenAlreadyFocusedAction" : 2,
+      "key" : "m"
     },
     {
-      "whenAlreadyFocusedAction" : 2,
       "index" : 0,
-      "key" : "k",
       "app" : {
-        "path" : "/Applications/kitty.app",
-        "identifier" : "net.kovidgoyal.kitty:14549",
         "useCount" : 2161,
+        "path" : "/Applications/kitty.app",
         "switchCount" : 0,
-        "originalName" : "kitty"
-      }
+        "originalName" : "kitty",
+        "identifier" : "net.kovidgoyal.kitty:14549"
+      },
+      "whenAlreadyFocusedAction" : 2,
+      "key" : "k"
     }
-  ],
-  "hideStaticSettings" : true,
-  "enableHideOnFocusHotkey" : false,
-  "keyTapThreshold" : 0.14
+  ]
 }
