@@ -112,22 +112,28 @@ Alcove
 AlDente
 Alfred
 Clop
-Crossover
+Crossover (plist)
 Homerow
-MediaMate (Not Using)
+MediaMate (Not Using ATM)
 
 ## Download Via App Store
 
-Yoink (Paid)
-rcmd (Paid)
-Klack (Paid)
+### Paid:
+Yoink
+rcmd
+Klack
+
+### Free:
 Amphetamine
 Googly Eyes
 Xcode
 
 ## Download Online
 
-SideNotes (Paid)
+### Paid:
+SideNotes
+
+### Free:
 Mousecape
 Cold Turkey Blocker
 Stacher
@@ -136,7 +142,6 @@ Stacher
 
 LookAway (1.12.2) (NO LIFETIME LICENSE)
 Cleanshot X (4.7.6, 5/6) (NO LIFETIME LICENSE)
-Bartender (5.3.6, 5/15)
 Logic Pro
 Melodyne 5
 
