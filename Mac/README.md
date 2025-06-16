@@ -53,7 +53,7 @@ yt-dlp \
 zoxide \
 zsh
 
-## Homebrew Casks (brew list --cask | pbcopy) 48
+## Homebrew Casks (brew list --cask | pbcopy) 51
 
 nikitabobko/tap/aerospace \
 alcove \
@@ -67,6 +67,7 @@ baidunetdisk \
 bitwarden \
 chatgpt \
 clop \
+crossover \
 discord \
 docker \
 epic-games \
@@ -90,7 +91,9 @@ miniconda \
 monitorcontrol \
 moonlight \
 music-decoy \
+nvidia-geforce-now \
 onyx \
+prefs-editor \
 protonvpn \
 qbittorrent \
 qflipper \
@@ -109,6 +112,7 @@ Alcove
 AlDente
 Alfred
 Clop
+Crossover
 Homerow
 MediaMate (Not Using)
 
