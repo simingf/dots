@@ -5,7 +5,7 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "caps_lock to hyperkey or esc, mnei to arrow keys",
+                        "description": "caps -> esc/hyper, mnei -> arrows, fn -> caps",
                         "manipulators": [
                             {
                                 "from": {
@@ -63,6 +63,14 @@
                                     }
                                 },
                                 "to": [{ "key_code": "right_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "fn",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "caps_lock" }],
                                 "type": "basic"
                             }
                         ]
