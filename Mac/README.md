@@ -53,7 +53,7 @@ yt-dlp \
 zoxide \
 zsh
 
-## Homebrew Casks (brew list --cask | pbcopy) 51
+## Homebrew Casks (brew list --cask | pbcopy) 52
 
 nikitabobko/tap/aerospace \
 alcove \
@@ -70,6 +70,7 @@ clop \
 crossover \
 discord \
 docker \
+docker-desktop \
 epic-games \
 font-jetbrains-mono-nerd-font \
 github \
