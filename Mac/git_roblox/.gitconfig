@@ -1,0 +1,12 @@
+[user]
+	name = Siming Feng
+	email = sfeng@roblox.com
+[core]
+	excludesfile = ~/.gitignore_global
+[pull]
+	rebase = false
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

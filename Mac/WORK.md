@@ -1,3 +1,7 @@
+## Git
+
+ln -s ~/dots/Mac/git_roblox/.gitconfig ~/.gitconfig
+
 ## Jamf Self Service
 
 1Password
