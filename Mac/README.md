@@ -120,11 +120,13 @@ MediaMate (Not Using ATM)
 ## Download Via App Store
 
 ### Paid:
+
 Yoink
 rcmd
 Klack
 
 ### Free:
+
 Amphetamine
 Googly Eyes
 Xcode
@@ -132,9 +134,11 @@ Xcode
 ## Download Online
 
 ### Paid:
+
 SideNotes
 
 ### Free:
+
 Mousecape
 Cold Turkey Blocker
 Stacher
