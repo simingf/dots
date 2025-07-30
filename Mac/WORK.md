@@ -2,23 +2,16 @@
 
 ln -s ~/dots/Mac/git_roblox/.gitconfig ~/.gitconfig
 
-## Jamf Self Service
-
-1Password
-Chrome
-Roblox
-Slack
-VSCode
-Zoom
-
 ## Homebrew Formulae
 
-### brew leaves | wc -l (10)
+### brew leaves | wc -l (12)
 
 ffmpeg \
 fzf \
 git \
 git-lfs \
+hashicorp/tap/nomad \
+hashicorp/tap/vault \
 jandedobbeleer/oh-my-posh/oh-my-posh \
 jesseduffield/lazygit/lazygit \
 neovim \
@@ -28,14 +21,18 @@ zoxide
 
 ## Homebrew Casks
 
-### brew list --cask | wc -l (15)
+### brew list --cask | wc -l (23)
 
+1password \
 nikitabobko/tap/aerospace \
 aldente \
 alfred \
 alt-tab \
 appcleaner \
+docker-desktop \
+firefox \
 font-jetbrains-mono-nerd-font \
+google-chrome \
 iina \
 jordanbaird-ice \
 karabiner-elements \
@@ -44,7 +41,11 @@ kitty \
 linearmouse \
 middleclick \
 monitorcontrol \
-spotify
+roblox \
+slack \
+spotify \
+visual-studio-code \
+zoom
 
 ## Download Via App Store
 
