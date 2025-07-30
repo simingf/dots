@@ -9,7 +9,7 @@ Zoom
 
 ## Homebrew Formulae
 
-### brew leaves | wc -l (9)
+### brew leaves | wc -l (10)
 
 ffmpeg \
 fzf \
@@ -17,6 +17,7 @@ git \
 git-lfs \
 jandedobbeleer/oh-my-posh/oh-my-posh \
 jesseduffield/lazygit/lazygit \
+neovim \
 ripgrep \
 tlrc \
 zoxide
