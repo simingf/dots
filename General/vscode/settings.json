@@ -124,14 +124,31 @@
     "*.copilotmd": "vscode.markdown.preview.editor",
     "*.pdf": "latex-workshop-pdf-hook"
   },
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": ["s"],
-      "commands": ["leap.findForward"]
-    },
-    {
-      "before": ["S"],
-      "commands": ["leap.findBackward"]
-    }
-  ]
+  // Optional, automatically format your code on save
+  "editor.formatOnSave": true,
+  // Optional, automatically format any pasted code
+  "editor.formatOnPaste": true,
+  // Optional, automatically do eslint --fix on save in addition to linting
+  // Set it to false if you don't want this behavior (e.g. for AngularJS code)
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  // Recommended, disable the above for each individual file types to avoid running VS Code's default formatter
+  // and tell VS Code to use your new prettier formatter
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false
+  },
+  // Optional, show a status icon on the lower right corner, so you can open the problem panel from there
+  "eslint.alwaysShowStatus": true
 }
