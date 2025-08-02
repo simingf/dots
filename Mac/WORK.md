@@ -10,11 +10,13 @@ ffmpeg \
 fzf \
 git \
 git-lfs \
+go \
 hashicorp/tap/nomad \
 hashicorp/tap/vault \
 jandedobbeleer/oh-my-posh/oh-my-posh \
 jesseduffield/lazygit/lazygit \
 neovim \
+php \
 ripgrep \
 tlrc \
 zoxide
@@ -32,6 +34,7 @@ appcleaner \
 docker-desktop \
 firefox \
 font-jetbrains-mono-nerd-font \
+git-credential-manager \
 google-chrome \
 iina \
 jordanbaird-ice \
@@ -41,7 +44,6 @@ kitty \
 linearmouse \
 middleclick \
 monitorcontrol \
-roblox \
 slack \
 spotify \
 visual-studio-code \
