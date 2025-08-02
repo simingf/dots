@@ -134,5 +134,6 @@
     "editor.formatOnPaste": false
   },
   // Optional, show a status icon on the lower right corner, so you can open the problem panel from there
-  "eslint.alwaysShowStatus": true
+  "eslint.alwaysShowStatus": true,
+  "github.copilot.nextEditSuggestions.enabled": true
 }
