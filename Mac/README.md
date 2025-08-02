@@ -9,6 +9,10 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write com.apple.dock autohide-delay -float 1000; killall Dock
 defaults delete com.apple.dock autohide-delay; killall Dock
 
+## git-lfs setup
+
+git lfs install --system
+
 ## Symbolic Links Setup
 
 ln -s ~/dots/General/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json &&
