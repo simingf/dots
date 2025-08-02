@@ -1,4 +1,5 @@
 {
+  // TODO: organize this
   // UI SETTINGS
   "workbench.colorTheme": "Ayu Dark",
   "workbench.iconTheme": "vscode-icons",
@@ -103,23 +104,6 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "todohighlight.keywords": [
-    {
-      "text": "TODO",
-      "color": "yellow",
-      "backgroundColor": "red"
-    },
-    {
-      "text": "DONE",
-      "color": "cyan",
-      "backgroundColor": "green"
-    },
-    {
-      "text": "HINT",
-      "color": "yellow",
-      "backgroundColor": "blue"
-    }
-  ],
   "workbench.editorAssociations": {
     "*.copilotmd": "vscode.markdown.preview.editor",
     "*.pdf": "latex-workshop-pdf-hook"
