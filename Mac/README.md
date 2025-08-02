@@ -36,7 +36,9 @@ ln -s ~/dots/Mac/linearmouse ~/.config/linearmouse &&
 FastX3 (Remote Desktop)
 Tunnelblick (VPN)
 
-## Homebrew Formulae (brew leaves | pbcopy) 18
+## Homebrew Formulae
+
+### brew leaves | wc -l (18)
 
 ffmpeg \
 fzf \
@@ -57,10 +59,9 @@ yt-dlp \
 zoxide \
 zsh
 
-## Homebrew Casks (brew list --cask | pbcopy) 52
+## Homebrew Casks
 
-TODO: git credential manager
-TODO: clean up unneeded casks
+### brew list --cask | wc -l (45)
 
 nikitabobko/tap/aerospace \
 alcove \
@@ -74,12 +75,10 @@ baidunetdisk \
 bitwarden \
 chatgpt \
 clop \
-crossover \
 discord \
-docker \
-docker-desktop \
 epic-games \
 font-jetbrains-mono-nerd-font \
+git-credential-manager \
 github \
 homerow \
 iina \
@@ -88,8 +87,6 @@ karabiner-elements \
 keyboardcleantool \
 kitty \
 linearmouse \
-mactex \
-mediamate \
 microsoft-auto-update \
 microsoft-excel \
 microsoft-powerpoint \
@@ -99,15 +96,12 @@ miniconda \
 monitorcontrol \
 moonlight \
 music-decoy \
-nvidia-geforce-now \
 onyx \
-prefs-editor \
 protonvpn \
 qbittorrent \
 qflipper \
 roblox \
 selfcontrol \
-slack \
 spotify \
 steam \
 visual-studio-code \
