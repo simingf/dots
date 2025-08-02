@@ -38,11 +38,10 @@ Tunnelblick (VPN)
 
 ## Homebrew Formulae
 
-### brew leaves | wc -l (17)
+### brew leaves | wc -l (16)
 
 ffmpeg \
 fzf \
-gcc \
 git \
 git-lfs \
 go \
