@@ -112,7 +112,6 @@ Alcove
 AlDente
 Alfred
 Clop
-Crossover (plist)
 Homerow
 MediaMate (Not Using ATM)
 
@@ -151,19 +150,10 @@ Melodyne 5
 
 ## Alfred Workflows
 
-TODO: remove conv, switch to calculate everything
-
-2FA-Read Code
 Amazon Suggest
-Amphetamine Dose
 Arc Tabs and Spaces
-Currency Converter
-Device Battery
+Calculate Anything
 Google Suggest
-Send to Yoink
-Share with AirDrop
 System Settings
 Thumbnail Navigation
-TimeZones
-Unit Converter
 Youtube Suggest
