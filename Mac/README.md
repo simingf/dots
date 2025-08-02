@@ -38,7 +38,7 @@ Tunnelblick (VPN)
 
 ## Homebrew Formulae
 
-### brew leaves | wc -l (18)
+### brew leaves | wc -l (17)
 
 ffmpeg \
 fzf \
@@ -51,13 +51,12 @@ jandedobbeleer/oh-my-posh/oh-my-posh \
 jesseduffield/lazygit/lazygit \
 luarocks \
 neovim \
-node \
 pandoc \
+php \
 ripgrep \
 tlrc \
 yt-dlp \
-zoxide \
-zsh
+zoxide
 
 ## Homebrew Casks
 
