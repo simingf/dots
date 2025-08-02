@@ -158,6 +158,7 @@ alias vscp='scp -r * sfeng@10.116.60.21:~/continuous-query'
 # directory aliases
 alias ls='ls -G'
 alias ..='builtin cd .. && clear && ls'
+alias ...='builtin cd ../.. && clear && ls'
 alias app='builtin cd /Applications/ && clear && ls'
 alias doc='builtin cd ~/Documents/ && clear && ls'
 alias dow='builtin cd ~/Downloads/ && clear && ls'
