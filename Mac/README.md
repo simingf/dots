@@ -59,6 +59,9 @@ zsh
 
 ## Homebrew Casks (brew list --cask | pbcopy) 52
 
+TODO: git credential manager
+TODO: clean up unneeded casks
+
 nikitabobko/tap/aerospace \
 alcove \
 aldente \
@@ -155,6 +158,8 @@ Logic Pro
 Melodyne 5
 
 ## Alfred Workflows
+
+TODO: remove conv, switch to calculate everything
 
 2FA-Read Code
 Amazon Suggest
