@@ -36,19 +36,12 @@ vim.opt.termguicolors = true
 -- configure how new splits should be opened
 vim.opt.splitright = true
 vim.opt.splitbelow = true
--- diagnostic icons
-local sign = function(opts)
-    vim.fn.sign_define(opts.name, {
-        texthl = opts.name,
-        text = opts.text,
-        numhl = ''
-    })
-end
-sign({ name = 'DiagnosticSignError', text = '' })
-sign({ name = 'DiagnosticSignWarn', text = '' })
-sign({ name = 'DiagnosticSignHint', text = '' })
-sign({ name = 'DiagnosticSignInfo', text = '' })
 -- diagnostic config
+local signs = { Error = "", Warn = "", Info = "", Hint = "" }
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 vim.diagnostic.config({
     -- Show diagnostic message using virtual text.
     virtual_text = false,
@@ -609,25 +602,20 @@ require("lazy").setup({
 
     -- mason: easy managing of installed LSPs / Formatters
     {
-        'williamboman/mason.nvim',
-        config = true
+        "mason-org/mason.nvim",
+        opts = {}
     },
     {
-        'williamboman/mason-lspconfig.nvim',
-        config = function()
-            require('mason-lspconfig').setup({
-                ensure_installed = {
-                    "lua_ls", "ruff", "gopls"
-                }
-            })
-            require("mason-lspconfig").setup_handlers {
-                function(server_name) -- default handler (optional)
-                    require("lspconfig")[server_name].setup {
-                        capabilities = require('cmp_nvim_lsp').default_capabilities()
-                    }
-                end,
+        "mason-org/mason-lspconfig.nvim",
+        opts = {
+            ensure_installed = {
+                "lua_ls", "ruff", "gopls"
             }
-        end
+        },
+        dependencies = {
+            { "mason-org/mason.nvim", opts = {} },
+            "neovim/nvim-lspconfig",
+        },
     },
 
     -- lspconfig: setup commands to interact with LSPs - code completion, diagnostics, etc.
@@ -687,10 +675,10 @@ require("lazy").setup({
                     json = { "prettierd" },
                     markdown = { "prettierd" },
                 },
-                -- format_on_save = {
-                --     lsp_fallback = true,
-                --     timeout_ms = 500,
-                -- },
+                format_on_save = {
+                    lsp_fallback = true,
+                    timeout_ms = 500,
+                },
             })
         end
     },
