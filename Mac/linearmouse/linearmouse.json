@@ -3,7 +3,7 @@
   "schemes" : [
     {
       "buttons" : {
-        "universalBackForward" : false
+        "universalBackForward" : true
       },
       "if" : {
         "device" : {
@@ -14,8 +14,10 @@
         }
       },
       "pointer" : {
-        "acceleration" : 0.4,
-        "disableAcceleration" : true
+        "acceleration" : 0.6,
+        "disableAcceleration" : true,
+        "redirectsToScroll" : false,
+        "speed" : 0.0689655172413792768
       },
       "scrolling" : {
         "acceleration" : 1,
@@ -39,7 +41,7 @@
         "reverse" : {
           "vertical" : true
         },
-        "speed" : 10
+        "speed" : 0
       }
     },
     {
