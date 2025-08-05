@@ -135,5 +135,9 @@
   },
   // Optional, show a status icon on the lower right corner, so you can open the problem panel from there
   "eslint.alwaysShowStatus": true,
-  "github.copilot.nextEditSuggestions.enabled": true
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true
+  }
 }
