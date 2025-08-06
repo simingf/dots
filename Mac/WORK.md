@@ -4,7 +4,7 @@ ln -s ~/dots/Mac/git_roblox/.gitconfig ~/.gitconfig
 
 ## Homebrew Formulae
 
-### brew leaves | wc -l (12)
+### brew leaves | wc -l (14)
 
 ffmpeg \
 fzf \
@@ -23,7 +23,7 @@ zoxide
 
 ## Homebrew Casks
 
-### brew list --cask | wc -l (23)
+### brew list --cask | wc -l (24)
 
 1password \
 nikitabobko/tap/aerospace \
@@ -44,6 +44,7 @@ kitty \
 linearmouse \
 middleclick \
 monitorcontrol \
+postman \
 slack \
 spotify \
 visual-studio-code \
