@@ -185,6 +185,8 @@ alias zup="zinit self-update && zinit update --all"
 alias nrc="nvim ~/.config/nvim/init.lua"
 # kitty
 alias krc="nvim ~/.config/kitty/kitty.conf"
+# aerospace
+alias arc="nvim ~/.config/aerospace/aerospace.toml"
 # yabai
 # alias yrc="nvim ~/.config/yabai/yabairc"
 # alias yrs="yabai --restart-service" # && urs
