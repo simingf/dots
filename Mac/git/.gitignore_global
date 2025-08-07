@@ -1,5 +1,9 @@
 # Ignore these files universally
 
+# IDE configs
+.idea
+.vscode
+
 # Folder view configuration files
 *.DS_Store
 .DS_Store
