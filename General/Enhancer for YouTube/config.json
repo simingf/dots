@@ -1,13 +1,13 @@
 {
-  "version": "3.0.8",
+  "version": "3.0.10",
   "settings": {
     "applyvideofilters": false,
     "backdropcolor": "#000000",
     "backdropopacity": 91,
     "blackbars": false,
     "blockautoplay": true,
-    "blockhfrformats": true,
-    "blockwebmformats": true,
+    "blockhfrformats": false,
+    "blockwebmformats": false,
     "boostvolume": false,
     "cinemamode": false,
     "cinemamodewideplayer": false,
@@ -17,12 +17,7 @@
       "centered": true,
       "position": "fixed"
     },
-    "controls": [
-      "loop",
-      "speed-minus",
-      "speed-plus",
-      "options"
-    ],
+    "controls": ["loop", "speed-minus", "speed-plus", "options"],
     "controlsvisible": true,
     "controlspeed": false,
     "controlspeedmousebutton": false,
@@ -119,11 +114,11 @@
       "saturation": 100,
       "sepia": 0
     },
-    "volume": 50,
+    "volume": 75,
     "volumemultiplier": 5,
     "volumevariation": 5,
     "whatsnew": false,
     "wideplayer": true,
-    "wideplayerviewport": false
+    "wideplayerviewport": true
   }
 }
