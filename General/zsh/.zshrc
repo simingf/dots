@@ -103,6 +103,12 @@ alias css='rm -f ~/Screenshots/* && echo "screenshots cleared"'
 alias npmg='npm list -g --depth 0'
 alias icat="kitten icat"
 
+# work aliases
+alias swarplogin='swarp login sitetest3 && swarp secrets refresh sitetest3'
+alias swarpkey='swarp secrets read sitetest3 APICONTROLPLANE_API_KEY'
+alias swarprun='swarp run --watch'
+alias dncb='dotnet clean src && dotnet build src'
+
 # ripgrep
 export RIPGREP_CONFIG_PATH=~/.config/ripgrep/rg.conf
 alias rg="rg --hyperlink-format=kitty"
@@ -151,10 +157,6 @@ c() {
 # competitive programming
 alias cpr='make && ./sol'
 
-# vectraflow alias
-alias vssh='kitten ssh sfeng@10.116.60.21'
-alias vscp='scp -r * sfeng@10.116.60.21:~/continuous-query'
-
 # directory aliases
 alias ls='ls -G'
 alias ..='builtin cd .. && clear && ls'
@@ -165,7 +167,6 @@ alias dow='builtin cd ~/Downloads/ && clear && ls'
 alias des='builtin cd ~/Desktop/ && clear && ls'
 alias ss='builtin cd ~/Screenshots/ && clear && ls'
 alias hub='builtin cd ~/Github/ && clear && ls'
-alias lab='builtin cd ~/Gitlab/ && clear && ls'
 alias euler='builtin cd ~/euler/ && clear && ls'
 alias dp='builtin cd ~/atcoder-dp/ && clear && ls'
 alias dots='builtin cd ~/dots && ls'
@@ -176,8 +177,7 @@ alias cf="builtin cd ~/.config && ls"
 alias bup='brew update && brew upgrade && brew cleanup && brew autoremove'
 # zsh
 alias zrc="nvim ~/.zshrc"
-alias zrs="clear && source ~/.zshrc"
-alias rs='zrs'
+alias rs="clear && source ~/.zshrc"
 alias ch="rm -f ~/.zsh_history && clear"
 # zinit
 alias zup="zinit self-update && zinit update --all"
