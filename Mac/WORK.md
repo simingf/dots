@@ -23,7 +23,7 @@ zoxide
 
 ## Homebrew Casks
 
-### brew list --cask | wc -l (24)
+### brew list --cask | wc -l (30)
 
 1password \
 nikitabobko/tap/aerospace \
@@ -31,6 +31,9 @@ aldente \
 alfred \
 alt-tab \
 appcleaner \
+crossover \
+cursor \
+discord \
 docker-desktop \
 firefox \
 font-jetbrains-mono-nerd-font \
@@ -45,10 +48,19 @@ linearmouse \
 middleclick \
 monitorcontrol \
 postman \
+rider \
 slack \
 spotify \
+steam \
 visual-studio-code \
+wechat \
 zoom
+
+## Download Online
+
+Comet
+Roblox
+Roblox Studio
 
 ## Download Via App Store
 
