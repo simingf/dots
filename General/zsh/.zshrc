@@ -108,6 +108,7 @@ alias swarplogin='swarp login sitetest3 && swarp secrets refresh sitetest3'
 alias swarpkey='swarp secrets read sitetest3 APICONTROLPLANE_API_KEY'
 alias swarprun='swarp run --watch'
 alias dncb='dotnet clean src && dotnet build src'
+export ROBLOX_SERVICE_CONTRACTS=~/Github/service-contracts
 
 # ripgrep
 export RIPGREP_CONFIG_PATH=~/.config/ripgrep/rg.conf
