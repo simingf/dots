@@ -4,7 +4,7 @@ ln -s ~/dots/Mac/git_roblox/.gitconfig ~/.gitconfig
 
 ## Homebrew Formulae
 
-### brew leaves | wc -l (14)
+### brew leaves | wc -l (15)
 
 ffmpeg \
 fzf \
@@ -19,18 +19,21 @@ neovim \
 php \
 ripgrep \
 tlrc \
+tree \
 zoxide
 
 ## Homebrew Casks
 
-### brew list --cask | wc -l (30)
+### brew list --cask | wc -l (31)
 
 1password \
 nikitabobko/tap/aerospace \
+alcove \
 aldente \
 alfred \
 alt-tab \
 appcleaner \
+bitwarden \
 crossover \
 cursor \
 discord \
@@ -52,15 +55,14 @@ rider \
 slack \
 spotify \
 steam \
-visual-studio-code \
 wechat \
 zoom
 
 ## Download Online
 
-Comet
 Roblox
 Roblox Studio
+Logitech G Hub
 
 ## Download Via App Store
 
