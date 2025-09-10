@@ -59,7 +59,7 @@ zoxide
 
 ## Homebrew Casks
 
-### brew list --cask | wc -l (45)
+### brew list --cask | wc -l (46)
 
 nikitabobko/tap/aerospace \
 alcove \
@@ -85,6 +85,7 @@ karabiner-elements \
 keyboardcleantool \
 kitty \
 linearmouse \
+logitech-g-hub \
 microsoft-auto-update \
 microsoft-excel \
 microsoft-powerpoint \
