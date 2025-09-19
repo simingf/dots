@@ -14,13 +14,16 @@
         }
       },
       "pointer" : {
-        "acceleration" : 0.6,
+        "acceleration" : 1,
         "disableAcceleration" : true,
         "redirectsToScroll" : false,
         "speed" : 0.0689655172413792768
       },
       "scrolling" : {
-        "acceleration" : 1,
+        "acceleration" : {
+          "horizontal" : 1,
+          "vertical" : 4
+        },
         "distance" : "auto",
         "modifiers" : {
           "vertical" : {
@@ -41,7 +44,10 @@
         "reverse" : {
           "vertical" : true
         },
-        "speed" : 0
+        "speed" : {
+          "horizontal" : 0,
+          "vertical" : 32
+        }
       }
     },
     {
