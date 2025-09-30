@@ -1,412 +1,501 @@
 {
-  "global": { "show_in_menu_bar": false },
-  "profiles": [
-    {
-      "complex_modifications": {
-        "rules": [
-          {
-            "description": "caps -> esc/hyper, mnei -> arrows, fn -> caps",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "caps_lock",
-                  "modifiers": { "optional": ["any"] }
-                },
-                "to": [
-                  {
-                    "key_code": "left_shift",
-                    "modifiers": ["left_command", "left_control"]
-                  }
-                ],
-                "to_if_alone": [{ "key_code": "escape" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "m",
-                  "modifiers": {
-                    "mandatory": ["left_shift", "left_control", "left_command"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [{ "key_code": "left_arrow" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "n",
-                  "modifiers": {
-                    "mandatory": ["left_shift", "left_control", "left_command"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [{ "key_code": "down_arrow" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "e",
-                  "modifiers": {
-                    "mandatory": ["left_shift", "left_control", "left_command"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [{ "key_code": "up_arrow" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "i",
-                  "modifiers": {
-                    "mandatory": ["left_shift", "left_control", "left_command"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [{ "key_code": "right_arrow" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "fn",
-                  "modifiers": { "optional": ["any"] }
-                },
-                "to": [{ "key_code": "caps_lock" }],
-                "type": "basic"
-              }
-            ]
-          }
-        ]
-      },
-      "devices": [
+    "global": { "show_in_menu_bar": false },
+    "profiles": [
         {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 49948,
-            "vendor_id": 1133
-          },
-          "simple_modifications": [
-            {
-              "from": { "key_code": "left_command" },
-              "to": [{ "key_code": "left_option" }]
-            },
-            {
-              "from": { "key_code": "left_option" },
-              "to": [{ "key_code": "left_command" }]
-            }
-          ]
-        },
-        {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 5462,
-            "vendor_id": 51984
-          },
-          "simple_modifications": [
-            {
-              "from": { "key_code": "escape" },
-              "to": [{ "key_code": "grave_accent_and_tilde" }]
-            },
-            {
-              "from": { "key_code": "left_command" },
-              "to": [{ "key_code": "left_control" }]
-            },
-            {
-              "from": { "key_code": "left_control" },
-              "to": [{ "key_code": "left_command" }]
-            }
-          ]
-        },
-        {
-          "identifiers": { "is_keyboard": true },
-          "simple_modifications": [
-            {
-              "from": { "key_code": "b" },
-              "to": [{ "key_code": "z" }]
-            },
-            {
-              "from": { "key_code": "c" },
-              "to": [{ "key_code": "d" }]
-            },
-            {
-              "from": { "key_code": "d" },
-              "to": [{ "key_code": "s" }]
-            },
-            {
-              "from": { "key_code": "e" },
-              "to": [{ "key_code": "f" }]
-            },
-            {
-              "from": { "key_code": "f" },
-              "to": [{ "key_code": "t" }]
-            },
-            {
-              "from": { "key_code": "h" },
-              "to": [{ "key_code": "m" }]
-            },
-            {
-              "from": { "key_code": "i" },
-              "to": [{ "key_code": "u" }]
-            },
-            {
-              "from": { "key_code": "j" },
-              "to": [{ "key_code": "n" }]
-            },
-            {
-              "from": { "key_code": "k" },
-              "to": [{ "key_code": "e" }]
-            },
-            {
-              "from": { "key_code": "l" },
-              "to": [{ "key_code": "i" }]
-            },
-            {
-              "from": { "key_code": "m" },
-              "to": [{ "key_code": "h" }]
-            },
-            {
-              "from": { "key_code": "n" },
-              "to": [{ "key_code": "k" }]
-            },
-            {
-              "from": { "key_code": "o" },
-              "to": [{ "key_code": "y" }]
-            },
-            {
-              "from": { "key_code": "p" },
-              "to": [{ "key_code": "semicolon" }]
-            },
-            {
-              "from": { "key_code": "r" },
-              "to": [{ "key_code": "p" }]
-            },
-            {
-              "from": { "key_code": "s" },
-              "to": [{ "key_code": "r" }]
-            },
-            {
-              "from": { "key_code": "semicolon" },
-              "to": [{ "key_code": "o" }]
-            },
-            {
-              "from": { "key_code": "t" },
-              "to": [{ "key_code": "b" }]
-            },
-            {
-              "from": { "key_code": "u" },
-              "to": [{ "key_code": "l" }]
-            },
-            {
-              "from": { "key_code": "x" },
-              "to": [{ "key_code": "c" }]
-            },
-            {
-              "from": { "key_code": "y" },
-              "to": [{ "key_code": "j" }]
-            },
-            {
-              "from": { "key_code": "z" },
-              "to": [{ "key_code": "x" }]
-            }
-          ]
-        },
-        {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 668,
-            "vendor_id": 76
-          },
-          "simple_modifications": [
-            {
-              "from": { "key_code": "b" },
-              "to": [{ "key_code": "z" }]
-            },
-            {
-              "from": { "key_code": "c" },
-              "to": [{ "key_code": "d" }]
-            },
-            {
-              "from": { "key_code": "d" },
-              "to": [{ "key_code": "s" }]
-            },
-            {
-              "from": { "key_code": "e" },
-              "to": [{ "key_code": "f" }]
-            },
-            {
-              "from": { "key_code": "f" },
-              "to": [{ "key_code": "t" }]
-            },
-            {
-              "from": { "key_code": "h" },
-              "to": [{ "key_code": "m" }]
-            },
-            {
-              "from": { "key_code": "i" },
-              "to": [{ "key_code": "u" }]
-            },
-            {
-              "from": { "key_code": "j" },
-              "to": [{ "key_code": "n" }]
-            },
-            {
-              "from": { "key_code": "k" },
-              "to": [{ "key_code": "e" }]
-            },
-            {
-              "from": { "key_code": "l" },
-              "to": [{ "key_code": "i" }]
-            },
-            {
-              "from": { "key_code": "m" },
-              "to": [{ "key_code": "h" }]
-            },
-            {
-              "from": { "key_code": "n" },
-              "to": [{ "key_code": "k" }]
-            },
-            {
-              "from": { "key_code": "o" },
-              "to": [{ "key_code": "y" }]
-            },
-            {
-              "from": { "key_code": "p" },
-              "to": [{ "key_code": "semicolon" }]
-            },
-            {
-              "from": { "key_code": "r" },
-              "to": [{ "key_code": "p" }]
-            },
-            {
-              "from": { "key_code": "s" },
-              "to": [{ "key_code": "r" }]
-            },
-            {
-              "from": { "key_code": "semicolon" },
-              "to": [{ "key_code": "o" }]
-            },
-            {
-              "from": { "key_code": "t" },
-              "to": [{ "key_code": "b" }]
-            },
-            {
-              "from": { "key_code": "u" },
-              "to": [{ "key_code": "l" }]
-            },
-            {
-              "from": { "key_code": "x" },
-              "to": [{ "key_code": "c" }]
-            },
-            {
-              "from": { "key_code": "y" },
-              "to": [{ "key_code": "j" }]
-            },
-            {
-              "from": { "key_code": "z" },
-              "to": [{ "key_code": "x" }]
-            }
-          ]
-        },
-        {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 668,
-            "vendor_id": 1452
-          },
-          "simple_modifications": [
-            {
-              "from": { "key_code": "b" },
-              "to": [{ "key_code": "z" }]
-            },
-            {
-              "from": { "key_code": "c" },
-              "to": [{ "key_code": "d" }]
-            },
-            {
-              "from": { "key_code": "d" },
-              "to": [{ "key_code": "s" }]
-            },
-            {
-              "from": { "key_code": "e" },
-              "to": [{ "key_code": "f" }]
-            },
-            {
-              "from": { "key_code": "f" },
-              "to": [{ "key_code": "t" }]
-            },
-            {
-              "from": { "key_code": "h" },
-              "to": [{ "key_code": "m" }]
-            },
-            {
-              "from": { "key_code": "i" },
-              "to": [{ "key_code": "u" }]
-            },
-            {
-              "from": { "key_code": "j" },
-              "to": [{ "key_code": "n" }]
-            },
-            {
-              "from": { "key_code": "k" },
-              "to": [{ "key_code": "e" }]
-            },
-            {
-              "from": { "key_code": "l" },
-              "to": [{ "key_code": "i" }]
-            },
-            {
-              "from": { "key_code": "m" },
-              "to": [{ "key_code": "h" }]
-            },
-            {
-              "from": { "key_code": "n" },
-              "to": [{ "key_code": "k" }]
-            },
-            {
-              "from": { "key_code": "o" },
-              "to": [{ "key_code": "y" }]
-            },
-            {
-              "from": { "key_code": "p" },
-              "to": [{ "key_code": "semicolon" }]
-            },
-            {
-              "from": { "key_code": "r" },
-              "to": [{ "key_code": "p" }]
-            },
-            {
-              "from": { "key_code": "s" },
-              "to": [{ "key_code": "r" }]
-            },
-            {
-              "from": { "key_code": "semicolon" },
-              "to": [{ "key_code": "o" }]
-            },
-            {
-              "from": { "key_code": "t" },
-              "to": [{ "key_code": "b" }]
-            },
-            {
-              "from": { "key_code": "u" },
-              "to": [{ "key_code": "l" }]
-            },
-            {
-              "from": { "key_code": "x" },
-              "to": [{ "key_code": "c" }]
-            },
-            {
-              "from": { "key_code": "y" },
-              "to": [{ "key_code": "j" }]
-            },
-            {
-              "from": { "key_code": "z" },
-              "to": [{ "key_code": "x" }]
-            }
-          ]
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "caps -> esc/hyper, mnei -> arrows, fn -> caps",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": ["left_command", "left_control"]
+                                    }
+                                ],
+                                "to_if_alone": [{ "key_code": "escape" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": {
+                                        "mandatory": ["left_shift", "left_control", "left_command"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "left_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": {
+                                        "mandatory": ["left_shift", "left_control", "left_command"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "down_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "e",
+                                    "modifiers": {
+                                        "mandatory": ["left_shift", "left_control", "left_command"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "up_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "i",
+                                    "modifiers": {
+                                        "mandatory": ["left_shift", "left_control", "left_command"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "right_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "fn",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "caps_lock" }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "devices": [
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 49948,
+                        "vendor_id": 1133
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "left_command" },
+                            "to": [{ "key_code": "left_option" }]
+                        },
+                        {
+                            "from": { "key_code": "left_option" },
+                            "to": [{ "key_code": "left_command" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 5462,
+                        "vendor_id": 51984
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "escape" },
+                            "to": [{ "key_code": "grave_accent_and_tilde" }]
+                        },
+                        {
+                            "from": { "key_code": "left_command" },
+                            "to": [{ "key_code": "left_control" }]
+                        },
+                        {
+                            "from": { "key_code": "left_control" },
+                            "to": [{ "key_code": "left_command" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": { "is_keyboard": true },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "b" },
+                            "to": [{ "key_code": "z" }]
+                        },
+                        {
+                            "from": { "key_code": "c" },
+                            "to": [{ "key_code": "d" }]
+                        },
+                        {
+                            "from": { "key_code": "d" },
+                            "to": [{ "key_code": "s" }]
+                        },
+                        {
+                            "from": { "key_code": "e" },
+                            "to": [{ "key_code": "f" }]
+                        },
+                        {
+                            "from": { "key_code": "f" },
+                            "to": [{ "key_code": "t" }]
+                        },
+                        {
+                            "from": { "key_code": "h" },
+                            "to": [{ "key_code": "m" }]
+                        },
+                        {
+                            "from": { "key_code": "i" },
+                            "to": [{ "key_code": "u" }]
+                        },
+                        {
+                            "from": { "key_code": "j" },
+                            "to": [{ "key_code": "n" }]
+                        },
+                        {
+                            "from": { "key_code": "k" },
+                            "to": [{ "key_code": "e" }]
+                        },
+                        {
+                            "from": { "key_code": "l" },
+                            "to": [{ "key_code": "i" }]
+                        },
+                        {
+                            "from": { "key_code": "m" },
+                            "to": [{ "key_code": "h" }]
+                        },
+                        {
+                            "from": { "key_code": "n" },
+                            "to": [{ "key_code": "k" }]
+                        },
+                        {
+                            "from": { "key_code": "o" },
+                            "to": [{ "key_code": "y" }]
+                        },
+                        {
+                            "from": { "key_code": "p" },
+                            "to": [{ "key_code": "semicolon" }]
+                        },
+                        {
+                            "from": { "key_code": "r" },
+                            "to": [{ "key_code": "p" }]
+                        },
+                        {
+                            "from": { "key_code": "s" },
+                            "to": [{ "key_code": "r" }]
+                        },
+                        {
+                            "from": { "key_code": "semicolon" },
+                            "to": [{ "key_code": "o" }]
+                        },
+                        {
+                            "from": { "key_code": "t" },
+                            "to": [{ "key_code": "b" }]
+                        },
+                        {
+                            "from": { "key_code": "u" },
+                            "to": [{ "key_code": "l" }]
+                        },
+                        {
+                            "from": { "key_code": "x" },
+                            "to": [{ "key_code": "c" }]
+                        },
+                        {
+                            "from": { "key_code": "y" },
+                            "to": [{ "key_code": "j" }]
+                        },
+                        {
+                            "from": { "key_code": "z" },
+                            "to": [{ "key_code": "x" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 668,
+                        "vendor_id": 76
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "b" },
+                            "to": [{ "key_code": "z" }]
+                        },
+                        {
+                            "from": { "key_code": "c" },
+                            "to": [{ "key_code": "d" }]
+                        },
+                        {
+                            "from": { "key_code": "d" },
+                            "to": [{ "key_code": "s" }]
+                        },
+                        {
+                            "from": { "key_code": "e" },
+                            "to": [{ "key_code": "f" }]
+                        },
+                        {
+                            "from": { "key_code": "f" },
+                            "to": [{ "key_code": "t" }]
+                        },
+                        {
+                            "from": { "key_code": "h" },
+                            "to": [{ "key_code": "m" }]
+                        },
+                        {
+                            "from": { "key_code": "i" },
+                            "to": [{ "key_code": "u" }]
+                        },
+                        {
+                            "from": { "key_code": "j" },
+                            "to": [{ "key_code": "n" }]
+                        },
+                        {
+                            "from": { "key_code": "k" },
+                            "to": [{ "key_code": "e" }]
+                        },
+                        {
+                            "from": { "key_code": "l" },
+                            "to": [{ "key_code": "i" }]
+                        },
+                        {
+                            "from": { "key_code": "m" },
+                            "to": [{ "key_code": "h" }]
+                        },
+                        {
+                            "from": { "key_code": "n" },
+                            "to": [{ "key_code": "k" }]
+                        },
+                        {
+                            "from": { "key_code": "o" },
+                            "to": [{ "key_code": "y" }]
+                        },
+                        {
+                            "from": { "key_code": "p" },
+                            "to": [{ "key_code": "semicolon" }]
+                        },
+                        {
+                            "from": { "key_code": "r" },
+                            "to": [{ "key_code": "p" }]
+                        },
+                        {
+                            "from": { "key_code": "s" },
+                            "to": [{ "key_code": "r" }]
+                        },
+                        {
+                            "from": { "key_code": "semicolon" },
+                            "to": [{ "key_code": "o" }]
+                        },
+                        {
+                            "from": { "key_code": "t" },
+                            "to": [{ "key_code": "b" }]
+                        },
+                        {
+                            "from": { "key_code": "u" },
+                            "to": [{ "key_code": "l" }]
+                        },
+                        {
+                            "from": { "key_code": "x" },
+                            "to": [{ "key_code": "c" }]
+                        },
+                        {
+                            "from": { "key_code": "y" },
+                            "to": [{ "key_code": "j" }]
+                        },
+                        {
+                            "from": { "key_code": "z" },
+                            "to": [{ "key_code": "x" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 668,
+                        "vendor_id": 1452
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "b" },
+                            "to": [{ "key_code": "z" }]
+                        },
+                        {
+                            "from": { "key_code": "c" },
+                            "to": [{ "key_code": "d" }]
+                        },
+                        {
+                            "from": { "key_code": "d" },
+                            "to": [{ "key_code": "s" }]
+                        },
+                        {
+                            "from": { "key_code": "e" },
+                            "to": [{ "key_code": "f" }]
+                        },
+                        {
+                            "from": { "key_code": "f" },
+                            "to": [{ "key_code": "t" }]
+                        },
+                        {
+                            "from": { "key_code": "h" },
+                            "to": [{ "key_code": "m" }]
+                        },
+                        {
+                            "from": { "key_code": "i" },
+                            "to": [{ "key_code": "u" }]
+                        },
+                        {
+                            "from": { "key_code": "j" },
+                            "to": [{ "key_code": "n" }]
+                        },
+                        {
+                            "from": { "key_code": "k" },
+                            "to": [{ "key_code": "e" }]
+                        },
+                        {
+                            "from": { "key_code": "l" },
+                            "to": [{ "key_code": "i" }]
+                        },
+                        {
+                            "from": { "key_code": "m" },
+                            "to": [{ "key_code": "h" }]
+                        },
+                        {
+                            "from": { "key_code": "n" },
+                            "to": [{ "key_code": "k" }]
+                        },
+                        {
+                            "from": { "key_code": "o" },
+                            "to": [{ "key_code": "y" }]
+                        },
+                        {
+                            "from": { "key_code": "p" },
+                            "to": [{ "key_code": "semicolon" }]
+                        },
+                        {
+                            "from": { "key_code": "r" },
+                            "to": [{ "key_code": "p" }]
+                        },
+                        {
+                            "from": { "key_code": "s" },
+                            "to": [{ "key_code": "r" }]
+                        },
+                        {
+                            "from": { "key_code": "semicolon" },
+                            "to": [{ "key_code": "o" }]
+                        },
+                        {
+                            "from": { "key_code": "t" },
+                            "to": [{ "key_code": "b" }]
+                        },
+                        {
+                            "from": { "key_code": "u" },
+                            "to": [{ "key_code": "l" }]
+                        },
+                        {
+                            "from": { "key_code": "x" },
+                            "to": [{ "key_code": "c" }]
+                        },
+                        {
+                            "from": { "key_code": "y" },
+                            "to": [{ "key_code": "j" }]
+                        },
+                        {
+                            "from": { "key_code": "z" },
+                            "to": [{ "key_code": "x" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 10203,
+                        "vendor_id": 5824
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "d" },
+                            "to": [{ "key_code": "s" }]
+                        },
+                        {
+                            "from": { "key_code": "e" },
+                            "to": [{ "key_code": "f" }]
+                        },
+                        {
+                            "from": { "key_code": "f" },
+                            "to": [{ "key_code": "t" }]
+                        },
+                        {
+                            "from": { "key_code": "h" },
+                            "to": [{ "key_code": "m" }]
+                        },
+                        {
+                            "from": { "key_code": "i" },
+                            "to": [{ "key_code": "u" }]
+                        },
+                        {
+                            "from": { "key_code": "j" },
+                            "to": [{ "key_code": "n" }]
+                        },
+                        {
+                            "from": { "key_code": "k" },
+                            "to": [{ "key_code": "e" }]
+                        },
+                        {
+                            "from": { "key_code": "l" },
+                            "to": [{ "key_code": "i" }]
+                        },
+                        {
+                            "from": { "key_code": "m" },
+                            "to": [{ "key_code": "h" }]
+                        },
+                        {
+                            "from": { "key_code": "n" },
+                            "to": [{ "key_code": "k" }]
+                        },
+                        {
+                            "from": { "key_code": "o" },
+                            "to": [{ "key_code": "y" }]
+                        },
+                        {
+                            "from": { "key_code": "p" },
+                            "to": [{ "key_code": "semicolon" }]
+                        },
+                        {
+                            "from": { "key_code": "r" },
+                            "to": [{ "key_code": "p" }]
+                        },
+                        {
+                            "from": { "key_code": "s" },
+                            "to": [{ "key_code": "r" }]
+                        },
+                        {
+                            "from": { "key_code": "semicolon" },
+                            "to": [{ "key_code": "o" }]
+                        },
+                        {
+                            "from": { "key_code": "t" },
+                            "to": [{ "key_code": "b" }]
+                        },
+                        {
+                            "from": { "key_code": "u" },
+                            "to": [{ "key_code": "l" }]
+                        },
+                        {
+                            "from": { "key_code": "y" },
+                            "to": [{ "key_code": "j" }]
+                        },
+                        {
+                            "from": { "key_code": "v" },
+                            "to": [{ "key_code": "d" }]
+                        },
+                        {
+                            "from": { "key_code": "b" },
+                            "to": [{ "key_code": "v" }]
+                        }
+                    ]
+                }
+            ],
+            "name": "Default profile",
+            "selected": true,
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         }
-      ],
-      "name": "Default profile",
-      "selected": true,
-      "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
-    }
-  ]
+    ]
 }
