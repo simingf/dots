@@ -51,6 +51,8 @@
         }
       },
       "pointer" : {
+        "acceleration" : 1,
+        "disableAcceleration" : true,
         "speed" : 0.5
       }
     },
