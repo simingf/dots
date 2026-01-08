@@ -94,7 +94,7 @@ zle -N accept-line
 
 # general aliases
 alias e='exit'
-alias ll='ls -l'
+alias ll='ls -la'
 alias f='open .'
 alias rm='rm -r'
 alias mkdir='mkdir -p'
