@@ -10,9 +10,10 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+[push]
+	autoSetupRemote = true
 [credential]
+	helper = 
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true
-[push]
-	autoSetupRemote = true
