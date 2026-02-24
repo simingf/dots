@@ -102,6 +102,7 @@ alias pwd='pwd && pwd | pbcopy'
 alias css='rm -f ~/Screenshots/* && echo "screenshots cleared"'
 alias npmg='npm list -g --depth 0'
 alias icat="kitten icat"
+alias top="btop"
 
 # work aliases
 alias swarplogin='swarp login sitetest3 && swarp secrets refresh sitetest3'
