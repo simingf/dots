@@ -179,7 +179,7 @@ alias zrc="nvim ~/.zshrc"
 alias rs="clear && source ~/.zshrc"
 alias ch="rm -f ~/.zsh_history && clear"
 # zinit
-alias zup="zinit self-update && zinit update --all"
+alias zup="zinit self-update && zinit update --all && zinit cclear"
 # nvim
 alias nrc="nvim ~/.config/nvim/init.lua"
 # kitty
