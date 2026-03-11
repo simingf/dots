@@ -116,7 +116,9 @@ alias rg="rg --hyperlink-format=kitty"
 alias rr='. ranger'
 
 # lazygit
-alias lg='lazygit'
+# alias lg='lazygit'
+alias lg='echo -ne "\033]0;$(basename $(git rev-parse --show-toplevel 2>/dev/null) || echo "Lazygit")\007" && lazygit'
+
 
 # nvim
 alias vim='nvim'
