@@ -31,6 +31,7 @@ ln -s ~/dots/Mac/aerospace ~/.config/aerospace &&
 ln -s ~/dots/Mac/karabiner ~/.config/karabiner &&
 ln -s ~/dots/Mac/linearmouse ~/.config/linearmouse &&
 ln -s ~/dots/General/lazygit ~/Library/Application\ Support/lazygit
+ln -s ~/dots/General/sapling ~/Library/Preferences/sapling
 
 ## Brown Software
 
