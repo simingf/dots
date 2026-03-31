@@ -107,6 +107,7 @@ alias top="btop"
 # work aliases
 alias swarplogin='swarp login sitetest3 && swarp secrets refresh sitetest3'
 alias swarprun='swarp run --watch'
+alias sup='sl pull && sl restack && sl pr submit'
 
 # ripgrep
 export RIPGREP_CONFIG_PATH=~/.config/ripgrep/rg.conf
