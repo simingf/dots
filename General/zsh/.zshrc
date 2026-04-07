@@ -1,4 +1,4 @@
-# MacTeX
+# Reminders MacTeX
 path+=/Library/TeX/texbin
 
 # Homebrew
@@ -107,7 +107,7 @@ alias top="btop"
 # work aliases
 alias swarplogin='swarp login sitetest3 && swarp secrets refresh sitetest3'
 alias swarprun='swarp run --watch'
-alias sup='sl pull && sl restack && sl pr submit'
+alias sup='echo "1) pulling..." && sl pull && echo "2) rebasing on newest master..." && sl rebase -d master && echo "3) restacking..." && sl restack && echo "4) submitting prs..." && sl pr submit --stack'
 
 # ripgrep
 export RIPGREP_CONFIG_PATH=~/.config/ripgrep/rg.conf

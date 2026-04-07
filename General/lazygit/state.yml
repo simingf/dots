@@ -1,11 +1,10 @@
 lastupdatecheck: 0
 recentrepos:
     - /Users/sfeng/dots
-    - /Users/sfeng/git/content-licensing
-    - /Users/sfeng/git/creator-content-search
-    - /Users/sfeng/git/storage-resources
 startuppopupversion: 5
 didshowhunkstaginghint: false
-lastversion: 0.60.0
+lastversion: 0.61.0
 customcommandshistory: []
 hidecommandlog: false
+githubPullRequests:
+    /Users/sfeng/dots: []
