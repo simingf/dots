@@ -5,7 +5,7 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "caps -> esc/hyper, mnei -> arrows, fn -> caps",
+                        "description": "caps -> esc/hyper, mnei -> arrows",
                         "manipulators": [
                             {
                                 "from": {
@@ -64,7 +64,13 @@
                                 },
                                 "to": [{ "key_code": "right_arrow" }],
                                 "type": "basic"
-                            },
+                            }
+                        ]
+                    },
+                    {
+                        "description": "fn -> caps (disabled)",
+                        "enabled": false,
+                        "manipulators": [
                             {
                                 "from": {
                                     "key_code": "fn",
