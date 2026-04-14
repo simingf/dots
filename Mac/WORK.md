@@ -1,3 +1,7 @@
+## Cursor Config
+
+ln -s ~/dots/General/.cursor/ ~/.cursor
+
 ## Git
 
 ln -s ~/dots/Mac/git_roblox/.gitconfig ~/.gitconfig

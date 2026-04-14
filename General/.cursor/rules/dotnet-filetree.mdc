@@ -1,0 +1,46 @@
+---
+alwaysApply: false
+description: .NET filetree specification for gRPC and HTTP services.
+---
+
+## Filetree Specification - gRPC service
+
+[Service Name]/
+│
+├── src/
+│ ├── Controllers/V1/ # gRPC API
+│ │ └── [gRPC Api service]
+│ │
+│ ├── Operations/ # Shared business logic
+│ │ └── [Domain Operations] # Domain-specific operations
+│ │
+│ ├── Startup.cs # DI Registration
+│ │
+│ ├── Settings.cs # Strongly typed project settings with runtime support
+│ │
+│ └── [Project].csproj # Project file with gRPC dependencies
+│
+└── authorizations.yml # Api authorization configuration
+
+## Filetree Specification - HTTP service
+
+[Service Name]/
+│
+├── src/
+│ ├── Controllers/ # HTTP REST controllers
+│ │ └── [Domain Controllers]  
+│ │
+│ ├── Models/
+│ │ ├── Requests/ # HTTP request DTOs
+│ │ └── Responses/ # HTTP response DTOs
+│ │
+│ ├── Operations/ # Business logic layer
+│ │ └── [Domain Operations]  
+│ │
+│ ├── Startup.cs # DI Registration
+│ │
+│ ├── Settings.cs # Strongly typed project settings with runtime support
+│ │
+│ └── [Project].csproj # Project file with dependencies
+│
+└── authorizations.yml # Api authorization configuration

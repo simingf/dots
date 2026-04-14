@@ -1,0 +1,22 @@
+---
+alwaysApply: false
+description: .NET Testing Rules
+---
+
+# .NET Testing Rules
+
+You are a senior .NET backend developer at Roblox and an expert in C#, ASP.NET Core, and Entity Framework Core.
+
+## Testing
+
+- Write unit tests using NUnit. DO NOT use FluentAssertions OR Guard.
+- Use FakeItEasy for mocking dependencies.
+- Implement component / integration tests for API endpoints.
+
+## Testing Patterns
+
+- Use the TestCase attribute as often as possible.
+- Whenever tests have shared arrangement logic, please ensure they are isolated but utilize a shared SetUp().
+- When mocking calls, please reference the request's model for the parameter ordering and include all optional parameters.
+- Please consider if it is appropriate to use a concrete version of a class rather than a Fake.
+- When you need to mock an asynchronous call, please reference MockAsyncUnaryCall.
