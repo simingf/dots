@@ -8,8 +8,6 @@ alwaysApply: false
 
 When the user asks to review a PR, follow these steps exactly.
 
-**Assumption:** The Cursor workspace is the repo, already checked out to the PR branch. No network calls are made.
-
 ## Step 0 — Detect SCM
 
 Print `**Step 0 — Detecting SCM...**` before starting.
@@ -20,9 +18,8 @@ Check which SCM is available in the workspace root:
 ls -d .git .sl 2>/dev/null
 ```
 
-- If `.git` exists, use the **Git** subsections in Steps 1–3.
-- If only `.sl` exists (no `.git`), use the **Sapling** subsections in Steps 1–3.
-- If both exist, prefer **Git**. Only fall back to Sapling if the Git commands fail.
+- If `.git` exists, use **Git** subsections. If only `.sl` exists, use **Sapling**.
+- If both exist, prefer **Git**.
 
 ## Step 1 — Identify the PR context
 
@@ -66,8 +63,6 @@ Store the results as `<REPO>`, `<BRANCH>`, and `<BASE>` for use in subsequent st
 
 Print `**Step 2 — Collecting changed files...**` before starting.
 
-Substitute the `<BASE>` placeholder in the commands below with the literal value from Step 1 (e.g. `origin/main` or `remote/main`). Do the same for `<FILE>` in Step 3.
-
 ### Git
 
 ```bash
@@ -82,32 +77,33 @@ sl diff -r "<BASE>.." --stat && echo "---" && sl diff -r "<BASE>.." --stat | sed
 
 Parse the file list from the output below the `---` separator. Use the `--stat` portion above it to orient yourself on the shape of the change.
 
+**Exclude test files** — drop any file that is clearly a test (by name or directory) before proceeding to Step 3.
+
 ## Step 3 — Review files
 
-Print the status line with the file count before starting (e.g. `**Step 3 — Reviewing 5 files...**`).
+Print the status line with the file count (excluding tests) before starting (e.g. `**Step 3 — Reviewing N files...**`).
 
 Process files **one at a time**. For each file, do all of the following before moving to the next file:
 
 1. **Diff** — get the per-file diff:
    - Git: `git diff <BASE>...HEAD -- <FILE>`
    - Sapling: `sl diff -r "<BASE>.." <FILE>`
-2. **Read** — if the diff raises a question you cannot answer from context alone (e.g. whether a caller already null-checks, what interface a class implements, how a modified function is used), read the full file.
+2. **Read** — if the diff raises a question you cannot answer from context alone, read the full file.
 3. **Review** — analyze the diff and write your findings for this file immediately, using the severity levels and guidelines in Step 5. Do **not** defer the review to a later step.
 
-Do NOT batch all diffs first — review each file's diff before fetching the next. As you review each file, you naturally accumulate context about the full PR — use this to spot cross-file issues as they emerge.
+Do NOT batch execute all diffs — review each file's diff first before fetching the next.
 
 ## Step 4 — Cross-file review
 
 Print `**Step 4 — Cross-file review...**` before starting.
 
-After reviewing all files individually, do one final pass to check for cross-file issues. You already have full context from Step 3 — look specifically for:
+Do one final pass looking for cross-file issues:
 
-- **Broken contracts** — a function signature, interface, or type changed in one file without corresponding updates in callers/implementors in other changed files.
-- **Missing propagation** — a new field, renamed constant, or changed enum value not reflected in mappers, serializers, or consumers in other changed files.
-- **Inconsistent behavior** — divergent error handling, logging, or validation for the same operation across multiple changed files.
-- **Incomplete refactors** — partial renames, moved code with stale references left behind in other changed files.
+- Broken contracts or missing propagation across changed files.
+- Inconsistent error handling, logging, or validation across changed files.
+- Incomplete refactors with stale references left behind.
 
-If needed, re-fetch specific per-file diffs from Step 3 to confirm a suspicion. Do **not** report speculative cross-file issues without verifying against the actual diff.
+Do **not** report speculative cross-file issues — verify against the actual diff first.
 
 ## Step 5 — Final review output
 
@@ -117,7 +113,7 @@ Compile all per-file findings (Step 3) and cross-file findings (Step 4) into a s
 
 ### Output format
 
-**File references must use the full relative path from the repo root** (exactly as shown in the diff output), wrapped in backticks — e.g. `` `src/Services/MyService.cs:42` ``, not just `` `MyService.cs:42` ``. This makes them clickable in the IDE and renders as inline code on GitHub.
+File references must use the **full relative path** from the repo root in backticks (e.g. `` `src/Services/MyService.cs:42` ``).
 
 Return a markdown table followed by per-finding detail blocks:
 
@@ -136,9 +132,8 @@ Return a markdown table followed by per-finding detail blocks:
 
 ### 1. 🐛 Bug — `path/to/file.cs:42`
 
-<concise description of defect>
+<concise description of bug>
 
-Corrected:
 ```cs
 // small snippet showing the fixed code
 ```
@@ -149,11 +144,15 @@ Corrected:
 
 ### 3. ❓ Question — `path/to/file.cs:10`
 
-<the question, directly>
+curious why <the question, directly>?
 
 ### 4. 💡 Suggestion — `path/to/other.cs:55`
 
-<what to change and why, briefly>
+would it be better if <what to change and why, briefly>?
+
+```cs
+// small snippet showing the suggested change
+```
 
 ### 5. 🚨 Issue — cross-file: `src/Services/file.cs` + `src/Services/other.cs`
 
@@ -162,26 +161,27 @@ Corrected:
 
 ### Severity levels
 
-Follows [Conventional Comments](https://conventionalcomments.org/). Items above the divider **block merge**; items below do not.
+Follows [Conventional Comments](https://conventionalcomments.org/).
 
 #### Blocking
 
 - 🐛 **Bug** — correctness defect, crash, data loss, security vulnerability, race condition, undefined behavior. Does **not** include typos, minor textual errors, or broken markdown formatting — those are 🔍 Nitpick. Each Bug finding **must** include a small corrected code snippet.
 - 🚨 **Issue** — broken contract, missing validation, unhandled error path, data integrity problem, regression risk, performance cliff. Includes likely bugs carried over from pre-existing code if the diff re-introduces or preserves them in new/refactored code.
 
+**Language-specific flags:**
+
+- C#: missing `null` checks on nullable refs, improper `async`/`await` usage, unnecessary allocations in hot paths, missing `using` statements, violated naming conventions.
+- Proto/config: missing or mismatched HTTP transcoding annotations, breaking field number changes, incorrect option usage.
+
 #### Non-blocking
 
-- 💡 **Suggestion** — meaningful improvement: simpler approach, better abstraction, reduced duplication, clearer naming. Only use when you have a **concrete recommendation**. If the right approach is ambiguous, use ❓ Question instead.
-- ❓ **Question** — request for clarification on intent, design choice, or edge-case behavior. **Prefer this over 💡 Suggestion when you can't confidently say which direction is better** — ask the author rather than prescribing.
-- 🔍 **Nitpick** — typos, duplicate words, broken markdown formatting (malformed tables, non-clickable links), lint/convention violations (missing EOF newline, wrong import order per project config).
+- 💡 **Suggestion** — meaningful improvement: simpler approach, better abstraction, reduced duplication, clearer naming. Only use when you have a **concrete recommendation**; if ambiguous, use ❓ Question instead. Start with "would it be better if…". Each Suggestion finding **must** include a small code snippet showing the suggested change.
+- ❓ **Question** — request for clarification on intent, design choice, or edge-case behavior. **Prefer this over 💡 Suggestion when you can't confidently say which direction is better.** Start questions with "curious why…".
+- 🔍 **Nitpick** — typos, duplicate words, broken markdown formatting, lint/convention violations. Start with "nit: …".
 
 ### Review guidelines
 
-- **GitHub-ready markdown.** Wrap all function names, class names, variable names, and inline code references in backticks (e.g. `GetUserAsync()`, `userId`). For file paths, use the full relative path as described in the output format section. The output should be directly pasteable into a GitHub PR comment.
-- **Be concise and direct.** State the problem or question plainly in 1–3 sentences. Do not over-explain or pad with hedging language.
-- Focus on the **diff only** — do not comment on unchanged code.
-- For C# code: flag missing `null` checks on nullable refs, improper `async`/`await` usage, unnecessary allocations in hot paths, missing `using` statements, and violated naming conventions.
-- For proto/config changes: flag missing or mismatched HTTP transcoding annotations, breaking field number changes, and incorrect option usage.
-- Do not state the obvious (e.g. "this line adds X") — only flag issues or improvements.
-- **No praise.** Do not include 🌟 Praise findings.
-- Group findings by file when there are many.
+- **GitHub-ready markdown.** Wrap code references in backticks. Output should be directly pasteable into a GitHub PR comment.
+- **Be concise and direct.** 1–3 sentences per finding. No hedging.
+- Focus on the **diff only** — do not comment on unchanged code or state the obvious.
+- **No praise.** Group findings by file when there are many.
