@@ -125,6 +125,35 @@ alias lg='echo -ne "\033]0;$(basename $(git rev-parse --show-toplevel 2>/dev/nul
 alias vim='nvim'
 alias v='nvim'
 
+# goto PR (https://github.rbx.com/Roblox/creator-cu/pull/267/files)
+gotopr() {
+  local url="$1"
+  local repo=$(echo "$url" | sed 's|.*/\([^/]*\)/pull/.*|\1|')
+  local pr=$(echo "$url" | sed 's|.*/pull/\([0-9]*\).*|\1|')
+  local org=$(echo "$url" | sed 's|.*/\([^/]*\)/[^/]*/pull/.*|\1|')
+  local host=$(echo "$url" | sed 's|https://\([^/]*\)/.*|\1|')
+
+  echo "➡️ PR #$pr in $host/$org/$repo"
+
+  echo "➡️ cd ~/git..."
+  cd ~/git
+
+  if [ -d "$repo" ]; then
+    echo "➡️ Repo found, fetching latest..."
+    cd "$repo" && git fetch --prune
+  else
+    echo "➡️ Repo not found, cloning $repo..."
+    git clone "https://${host}/${org}/${repo}.git"
+    cd "$repo"
+  fi
+
+  echo "➡️ Checking out PR #$pr..."
+  gh pr checkout "$pr"
+
+  echo "➡️ Opening in Cursor..."
+  cursor .
+}
+
 # vscode
 k() {
     if [[ "$@" == "" ]]; then
