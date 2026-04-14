@@ -107,7 +107,6 @@ alias top="btop"
 # work aliases
 alias swarplogin='swarp login sitetest3 && swarp secrets refresh sitetest3'
 alias swarprun='swarp run --watch'
-alias sup='echo "1) pulling..." && sl pull && echo "2) rebasing on newest master..." && sl rebase -d master && echo "3) restacking..." && sl restack && echo "4) submitting prs..." && sl pr submit --stack'
 
 # ripgrep
 export RIPGREP_CONFIG_PATH=~/.config/ripgrep/rg.conf
@@ -124,6 +123,9 @@ alias lg='echo -ne "\033]0;$(basename $(git rev-parse --show-toplevel 2>/dev/nul
 # nvim
 alias vim='nvim'
 alias v='nvim'
+
+# sl update
+alias sup='echo "➡️ pulling..." && sl pull && echo "➡️ rebasing on newest master..." && sl rebase -d master && echo "➡️ restacking..." && sl restack && echo "➡️ submitting prs..." && sl pr submit --stack'
 
 # goto PR (https://github.rbx.com/Roblox/creator-cu/pull/267/files)
 gotopr() {
