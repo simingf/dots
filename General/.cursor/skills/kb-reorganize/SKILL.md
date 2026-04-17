@@ -23,12 +23,17 @@ Skip every step prefixed `[standalone]` when `KB_DRIVEN_BY=kb-weekly`.
 
 ## Work
 
-### 1. Run the promotion-candidate detector
+### 1. Run the promotion-candidate detector + emit sidecar
 
 ```bash
 cd /Users/sfeng/roblox-obsidian
-python3 00-Meta/Scripts/reorganize.py --json > /tmp/kb-reorganize.json
+TODAY=$(date -u +%F)
+python3 00-Meta/Scripts/reorganize.py --json \
+  --emit-sidecar "00-Meta/Maintenance/proposals/reorganize-${TODAY}.apply.yaml" \
+  > /tmp/kb-reorganize.json
 ```
+
+Each candidate becomes a `promote_to_hub` action in the sidecar. The sidecar op creates the sibling subfolder and stubs a `## Children` block in the hub; manual subnote carve-up still happens after `kb-apply`.
 
 The script output has:
 
@@ -60,13 +65,17 @@ candidate_count: <n>
 
 ## Action
 
-For each candidate below, decide whether to promote per `[[0005-promotion-protocol-hub-outside]]`:
+Tick a checkbox below to approve that hub's promotion, then run `kb-apply` on this proposal. `kb-apply` invokes the `promote_to_hub` op, which:
 
-1. Keep the hub note at its current path (do NOT rename). Every inbound `[[link]]` resolves by basename — renaming breaks them.
-2. Create a sibling folder with the same stem. Example: `Platforms/BEDEV2.md` alongside `Platforms/BEDEV2/`.
-3. Move each subtopic (one per H2 section that's really its own resource) into the sibling folder as a new `type: subnote` note with `parent: "[[<hub>]]"` and a kebab-case filename prefixed by the hub name (e.g. `bedev2-runtime-config.md`).
-4. In the hub, replace the moved content with a `## Children` section listing links to the new subnotes.
-5. Commit with `git add -A && git commit -m "reorganize: promote <hub-name> per ADR-0005"`, citing the ADR in the commit message.
+1. Keeps the hub note at its current path (inbound links still resolve by basename).
+2. Creates the sibling folder with the same stem (e.g. `Platforms/BEDEV2/`).
+3. Adds a managed `## Children` section to the hub (if missing) as a placeholder.
+
+You still manually carve subnotes after the op runs — the op provides the structural container, not the content split.
+
+## Proposed actions
+
+- [ ] `promote-<slug>` — <type>: <name>  ({reasons summary})
 
 ## Candidates
 
@@ -74,9 +83,10 @@ For each candidate below, decide whether to promote per `[[0005-promotion-protoc
 
 ### <type>: <name>
 
+- sidecar action id: `promote-<slug>`
 - path: `<candidate.path>`
 - body_lines: <n>
-- h2_count: <n>   (template baseline for type=<type>: <baseline>)
+- h2_count: <n> (template baseline for type=<type>: <baseline>)
 - outbound_structural_links: <n>
 - overflow_fields: <list or "(none)">
 - reasons:

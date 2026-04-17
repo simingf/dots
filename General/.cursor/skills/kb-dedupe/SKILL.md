@@ -23,16 +23,19 @@ Skip every step prefixed `[standalone]` when `KB_DRIVEN_BY=kb-weekly`.
 
 ## Work
 
-### 1. Run the duplicate detector
+### 1. Run the duplicate detector + emit sidecar
 
 ```bash
 cd /Users/sfeng/roblox-obsidian
-python3 00-Meta/Scripts/dedupe.py --json > /tmp/kb-dedupe.json
+TODAY=$(date -u +%F)
+python3 00-Meta/Scripts/dedupe.py --json \
+  --emit-sidecar "00-Meta/Maintenance/proposals/dedupe-${TODAY}.apply.yaml" \
+  > /tmp/kb-dedupe.json
 ```
 
-Reports `pair_count` and `pairs[]` with per-pair scores (`name_overlap`, `h2_overlap`, `body_ratio`). Intra-type only (platform-Mosaic vs tool-MosaicUI cannot be flagged).
+Reports `pair_count` and `pairs[]` with per-pair scores (`name_overlap`, `h2_overlap`, `body_ratio`). Intra-type only. Each flagged pair also becomes a `merge_note` action in the emitted `.apply.yaml` sidecar (see `00-Meta/Maintenance/proposal-format.md`).
 
-### 2. Write the proposal (only if `pair_count > 0`)
+### 2. Write the paired proposal markdown (only if `pair_count > 0`)
 
 ```
 00-Meta/Maintenance/proposals/dedupe-$(date -u +%F).md
@@ -55,19 +58,19 @@ pair_count: <n>
 
 ## Action
 
-For each pair, pick a survivor (usually the one with more inbound frontmatter links — check `00-Meta/vault-index.json` and grep). Merge the loser's content into the survivor, add the loser's `name:` to the survivor's `aliases: []`, then one of:
+For each flagged pair, the sidecar emits a `merge_note` action with `source = a_path` and `target = b_path`. To apply, tick the checkbox below and run `kb-apply`. To swap survivor, edit the sidecar and flip `source`/`target`. To abandon a pair, leave the checkbox unchecked.
 
-1. Delete the loser outright, if nothing links to it by path.
-2. Replace the loser with a `type: redirect` note (see `00-Meta/Templates/redirect.md`) pointing to the survivor, if any link uses the path-qualified form.
+## Proposed actions
 
-Use `add-to-knowledge-bank` to wire the aliases and commit.
+- [ ] `merge-<a-slug>-into-<b-slug>` — <type>: <a_name> -> <b_name>  (ratio=<body_ratio>)
 
-## Candidate pairs
+## Candidate pairs (diagnostics)
 
 <one H3 per pair, sorted by body_ratio descending>
 
 ### <type>: <a_name> <-> <b_name>
 
+- sidecar action id: `merge-<a-slug>-into-<b-slug>`
 - a: `<a_path>`
 - b: `<b_path>`
 - name_overlap: <x>

@@ -1,14 +1,12 @@
 ---
-description: Propose archival moves for completed projects in the Roblox knowledge-bank vault at /Users/sfeng/roblox-obsidian. Flags `type: project, status: completed` notes aged >=90 days since their `completed_at` for relocation from `Projects/Completed/` to `Projects/Archived/`, plus ambiguous cases (completed without a date, or active/paused projects stale beyond their threshold). Propose-only in Phase 3 — every `git mv` is human-driven. Use when the user asks "archive old projects", "clean up Projects/", "which projects should be archived", or runs periodic maintenance.
+description: Archive completed projects in the Roblox knowledge-bank vault at /Users/sfeng/roblox-obsidian. Flags `type: project, status: completed` notes aged >=90 days since their `completed_at` for relocation from `Projects/Completed/` to `Projects/Archived/`. Phase 4: auto-applies rule-passing moves via `kb-apply` when `archive-config.yaml :: auto_apply: true`; still propose-only for ambiguous cases. Use when the user asks "archive old projects", "clean up Projects/", "which projects should be archived", or runs periodic maintenance.
 globs:
 alwaysApply: false
 ---
 
 # kb-archive
 
-Surface completed projects that have been cold long enough to archive. Never runs `git mv` itself — a bad archive move breaks inbound `related_projects` links and the corrective fix is a tangle of retargeting. The user approves each move by hand.
-
-Phase 3 ships propose-only. Auto-apply (behind `archive-config.yaml`) is deferred to Phase 4 after 2-3 months of clean propose-only runs.
+Surface completed projects that have been cold long enough to archive, and — when the config flag allows — actually move them. Every `git mv` is still routed through `apply.py`'s op library so integrity is checked + rollback is possible. Ambiguous cases always produce a proposal `.md` for human review.
 
 ## Preflight
 
@@ -25,25 +23,40 @@ Skip every step prefixed `[standalone]` when `KB_DRIVEN_BY=kb-weekly`.
 
 ## Work
 
-### 1. Scan project lifecycle
+### 1. Scan project lifecycle + emit sidecar
 
 ```bash
 cd /Users/sfeng/roblox-obsidian
-python3 00-Meta/Scripts/archive.py --json > /tmp/kb-archive.json
+TODAY=$(date -u +%F)
+python3 00-Meta/Scripts/archive.py --json \
+  --emit-sidecar "00-Meta/Maintenance/proposals/archive-${TODAY}.apply.yaml" \
+  > /tmp/kb-archive.json
 ```
 
-Output: `{move_candidate_count, ambiguous_count, move_candidates[], ambiguous[]}`.
+Output: `{move_candidate_count, ambiguous_count, move_candidates[], ambiguous[]}`. Every rule-passing candidate becomes a triplet in the sidecar: `git_mv` + `set_frontmatter status=archived` + `set_frontmatter archived_at=<today>`.
 
-- `move_candidates`: each has `path`, `name`, `completed_at`, `age_days`, `suggested_dst`.
-- `ambiguous`: each has `path`, `name`, `status`, and a `reason` describing why the rule couldn't decide.
+### 2. Consult `archive-config.yaml` for auto-apply gating
 
-### 2. Write the proposal (only if `move_candidate_count + ambiguous_count > 0`)
+```bash
+AUTO_APPLY=$(python3 -c "
+import re
+with open('00-Meta/Maintenance/archive-config.yaml') as f:
+    txt = f.read()
+m = re.search(r'^\s*auto_apply:\s*(\S+)', txt, re.MULTILINE)
+print('true' if m and m.group(1).strip().lower() == 'true' else 'false')
+")
+```
+
+- If `AUTO_APPLY=true` **and** `move_candidate_count > 0`: write a machine-generated `archive-${TODAY}.md` with every action id pre-checked (see step 3), then hand it to `kb-apply` and commit. Ambiguous cases still go into the human review section — if `ambiguous_count > 0`, the same `.md` carries that section and `kb-apply` naturally ignores unchecked items.
+- If `AUTO_APPLY=false`: write the same `.md` with every action id **unchecked** so the human decides per-candidate.
+
+### 3. Write the proposal (only if `move_candidate_count + ambiguous_count > 0`)
 
 Filename: `00-Meta/Maintenance/proposals/archive-$(date -u +%F).md`
 
 Body template:
 
-```markdown
+````markdown
 ---
 type: index
 schema_version: 1
@@ -61,34 +74,55 @@ threshold_days: 90
 
 ## Action
 
-Apply each `git mv` below, then update the moved note's `status: archived` and add `archived_at: $(date -u +%F)` to its frontmatter. Commit with `git commit -m "archive: <slug>"`.
+Tick each checkbox below whose move you approve, then run `kb-apply` on this proposal. `kb-apply` dispatches `git_mv` + `set_frontmatter` ops atomically.
 
 Do NOT rebase inbound links — path-qualified links (`Projects/Completed/foo`) will break. If any inbound link is path-qualified, replace it with the bare name (`[[foo]]`) first; basename-only links follow Obsidian's resolver automatically.
 
-## Move candidates
+## Proposed actions
+
+- [ ] `archive-mv-<slug>` — git mv <path> -> <suggested_dst>  (<age_days>d completed)
+- [ ] `archive-status-<slug>` — set status=archived at <suggested_dst>
+- [ ] `archive-stamp-<slug>` — set archived_at=<today> at <suggested_dst>
+
+<one triplet per move_candidate; if AUTO_APPLY=true, all boxes pre-checked>
+
+## Move candidates (diagnostics)
 
 <one H3 per candidate, sorted by age desc>
 
-### <name>  (<age_days>d since completed_at <completed_at>)
+### <name> (<age_days>d since completed_at <completed_at>)
 
-```bash
-git mv <path> <suggested_dst>
-```
+- sidecar action ids: `archive-mv-<slug>`, `archive-status-<slug>`, `archive-stamp-<slug>`
+- from: `<path>`
+- to: `<suggested_dst>`
+````
 
 ## Ambiguous cases (review and decide)
 
 <one bullet per ambiguous entry>
 
 - `<path>` — status=<status>: <reason>
-```
+
+````
 
 If `move_candidate_count + ambiguous_count == 0`, write NO proposal file. Just emit counters.
 
-### 3. Emit counters
+### 4. If AUTO_APPLY=true, run kb-apply immediately
+
+```bash
+if [ "$AUTO_APPLY" = "true" ] && [ "$MOVE_COUNT" -gt 0 ]; then
+  python3 00-Meta/Scripts/apply.py "00-Meta/Maintenance/proposals/archive-${TODAY}.md" --json \
+    > /tmp/kb-archive-apply.json
+fi
+```
+
+`apply.py` honours the checkbox grammar, so pre-checking the action ids in step 3 is sufficient. On any integrity degradation or op failure, the batch rolls back and `kb-archive` reports it — the proposal file remains for post-mortem review.
+
+### 5. Emit counters
 
 ```json
-{"skill":"kb-archive","move_candidates":<n>,"ambiguous":<m>,"proposals":<0-or-1>}
-```
+{"skill":"kb-archive","move_candidates":<n>,"ambiguous":<m>,"auto_applied":<bool>,"proposals":<0-or-1>}
+````
 
 ## Finalize
 
@@ -103,19 +137,19 @@ Skip every step in this section when `KB_DRIVEN_BY=kb-weekly`.
    ```
 4. **Release lock.** `rm 00-Meta/.lock`.
 
-## Non-goals (Phase 3)
+## Non-goals
 
-- Does not run `git mv`. Phase 4 will auto-apply behind `00-Meta/Maintenance/archive-config.yaml` gating.
-- Does not edit any note's `status:` or `archived_at:`. Those are part of the approved human move.
+- Does not run `git mv` directly — always routes through `apply.py`'s `git_mv` op so integrity is checked and rollback is possible.
+- Does not touch ambiguous cases automatically; they always require human review regardless of `auto_apply`.
 - Does not touch `Projects/_Index.md` or `Projects/Archived/_Index.md`. `kb-reindex` owns directory inventories.
 - Does not consider non-project lifecycle (incidents, bugs). Those have different archival rules (if any) and are scoped out.
 
-## Configuration placeholder
+## Configuration
 
-`00-Meta/Maintenance/archive-config.yaml` will gate Phase 4 auto-apply. Its shape (for reference, not in effect yet):
+`00-Meta/Maintenance/archive-config.yaml` gates the auto-apply flip. Current shape:
 
 ```yaml
-auto_apply: false           # flip to true once propose-only has been clean for 60+ days
+auto_apply: true # set to false to force propose-for-review mode
 threshold_days: 90
 destination: Projects/Archived
 also_set_frontmatter_status: archived

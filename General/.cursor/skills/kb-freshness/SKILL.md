@@ -23,14 +23,17 @@ Skip every step prefixed `[standalone]` when `KB_DRIVEN_BY=kb-weekly` — the um
 
 ## Work
 
-### 1. Run the freshness scanner
+### 1. Run the freshness scanner + emit sidecar
 
 ```bash
 cd /Users/sfeng/roblox-obsidian
-python3 00-Meta/Scripts/freshness.py --json > /tmp/kb-freshness.json
+TODAY=$(date -u +%F)
+python3 00-Meta/Scripts/freshness.py --json \
+  --emit-sidecar "00-Meta/Maintenance/proposals/staleness-${TODAY}.apply.yaml" \
+  > /tmp/kb-freshness.json
 ```
 
-The scanner is read-only. It reports `stale_count`, `stale[]` with per-note age and threshold, `missing_last_verified[]`, and the resolved `thresholds` dict.
+The scanner is read-only. It reports `stale_count`, `stale[]` with per-note age and threshold, `missing_last_verified[]`, and the resolved `thresholds` dict. Each stale note also becomes a `set_frontmatter last_verified=<today>` action in the sidecar — **default-unchecked**, because a freshness bump requires the human to actually re-verify before flipping the box. `kb-verify` is the interactive companion that flips boxes one-at-a-time.
 
 ### 2. Write the proposal (only if anything stale OR missing)
 
@@ -58,7 +61,13 @@ today: <YYYY-MM-DD>
 
 ## Action
 
-For each note below, re-verify its contents against the live system (Sourcegraph, Confluence, Mosaic, the actual service, etc.), then bump `last_verified:` to today and commit. Do NOT blind-bump without verifying — that defeats the point.
+For each note below, re-verify its contents against the live system (Sourcegraph, Confluence, Mosaic, the actual service, etc.), THEN tick the matching checkbox and run `kb-apply` to bump `last_verified:`. Do NOT blind-tick without verifying — that defeats the point. Use `kb-verify` for a guided one-at-a-time prompt.
+
+## Proposed actions
+
+- [ ] `freshness-bump-<slug>` — <type>: <name>  (age=<age>d)
+
+<one bullet per stale entry; all default-unchecked>
 
 ## Stale by Type
 

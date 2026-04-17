@@ -10,11 +10,11 @@ Check every external URL that appears in vault frontmatter and flag the rotten o
 
 Because most Roblox URLs are internal (gated by VPN + corporate SSO) and cannot be reached from the agent's shell, this skill uses a three-way strategy:
 
-| URL class       | Where                                              | How it's checked                           |
-|-----------------|----------------------------------------------------|--------------------------------------------|
-| `confluence`    | host `*.atlassian.net`                             | Atlassian MCP `confluence_get_page` lookup |
-| `public_http`   | github.com, docs.google.com, temporal.io, etc.     | `urllib.request` HEAD, 5s timeout          |
-| `internal_http` | `*.rbx.com`, `*.simulprod.com`                     | syntax-check only; flagged for manual pass |
+| URL class       | Where                                          | How it's checked                           |
+| --------------- | ---------------------------------------------- | ------------------------------------------ |
+| `confluence`    | host `*.atlassian.net`                         | Atlassian MCP `confluence_get_page` lookup |
+| `public_http`   | github.com, docs.google.com, temporal.io, etc. | `urllib.request` HEAD, 5s timeout          |
+| `internal_http` | `*.rbx.com`, `*.simulprod.com`                 | syntax-check only; flagged for manual pass |
 
 Never auto-mutates note bodies. When a URL fails, the only thing written is the proposal file.
 
@@ -106,7 +106,34 @@ Do NOT issue HTTP requests. These hosts require VPN; a HEAD from the agent's she
 - Flag each one with status `"internal-not-checked"`.
 - In the proposal, group them under a separate section so the user can open them by hand when on VPN.
 
-### 3. Write the proposal (only if anything is broken or internal-uncertain)
+### 3. Emit the sidecar (only if anything is broken)
+
+Pipe the broken public + Confluence records into `linkrot.py --emit-sidecar`:
+
+```bash
+python3 <<'PY' > /tmp/kb-linkrot-broken.json
+import json
+pub = json.load(open('/tmp/kb-linkrot-public.json'))
+broken = [r for r in pub['results'] if r.get('error') or (r.get('status') and r['status'] >= 400)]
+# Add confluence records the MCP could not fetch — the agent populates
+# /tmp/kb-linkrot-confluence-broken.json during step 2b.
+import os
+if os.path.exists('/tmp/kb-linkrot-confluence-broken.json'):
+    broken += json.load(open('/tmp/kb-linkrot-confluence-broken.json'))
+json.dump(broken, open('/tmp/kb-linkrot-broken.json','w'))
+print(f'linkrot broken: {len(broken)}')
+PY
+
+TODAY=$(date -u +%F)
+python3 00-Meta/Scripts/linkrot.py \
+  --emit-sidecar "00-Meta/Maintenance/proposals/linkrot-${TODAY}.apply.yaml" \
+  --broken-from /tmp/kb-linkrot-broken.json \
+  > /dev/null
+```
+
+Each broken URL becomes a `remove_external_url` action. Internal URLs are NOT put in the sidecar — they go into a separate "manual check required" section of the proposal `.md`.
+
+### 4. Write the proposal markdown (only if anything is broken or internal-uncertain)
 
 Filename: `00-Meta/Maintenance/proposals/linkrot-$(date -u +%F).md`
 
@@ -133,30 +160,34 @@ internal_not_checked: <n>
 
 ## Action
 
-For each broken URL:
+Tick a checkbox below to remove that URL from its note's frontmatter (`remove_external_url` op), then run `kb-apply`. To update an URL in place instead of removing it, leave the checkbox unchecked and edit the note directly.
 
-1. Open the offending note at `<note_path>`.
-2. Update the URL in-place, OR, if the resource is gone, remove the entry from `external_links:` / `sources:` and add a one-line explanation in `## Notes`.
-3. Commit with `git commit -m "linkrot: fix <note name> external URL"`.
+For internal URLs: connect to VPN and hit each URL; if still alive, no action. If dead, edit the note directly and commit — internal URLs are NOT in the sidecar because automated auth-gated checks are unsafe.
 
-For internal URLs: connect to VPN and hit each URL; if it still resolves, no action. If it's dead, same remediation as above.
+## Proposed actions
 
-## Broken public URLs
+- [ ] `linkrot-<note-slug>-<host-slug>` — remove `<url>` from `<note_path>:<field>`  (<reason>)
+
+<one bullet per broken public or confluence URL; all default-unchecked>
+
+## Broken public URLs (diagnostics)
 
 <one H3 per URL, sorted by note_path>
 
 ### <url>
 
-- note: `<note_path>`  field: `<field>`
-- status: <status>  error: <error>
+- sidecar action id: `linkrot-<note-slug>-<host-slug>`
+- note: `<note_path>` field: `<field>`
+- status: <status> error: <error>
 
-## Broken confluence URLs
+## Broken confluence URLs (diagnostics)
 
 <one H3 per URL>
 
 ### <url>
 
-- note: `<note_path>`  field: `<field>`
+- sidecar action id: `linkrot-<note-slug>-<host-slug>`
+- note: `<note_path>` field: `<field>`
 - mcp_error: <error returned by confluence_get_page>
 - page_id: <extracted>
 
