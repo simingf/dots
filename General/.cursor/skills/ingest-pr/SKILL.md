@@ -87,19 +87,58 @@ Treat the PR as a bug-fix candidate if ANY of:
 
 If the pattern matches, proceed to step 6. Otherwise skip to step 7.
 
-### 6. Propose a bug stub (never auto-create)
+### 6. Propose a bug stub (never auto-create) + sidecar
 
-Filename:
+Two paired files:
 
 ```
 00-Meta/Maintenance/proposals/ingest-pr-stubs-$(date -u +%F)-<pr-slug>.md
+00-Meta/Maintenance/proposals/ingest-pr-stubs-$(date -u +%F)-<pr-slug>.apply.yaml
+```
+
+Emit the sidecar via `sidecar.emit_sidecar` (stdlib helper in `00-Meta/Scripts/sidecar.py`). The sidecar holds one `create_note` action for the bug plus one `append_list` action per impacted note to wire `related_bugs`:
+
+```python
+import sys, os
+sys.path.insert(0, '00-Meta/Scripts')
+from sidecar import emit_sidecar, slugify
+
+bug_slug = f"{merged_at}-{short_slug}"
+actions = [
+    {
+        "id": f"create-bug-{slugify(bug_slug)}",
+        "op": "create_note",
+        "path": f"Bugs/{bug_slug}.md",
+        "template": "bug",
+        "fields": {
+            "name": bug_slug,
+            "status": "fixed",
+            "affected_service": f'[[{primary_impacted_name}]]',
+            "occurred_at": merged_at,
+            "fixed_at": merged_at,
+            "fix_prs": [pr_url],
+            "last_verified": merged_at,
+        },
+        "rationale": f"fixed by {pr_url}",
+    }
+]
+for note in impacted_notes:
+    actions.append({
+        "id": f"link-bug-{slugify(note['name'])}",
+        "op": "append_list",
+        "path": note["path"],
+        "field": "related_bugs",
+        "item": f"[[{bug_slug}]]",
+        "max_entries": 20,
+    })
+emit_sidecar(sidecar_path, "ingest-pr", today, actions)
 ```
 
 where `<pr-slug>` is derived from `pr_title` (lowercased, spaces → hyphens, punctuation stripped, max 40 chars).
 
 Body template:
 
-```markdown
+````markdown
 ---
 type: index
 schema_version: 1
@@ -120,11 +159,17 @@ generated_at: <ISO-8601-UTC>
 ## Action
 
 1. Review the PR (link above).
-2. If this is genuinely a reusable bug report (future agents could match future failures to it), create `Bugs/YYYY-MM-DD-<slug>.md` from `00-Meta/Templates/bug.md`. Copy the symptom_signature block below verbatim.
-3. Fill in `root_cause_summary` and `fix_summary` from the PR description.
-4. Add `[[<slug>]]` to the `related_bugs:` field of every note in "Impacted notes" below (`add-to-knowledge-bank` can automate this).
+2. If this is genuinely a reusable bug report, tick `create-bug-<slug>` and every `link-bug-<note-slug>` checkbox below, then run `kb-apply` on this proposal. `kb-apply` will invoke the `create_note` op (with the proposed frontmatter) and `append_list` ops for `related_bugs` on every impacted note atomically.
+3. After the bug note exists, hand-edit it to fill in `root_cause_summary`, `fix_summary`, and the `symptom_signature` block (the create_note op only seeds the fields it can reliably infer from the PR).
 
-If this is NOT a reusable bug (e.g., a one-off typo fix, a refactor, a feature), delete this proposal file.
+If this is NOT a reusable bug (one-off typo, refactor, feature), leave every checkbox unchecked and delete both files (`rm proposals/ingest-pr-stubs-*-<pr-slug>.*`).
+
+## Proposed actions
+
+- [ ] `create-bug-<slug>` — create `Bugs/<slug>.md` from bug template (pre-seeded fields)
+
+<one bullet per impacted note>
+- [ ] `link-bug-<note-slug>` — append `[[<slug>]]` to `related_bugs` on `<note-path>`
 
 ## Proposed frontmatter (hand edit as needed)
 
@@ -149,19 +194,21 @@ related_projects: []
 tags: [type/bug, domain/<user-edits>, platform/<user-edits>]
 last_verified: <merged_at>
 ```
+````
 
 ## Impacted notes (bold plain text if no vault note yet)
 
 <one bullet per impacted_notes entry>
 
-- `<path>` — type=<type>, name=<name>  (will gain `related_bugs: ["[[<new-bug-slug>]]"]` after you approve)
+- `<path>` — type=<type>, name=<name> (will gain `related_bugs: ["[[<new-bug-slug>]]"]` after you approve)
 
 ## Unmapped files (potential new notes)
 
 <one bullet per unmapped_files entry>
 
 - `<file>` — no manifest match; **<PascalCase or heuristic name>** could become a new note. Review with `add-to-knowledge-bank`.
-```
+
+````
 
 Only write the proposal if the pattern fired in step 5. If the user later rejects, the recommended cleanup is `rm proposals/ingest-pr-stubs-YYYY-MM-DD-<slug>.md`.
 
@@ -169,7 +216,7 @@ Only write the proposal if the pattern fired in step 5. If the user later reject
 
 ```bash
 python3 00-Meta/Scripts/integrity.py --fix-auto
-```
+````
 
 Expected: zero remaining issues. If ANY remain, abort — a new `recent_prs` entry shouldn't cause dangling links, so an error means the mapping misidentified an impacted note. `git reset --hard HEAD` and investigate.
 

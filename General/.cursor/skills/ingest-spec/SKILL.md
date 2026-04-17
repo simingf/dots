@@ -85,10 +85,37 @@ Copy [00-Meta/Templates/spec.md](00-Meta/Templates/spec.md) to `Specs/<name>.md`
 
 Set `covered_entities:` on the new spec to the list of `[[<name>]]` references for every exact match. For each exact-matched note, append `[[<spec-name>]]` to its `documented_in:` array, respecting the max_entries cap (20) from Schema.md.
 
-### 6. Write the stubs proposal (only if fuzzy or new terms exist)
+### 6. Write the stubs proposal + sidecar (only if fuzzy or new terms exist)
+
+Two paired files — a human `.md` for review and a machine sidecar for `kb-apply`:
 
 ```
 00-Meta/Maintenance/proposals/ingest-spec-stubs-$(date -u +%F)-<spec-slug>.md
+00-Meta/Maintenance/proposals/ingest-spec-stubs-$(date -u +%F)-<spec-slug>.apply.yaml
+```
+
+Emit the sidecar via `sidecar.emit_sidecar` directly (the Python helper in `00-Meta/Scripts/sidecar.py`). Each "new stub" becomes a `create_note` action; fuzzy matches are NOT in the sidecar (they're a linking decision, not a creation):
+
+```python
+import sys, os
+sys.path.insert(0, '00-Meta/Scripts')
+from sidecar import emit_sidecar, slugify
+actions = []
+for stub in new_stubs:  # list of {term, proposed_type, proposed_path}
+    actions.append({
+        "id": f"create-stub-{slugify(stub['term'])}",
+        "op": "create_note",
+        "path": stub["proposed_path"],
+        "template": stub["proposed_type"],
+        "fields": {"name": slugify(stub["term"]), "aliases": [stub["term"]]},
+        "rationale": f"referenced by [[{spec_name}]]",
+    })
+emit_sidecar(
+    f"00-Meta/Maintenance/proposals/ingest-spec-stubs-{today}-{spec_slug}.apply.yaml",
+    source_skill="ingest-spec",
+    generated_at=today,
+    actions=actions,
+)
 ```
 
 Body:
@@ -124,15 +151,20 @@ generated_at: <ISO-8601-UTC>
 
 ## New Stubs (user: approve, refine type, or reject)
 
+Tick the checkbox below to approve a stub — `kb-apply` will invoke the `create_note` op with the proposed template + name fields. Unchecked stubs are ignored.
+
+- [ ] `create-stub-<slug>` — <Term> (proposed type: `<type>`, path: `<path>`)
+
 ### <Term>
 
+- sidecar action id: `create-stub-<slug>`
 - proposed type: `<heuristic-type>` — see reasoning below
 - proposed path: `<directory>/<filename>.md`
 - proposed template: `00-Meta/Templates/<type>.md`
 - heuristic reasoning: <one line on why this type was chosen>
 - where `**<Term>**` appears today (bold plain text; promote after stub creation):
   - `Specs/<spec-name>.md`
-- next step: run `add-to-knowledge-bank` with this term as the focus, or manually create from the template.
+- next step: tick the box above and run `kb-apply`, OR run `add-to-knowledge-bank` for richer stub content.
 
 ## Promote-References Checklist
 
