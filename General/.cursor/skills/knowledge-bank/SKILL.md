@@ -20,11 +20,11 @@ Match the user's latest message against the intents in the first column. The tab
 
 ### Read (no vault mutation, no lock, no commit)
 
-| Intent keywords / phrases                                                                                                                    | Worker skill                                     |
-| -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| "have we seen this error", "known bug", "match this stack trace", "find bug", user pastes an exception / panic / stack and asks about prior fixes | `~/.cursor/skills/kb-find-bug/SKILL.md`          |
-| "vault status", "how healthy is the vault", "what's pending review", "dashboard", "when was the vault last maintained"                       | `~/.cursor/skills/kb-status/SKILL.md`            |
-| any other read-shaped question: "who owns X", "which DAG writes Y", "what team is on call for Z"                                             | _no skill — use AGENTS.md §4 navigation ladder_  |
+| Intent keywords / phrases                                                                                                                         | Worker skill                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| "have we seen this error", "known bug", "match this stack trace", "find bug", user pastes an exception / panic / stack and asks about prior fixes | `~/.cursor/skills/kb-find-bug/SKILL.md`         |
+| "vault status", "how healthy is the vault", "what's pending review", "dashboard", "when was the vault last maintained"                            | `~/.cursor/skills/kb-status/SKILL.md`           |
+| any other read-shaped question: "who owns X", "which DAG writes Y", "what team is on call for Z"                                                  | _no skill — use AGENTS.md §4 navigation ladder_ |
 
 ### Write (mutates the vault, acquires lock, emits commit)
 
@@ -33,19 +33,21 @@ Match the user's latest message against the intents in the first column. The tab
 | "distill this convo", "add to the kb", "record what we learned", "save this", "write up learnings", end-of-session knowledge capture | `~/.cursor/skills/add-to-knowledge-bank/SKILL.md` |
 | "ingest spec", "parse this Confluence page / GDoc into the vault", "seed from design doc"                                            | `~/.cursor/skills/ingest-spec/SKILL.md`           |
 | "ingest PR", "extract knowledge from this merged PR", "record this PR against the vault"                                             | `~/.cursor/skills/ingest-pr/SKILL.md`             |
+| "apply this proposal", "execute the sidecar", "run the .apply.yaml", "apply the latest dedupe/freshness/archive proposal"            | `~/.cursor/skills/kb-apply/SKILL.md`              |
+| "verify stale notes", "bump last_verified", "re-verify", interactive per-note freshness curation                                     | `~/.cursor/skills/kb-verify/SKILL.md`             |
 
 ### Maintenance (propose-only unless noted; each runs under `kb-weekly` in one sweep)
 
-| Intent keywords / phrases                                                                               | Worker skill                                      |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
-| "weekly upkeep", "run the maintenance sweep", "run all the kb checks", "Monday cleanup"                 | `~/.cursor/skills/kb-weekly/SKILL.md` _(umbrella)_|
-| "check the vault", "audit", "verify bidirectional links", "repair dangling links", "integrity"          | `~/.cursor/skills/kb-integrity/SKILL.md`          |
-| "what's stale", "freshness", "last_verified"                                                            | `~/.cursor/skills/kb-freshness/SKILL.md`          |
-| "find duplicates", "dedupe the vault"                                                                   | `~/.cursor/skills/kb-dedupe/SKILL.md`             |
-| "reorganize", "promote this hub", "split a big note", "promotion candidates"                            | `~/.cursor/skills/kb-reorganize/SKILL.md`         |
-| "check links", "dead links", "404 external URLs", "link rot"                                            | `~/.cursor/skills/kb-linkrot/SKILL.md`            |
-| "archive completed projects", "clean up Projects/Completed"                                             | `~/.cursor/skills/kb-archive/SKILL.md`            |
-| "regenerate indexes", "rebuild the index files", "refresh _Index.md" _(auto-apply within managed markers)_ | `~/.cursor/skills/kb-reindex/SKILL.md`            |
+| Intent keywords / phrases                                                                                   | Worker skill                                       |
+| ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| "weekly upkeep", "run the maintenance sweep", "run all the kb checks", "Monday cleanup"                     | `~/.cursor/skills/kb-weekly/SKILL.md` _(umbrella)_ |
+| "check the vault", "audit", "verify bidirectional links", "repair dangling links", "integrity"              | `~/.cursor/skills/kb-integrity/SKILL.md`           |
+| "what's stale", "freshness", "last_verified"                                                                | `~/.cursor/skills/kb-freshness/SKILL.md`           |
+| "find duplicates", "dedupe the vault"                                                                       | `~/.cursor/skills/kb-dedupe/SKILL.md`              |
+| "reorganize", "promote this hub", "split a big note", "promotion candidates"                                | `~/.cursor/skills/kb-reorganize/SKILL.md`          |
+| "check links", "dead links", "404 external URLs", "link rot"                                                | `~/.cursor/skills/kb-linkrot/SKILL.md`             |
+| "archive completed projects", "clean up Projects/Completed" _(auto-applies when `archive-config.yaml :: auto_apply: true`)_ | `~/.cursor/skills/kb-archive/SKILL.md`             |
+| "regenerate indexes", "rebuild the index files", "refresh _Index.md" _(auto-apply within managed markers)\_ | `~/.cursor/skills/kb-reindex/SKILL.md`             |
 
 ## Look-up vs. mutation
 
@@ -61,13 +63,14 @@ If the user's request is a **write or maintenance** action, dispatch to the matc
 
 ## Phase awareness
 
-All Phase 1, 2, and 3 skills are built and wired. The current skill family is 13 entries (router + 3 write-time + 7 maintenance + 2 read):
+All Phase 1–4 skills are built and wired. The current skill family is 15 entries (router + 5 write-time + 7 maintenance + 2 read):
 
 - router: `knowledge-bank`
 - read: `kb-find-bug`, `kb-status`
-- write: `add-to-knowledge-bank`, `ingest-spec`, `ingest-pr`
-- maintenance (propose-only): `kb-integrity`, `kb-freshness`, `kb-dedupe`, `kb-reorganize`, `kb-linkrot`, `kb-archive`
-- maintenance (auto-apply, marker-bounded): `kb-reindex`
-- umbrella: `kb-weekly` (runs all 7 maintenance skills in one sweep)
+- write (content authoring): `add-to-knowledge-bank`, `ingest-spec`, `ingest-pr`
+- write (proposal execution): `kb-apply` (executes sidecars via `00-Meta/Scripts/apply.py`), `kb-verify` (interactive per-note freshness bumping; feeds `kb-apply`)
+- maintenance (propose-via-sidecar): `kb-integrity`, `kb-freshness`, `kb-dedupe`, `kb-reorganize`, `kb-linkrot`
+- maintenance (auto-apply when configured): `kb-archive` (behind `archive-config.yaml :: auto_apply: true`), `kb-reindex` (marker-bounded)
+- umbrella: `kb-weekly` (runs the 7 maintenance skills in one sweep)
 
-Phase 4 reserved slots — `kb-archive` auto-apply behind `archive-config.yaml`, and any future additions — are not wired yet; treat them as "not implemented" if mentioned.
+Phase 4 closed the write loop: every maintenance skill emits a paired `.apply.yaml` sidecar, and `kb-apply` is the single executor that runs those sidecars transactionally with integrity-gated rollback.
