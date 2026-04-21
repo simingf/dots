@@ -8,94 +8,24 @@ alwaysApply: false
 
 When the user asks to review a PR, follow these steps exactly.
 
-## Step 0 — Detect SCM
+## Step 1 — Fetch PR diff
 
-Print `**Step 0 — Detecting SCM...**` before starting.
+Print `**Step 1 — Fetching PR diff...**`
 
-Check which SCM is available in the workspace root:
+Read and execute the [fetch-pr-diff](../fetch-pr-diff/SKILL.md) skill in full. This produces `<REPO>`, `<BRANCH>`, `<BASE>`, and per-file diffs for each changed file. The fetch skill drops test files from the per-file diffs (unless the only changed files are tests, in which case they are kept).
 
-```bash
-ls -d .git .sl 2>/dev/null
-```
+## Step 2 — Review files
 
-- If `.git` exists, use **Git** subsections. If only `.sl` exists, use **Sapling**.
-- If both exist, prefer **Git**.
-
-## Step 1 — Identify the PR context
-
-Print `**Step 1 — Identifying PR context...**` before starting.
-
-### Git
-
-Run these in parallel:
-
-```bash
-basename "$(git rev-parse --show-toplevel)"
-```
-
-```bash
-git rev-parse --abbrev-ref HEAD
-```
-
-```bash
-git rev-parse --verify origin/master >/dev/null 2>&1 && echo origin/master || echo origin/main
-```
-
-### Sapling
-
-Run these in parallel:
-
-```bash
-basename "$(sl root)"
-```
-
-```bash
-sl log -r . -T '{branch}\n'
-```
-
-```bash
-sl log -r "remote/master" >/dev/null 2>&1 && echo remote/master || echo remote/main
-```
-
-Store the results as `<REPO>`, `<BRANCH>`, and `<BASE>` for use in subsequent steps and the review header.
-
-## Step 2 — Collect changed files
-
-Print `**Step 2 — Collecting changed files...**` before starting.
-
-### Git
-
-```bash
-git diff --stat <BASE>...HEAD && echo "---" && git diff --name-only <BASE>...HEAD
-```
-
-### Sapling
-
-```bash
-sl diff -r "<BASE>.." --stat && echo "---" && sl diff -r "<BASE>.." --stat | sed '$d' | awk '{print $1}'
-```
-
-Parse the file list from the output below the `---` separator. Use the `--stat` portion above it to orient yourself on the shape of the change.
-
-**Exclude test files** — drop any file that is clearly a test (by name or directory) before proceeding to Step 3.
-
-## Step 3 — Review files
-
-Print the status line with the file count (excluding tests) before starting (e.g. `**Step 3 — Reviewing N files...**`).
+Print the status line with the file count before starting (e.g. `**Step 2 — Reviewing N files...**`).
 
 Process files **one at a time**. For each file, do all of the following before moving to the next file:
 
-1. **Diff** — get the per-file diff:
-   - Git: `git diff <BASE>...HEAD -- <FILE>`
-   - Sapling: `sl diff -r "<BASE>.." <FILE>`
-2. **Read** — if the diff raises a question you cannot answer from context alone, read the full file.
-3. **Review** — analyze the diff and write your findings for this file immediately, using the severity levels and guidelines in Step 5. Do **not** defer the review to a later step.
+1. **Read** — if the diff raises a question you cannot answer from context alone, read the full file.
+2. **Review** — analyze the diff and write your findings for this file immediately, using the severity levels and guidelines in Step 4. Do **not** defer the review to a later step.
 
-Do NOT batch execute all diffs — review each file's diff first before fetching the next.
+## Step 3 — Cross-file review
 
-## Step 4 — Cross-file review
-
-Print `**Step 4 — Cross-file review...**` before starting.
+Print `**Step 3 — Cross-file review...**` before starting.
 
 Do one final pass looking for cross-file issues:
 
@@ -105,11 +35,11 @@ Do one final pass looking for cross-file issues:
 
 Do **not** report speculative cross-file issues — verify against the actual diff first.
 
-## Step 5 — Final review output
+## Step 4 — Final review output
 
-Print `**Step 5 — Final review output...**` before starting.
+Print `**Step 4 — Final review output...**` before starting.
 
-Compile all per-file findings (Step 3) and cross-file findings (Step 4) into a single numbered review. If there are no findings at all, say: `✅ No issues found. LGTM.`
+Compile all per-file findings (Step 2) and cross-file findings (Step 3) into a single numbered review. If there are no findings at all, say: `✅ No issues found. LGTM.`
 
 ### Output format
 
@@ -167,11 +97,6 @@ Follows [Conventional Comments](https://conventionalcomments.org/).
 
 - 🐛 **Bug** — correctness defect, crash, data loss, security vulnerability, race condition, undefined behavior. Does **not** include typos, minor textual errors, or broken markdown formatting — those are 🔍 Nitpick. Each Bug finding **must** include a small corrected code snippet.
 - 🚨 **Issue** — broken contract, missing validation, unhandled error path, data integrity problem, regression risk, performance cliff. Includes likely bugs carried over from pre-existing code if the diff re-introduces or preserves them in new/refactored code.
-
-**Language-specific flags:**
-
-- C#: missing `null` checks on nullable refs, improper `async`/`await` usage, unnecessary allocations in hot paths, missing `using` statements, violated naming conventions.
-- Proto/config: missing or mismatched HTTP transcoding annotations, breaking field number changes, incorrect option usage.
 
 #### Non-blocking
 
