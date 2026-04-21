@@ -139,12 +139,12 @@ Human-in-the-loop freshness verification — <n> bumps approved, <m> rejections 
 ## Proposed actions
 
 - [x] `verify-bump-<slug>` — bump last_verified on <path> (was <old>)
-<one per accepted entry>
+      <one per accepted entry>
 
 ## Rejected (not bumped — consider deletion in a later pass)
 
 - `<path>` — last_verified <old>; summary: <first-line>
-<one per rejected entry>
+  <one per rejected entry>
 ```
 
 ### 6. Hand off to `kb-apply`

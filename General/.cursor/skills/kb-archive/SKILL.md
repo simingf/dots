@@ -56,7 +56,7 @@ Filename: `00-Meta/Maintenance/proposals/archive-$(date -u +%F).md`
 
 Body template:
 
-````markdown
+```markdown
 ---
 type: index
 schema_version: 1
@@ -80,7 +80,7 @@ Do NOT rebase inbound links — path-qualified links (`Projects/Completed/foo`) 
 
 ## Proposed actions
 
-- [ ] `archive-mv-<slug>` — git mv <path> -> <suggested_dst>  (<age_days>d completed)
+- [ ] `archive-mv-<slug>` — git mv <path> -> <suggested_dst> (<age_days>d completed)
 - [ ] `archive-status-<slug>` — set status=archived at <suggested_dst>
 - [ ] `archive-stamp-<slug>` — set archived_at=<today> at <suggested_dst>
 
@@ -95,7 +95,7 @@ Do NOT rebase inbound links — path-qualified links (`Projects/Completed/foo`) 
 - sidecar action ids: `archive-mv-<slug>`, `archive-status-<slug>`, `archive-stamp-<slug>`
 - from: `<path>`
 - to: `<suggested_dst>`
-````
+```
 
 ## Ambiguous cases (review and decide)
 

@@ -38,16 +38,16 @@ Match the user's latest message against the intents in the first column. The tab
 
 ### Maintenance (propose-only unless noted; each runs under `kb-weekly` in one sweep)
 
-| Intent keywords / phrases                                                                                   | Worker skill                                       |
-| ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| "weekly upkeep", "run the maintenance sweep", "run all the kb checks", "Monday cleanup"                     | `~/.cursor/skills/kb-weekly/SKILL.md` _(umbrella)_ |
-| "check the vault", "audit", "verify bidirectional links", "repair dangling links", "integrity"              | `~/.cursor/skills/kb-integrity/SKILL.md`           |
-| "what's stale", "freshness", "last_verified"                                                                | `~/.cursor/skills/kb-freshness/SKILL.md`           |
-| "find duplicates", "dedupe the vault"                                                                       | `~/.cursor/skills/kb-dedupe/SKILL.md`              |
-| "reorganize", "promote this hub", "split a big note", "promotion candidates"                                | `~/.cursor/skills/kb-reorganize/SKILL.md`          |
-| "check links", "dead links", "404 external URLs", "link rot"                                                | `~/.cursor/skills/kb-linkrot/SKILL.md`             |
+| Intent keywords / phrases                                                                                                   | Worker skill                                       |
+| --------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| "weekly upkeep", "run the maintenance sweep", "run all the kb checks", "Monday cleanup"                                     | `~/.cursor/skills/kb-weekly/SKILL.md` _(umbrella)_ |
+| "check the vault", "audit", "verify bidirectional links", "repair dangling links", "integrity"                              | `~/.cursor/skills/kb-integrity/SKILL.md`           |
+| "what's stale", "freshness", "last_verified"                                                                                | `~/.cursor/skills/kb-freshness/SKILL.md`           |
+| "find duplicates", "dedupe the vault"                                                                                       | `~/.cursor/skills/kb-dedupe/SKILL.md`              |
+| "reorganize", "promote this hub", "split a big note", "promotion candidates"                                                | `~/.cursor/skills/kb-reorganize/SKILL.md`          |
+| "check links", "dead links", "404 external URLs", "link rot"                                                                | `~/.cursor/skills/kb-linkrot/SKILL.md`             |
 | "archive completed projects", "clean up Projects/Completed" _(auto-applies when `archive-config.yaml :: auto_apply: true`)_ | `~/.cursor/skills/kb-archive/SKILL.md`             |
-| "regenerate indexes", "rebuild the index files", "refresh _Index.md" _(auto-apply within managed markers)\_ | `~/.cursor/skills/kb-reindex/SKILL.md`             |
+| "regenerate indexes", "rebuild the index files", "refresh _Index.md" _(auto-apply within managed markers)\_                 | `~/.cursor/skills/kb-reindex/SKILL.md`             |
 
 ## Look-up vs. mutation
 

@@ -154,17 +154,17 @@ generated_at: <ISO-8601-UTC>
 
 ## Summary
 
-| skill         | auto-applied                                                 | proposals | counters                                      |
-| ------------- | ------------------------------------------------------------ | --------- | --------------------------------------------- |
-| kb-integrity  | <n>                                                          | <0-or-1>  | <remaining JSON>                              |
-| kb-freshness  | 0                                                            | <0-or-1>  | stale=<n>, missing=<n>                        |
-| kb-dedupe     | 0                                                            | <0-or-1>  | pairs=<n>                                     |
-| kb-reorganize | 0                                                            | <0-or-1>  | candidates=<n>, suppressed=<m>                |
-| kb-linkrot    | 0                                                            | <0-or-1>  | urls=<n>, broken_public=<n>, internal=<n>     |
-| kb-archive    | 0                                                            | <0-or-1>  | move_candidates=<n>, ambiguous=<m>            |
-| kb-reindex    | <m>                                                          | 0 (auto)  | indexes=<n>, changed=<m>, idempotent=<bool>   |
-| ingest-spec   | (write-time; counted here only if carry-forward stubs exist) | <0-or-1>  | files=<n>                                     |
-| ingest-pr     | (write-time; counted here only if carry-forward stubs exist) | <0-or-1>  | files=<n>                                     |
+| skill         | auto-applied                                                 | proposals | counters                                    |
+| ------------- | ------------------------------------------------------------ | --------- | ------------------------------------------- |
+| kb-integrity  | <n>                                                          | <0-or-1>  | <remaining JSON>                            |
+| kb-freshness  | 0                                                            | <0-or-1>  | stale=<n>, missing=<n>                      |
+| kb-dedupe     | 0                                                            | <0-or-1>  | pairs=<n>                                   |
+| kb-reorganize | 0                                                            | <0-or-1>  | candidates=<n>, suppressed=<m>              |
+| kb-linkrot    | 0                                                            | <0-or-1>  | urls=<n>, broken_public=<n>, internal=<n>   |
+| kb-archive    | 0                                                            | <0-or-1>  | move_candidates=<n>, ambiguous=<m>          |
+| kb-reindex    | <m>                                                          | 0 (auto)  | indexes=<n>, changed=<m>, idempotent=<bool> |
+| ingest-spec   | (write-time; counted here only if carry-forward stubs exist) | <0-or-1>  | files=<n>                                   |
+| ingest-pr     | (write-time; counted here only if carry-forward stubs exist) | <0-or-1>  | files=<n>                                   |
 
 ## kb-integrity
 
@@ -192,11 +192,11 @@ generated_at: <ISO-8601-UTC>
 
 ## Carry-forward: ingest-spec stubs
 
-<one H3 per carry-forward ingest-spec-stubs-*.md; include its spec_note frontmatter and the full body>
+<one H3 per carry-forward ingest-spec-stubs-\*.md; include its spec_note frontmatter and the full body>
 
 ## Carry-forward: ingest-pr stubs
 
-<one H3 per carry-forward ingest-pr-stubs-*.md; include its pr_url frontmatter and the full body>
+<one H3 per carry-forward ingest-pr-stubs-\*.md; include its pr_url frontmatter and the full body>
 ```
 
 Delete each per-skill proposal file after incorporating it into the weekly rollup — one artifact per sweep is the whole point.
@@ -215,13 +215,13 @@ Append `00-Meta/Maintenance/logs/$(date -u +%F)-kb-weekly.md`:
 
 ## Per-step counters
 
-- kb-integrity:  <JSON counters captured in Step 3>
-- kb-freshness:  <JSON counters captured in Step 3b>
-- kb-dedupe:     <JSON counters captured in Step 3c>
+- kb-integrity: <JSON counters captured in Step 3>
+- kb-freshness: <JSON counters captured in Step 3b>
+- kb-dedupe: <JSON counters captured in Step 3c>
 - kb-reorganize: <JSON counters captured in Step 3d>
-- kb-linkrot:    <JSON counters captured in Step 3e>
-- kb-archive:    <JSON counters captured in Step 3f>
-- kb-reindex:    <JSON counters captured in Step 3g>
+- kb-linkrot: <JSON counters captured in Step 3e>
+- kb-archive: <JSON counters captured in Step 3f>
+- kb-reindex: <JSON counters captured in Step 3g>
 
 ## Notes
 

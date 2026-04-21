@@ -75,7 +75,7 @@ You still manually carve subnotes after the op runs — the op provides the stru
 
 ## Proposed actions
 
-- [ ] `promote-<slug>` — <type>: <name>  ({reasons summary})
+- [ ] `promote-<slug>` — <type>: <name> ({reasons summary})
 
 ## Candidates
 

@@ -65,7 +65,7 @@ For each note below, re-verify its contents against the live system (Sourcegraph
 
 ## Proposed actions
 
-- [ ] `freshness-bump-<slug>` — <type>: <name>  (age=<age>d)
+- [ ] `freshness-bump-<slug>` — <type>: <name> (age=<age>d)
 
 <one bullet per stale entry; all default-unchecked>
 

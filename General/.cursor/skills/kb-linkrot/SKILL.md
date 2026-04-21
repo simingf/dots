@@ -166,7 +166,7 @@ For internal URLs: connect to VPN and hit each URL; if still alive, no action. I
 
 ## Proposed actions
 
-- [ ] `linkrot-<note-slug>-<host-slug>` — remove `<url>` from `<note_path>:<field>`  (<reason>)
+- [ ] `linkrot-<note-slug>-<host-slug>` — remove `<url>` from `<note_path>:<field>` (<reason>)
 
 <one bullet per broken public or confluence URL; all default-unchecked>
 

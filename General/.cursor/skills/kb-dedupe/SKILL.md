@@ -62,7 +62,7 @@ For each flagged pair, the sidecar emits a `merge_note` action with `source = a_
 
 ## Proposed actions
 
-- [ ] `merge-<a-slug>-into-<b-slug>` — <type>: <a_name> -> <b_name>  (ratio=<body_ratio>)
+- [ ] `merge-<a-slug>-into-<b-slug>` — <type>: <a_name> -> <b_name> (ratio=<body_ratio>)
 
 ## Candidate pairs (diagnostics)
 
