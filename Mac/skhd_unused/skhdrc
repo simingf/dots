@@ -1,8 +1,0 @@
-# disable skhd in moonlight streams
-.blacklist [
-    "Moonlight"
-    "steamstreamingclient"
-]
-
-# alt - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory ~ 
-cmd + alt + ctrl + shift - return : open -a "Kitty"
