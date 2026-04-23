@@ -1,9 +1,8 @@
 lastupdatecheck: 0
 recentrepos:
     - /Users/sfeng/dots
-    - /Users/sfeng/roblox-obsidian
 startuppopupversion: 5
-didshowhunkstaginghint: false
+didshowhunkstaginghint: true
 lastversion: 0.61.1
 customcommandshistory: []
 hidecommandlog: false
