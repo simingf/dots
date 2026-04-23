@@ -176,9 +176,6 @@ gotopr() {
 
   echo "➡️ Checking out PR #$pr..."
   gh pr checkout "$pr"
-
-  echo "➡️ Opening in Cursor..."
-  cursor .
 }
 
 # vscode
