@@ -1,11 +1,17 @@
-# Reminders MacTeX
-path+=/Library/TeX/texbin
-
 # Homebrew
 if [[ -f "/opt/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+    export EDITOR='vim'
+else
+    export EDITOR='nvim'
+fi
+
+export GH_HOST=github.rbx.com
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -31,19 +37,12 @@ zinit snippet OMZP::command-not-found
 
 # Load completions
 autoload -Uz compinit && compinit
-
 zinit cdreplay -q
 
 # Oh My Posh prompt
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $HOME/dots/General/ohmyposh/zen.toml)"
 fi
-
-# Keybindings
-bindkey -e
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey '^[w' kill-region
 
 # History
 HISTSIZE=5000
@@ -58,6 +57,12 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
+# Keybindings
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '^[w' kill-region
+
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
@@ -65,20 +70,8 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-# Shell integrations
-# eval "$(fzf --zsh)"
-source <(fzf --zsh)
-eval "$(zoxide init --cmd cd zsh)"
-
 # disable automatic window title
 DISABLE_AUTO_TITLE="true"
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
-else
-    export EDITOR='nvim'
-fi
 
 # Execute on Enter
 accept-line() {
@@ -92,6 +85,10 @@ accept-line() {
 }
 zle -N accept-line
 
+# Shell integrations
+source <(fzf --zsh)
+eval "$(zoxide init --cmd cd zsh)"
+
 # general aliases
 alias e='exit'
 alias ll='ls -la'
@@ -99,10 +96,52 @@ alias f='open .'
 alias rm='rm -r'
 alias mkdir='mkdir -p'
 alias pwd='pwd && pwd | pbcopy'
-alias css='rm -f ~/Screenshots/* && echo "screenshots cleared"'
 alias npmg='npm list -g --depth 0'
 alias icat="kitten icat"
 alias top="btop"
+
+# directory aliases
+alias ls='ls -G'
+alias ..='builtin cd .. && clear && ls'
+alias ...='builtin cd ../.. && clear && ls'
+alias app='builtin cd /Applications/ && clear && ls'
+alias doc='builtin cd ~/Documents/ && clear && ls'
+alias dow='builtin cd ~/Downloads/ && clear && ls'
+alias des='builtin cd ~/Desktop/ && clear && ls'
+alias dots='builtin cd ~/dots && ls'
+
+# config aliases
+alias cf="builtin cd ~/.config && ls"
+# homebrew
+alias bup='brew update && brew upgrade && brew cleanup && brew autoremove'
+# zsh
+alias zrc="nvim ~/.zshrc"
+alias rs="clear && source ~/.zshrc"
+alias ch="rm -f ~/.zsh_history && clear"
+# zinit
+alias zup="zinit self-update && zinit update --all && zinit cclear"
+# nvim
+alias nrc="nvim ~/.config/nvim/init.lua"
+# kitty
+alias krc="nvim ~/.config/kitty/kitty.conf"
+# aerospace
+alias arc="nvim ~/.config/aerospace/aerospace.toml"
+# updates zinit, homebrew
+alias up='zup && bup'
+
+# nvim
+alias vim='nvim'
+alias v='nvim'
+
+# ripgrep
+export RIPGREP_CONFIG_PATH=~/.config/ripgrep/rg.conf
+alias rg="rg --hyperlink-format=kitty"
+
+# lazygit
+alias lg='echo -ne "\033]0;$(basename $(git rev-parse --show-toplevel 2>/dev/null) || echo "Lazygit")\007" && lazygit'
+
+# sl update
+alias sup='echo "➡️ pulling..." && sl pull && echo "➡️ rebasing on newest master..." && sl rebase -d master && echo "➡️ restacking..." && sl restack && echo "➡️ submitting prs..." && sl pr submit --stack'
 
 # work aliases
 alias swarplogin='swarp login sitetest3 && swarp secrets refresh sitetest3'
@@ -110,24 +149,8 @@ alias swarprun='swarp run --watch'
 alias pps='portpal serve'
 alias kk='declawd'
 
-# ripgrep
-export RIPGREP_CONFIG_PATH=~/.config/ripgrep/rg.conf
-alias rg="rg --hyperlink-format=kitty"
-
-# ranger
-alias rr='. ranger'
-
-# lazygit
-# alias lg='lazygit'
-alias lg='echo -ne "\033]0;$(basename $(git rev-parse --show-toplevel 2>/dev/null) || echo "Lazygit")\007" && lazygit'
-
-
-# nvim
-alias vim='nvim'
-alias v='nvim'
-
-# sl update
-alias sup='echo "➡️ pulling..." && sl pull && echo "➡️ rebasing on newest master..." && sl rebase -d master && echo "➡️ restacking..." && sl restack && echo "➡️ submitting prs..." && sl pr submit --stack'
+# competitive programming
+alias cpr='make && ./sol'
 
 # goto PR (https://github.rbx.com/Roblox/creator-cu/pull/267/files)
 gotopr() {
@@ -190,58 +213,6 @@ c() {
     fi
 }
 
-# competitive programming
-alias cpr='make && ./sol'
-
-# directory aliases
-alias ls='ls -G'
-alias ..='builtin cd .. && clear && ls'
-alias ...='builtin cd ../.. && clear && ls'
-alias app='builtin cd /Applications/ && clear && ls'
-alias doc='builtin cd ~/Documents/ && clear && ls'
-alias dow='builtin cd ~/Downloads/ && clear && ls'
-alias des='builtin cd ~/Desktop/ && clear && ls'
-alias ss='builtin cd ~/Screenshots/ && clear && ls'
-alias hub='builtin cd ~/Github/ && clear && ls'
-alias euler='builtin cd ~/euler/ && clear && ls'
-alias dp='builtin cd ~/atcoder-dp/ && clear && ls'
-alias dots='builtin cd ~/dots && ls'
-
-# config aliases
-alias cf="builtin cd ~/.config && ls"
-# homebrew
-alias bup='brew update && brew upgrade && brew cleanup && brew autoremove'
-# zsh
-alias zrc="nvim ~/.zshrc"
-alias rs="clear && source ~/.zshrc"
-alias ch="rm -f ~/.zsh_history && clear"
-# zinit
-alias zup="zinit self-update && zinit update --all && zinit cclear"
-# nvim
-alias nrc="nvim ~/.config/nvim/init.lua"
-# kitty
-alias krc="nvim ~/.config/kitty/kitty.conf"
-# aerospace
-alias arc="nvim ~/.config/aerospace/aerospace.toml"
-# yabai
-# alias yrc="nvim ~/.config/yabai/yabairc"
-# alias yrs="yabai --restart-service" # && urs
-# yup() {
-#     TEXT="$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa"
-#     echo $TEXT | sudo tee /private/etc/sudoers.d/yabai
-# }
-# skhd
-# alias src="nvim ~/.config/skhd/skhdrc"
-# alias srs="skhd --restart-service"
-# updates zinit, homebrew
-alias up='zup && bup'
-
-# ubersicht
-# alias ub='builtin cd ~/.config/ubersicht/simple-bar && ls'
-# urs() {
-#     osascript -e 'tell application id "tracesOf.Uebersicht" to refresh'
-# }
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -261,4 +232,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH="$HOME/.local/bin:$PATH"
-export GH_HOST=github.rbx.com
+export PATH="$HOME/git/skills-cli/bin:$PATH"
+
+# Reminders MacTeX
+path+=/Library/TeX/texbin
