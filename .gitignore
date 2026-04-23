@@ -1,2 +1,4 @@
 .config/kitty/kitty.conf.bak
 .config/nvim/lazy-lock.json
+.config/gh/hosts.yml
+.config/portpal/portpal.sock
