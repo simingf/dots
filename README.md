@@ -13,23 +13,10 @@ defaults delete com.apple.dock autohide-delay; killall Dock
 
 git lfs install --system
 
-## Symbolic Links Setup
+## Dotfiles Setup
 
-ln -s ~/dots/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json &&
-ln -s ~/dots/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
-touch ~/.hushlogin &&
-ln -s ~/dots/zsh/.zshrc ~/.zshrc &&
-ln -s ~/dots/git/.gitconfig ~/.gitconfig &&
-ln -s ~/dots/git/.gitignore_global ~/.gitignore_global &&
-mkdir ~/.config/ &&
-ln -s ~/dots/kitty ~/.config/kitty &&
-ln -s ~/dots/nvim ~/.config/nvim &&
-ln -s ~/dots/ripgrep ~/.config/ripgrep &&
-ln -s ~/dots/aerospace ~/.config/aerospace &&
-ln -s ~/dots/karabiner ~/.config/karabiner &&
-ln -s ~/dots/linearmouse ~/.config/linearmouse &&
-ln -s ~/dots/lazygit ~/Library/Application\ Support/lazygit
-ln -s ~/dots/sapling ~/Library/Preferences/sapling
+touch ~/.hushlogin
+cd ~/dots && stow . --target ~
 
 ## Manual Setup
 

@@ -1,7 +1,2 @@
-General/kitty/kitty.conf.bak
-General/nvim/lazy-lock.json
-
-# Cursor - machine-specific state (un-ignored by Cursor's inner .gitignore but not worth tracking)
-General/.cursor/projects/
-General/.cursor/plans/
-General/.cursor/mcp.json
+.config/kitty/kitty.conf.bak
+.config/nvim/lazy-lock.json
