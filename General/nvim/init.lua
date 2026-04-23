@@ -182,51 +182,6 @@ require("lazy").setup({
         end
     },
 
-    -- noice: improved UI
-    {
-        "folke/noice.nvim",
-        opts = {},
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
-        },
-        config = function()
-            require("noice").setup({
-                lsp = {
-                    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-                    override = {
-                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                        ["vim.lsp.util.stylize_markdown"] = true,
-                        ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-                    },
-                },
-                -- you can enable a preset for easier configuration
-                presets = {
-                    bottom_search = false,        -- use a classic bottom cmdline for search
-                    command_palette = true,       -- position the cmdline and popupmenu together
-                    long_message_to_split = true, -- long messages will be sent to a split
-                    inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-                    lsp_doc_border = false,       -- add a border to hover docs and signature help
-                },
-            })
-        end
-    },
-
-    -- notifications
-    {
-        'rcarriga/nvim-notify',
-        config = function()
-            require('notify').setup({
-                background_colour = "#000000",
-                render = "minimal",
-                minimum_width = 50,
-                max_width = 100,
-                stages = "fade_in_slide_out",
-                timeout = 0,
-            })
-        end
-    },
-
     -- status line at bottom
     {
         'nvim-lualine/lualine.nvim',
@@ -234,7 +189,7 @@ require("lazy").setup({
             require('lualine').setup({
                 options = {
                     icons_enabled = true,
-                    theme = 'catppuccin',
+                    theme = 'auto',
                     -- component_separators = { left = '', right = '' },
                     component_separators = '|',
                     -- section_separators = { left = '', right = '' },
@@ -430,60 +385,6 @@ require("lazy").setup({
         end,
     },
 
-    -- file system navigation
-    {
-        'kyazdani42/nvim-tree.lua',
-        config = function()
-            local HEIGHT_RATIO = 0.8
-            local WIDTH_RATIO = 0.5
-            require('nvim-tree').setup({
-                disable_netrw = true,
-                respect_buf_cwd = true,
-                sync_root_with_cwd = true,
-                view = {
-                    relativenumber = true,
-                    float = {
-                        enable = true,
-                        open_win_config = function()
-                            local screen_w = vim.opt.columns:get()
-                            local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
-                            local window_w = screen_w * WIDTH_RATIO
-                            local window_h = screen_h * HEIGHT_RATIO
-                            local window_w_int = math.floor(window_w)
-                            local window_h_int = math.floor(window_h)
-                            local center_x = (screen_w - window_w) / 2
-                            local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
-                            return {
-                                border = "rounded",
-                                relative = "editor",
-                                row = center_y,
-                                col = center_x,
-                                width = window_w_int,
-                                height = window_h_int,
-                            }
-                        end,
-                    },
-                },
-                on_attach = function(bufnr)
-                    local bufmap = function(lhs, rhs, desc)
-                        vim.keymap.set('n', lhs, rhs, { buffer = bufnr, desc = desc })
-                    end
-                    -- See :help nvim-tree.api
-                    local api = require('nvim-tree.api')
-                    bufmap('<cr>', api.node.open.edit, 'Expand folder or go to file')
-                    bufmap('cd', api.tree.change_root_to_node, 'Set current directory as root')
-                    bufmap('..', api.node.navigate.parent, 'Move to parent directory')
-                    bufmap('hh', api.tree.toggle_hidden_filter, 'Toggle hidden files')
-                end,
-                -- hide certain files
-                -- filters = {
-                --     custom = { "^.git$" },
-                -- },
-            })
-            vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>')
-        end
-    },
-
     -- close buffers
     {
         'echasnovski/mini.bufremove',
@@ -597,89 +498,6 @@ require("lazy").setup({
             require 'treesitter-context'.setup {
                 max_lines = 3
             }
-        end
-    },
-
-    -- mason: easy managing of installed LSPs / Formatters
-    {
-        "mason-org/mason.nvim",
-        opts = {}
-    },
-    {
-        "mason-org/mason-lspconfig.nvim",
-        opts = {
-            ensure_installed = {
-                "lua_ls", "ruff", "gopls"
-            }
-        },
-        dependencies = {
-            { "mason-org/mason.nvim", opts = {} },
-            "neovim/nvim-lspconfig",
-        },
-    },
-
-    -- lspconfig: setup commands to interact with LSPs - code completion, diagnostics, etc.
-    {
-        'neovim/nvim-lspconfig',
-        config = function()
-            vim.api.nvim_create_autocmd('LspAttach', {
-                desc = 'LSP actions',
-                callback = function(event)
-                    local bufmap = function(mode, lhs, rhs)
-                        local opts = { buffer = event.buf }
-                        vim.keymap.set(mode, lhs, rhs, opts)
-                    end
-                    -- Displays hover information about the symbol under the cursor
-                    bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
-                    -- Displays a function's signature information
-                    bufmap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
-                    -- Jump to the definition
-                    bufmap('n', '<leader>ld', '<cmd>lua vim.lsp.buf.definition()<cr>')
-                    -- Jump to declaration
-                    bufmap('n', '<leader>lD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
-                    -- Jumps to the definition of the type symbol
-                    bufmap('n', '<leader>ltd', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
-                    -- Lists all the implementations for the symbol under the cursor
-                    bufmap('n', '<leader>li', '<cmd>lua vim.lsp.buf.implementation()<cr>')
-                    -- Lists all the references
-                    bufmap('n', '<leader>lrf', '<cmd>lua vim.lsp.buf.references()<cr>')
-                    -- Renames all references to the symbol under the cursor
-                    bufmap('n', '<leader>lrn', '<cmd>lua vim.lsp.buf.rename()<cr>')
-                    -- Selects a code action available at the current cursor position
-                    bufmap({ 'n', 'x' }, '<leader>lca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-                    -- Show diagnostics in a floating window
-                    bufmap('n', '<leader>dd', '<cmd>lua vim.diagnostic.open_float()<cr>')
-                    -- Move to the previous diagnostic
-                    bufmap('n', '<leader>d[', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
-                    -- Move to the next diagnostic
-                    bufmap('n', '<leader>d]', '<cmd>lua vim.diagnostic.goto_next()<cr>')
-                end
-            })
-        end
-    },
-
-    -- conform: indicate which formatters to use, and automatic formatting
-    {
-        'stevearc/conform.nvim',
-        config = function()
-            require("conform").setup({
-                formatters_by_ft = {
-                    python = { "ruff" },
-                    c = { "clang-format" },
-                    cpp = { "clang-format" },
-                    javascript = { "prettierd" },
-                    typescript = { "prettierd" },
-                    javascriptreact = { "prettierd" },
-                    typescriptreact = { "prettierd" },
-                    css = { "prettierd" },
-                    json = { "prettierd" },
-                    markdown = { "prettierd" },
-                },
-                format_on_save = {
-                    lsp_fallback = true,
-                    timeout_ms = 500,
-                },
-            })
         end
     },
 
@@ -800,58 +618,4 @@ require("lazy").setup({
             require('luasnip.loaders.from_vscode').lazy_load()
         end
     },
-
-    -- copilot
-    -- {
-    --     'zbirenbaum/copilot.lua',
-    --     config = function()
-    --         require("copilot").setup({
-    --             suggestion = { enabled = false },
-    --             panel = { enabled = false },
-    --         })
-    --     end
-    -- },
-    -- {
-    --     'zbirenbaum/copilot-cmp',
-    --     config = true
-    -- },
 })
-
--- ========================================================================== --
--- ==                           MISC SETTINGS                              == --
--- ========================================================================== --
-
--- lua lsp setup to fix undefined global vim error
-require('lspconfig').lua_ls.setup({
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
-})
-
--- clangd lsp setup
-require("lspconfig").clangd.setup {
-    cmd = {
-        "clangd",
-        "--offset-encoding=utf-16",
-    },
-}
-
--- use python LSP from conda if in virtual env
-local function isempty(s)
-    return s == nil or s == ""
-end
-local function use_if_defined(val, fallback)
-    return val ~= nil and val or fallback
-end
-local conda_prefix = os.getenv("CONDA_PREFIX")
-if not isempty(conda_prefix) then
-    vim.g.python_host_prog = use_if_defined(vim.g.python_host_prog, conda_prefix .. "/bin/python")
-    vim.g.python3_host_prog = use_if_defined(vim.g.python3_host_prog, conda_prefix .. "/bin/python3")
-else
-    vim.g.python_host_prog = use_if_defined(vim.g.python_host_prog, "python")
-    vim.g.python3_host_prog = use_if_defined(vim.g.python3_host_prog, "python3")
-end
