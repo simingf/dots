@@ -37,11 +37,6 @@ ln -s ~/dots/sapling ~/Library/Preferences/sapling
 - **Enhancer for YouTube** — import `manual/enhancer_for_youtube/config.json` via extension settings
 - **Iris CE layout** — import `manual/iris_ce/iris_ce_rev__1.layout.json` via VIA configurator (https://caniusevia.com/)
 
-## Brown Software
-
-FastX3 (Remote Desktop)
-Tunnelblick (VPN)
-
 ## Homebrew Formulae
 
 ### brew leaves | wc -l (16)
