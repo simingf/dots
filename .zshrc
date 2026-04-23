@@ -11,8 +11,6 @@ else
     export EDITOR='nvim'
 fi
 
-export GH_HOST=github.rbx.com
-
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -148,6 +146,7 @@ alias swarplogin='swarp login sitetest3 && swarp secrets refresh sitetest3'
 alias swarprun='swarp run --watch'
 alias pps='portpal serve'
 alias kk='declawd'
+alias sshdev='kitty +kitten ssh sfeng-dev.coder'
 
 # competitive programming
 alias cpr='make && ./sol'
@@ -225,6 +224,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+export GH_HOST=github.rbx.com
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
