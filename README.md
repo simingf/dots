@@ -26,83 +26,83 @@ cd ~/dots && stow . --target ~
 
 ## Homebrew Formulae
 
-### brew leaves | wc -l (16)
+### brew leaves | wc -l (31)
 
+black \
+btop \
 ffmpeg \
 fzf \
 git \
+git-extras \
 git-lfs \
 go \
+hashicorp/tap/nomad \
+hashicorp/tap/vault \
 imagemagick \
+itsfrank/tap/portpal \
 jandedobbeleer/oh-my-posh/oh-my-posh \
-jesseduffield/lazygit/lazygit \
+lazygit \
 luarocks \
 neovim \
-pandoc \
+openjdk \
 php \
+prettier \
 ripgrep \
+ruby \
+ruff \
+sapling \
+stow \
+temporal \
 tlrc \
-yt-dlp \
+tree \
+uv \
+watchman \
+wget \
 zoxide
 
 ## Homebrew Casks
 
-### brew list --cask | wc -l (46)
+### brew list --cask | wc -l (34)
 
-nikitabobko/tap/aerospace \
+1password \
+aerospace \
 alcove \
 aldente \
 alfred \
 alt-tab \
 appcleaner \
-arc \
-audacity \
-baidunetdisk \
 bitwarden \
-chatgpt \
-clop \
+crossover \
 discord \
+docker-desktop \
 epic-games \
+firefox \
 font-jetbrains-mono-nerd-font \
 git-credential-manager \
-github \
-homerow \
+google-chrome \
 iina \
 jordanbaird-ice \
 karabiner-elements \
 keyboardcleantool \
 kitty \
 linearmouse \
-logitech-g-hub \
-microsoft-auto-update \
-microsoft-excel \
-microsoft-powerpoint \
-microsoft-word \
 middleclick \
 miniconda \
 monitorcontrol \
-moonlight \
-music-decoy \
-onyx \
-protonvpn \
-qbittorrent \
+portpal-app \
+postman \
 qflipper \
-roblox \
-selfcontrol \
+slack \
 spotify \
 steam \
-visual-studio-code \
 wechat \
-whatsapp \
 zoom
 
 Paid Casks:
 Alcove
 AlDente
 Alfred
-Clop
-Homerow
-MediaMate (Not Using ATM)
+Crossover
 
 ## Download Via App Store
 
@@ -146,3 +146,11 @@ Google Suggest
 System Settings
 Thumbnail Navigation
 Youtube Suggest
+
+## Work
+
+### Download Online
+
+Roblox
+Roblox Studio
+Logitech G Hub
