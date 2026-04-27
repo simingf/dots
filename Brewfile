@@ -75,7 +75,6 @@ cask "linearmouse"
 cask "logitech-g-hub"
 
 # Security & auth
-cask "1password"
 cask "bitwarden"
 
 # Development
@@ -122,7 +121,6 @@ cask "dcv-viewer"
 
 # Other
 cask "miniconda"
-cask "updatest"
 cask "font-jetbrains-mono-nerd-font"
 cask "itsfrank/tap/portpal-app"
 
