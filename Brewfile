@@ -126,16 +126,15 @@ cask "itsfrank/tap/portpal-app"
 
 # No cask available (installed manually):
 #   Amphetamine       - App Store
-#   Coder Desktop     - no cask
-#   Falcon            - corp managed (CrowdStrike)
-#   GlobalProtect     - no cask
-#   Googly Eyes       - no cask
-#   Jamf Self Service - corp managed
+#   Coder Desktop     - Manual
+#   Falcon            - roblox managed
+#   GlobalProtect     - roblox managed
+#   Googly Eyes       - App Store
+#   Jamf Self Service - roblox managed
 #   Karabiner-EventViewer - companion to karabiner-elements
-#   Klack             - no cask
-#   Postman Agent     - companion to Postman
-#   Roscan            - no cask
-#   Santa             - corp managed (Google)
+#   Klack             - App Store
+#   Roscan            - roblox managed
+#   Santa             - roblox managed
 
 # ---- VS Code Extensions ----
 vscode "coder.coder-remote"
