@@ -45,3 +45,5 @@
 	ship = town ship
 	sync = town sync
 	up = town up
+[maintenance]
+	repo = /Users/sfeng/git/roblox/deployment
