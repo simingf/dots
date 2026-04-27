@@ -205,25 +205,34 @@ c() {
     fi
 }
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+# conda (lazy-loaded)
+export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+_conda_load() {
+    unfunction conda
+    __conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    elif [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
         . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
     fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+    unset __conda_setup
+}
+conda() { _conda_load && conda "$@" }
 
 export GH_HOST=github.rbx.com
+# nvm (lazy-loaded)
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+_nvm_load() {
+    unfunction nvm node npm npx yarn pnpm 2>/dev/null
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+}
+nvm()  { _nvm_load && nvm "$@" }
+node() { _nvm_load && node "$@" }
+npm()  { _nvm_load && npm "$@" }
+npx()  { _nvm_load && npx "$@" }
+yarn() { _nvm_load && yarn "$@" }
+pnpm() { _nvm_load && pnpm "$@" }
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/git/skills-cli/bin:$PATH"
 

@@ -111,7 +111,6 @@ cask "crossover"
 cask "epic-games"
 
 # Browsers
-cask "firefox"
 cask "google-chrome"
 
 # Hardware & devices
