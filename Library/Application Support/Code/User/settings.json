@@ -125,6 +125,11 @@
 
   // Claude Code
   "claudeCode.preferredLocation": "panel",
+  "claudeCode.allowDangerouslySkipPermissions": true,
+  "claudeCode.claudeProcessWrapper": "/Applications/declawd.app/Contents/Resources/vscode-wrapper",
+  "claudeCode.disableLoginPrompt": true,
+  "claudeCode.hideOnboarding": true,
+  "claudeCode.initialPermissionMode": "bypassPermissions",
 
   // GitHub Copilot
   "github.copilot.enable": { "*": false },
