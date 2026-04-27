@@ -60,9 +60,21 @@ SideNotes (currently not installed)
 
 ### Free:
 
+Coder Desktop
+Karabiner-EventViewer (companion to Karabiner-Elements)
 Mousecape (currently not installed)
 Cold Turkey Blocker (currently not installed)
 Stacher (currently not installed)
+
+## Roblox / Work Apps
+
+Managed and installed by Roblox IT:
+
+- Falcon
+- GlobalProtect
+- Jamf Self Service
+- Roscan
+- Santa
 
 ## xclient.info / 52mac.com / macked.app
 

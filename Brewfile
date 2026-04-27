@@ -124,18 +124,6 @@ cask "miniconda"
 cask "font-jetbrains-mono-nerd-font"
 cask "itsfrank/tap/portpal-app"
 
-# No cask available (installed manually):
-#   Amphetamine       - App Store
-#   Coder Desktop     - Manual
-#   Falcon            - roblox managed
-#   GlobalProtect     - roblox managed
-#   Googly Eyes       - App Store
-#   Jamf Self Service - roblox managed
-#   Karabiner-EventViewer - companion to karabiner-elements
-#   Klack             - App Store
-#   Roscan            - roblox managed
-#   Santa             - roblox managed
-
 # ---- VS Code Extensions ----
 vscode "coder.coder-remote"
 vscode "esbenp.prettier-vscode"
