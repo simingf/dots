@@ -24,118 +24,49 @@ cd ~/dots && stow . --target ~
 - **Enhancer for YouTube** — import `manual/enhancer_for_youtube/config.json` via extension settings
 - **Iris CE layout** — import `manual/iris_ce/iris_ce_rev__1.layout.json` via VIA configurator (https://caniusevia.com/)
 
-## Homebrew Formulae
+## Homebrew
 
-### brew leaves | wc -l (31)
+```bash
+brew bundle install --file=~/dots/Brewfile
+```
 
-black \
-btop \
-ffmpeg \
-fzf \
-git \
-git-extras \
-git-lfs \
-go \
-hashicorp/tap/nomad \
-hashicorp/tap/vault \
-imagemagick \
-itsfrank/tap/portpal \
-jandedobbeleer/oh-my-posh/oh-my-posh \
-lazygit \
-luarocks \
-neovim \
-openjdk \
-php \
-prettier \
-ripgrep \
-ruby \
-ruff \
-sapling \
-stow \
-temporal \
-tlrc \
-tree \
-uv \
-watchman \
-wget \
-zoxide
+### Paid Casks
 
-## Homebrew Casks
-
-### brew list --cask | wc -l (34)
-
-1password \
-aerospace \
-alcove \
-aldente \
-alfred \
-alt-tab \
-appcleaner \
-bitwarden \
-crossover \
-discord \
-docker-desktop \
-epic-games \
-firefox \
-font-jetbrains-mono-nerd-font \
-git-credential-manager \
-google-chrome \
-iina \
-jordanbaird-ice \
-karabiner-elements \
-keyboardcleantool \
-kitty \
-linearmouse \
-middleclick \
-miniconda \
-monitorcontrol \
-portpal-app \
-postman \
-qflipper \
-slack \
-spotify \
-steam \
-wechat \
-zoom
-
-Paid Casks:
-Alcove
-AlDente
-Alfred
-Crossover
+- Alcove
+- AlDente
+- Alfred
+- Crossover
+- LookAway
 
 ## Download Via App Store
 
 ### Paid:
 
 Yoink
-rcmd
+rcmd (currently not installed)
 Klack
 
 ### Free:
 
 Amphetamine
 Googly Eyes
-Xcode
+Xcode (currently not installed)
 
 ## Download Online
 
 ### Paid:
 
-SideNotes
+SideNotes (currently not installed)
 
 ### Free:
 
-Mousecape
-Cold Turkey Blocker
-Stacher
+Mousecape (currently not installed)
+Cold Turkey Blocker (currently not installed)
+Stacher (currently not installed)
 
 ## xclient.info / 52mac.com / macked.app
 
-LookAway (1.12.2) (NO LIFETIME LICENSE)
 Cleanshot X (4.7.6, 5/6) (NO LIFETIME LICENSE)
-Logic Pro
-Melodyne 5
 
 ## Alfred Workflows
 
@@ -146,11 +77,3 @@ Google Suggest
 System Settings
 Thumbnail Navigation
 Youtube Suggest
-
-## Work
-
-### Download Online
-
-Roblox
-Roblox Studio
-Logitech G Hub
