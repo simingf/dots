@@ -60,6 +60,8 @@ SideNotes (currently not installed)
 
 ### Free:
 
+ZoomHider
+IsThereNet
 Coder Desktop
 Karabiner-EventViewer (companion to Karabiner-Elements)
 Mousecape (currently not installed)
