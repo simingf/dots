@@ -83,10 +83,6 @@ accept-line() {
 }
 zle -N accept-line
 
-# Shell integrations
-source <(fzf --zsh)
-eval "$(zoxide init --cmd cd zsh)"
-
 # general aliases
 alias e='exit'
 alias ll='ls -la'
@@ -233,3 +229,7 @@ export PATH="$HOME/git/skills-cli/bin:$PATH"
 
 # Reminders MacTeX
 path+=/Library/TeX/texbin
+
+# Shell integrations
+source <(fzf --zsh)
+eval "$(zoxide init --cmd cd zsh)"
