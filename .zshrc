@@ -118,6 +118,7 @@ alias zup="zinit self-update && zinit update --all && zinit cclear"
 alias nrc="nvim ~/.config/nvim/init.lua"
 # kitty
 alias krc="nvim ~/.config/kitty/kitty.conf"
+alias kitty="$HOME/Applications/kitty.app/Contents/MacOS/kitty"
 # aerospace
 alias arc="nvim ~/.config/aerospace/aerospace.toml"
 # updates zinit, homebrew
