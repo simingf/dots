@@ -90,6 +90,7 @@ cask "alfred"
 cask "appcleaner"
 cask "asana"
 cask "obsidian"
+cask "opal-app"
 cask "prefs-editor"
 cask "prismlauncher"
 cask "wispr-flow"
@@ -115,7 +116,6 @@ cask "google-chrome"
 
 # Hardware & devices
 cask "qflipper"
-cask "opal-composer"
 cask "dcv-viewer"
 
 # Other
