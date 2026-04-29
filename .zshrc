@@ -131,6 +131,12 @@ alias v='nvim'
 
 # tmux
 alias t='tmux'
+alias ta='tmux attach -t'
+tat() { tmux attach -t $(tmux list-sessions | fzf | cut -d: -f1); }
+alias tl='tmux list-sessions'
+alias tn='tmux new -s'
+alias tk='tmux kill-session -t'
+alias tks='tmux kill-server'
 
 # ripgrep
 export RIPGREP_CONFIG_PATH=~/.config/ripgrep/rg.conf
