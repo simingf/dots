@@ -22,6 +22,7 @@ tap "nikitabobko/tap"
 # ---- Formulae ----
 brew "black"
 brew "btop"
+brew "fd"
 brew "ffmpeg"
 brew "fzf"
 brew "git"
