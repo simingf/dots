@@ -2,21 +2,38 @@
 
 ## Disable Hold Key For Tilde
 
+```bash
 defaults write -g ApplePressAndHoldEnabled -bool false
+```
 
 ## Remove Dock
 
+```bash
 defaults write com.apple.dock autohide-delay -float 1000; killall Dock
 defaults delete com.apple.dock autohide-delay; killall Dock
+```
+
+## Fix Chrome Jumping to Wrong Workspace
+
+macOS's `workspaces-auto-swoosh` makes it jump to the Space where an app was last active instead of staying put. Disabling it fixes this.
+
+```bash
+defaults write com.apple.dock workspaces-auto-swoosh -bool NO
+killall Dock
+```
 
 ## git-lfs setup
 
+```bash
 git lfs install --system
+```
 
 ## Dotfiles Setup
 
+```bash
 touch ~/.hushlogin
 cd ~/dots && stow . --target ~
+```
 
 ## Manual Setup
 
