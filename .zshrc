@@ -129,6 +129,9 @@ alias up='zup && bup'
 alias vim='nvim'
 alias v='nvim'
 
+# tmux
+alias t='tmux'
+
 # ripgrep
 export RIPGREP_CONFIG_PATH=~/.config/ripgrep/rg.conf
 alias rg="rg --hyperlink-format=kitty"
