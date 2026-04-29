@@ -131,11 +131,10 @@ alias v='nvim'
 
 # tmux
 alias t='tmux'
-alias ta='tmux attach -t'
-tat() { tmux attach -t $(tmux list-sessions | fzf | cut -d: -f1); }
-alias tl='tmux list-sessions'
 alias tn='tmux new -s'
-alias tk='tmux kill-session -t'
+alias tl='tmux list-sessions'
+function ta { tmux attach -t $(tmux list-sessions | fzf -q "$1" --select-1 --exit-0 | cut -d: -f1); }
+function tk { tmux kill-session -t $(tmux list-sessions | fzf -q "$1" --select-1 --exit-0 | cut -d: -f1); }
 alias tks='tmux kill-server'
 
 # ripgrep
