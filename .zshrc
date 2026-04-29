@@ -111,6 +111,7 @@ alias bup='brew update && brew upgrade && brew cleanup && brew autoremove'
 # zsh
 alias zrc="nvim ~/.zshrc"
 alias rs="clear && source ~/.zshrc"
+alias trs="tmux source ~/.tmux.conf"
 alias ch="rm -f ~/.zsh_history && clear"
 # zinit
 alias zup="zinit self-update && zinit update --all && zinit cclear"
