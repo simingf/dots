@@ -104,35 +104,35 @@ alias dow='builtin cd ~/Downloads/ && clear && ls'
 alias des='builtin cd ~/Desktop/ && clear && ls'
 alias dots='builtin cd ~/dots && ls'
 
+# updates everything
+alias up='topgrade'
+# homebrew update
+alias bup='brew update && brew upgrade && brew cleanup && brew autoremove'
+# zinit update
+alias zup="zinit self-update && zinit update --all && zinit cclear"
 # config aliases
 alias cf="builtin cd ~/.config && ls"
-# homebrew
-alias bup='brew update && brew upgrade && brew cleanup && brew autoremove'
-# zsh
+# zsh config
 alias zrc="nvim ~/.zshrc"
 alias rs="clear && source ~/.zshrc"
-alias trs="tmux source ~/.tmux.conf"
 alias ch="rm -f ~/.zsh_history && clear"
-# zinit
-alias zup="zinit self-update && zinit update --all && zinit cclear"
-# nvim
-alias nrc="nvim ~/.config/nvim/init.lua"
-# kitty
+# kitty config
 alias krc="nvim ~/.config/kitty/kitty.conf"
 alias kitty="$HOME/Applications/kitty.app/Contents/MacOS/kitty"
-# aerospace
+# aerospace config
 alias arc="nvim ~/.config/aerospace/aerospace.toml"
-# updates zinit, homebrew
-alias up='zup && bup'
 
 # nvim
+alias nrc="nvim ~/.config/nvim/init.lua"
 alias vim='nvim'
 alias v='nvim'
 
 # tmux
+alias trc='nvim ~/.tmux.conf'
+alias trs="tmux source ~/.tmux.conf"
 alias tn='tmux new -s'
 alias tl='tmux list-sessions'
-function t { tmux attach -t $(tmux list-sessions -F '#{session_name}' | fzf -q "$1" --select-1 --exit-0); }
+function ta { tmux attach -t $(tmux list-sessions -F '#{session_name}' | fzf -q "$1" --select-1 --exit-0); }
 function tk { tmux kill-session -t $(tmux list-sessions -F '#{session_name}' | fzf -q "$1" --select-1 --exit-0); }
 alias tka='tmux kill-server'
 
