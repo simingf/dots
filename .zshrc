@@ -130,10 +130,20 @@ alias v='nvim'
 # tmux
 alias trc='nvim ~/.tmux.conf'
 alias trs="tmux source ~/.tmux.conf"
-alias tn='tmux new -s'
 alias tl='tmux list-sessions'
-function ta { tmux attach -t $(tmux list-sessions -F '#{session_name}' | fzf -q "$1" --select-1 --exit-0); }
-function tk { tmux kill-session -t $(tmux list-sessions -F '#{session_name}' | fzf -q "$1" --select-1 --exit-0); }
+# tn <name>: create new tmux session, or attach if it already exists
+tn() {
+  [[ -z "$1" ]] && { echo "usage: tn <name>" >&2; return 1; }
+  tmux has-session -t="$1" 2>/dev/null && tmux attach -t "$1" || tmux new -s "$1"
+}
+# ta [query]: fuzzy-pick a session to attach to (auto-selects if query matches exactly one)
+ta() {
+  tmux attach -t "$(tmux list-sessions -F '#{session_name}' | fzf -q "$1" --select-1 --exit-0)"
+}
+# tk [query]: fuzzy-pick a session to kill (always shows picker, even with exact match)
+tk() {
+  tmux kill-session -t "$(tmux list-sessions -F '#{session_name}' | fzf -q "$1" --exit-0)"
+}
 alias tka='tmux kill-server'
 
 # ripgrep
