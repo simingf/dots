@@ -119,6 +119,7 @@ alias ch="rm -f ~/.zsh_history && clear"
 # kitty config
 alias krc="nvim ~/.config/kitty/kitty.conf"
 alias kitty="$HOME/Applications/kitty.app/Contents/MacOS/kitty"
+alias kitten="$HOME/Applications/kitty.app/Contents/MacOS/kitten"
 # aerospace config
 alias arc="nvim ~/.config/aerospace/aerospace.toml"
 
