@@ -143,6 +143,7 @@ alias swarplogin='swarp login sitetest3 && swarp secrets refresh sitetest3'
 alias swarprun='swarp run --watch'
 alias pps='portpal serve'
 alias kk='declawd --no-extra-output --dangerously-skip-permissions'
+alias kkr='declawd --no-extra-output --dangerously-skip-permissions --resume'
 alias sshdev='kitty +kitten ssh sfeng-dev.coder'
 
 # competitive programming
