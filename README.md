@@ -10,12 +10,15 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 
 ```bash
 defaults write com.apple.dock autohide-delay -float 1000; killall Dock
+```
+
+To revert:
+
+```bash
 defaults delete com.apple.dock autohide-delay; killall Dock
 ```
 
-## Fix Chrome Jumping to Wrong Workspace
-
-macOS's `workspaces-auto-swoosh` makes it jump to the Space where an app was last active instead of staying put. Disabling it fixes this.
+## Fix Chrome Workspace Force Switch
 
 ```bash
 defaults write com.apple.dock workspaces-auto-swoosh -bool NO
@@ -35,17 +38,17 @@ touch ~/.hushlogin
 cd ~/dots && stow . --target ~
 ```
 
-## Manual Setup
-
-- **Alfred themes** — import from `manual/alfred/themes/` via Alfred Preferences → Appearance
-- **Enhancer for YouTube** — import `manual/enhancer_for_youtube/config.json` via extension settings
-- **Iris CE layout** — import `manual/iris_ce/iris_ce_rev__1.layout.json` via VIA configurator (https://caniusevia.com/)
-
 ## Homebrew
 
 ```bash
 brew bundle install --file=~/dots/Brewfile
 ```
+
+## Manual Setup
+
+- **Alfred themes** — import from `manual/alfred/themes/` via Alfred Preferences → Appearance
+- **Enhancer for YouTube** — import `manual/enhancer_for_youtube/config.json` via extension settings
+- **Iris CE layout** — import `manual/iris_ce/iris_ce_rev__1.layout.json` via VIA configurator (https://caniusevia.com/)
 
 ### Paid Casks
 
@@ -80,9 +83,7 @@ SideNotes (currently not installed)
 ZoomHider
 IsThereNet
 Coder Desktop
-Karabiner-EventViewer (companion to Karabiner-Elements)
 Mousecape (currently not installed)
-Cold Turkey Blocker (currently not installed)
 Stacher (currently not installed)
 
 ## Roblox / Work Apps
