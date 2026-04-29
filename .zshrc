@@ -130,12 +130,11 @@ alias vim='nvim'
 alias v='nvim'
 
 # tmux
-alias t='tmux'
 alias tn='tmux new -s'
 alias tl='tmux list-sessions'
-function ta { tmux attach -t $(tmux list-sessions | fzf -q "$1" --select-1 --exit-0 | cut -d: -f1); }
-function tk { tmux kill-session -t $(tmux list-sessions | fzf -q "$1" --select-1 --exit-0 | cut -d: -f1); }
-alias tks='tmux kill-server'
+function t { tmux attach -t $(tmux list-sessions -F '#{session_name}' | fzf -q "$1" --select-1 --exit-0); }
+function tk { tmux kill-session -t $(tmux list-sessions -F '#{session_name}' | fzf -q "$1" --select-1 --exit-0); }
+alias tka='tmux kill-server'
 
 # ripgrep
 export RIPGREP_CONFIG_PATH=~/.config/ripgrep/rg.conf
