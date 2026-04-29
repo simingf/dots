@@ -5,38 +5,23 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Double-tap Right Command → Ctrl+Space (tmux prefix)",
+                        "description": "Right Command alone → Ctrl+Space; held still works as Cmd",
                         "manipulators": [
                             {
-                                "from": { "key_code": "right_command" },
-                                "parameters": { "basic.to_delayed_action_delay_milliseconds": 300 },
-                                "to_delayed_action": {
-                                    "to_if_invoked": [
-                                        {
-                                            "set_variable": {
-                                                "name": "right_cmd_tapped",
-                                                "value": 0
-                                            }
-                                        }
-                                    ]
+                                "from": {
+                                    "key_code": "right_command",
+                                    "modifiers": { "optional": ["any"] }
                                 },
+                                "to": [
+                                    {
+                                        "key_code": "right_command",
+                                        "lazy": true
+                                    }
+                                ],
                                 "to_if_alone": [
                                     {
-                                        "conditions": [
-                                            {
-                                                "name": "right_cmd_tapped",
-                                                "type": "variable_if",
-                                                "value": 1
-                                            }
-                                        ],
                                         "key_code": "spacebar",
                                         "modifiers": ["left_control"]
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "right_cmd_tapped",
-                                            "value": 1
-                                        }
                                     }
                                 ],
                                 "type": "basic"
