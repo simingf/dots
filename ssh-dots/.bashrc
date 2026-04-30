@@ -96,10 +96,10 @@ alias v='nvim'
 alias lg='echo -ne "\033]0;$(basename $(git rev-parse --show-toplevel 2>/dev/null) || echo "Lazygit")\007" && lazygit'
 
 # tmux
-alias tl='tmux list-sessions'
-alias tka='tmux kill-server'
 alias trc='nvim ~/.tmux.conf'
 alias trs='tmux source ~/.tmux.conf'
+alias tl='tmux list-sessions'
+alias tka='tmux kill-server'
 
 tn() {
   [[ -z "$1" ]] && { echo "usage: tn <name>" >&2; return 1; }
@@ -117,7 +117,12 @@ tk() {
 }
 
 # sl update
-alias sup='echo "➡️ pulling..." && sl pull && echo "➡️ rebasing on newest master..." && sl rebase -d master && echo "➡️ restacking..." && sl restack && echo "➡️ submitting prs..." && sl pr submit --stack'
+sup() {
+  echo "➡️ pulling..." && sl pull || return 1
+  echo "➡️ rebasing on newest master..." && sl rebase -d master || true
+  echo "➡️ restacking..." && sl restack || true
+  echo "➡️ submitting prs..." && sl pr submit --stack
+}
 
 # claude
 alias claude='claude --dangerously-skip-permissions'
