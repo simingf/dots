@@ -136,6 +136,7 @@ preexec_functions+=(_tmux_preexec)
 alias trc='nvim ~/.tmux.conf'
 alias trs="tmux source ~/.tmux.conf"
 alias tl='tmux list-sessions'
+alias tka='tmux kill-server'
 # tn <name>: create new tmux session, or attach if it already exists
 tn() {
   [[ -z "$1" ]] && { echo "usage: tn <name>" >&2; return 1; }
@@ -153,7 +154,6 @@ tk() {
   session=$(tmux list-sessions -F '#{session_name}' | fzf -q "${1:-}" --exit-0) || return
   tmux kill-session -t "$session"
 }
-alias tka='tmux kill-server'
 # rename tmux window to ssh destination; precmd restores on exit
 ssh() {
   [[ -n "$TMUX" ]] && printf '\033k%s\033\\' "${@: -1}"
