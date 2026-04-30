@@ -129,6 +129,10 @@ alias vim='nvim'
 alias v='nvim'
 
 # tmux
+_tmux_precmd()  { [[ -n "$TMUX" ]] || return; printf '\033k%s\033\\' "$(basename "$PWD")"; }
+_tmux_preexec() { [[ -n "$TMUX" ]] || return; printf '\033k%s\033\\' "$1"; }
+precmd_functions+=(_tmux_precmd)
+preexec_functions+=(_tmux_preexec)
 alias trc='nvim ~/.tmux.conf'
 alias trs="tmux source ~/.tmux.conf"
 alias tl='tmux list-sessions'
@@ -150,6 +154,11 @@ tk() {
   tmux kill-session -t "$session"
 }
 alias tka='tmux kill-server'
+# rename tmux window to ssh destination; precmd restores on exit
+ssh() {
+  [[ -n "$TMUX" ]] && printf '\033k%s\033\\' "${@: -1}"
+  command ssh "$@"
+}
 
 # ripgrep
 export RIPGREP_CONFIG_PATH=~/.config/ripgrep/rg.conf
@@ -159,9 +168,9 @@ alias rg="rg --hyperlink-format=kitty"
 lg() {
   local name
   name=$(git rev-parse --show-toplevel 2>/dev/null) && name="lg ($(basename "$name"))" || name="lazygit"
-  printf '\033]0;%s\033\\' "$name"
+  [[ -n "$TMUX" ]] && printf '\033k%s\033\\' "$name" || printf '\033]0;%s\033\\' "$name"
   lazygit "$@"
-  printf '\033]0;\033\\'
+  [[ -z "$TMUX" ]] && printf '\033]0;\033\\'
 }
 
 # sl update
