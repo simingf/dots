@@ -156,7 +156,13 @@ export RIPGREP_CONFIG_PATH=~/.config/ripgrep/rg.conf
 alias rg="rg --hyperlink-format=kitty"
 
 # lazygit
-alias lg='echo -ne "\033]0;$(basename $(git rev-parse --show-toplevel 2>/dev/null) || echo "Lazygit")\007" && lazygit'
+lg() {
+  local name
+  name=$(git rev-parse --show-toplevel 2>/dev/null) && name="lg ($(basename "$name"))" || name="lazygit"
+  printf '\033]0;%s\033\\' "$name"
+  lazygit "$@"
+  printf '\033]0;\033\\'
+}
 
 # sl update
 alias sup='echo "➡️ pulling..." && sl pull && echo "➡️ rebasing on newest master..." && sl rebase -d master && echo "➡️ restacking..." && sl restack && echo "➡️ submitting prs..." && sl pr submit --stack'
