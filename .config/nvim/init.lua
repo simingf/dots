@@ -2,6 +2,16 @@
 -- ==                           EDITOR SETTINGS                            == --
 -- ========================================================================== --
 
+-- title
+vim.opt.titlestring = '%t' -- %t = filename (tail only)
+vim.opt.title = true
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+  callback = function()
+    local title = vim.fn.expand('%:t')
+    if title == '' then title = '[No Name]' end
+    vim.opt.titlestring = title
+  end
+})
 -- enable line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
