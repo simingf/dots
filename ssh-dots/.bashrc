@@ -4,18 +4,18 @@ case $- in
       *) return;;
 esac
 
+# Prompt with git branch
+parse_git_branch() {
+  git branch 2>/dev/null | grep '*' | sed 's/* //'
+}
+PS1='bash|\[\e[36m\]\w\[\e[0m\]\[\e[33m\]$(b=$(parse_git_branch); [ -n "$b" ] && echo "($b)")\[\e[0m\]> '
+
 # History
 HISTCONTROL=ignoreboth
 HISTSIZE=5000
 HISTFILESIZE=10000
 shopt -s histappend
 shopt -s checkwinsize
-
-# Prompt with git branch
-parse_git_branch() {
-  git branch 2>/dev/null | grep '*' | sed 's/* //'
-}
-PS1='bash|\[\e[36m\]\w\[\e[0m\]\[\e[33m\]$(b=$(parse_git_branch); [ -n "$b" ] && echo "($b)")\[\e[0m\]> '
 
 # Editor
 export EDITOR='nvim'
