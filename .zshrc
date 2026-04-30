@@ -139,11 +139,15 @@ tn() {
 }
 # ta [query]: fuzzy-pick a session to attach to (auto-selects if query matches exactly one)
 ta() {
-  tmux attach -t "$(tmux list-sessions -F '#{session_name}' | fzf -q "$1" --select-1 --exit-0)"
+  local session
+  session=$(tmux list-sessions -F '#{session_name}' | fzf -q "${1:-}" --select-1 --exit-0) || return
+  tmux attach -t "$session"
 }
 # tk [query]: fuzzy-pick a session to kill (always shows picker, even with exact match)
 tk() {
-  tmux kill-session -t "$(tmux list-sessions -F '#{session_name}' | fzf -q "$1" --exit-0)"
+  local session
+  session=$(tmux list-sessions -F '#{session_name}' | fzf -q "${1:-}" --exit-0) || return
+  tmux kill-session -t "$session"
 }
 alias tka='tmux kill-server'
 
@@ -163,7 +167,7 @@ alias swarprun='swarp run --watch'
 alias pps='portpal serve'
 alias kk='declawd --no-extra-output --dangerously-skip-permissions'
 alias kkr='declawd --no-extra-output --dangerously-skip-permissions --resume'
-alias sshdev='kitty +kitten ssh sfeng-dev.coder'
+alias sshdev='TERM=xterm-256color ssh sfeng-dev.coder'
 
 # competitive programming
 alias cpr='make && ./sol'
