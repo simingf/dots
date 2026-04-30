@@ -49,7 +49,7 @@ accept-line() {
 zle -N accept-line
 
 # cd hook: clear+ls on every directory change
-chpwd() { clear && ls; }
+chpwd() { clear && ls --color=auto; }
 
 # tmux window title
 _tmux_precmd()  { [[ -n "$TMUX" ]] || return; printf '\033k%s\033\\' "$(basename "$PWD")"; }

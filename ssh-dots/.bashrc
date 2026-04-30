@@ -40,7 +40,21 @@ cd() { builtin cd "$1" && clear && ls; }
 
 # tmux window title (precmd equivalent via PROMPT_COMMAND)
 _tmux_precmd() { [[ -n "$TMUX" ]] && printf '\033k%s\033\\' "$(basename "$PWD")"; }
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }_tmux_precmd"
+
+# Empty Enter: clear+ls (detects empty enter by checking if history number advanced)
+_prev_hist_n=-1
+_check_empty_enter() {
+    local n
+    n=$(HISTTIMEFORMAT= history 1 2>/dev/null | awk '{print $1; exit}')
+    : "${n:=0}"
+    if (( n <= _prev_hist_n )); then
+        clear && ls --color=auto
+    else
+        _prev_hist_n=$n
+    fi
+}
+
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }_tmux_precmd; _check_empty_enter"
 
 # general aliases
 alias e='exit'

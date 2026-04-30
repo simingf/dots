@@ -95,7 +95,7 @@ alias icat="kitten icat"
 alias top="btop"
 
 # cd hook: clear+ls on every directory change
-chpwd() { clear && ls; }
+chpwd() { clear && ls -G; }
 
 # directory aliases
 alias ls='ls -G'
