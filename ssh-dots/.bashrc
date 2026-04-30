@@ -38,7 +38,11 @@ fi
 # cd override: always clear+ls on directory change
 cd() { builtin cd "$1" && clear && ls; }
 
-# General aliases
+# tmux window title (precmd equivalent via PROMPT_COMMAND)
+_tmux_precmd() { [[ -n "$TMUX" ]] && printf '\033k%s\033\\' "$(basename "$PWD")"; }
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }_tmux_precmd"
+
+# general aliases
 alias e='exit'
 alias c='clear && ls'
 alias ll='ls -alF'
@@ -46,29 +50,34 @@ alias la='ls -A'
 alias l='ls -CF'
 alias rm='rm -r'
 alias mkdir='mkdir -p'
+alias npmg='npm list -g --depth 0'
+
+# fix pbcopy on linux
+pbcopy() { cat > /dev/null; }
+
+# directory aliases
 alias ..='cd ..'
 alias ...='cd ../..'
-
-# Alert: desktop notification for long-running commands (e.g. `sleep 10; alert`)
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Config aliases
 alias rs='source ~/.bashrc'
 alias brc='nvim ~/.bashrc'
+alias cf="builtin cd ~/.config && ls"
+alias nrc="nvim ~/.config/nvim/init.lua"
 
-# Editor aliases
+# nvim
 alias vim='nvim'
 alias v='nvim'
 
-# Claude
-alias claude='claude --dangerously-skip-permissions'
-alias kk='claude'
+# lazygit
+alias lg='echo -ne "\033]0;$(basename $(git rev-parse --show-toplevel 2>/dev/null) || echo "Lazygit")\007" && lazygit'
 
 # tmux
 alias trc='nvim ~/.tmux.conf'
 alias trs='tmux source ~/.tmux.conf'
 alias tl='tmux list-sessions'
 alias tka='tmux kill-server'
+
 tn() {
   [[ -z "$1" ]] && { echo "usage: tn <name>" >&2; return 1; }
   tmux has-session -t="$1" 2>/dev/null && tmux attach -t "$1" || tmux new -s "$1"
@@ -83,6 +92,17 @@ tk() {
   session=$(tmux list-sessions -F '#{session_name}' | fzf -q "${1:-}" --exit-0) || return
   tmux kill-session -t "$session"
 }
+
+# sl update
+alias sup='echo "➡️ pulling..." && sl pull && echo "➡️ rebasing on newest master..." && sl rebase -d master && echo "➡️ restacking..." && sl restack && echo "➡️ submitting prs..." && sl pr submit --stack'
+
+# claude
+alias claude='claude --dangerously-skip-permissions'
+alias kk='claude'
+
+export GH_HOST=github.rbx.com
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/git/skills-cli/bin:$PATH"
 
 # Bash completion
 if ! shopt -oq posix; then
