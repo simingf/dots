@@ -11,17 +11,14 @@ HISTFILESIZE=10000
 shopt -s histappend
 shopt -s checkwinsize
 
-# make less handle non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# Editor
-export EDITOR='nvim'
-
 # Prompt with git branch
 parse_git_branch() {
   git branch 2>/dev/null | grep '*' | sed 's/* //'
 }
 PS1='bash|\[\e[36m\]\w\[\e[0m\]\[\e[33m\]$(b=$(parse_git_branch); [ -n "$b" ] && echo "($b)")\[\e[0m\]> '
+
+# Editor
+export EDITOR='nvim'
 
 # GCC colored warnings/errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
@@ -34,6 +31,18 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+# Bash completion
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+# make less handle non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # cd override: always clear+ls on directory change
 cd() { builtin cd "$1" && clear && ls; }
@@ -87,10 +96,10 @@ alias v='nvim'
 alias lg='echo -ne "\033]0;$(basename $(git rev-parse --show-toplevel 2>/dev/null) || echo "Lazygit")\007" && lazygit'
 
 # tmux
-alias trc='nvim ~/.tmux.conf'
-alias trs='tmux source ~/.tmux.conf'
 alias tl='tmux list-sessions'
 alias tka='tmux kill-server'
+alias trc='nvim ~/.tmux.conf'
+alias trs='tmux source ~/.tmux.conf'
 
 tn() {
   [[ -z "$1" ]] && { echo "usage: tn <name>" >&2; return 1; }
@@ -117,15 +126,6 @@ alias kk='claude'
 export GH_HOST=github.rbx.com
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/git/skills-cli/bin:$PATH"
-
-# Bash completion
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
 
 # direnv
 command -v direnv &>/dev/null && eval "$(direnv hook bash)"

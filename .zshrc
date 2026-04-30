@@ -11,6 +11,19 @@ else
     export EDITOR='nvim'
 fi
 
+# History
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -42,18 +55,8 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 fi
 
-# History
-HISTSIZE=5000
-HISTFILE=~/.zsh_history
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
+# Color
+alias ls='ls -G'
 
 # Keybindings
 bindkey -e
@@ -83,6 +86,15 @@ accept-line() {
 }
 zle -N accept-line
 
+# cd hook: clear+ls on every directory change
+chpwd() { clear && ls -G; }
+
+# tmux window title
+_tmux_precmd()  { [[ -n "$TMUX" ]] || return; printf '\033k%s\033\\' "$(basename "$PWD")"; }
+_tmux_preexec() { [[ -n "$TMUX" ]] || return; printf '\033k%s\033\\' "$1"; }
+precmd_functions+=(_tmux_precmd)
+preexec_functions+=(_tmux_preexec)
+
 # general aliases
 alias e='exit'
 alias ll='ls -la'
@@ -94,11 +106,7 @@ alias npmg='npm list -g --depth 0'
 alias icat="kitten icat"
 alias top="btop"
 
-# cd hook: clear+ls on every directory change
-chpwd() { clear && ls -G; }
-
 # directory aliases
-alias ls='ls -G'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias app='builtin cd /Applications/ && clear && ls'
@@ -107,13 +115,13 @@ alias dow='builtin cd ~/Downloads/ && clear && ls'
 alias des='builtin cd ~/Desktop/ && clear && ls'
 alias dots='builtin cd ~/dots && ls'
 
+# config aliases
 # updates everything
 alias up='topgrade'
 # homebrew update
 alias bup='brew update && brew upgrade && brew cleanup && brew autoremove'
 # zinit update
 alias zup="zinit self-update && zinit update --all && zinit cclear"
-# config aliases
 alias cf="builtin cd ~/.config && ls"
 # zsh config
 alias zrc="nvim ~/.zshrc"
@@ -131,11 +139,16 @@ alias nrc="nvim ~/.config/nvim/init.lua"
 alias vim='nvim'
 alias v='nvim'
 
+# lazygit
+lg() {
+  local name
+  name=$(git rev-parse --show-toplevel 2>/dev/null) && name="lg ($(basename "$name"))" || name="lazygit"
+  [[ -n "$TMUX" ]] && printf '\033k%s\033\\' "$name" || printf '\033]0;%s\033\\' "$name"
+  lazygit "$@"
+  [[ -z "$TMUX" ]] && printf '\033]0;\033\\'
+}
+
 # tmux
-_tmux_precmd()  { [[ -n "$TMUX" ]] || return; printf '\033k%s\033\\' "$(basename "$PWD")"; }
-_tmux_preexec() { [[ -n "$TMUX" ]] || return; printf '\033k%s\033\\' "$1"; }
-precmd_functions+=(_tmux_precmd)
-preexec_functions+=(_tmux_preexec)
 alias trc='nvim ~/.tmux.conf'
 alias trs="tmux source ~/.tmux.conf"
 alias tl='tmux list-sessions'
@@ -166,15 +179,6 @@ ssh() {
 # ripgrep
 export RIPGREP_CONFIG_PATH=~/.config/ripgrep/rg.conf
 alias rg="rg --hyperlink-format=kitty"
-
-# lazygit
-lg() {
-  local name
-  name=$(git rev-parse --show-toplevel 2>/dev/null) && name="lg ($(basename "$name"))" || name="lazygit"
-  [[ -n "$TMUX" ]] && printf '\033k%s\033\\' "$name" || printf '\033]0;%s\033\\' "$name"
-  lazygit "$@"
-  [[ -z "$TMUX" ]] && printf '\033]0;\033\\'
-}
 
 # sl update
 sup() {

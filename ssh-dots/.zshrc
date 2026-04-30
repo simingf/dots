@@ -19,14 +19,26 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
+# Editor
+export EDITOR='nvim'
+
+# GCC colored warnings/errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# Color support
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# Completions
+autoload -Uz compinit && compinit
+
 # Keybindings
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
-
-# Completions
-autoload -Uz compinit && compinit
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -56,18 +68,6 @@ _tmux_precmd()  { [[ -n "$TMUX" ]] || return; printf '\033k%s\033\\' "$(basename
 _tmux_preexec() { [[ -n "$TMUX" ]] || return; printf '\033k%s\033\\' "$1"; }
 precmd_functions+=(_tmux_precmd)
 preexec_functions+=(_tmux_preexec)
-
-# Editor
-export EDITOR='nvim'
-
-# GCC colored warnings/errors
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# Color support
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
 
 # general aliases
 alias e='exit'
@@ -101,10 +101,10 @@ alias v='nvim'
 alias lg='echo -ne "\033]0;$(basename $(git rev-parse --show-toplevel 2>/dev/null) || echo "Lazygit")\007" && lazygit'
 
 # tmux
-alias trc='nvim ~/.tmux.conf'
-alias trs='tmux source ~/.tmux.conf'
 alias tl='tmux list-sessions'
 alias tka='tmux kill-server'
+alias trc='nvim ~/.tmux.conf'
+alias trs='tmux source ~/.tmux.conf'
 
 tn() {
   [[ -z "$1" ]] && { echo "usage: tn <name>" >&2; return 1; }
