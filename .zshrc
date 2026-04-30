@@ -174,7 +174,12 @@ lg() {
 }
 
 # sl update
-alias sup='echo "➡️ pulling..." && sl pull && echo "➡️ rebasing on newest master..." && sl rebase -d master && echo "➡️ restacking..." && sl restack && echo "➡️ submitting prs..." && sl pr submit --stack'
+sup() {
+  echo "➡️ pulling..." && sl pull || return 1
+  echo "➡️ rebasing on newest master..." && sl rebase -d master || true
+  echo "➡️ restacking..." && sl restack || true
+  echo "➡️ submitting prs..." && sl pr submit --stack
+}
 
 # work aliases
 alias swarplogin='swarp login sitetest3 && swarp secrets refresh sitetest3'
