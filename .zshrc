@@ -94,10 +94,13 @@ alias npmg='npm list -g --depth 0'
 alias icat="kitten icat"
 alias top="btop"
 
+# cd hook: clear+ls on every directory change
+chpwd() { clear && ls; }
+
 # directory aliases
 alias ls='ls -G'
-alias ..='builtin cd .. && clear && ls'
-alias ...='builtin cd ../.. && clear && ls'
+alias ..='cd ..'
+alias ...='cd ../..'
 alias app='builtin cd /Applications/ && clear && ls'
 alias doc='builtin cd ~/Documents/ && clear && ls'
 alias dow='builtin cd ~/Downloads/ && clear && ls'
@@ -157,7 +160,7 @@ tk() {
 # rename tmux window to ssh destination; precmd restores on exit
 ssh() {
   [[ -n "$TMUX" ]] && printf '\033k%s\033\\' "${@: -1}"
-  command ssh "$@"
+  kitten ssh "$@"
 }
 
 # ripgrep
@@ -187,7 +190,7 @@ alias swarprun='swarp run --watch'
 alias pps='portpal serve'
 alias kk='declawd --no-extra-output --dangerously-skip-permissions'
 alias kkr='declawd --no-extra-output --dangerously-skip-permissions --resume'
-alias sshdev='kitten ssh sfeng-dev.coder'
+alias sshdev='ssh sfeng-dev.coder'
 
 # competitive programming
 alias cpr='make && ./sol'
