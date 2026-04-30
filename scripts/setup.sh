@@ -12,10 +12,6 @@ step "Hide Dock"
 defaults write com.apple.dock autohide-delay -float 1000
 killall Dock
 
-step "Fix Chrome workspace force switch"
-defaults write com.apple.dock workspaces-auto-swoosh -bool NO
-killall Dock
-
 step "git-lfs system install"
 git lfs install --system
 

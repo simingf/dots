@@ -18,13 +18,6 @@ To revert:
 defaults delete com.apple.dock autohide-delay; killall Dock
 ```
 
-## Fix Chrome Workspace Force Switch
-
-```bash
-defaults write com.apple.dock workspaces-auto-swoosh -bool NO
-killall Dock
-```
-
 ## git-lfs setup
 
 ```bash
