@@ -104,6 +104,8 @@ vim.keymap.set({ 'n', 'x', 'o' }, 'L', '$', { noremap = true, silent = true })
 -- ==                               PLUGINS                                == --
 -- ========================================================================== --
 
+if vim.env.NVIM_REMOTE then return end
+
 -- setup code from documentation --
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

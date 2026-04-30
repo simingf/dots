@@ -187,7 +187,7 @@ alias swarprun='swarp run --watch'
 alias pps='portpal serve'
 alias kk='declawd --no-extra-output --dangerously-skip-permissions'
 alias kkr='declawd --no-extra-output --dangerously-skip-permissions --resume'
-alias sshdev='TERM=xterm-256color ssh sfeng-dev.coder'
+alias sshdev='kitten ssh sfeng-dev.coder'
 
 # competitive programming
 alias cpr='make && ./sol'
