@@ -79,6 +79,7 @@ cask "logitech-g-hub"
 cask "bitwarden"
 
 # Development
+cask "cursor"
 cask "docker-desktop"
 cask "kitty"
 cask "postman"
