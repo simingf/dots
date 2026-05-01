@@ -231,12 +231,14 @@ gotopr() {
   gh pr checkout "$pr"
 }
 
-# vscode
+# vscode/cursor
 k() {
-    if [[ "$@" == "" ]]; then
-        code .
+    local editor
+    editor=$(printf 'code\ncursor' | fzf --height=4 --prompt='editor: ') || return
+    if [[ $# -eq 0 ]]; then
+        $editor .
     else
-        code "$@"
+        $editor "$@"
     fi
 }
 
