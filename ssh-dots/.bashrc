@@ -127,6 +127,7 @@ sup() {
 # claude
 alias claude='claude --dangerously-skip-permissions'
 alias kk='claude'
+alias kkr='claude --resume'
 
 export GH_HOST=github.rbx.com
 export PATH="$HOME/.local/bin:$PATH"
