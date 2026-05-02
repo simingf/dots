@@ -85,7 +85,7 @@ alias ...='cd ../..'
 # Config aliases
 alias rs='source ~/.bashrc'
 alias brc='nvim ~/.bashrc'
-alias cf="builtin cd ~/.config && ls"
+alias cf="builtin cd ~/.config"
 alias nrc="nvim ~/.config/nvim/init.lua"
 
 # nvim

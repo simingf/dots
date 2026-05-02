@@ -87,7 +87,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 
 # config aliases
-alias cf="builtin cd ~/.config && ls"
+alias cf="builtin cd ~/.config"
 alias zrc="nvim ~/.zshrc"
 alias rs="clear && source ~/.zshrc"
 alias ch="rm -f ~/.zsh_history && clear"

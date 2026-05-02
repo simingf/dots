@@ -110,11 +110,11 @@ alias top="btop"
 # directory aliases
 alias ..='cd ..'
 alias ...='cd ../..'
-alias app='builtin cd /Applications/ && clear && ls'
-alias doc='builtin cd ~/Documents/ && clear && ls'
-alias dow='builtin cd ~/Downloads/ && clear && ls'
-alias des='builtin cd ~/Desktop/ && clear && ls'
-alias dots='builtin cd ~/dots && ls'
+alias app='builtin cd /Applications/'
+alias doc='builtin cd ~/Documents/'
+alias dow='builtin cd ~/Downloads/'
+alias des='builtin cd ~/Desktop/'
+alias dots='builtin cd ~/dots'
 
 # config aliases
 # updates everything
@@ -123,7 +123,7 @@ alias up='topgrade'
 alias bup='brew update && brew upgrade && brew cleanup && brew autoremove'
 # zinit update
 alias zup="zinit self-update && zinit update --all && zinit cclear"
-alias cf="builtin cd ~/.config && ls"
+alias cf="builtin cd ~/.config"
 # zsh config
 alias zrc="nvim ~/.zshrc"
 alias rs="clear && source ~/.zshrc"
