@@ -142,10 +142,21 @@ alias v='nvim'
 
 # lazygit
 lg() {
-  local name
+  local name remote_host
   name=$(git rev-parse --show-toplevel 2>/dev/null) && name="lg ($(basename "$name"))" || name="lazygit"
   [[ -n "$TMUX" ]] && printf '\033k%s\033\\' "$name" || printf '\033]0;%s\033\\' "$name"
-  lazygit "$@"
+  remote_host=$(git remote get-url origin 2>/dev/null | sed 's|https://\([^/]*\)/.*|\1|; s|git@\([^:]*\):.*|\1|')
+  if [[ "$remote_host" == "github.com" ]]; then
+    local token
+    token=$(GH_TOKEN="" gh auth token --user simingf --hostname github.com 2>/dev/null)
+    GH_TOKEN="$token" GH_HOST=github.com lazygit "$@"
+  elif [[ "$remote_host" == "github.rbx.com" ]]; then
+    local token
+    token=$(GH_TOKEN="" gh auth token --user sfeng --hostname github.rbx.com 2>/dev/null)
+    GH_TOKEN="$token" GH_HOST=github.rbx.com lazygit "$@"
+  else
+    lazygit "$@"
+  fi
   [[ -z "$TMUX" ]] && printf '\033]0;\033\\'
 }
 
@@ -280,6 +291,7 @@ _conda_load() {
 conda() { _conda_load && conda "$@" }
 
 export GH_HOST=github.rbx.com
+unset GH_TOKEN
 # nvm (lazy-loaded)
 export NVM_DIR="$HOME/.nvm"
 _nvm_load() {
