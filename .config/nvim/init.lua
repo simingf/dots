@@ -479,13 +479,23 @@ require("lazy").setup({
     -- treesitter: syntax highlighting, indentation, class and function objects
     {
         'nvim-treesitter/nvim-treesitter',
+        branch = 'main',
+        build = ':TSUpdate',
+        lazy = false,
         config = function()
-            require("nvim-treesitter.install").prefer_git = true
-            require('nvim-treesitter.configs').setup({
-                highlight = {
-                    enable = true,
-                },
-                textobjects = {
+            vim.api.nvim_create_autocmd('FileType', {
+                callback = function(args)
+                    pcall(vim.treesitter.start, args.buf)
+                end,
+            })
+        end
+    },
+    {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        branch = 'main',
+        config = function()
+            pcall(function()
+                require('nvim-treesitter-textobjects').setup({
                     select = {
                         enable = true,
                         lookahead = true,
@@ -497,22 +507,14 @@ require("lazy").setup({
                             ['as'] = { query = '@scope', query_group = 'locals' },
                         }
                     },
-                },
-                -- ensure_installed = {
-                --     'lua', 'bash', 'c', 'cpp', 'python', 'go', 'javascript', 'typescript',
-                -- },
-            })
+                })
+            end)
         end
-    },
-    {
-        'nvim-treesitter/nvim-treesitter-textobjects'
     },
     {
         'nvim-treesitter/nvim-treesitter-context',
         config = function()
-            require 'treesitter-context'.setup {
-                max_lines = 3
-            }
+            require('treesitter-context').setup({ max_lines = 3 })
         end
     },
 
