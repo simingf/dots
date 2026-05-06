@@ -48,6 +48,7 @@ zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 
 # Load completions
+fpath=($HOME/.docker/completions $fpath)
 autoload -Uz compinit && compinit
 zinit cdreplay -q
 
@@ -118,7 +119,7 @@ alias dots='builtin cd ~/dots'
 
 # config aliases
 # updates everything
-alias up='topgrade'
+alias up='topgrade -y --no-retry'
 # homebrew update
 alias bup='brew update && brew upgrade && brew cleanup && brew autoremove'
 # zinit update
@@ -314,3 +315,4 @@ path+=/Library/TeX/texbin
 # Shell integrations
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
+
