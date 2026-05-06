@@ -98,10 +98,10 @@ cask "prismlauncher"
 cask "wispr-flow"
 
 # Communication & social
-cask "discord"
 cask "slack"
 cask "wechat"
 cask "neteasemusic"
+cask "vesktop" # discord client
 cask "zoom"
 
 # Media & entertainment
