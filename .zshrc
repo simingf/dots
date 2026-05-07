@@ -313,5 +313,5 @@ path+=/Library/TeX/texbin
 
 # Shell integrations
 source <(fzf --zsh)
-eval "$(zoxide init --cmd cd zsh)"
+(( ! ${+functions[__zoxide_hook]} )) && eval "$(zoxide init --cmd cd zsh)"
 
