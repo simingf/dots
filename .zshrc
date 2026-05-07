@@ -3,7 +3,6 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
-export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -119,7 +118,7 @@ alias dots='builtin cd ~/dots'
 
 # config aliases
 # updates everything
-alias up='topgrade -y --no-retry'
+alias up='topgrade -t -y --no-retry'
 # homebrew update
 alias bup='brew update && brew upgrade && brew cleanup && brew autoremove'
 # zinit update
