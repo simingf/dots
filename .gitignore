@@ -2,3 +2,4 @@
 .config/nvim/lazy-lock.json
 .config/gh/hosts.yml
 .config/portpal/portpal.sock
+Library/Application Support/lazygit/state.yml
