@@ -8,7 +8,7 @@
 #   alias bbclean='brew bundle cleanup --file=~/dots/Brewfile'
 
 # Install all casks to /Applications and adopt any existing app already present
-cask_args appdir: "~/Applications", fontdir: "/Library/Fonts", adopt: true
+cask_args appdir: "/Applications", fontdir: "/Library/Fonts", adopt: true
 
 # ---- Taps ----
 tap "hashicorp/tap"
@@ -80,7 +80,7 @@ cask "bitwarden"
 
 # Development
 cask "cursor"
-cask "docker-desktop"
+# cask "docker-desktop" # manually installed
 cask "kitty"
 cask "postman"
 cask "rider"
@@ -108,13 +108,13 @@ cask "zoom"
 cask "iina"
 cask "spotify"
 cask "steam"
-cask "roblox"
-cask "robloxstudio"
+# cask "roblox"        # manually installed
+# cask "robloxstudio"  # manually installed
 cask "crossover"
 cask "epic-games"
 
 # Browsers
-cask "google-chrome"
+# cask "google-chrome" # manually installed
 
 # Hardware & devices
 cask "qflipper"
