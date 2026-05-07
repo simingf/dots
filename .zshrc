@@ -194,7 +194,7 @@ ssh() {
   fi
 }
 
-# ripgrep
+# ripgrep (modern alternative to grep)
 export RIPGREP_CONFIG_PATH=~/.config/ripgrep/rg.conf
 alias rg="rg --hyperlink-format=kitty"
 
