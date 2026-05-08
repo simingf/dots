@@ -108,6 +108,7 @@ alias icat="kitten icat"
 alias top="btop"
 
 # directory aliases
+alias -- -='cd -'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias app='builtin cd /Applications/'
@@ -313,5 +314,5 @@ path+=/Library/TeX/texbin
 
 # Shell integrations
 source <(fzf --zsh)
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
 (( ! ${+functions[__zoxide_hook]} )) && eval "$(zoxide init --cmd cd zsh)"
-
