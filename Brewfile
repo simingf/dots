@@ -25,11 +25,16 @@ brew "btop"
 brew "fd"
 brew "ffmpeg"
 brew "fzf"
-brew "git"
-brew "go"
+brew "gh"
 brew "git-extras"
 brew "git-lfs"
+brew "git"
+brew "go"
+brew "hashicorp/tap/nomad"
+brew "hashicorp/tap/vault"
 brew "imagemagick"
+brew "itsfrank/tap/portpal"
+brew "jandedobbeleer/oh-my-posh/oh-my-posh"
 brew "lazygit"
 brew "luarocks"
 brew "neovim"
@@ -44,111 +49,54 @@ brew "sd"
 brew "stow"
 brew "temporal"
 brew "tlrc"
-brew "topgrade"
 brew "tmux"
+brew "topgrade"
 brew "tree"
 brew "uv"
 brew "watchman"
 brew "wget"
 brew "zoxide"
-brew "hashicorp/tap/nomad"
-brew "hashicorp/tap/vault"
-brew "itsfrank/tap/portpal"
-brew "jandedobbeleer/oh-my-posh/oh-my-posh"
 
 # ---- Casks ----
-
-# Window management & desktop
-cask "nikitabobko/tap/aerospace"
-cask "alt-tab"
-cask "jordanbaird-ice"
-cask "middleclick"
-
-# Menu bar & display
 cask "alcove"
 cask "aldente"
-cask "monitorcontrol"
-cask "lookaway"
-
-# Input & peripherals
-cask "karabiner-elements"
-cask "keyboardcleantool"
-cask "linearmouse"
-cask "logitech-g-hub"
-
-# Security & auth
-cask "bitwarden"
-
-# Development
-cask "cursor"
-# cask "docker-desktop" # manually installed
-cask "kitty"
-cask "postman"
-cask "rider"
-cask "visual-studio-code"
-cask "git-credential-manager"
-
-# Productivity
 cask "alfred"
+cask "alt-tab"
 cask "appcleaner"
 cask "asana"
+cask "bitwarden"
+cask "crossover"
+cask "cursor"
+cask "dcv-viewer"
+cask "discord"
+cask "epic-games"
+cask "font-jetbrains-mono-nerd-font"
+cask "ghostty"
+cask "git-credential-manager"
+cask "iina"
+cask "itsfrank/tap/portpal-app"
+cask "jordanbaird-ice"
+cask "karabiner-elements"
+cask "keyboardcleantool"
+cask "kitty"
+cask "linearmouse"
+cask "logitech-g-hub"
+cask "lookaway"
+cask "miniconda"
+cask "monitorcontrol"
+cask "neteasemusic"
+cask "nikitabobko/tap/aerospace"
 cask "obsidian"
 cask "opal-app"
+cask "postman"
 cask "prefs-editor"
 cask "prismlauncher"
-cask "wispr-flow"
-
-# Communication & social
+cask "qflipper"
+cask "rider"
 cask "slack"
-cask "wechat"
-cask "neteasemusic"
-cask "vesktop" # discord client
-cask "zoom"
-
-# Media & entertainment
-cask "iina"
 cask "spotify"
 cask "steam"
-# cask "roblox"        # manually installed
-# cask "robloxstudio"  # manually installed
-cask "crossover"
-cask "epic-games"
-
-# Browsers
-# cask "google-chrome" # manually installed
-
-# Hardware & devices
-cask "qflipper"
-cask "dcv-viewer"
-
-# Other
-cask "miniconda"
-cask "font-jetbrains-mono-nerd-font"
-cask "itsfrank/tap/portpal-app"
-
-# ---- VS Code Extensions ----
-vscode "coder.coder-remote"
-vscode "esbenp.prettier-vscode"
-vscode "formulahendry.code-runner"
-vscode "github.copilot-chat"
-vscode "golang.go"
-vscode "gruntfuggly.todo-tree"
-vscode "ms-dotnettools.csdevkit"
-vscode "ms-dotnettools.csharp"
-vscode "ms-dotnettools.vscode-dotnet-runtime"
-vscode "ms-python.black-formatter"
-vscode "ms-python.debugpy"
-vscode "ms-python.isort"
-vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
-vscode "ms-python.vscode-python-envs"
-vscode "ms-vscode-remote.remote-ssh"
-vscode "ms-vscode-remote.remote-ssh-edit"
-vscode "ms-vscode.remote-explorer"
-vscode "ms-vsliveshare.vsliveshare"
-vscode "redhat.vscode-yaml"
-vscode "vscode-icons-team.vscode-icons"
-
-# ---- Go tools ----
-go "golang.org/x/tools/gopls"
-go "honnef.co/go/tools/cmd/staticcheck"
+cask "visual-studio-code"
+cask "wechat"
+cask "wispr-flow"
+cask "zoom"
