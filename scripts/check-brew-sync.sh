@@ -8,20 +8,16 @@ if [[ ! -f "$BREWFILE" ]]; then
   exit 1
 fi
 
-# Extract formulae from Brewfile (handles tap-prefixed entries like hashicorp/tap/vault)
-brewfile_formulae=$(grep '^brew ' "$BREWFILE" \
-  | sed 's/brew "\(.*\)".*/\1/' \
-  | sed 's|.*/||' \
-  | sort)
+TMPFILE=$(mktemp)
+trap 'rm -f "$TMPFILE"' EXIT
 
-# Extract casks (strip tap prefix if any, e.g. nikitabobko/tap/aerospace -> aerospace)
-brewfile_casks=$(grep '^cask ' "$BREWFILE" \
-  | sed 's/cask "\(.*\)".*/\1/' \
-  | sed 's|.*/||' \
-  | sort)
+brew bundle dump --force --formula --cask --no-restart --file="$TMPFILE"
 
-installed_formulae=$(brew leaves | sed 's|.*/||' | sort)
-installed_casks=$(brew list --cask | sort)
+brewfile_formulae=$(grep '^brew ' "$BREWFILE" | sed 's/^brew "\([^"]*\)".*/\1/' | sort)
+brewfile_casks=$(grep '^cask ' "$BREWFILE" | sed 's/^cask "\([^"]*\)".*/\1/' | sort)
+
+installed_formulae=$(grep '^brew ' "$TMPFILE" | sed 's/^brew "\([^"]*\)".*/\1/' | sort)
+installed_casks=$(grep '^cask ' "$TMPFILE" | sed 's/^cask "\([^"]*\)".*/\1/' | sort)
 
 formula_only_brewfile=$(comm -23 <(echo "$brewfile_formulae") <(echo "$installed_formulae"))
 formula_only_installed=$(comm -13 <(echo "$brewfile_formulae") <(echo "$installed_formulae"))
@@ -46,7 +42,7 @@ print_diff "Casks installed but not in Brewfile:"    "$cask_only_installed"
 
 n_formulae=$(echo "$installed_formulae" | wc -l | tr -d ' ')
 n_casks=$(echo "$installed_casks" | wc -l | tr -d ' ')
-echo "$n_formulae leaves, $n_casks casks installed."
+echo "$n_formulae formulae, $n_casks casks installed."
 
 if [[ $exit_code -eq 0 ]]; then
   echo "Brewfile is in sync."
