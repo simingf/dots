@@ -1,0 +1,14 @@
+# Theme
+theme = Rose Pine
+
+# Fonts
+font-family = JetBrainsMono Nerd Font Mono
+font-size = 14
+
+# Padding (your window_padding_width 15 20 15)
+window-padding-x = 20
+window-padding-y = 15
+
+# macOS
+macos-option-as-alt = left
+macos-titlebar-style = hidden
