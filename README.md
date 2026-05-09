@@ -76,6 +76,11 @@ SideNotes (currently not installed)
 ZoomHider
 IsThereNet
 Coder Desktop
+Docker Desktop
+Google Chrome
+Roblox
+Roblox Studio
+Vencord
 Mousecape (currently not installed)
 Stacher (currently not installed)
 
