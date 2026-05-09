@@ -129,6 +129,8 @@ alias cf="builtin cd ~/.config"
 alias zrc="nvim ~/.zshrc"
 alias rs="clear && source ~/.zshrc"
 alias ch="rm -f ~/.zsh_history && clear"
+# ghostty config
+alias grc="nvim ~/.config/ghostty/config"
 # kitty config
 alias krc="nvim ~/.config/kitty/kitty.conf"
 alias kitty="$HOME/Applications/kitty.app/Contents/MacOS/kitty"
