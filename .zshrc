@@ -188,12 +188,7 @@ tk() {
 # rename tmux window to ssh destination; precmd restores on exit
 ssh() {
   [[ -n "$TMUX" ]] && printf '\033k%s\033\\' "${@: -1}"
-  if [[ -n "$TMUX" ]]; then
-    echo "warning: using plain ssh (not kitten ssh) — dotfiles won't be copied. SSH from outside tmux for full Kitty integration."
-    command ssh "$@"
-  else
-    kitten ssh "$@"
-  fi
+  command ssh "$@"
 }
 
 # ripgrep (modern alternative to grep)
