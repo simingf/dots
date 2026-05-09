@@ -21,7 +21,6 @@ setopt sharehistory
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
-setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Set the directory we want to store zinit and plugins
@@ -47,7 +46,7 @@ zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 
 # Load completions
-fpath=($HOME/.docker/completions $fpath)
+fpath=($HOME/.docker/completions $HOME/.zfunc $fpath)
 autoload -Uz compinit && compinit
 zinit cdreplay -q
 
@@ -69,11 +68,8 @@ bindkey '^[w' kill-region
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
-# disable automatic window title
-DISABLE_AUTO_TITLE="true"
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -G $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls -G $realpath'
 
 # Execute on Enter
 accept-line() {
@@ -133,8 +129,6 @@ alias ch="rm -f ~/.zsh_history && clear"
 alias grc="nvim ~/.config/ghostty/config"
 # kitty config
 alias krc="nvim ~/.config/kitty/kitty.conf"
-alias kitty="$HOME/Applications/kitty.app/Contents/MacOS/kitty"
-alias kitten="$HOME/Applications/kitty.app/Contents/MacOS/kitten"
 # aerospace config
 alias arc="nvim ~/.config/aerospace/aerospace.toml"
 
@@ -260,20 +254,6 @@ p() {
     fi
 }
 
-# conda
-c() {
-    if [[ "$@" == "" ]]; then
-        clear
-    elif [[ "$1" == "a" ]]; then
-        shift
-        conda activate "$@"
-    elif [[ "$@" == "d" ]]; then
-        conda deactivate
-    else
-        conda "$@"
-    fi
-}
-
 # conda (lazy-loaded)
 export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
 _conda_load() {
@@ -287,6 +267,20 @@ _conda_load() {
     unset __conda_setup
 }
 conda() { _conda_load && conda "$@" }
+
+# conda shorthand
+c() {
+    if [[ "$@" == "" ]]; then
+        clear
+    elif [[ "$1" == "a" ]]; then
+        shift
+        conda activate "$@"
+    elif [[ "$@" == "d" ]]; then
+        conda deactivate
+    else
+        conda "$@"
+    fi
+}
 
 export GH_HOST=github.rbx.com
 unset GH_TOKEN
@@ -311,5 +305,4 @@ path+=/Library/TeX/texbin
 
 # Shell integrations
 source <(fzf --zsh)
-fpath+=~/.zfunc; autoload -Uz compinit; compinit
 (( ! ${+functions[__zoxide_hook]} )) && eval "$(zoxide init --cmd cd zsh)"
