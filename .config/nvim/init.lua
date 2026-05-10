@@ -148,7 +148,6 @@ require("lazy").setup({
 	-- dependencies
 	{ "nvim-lua/plenary.nvim" },
 	{ "nvim-tree/nvim-web-devicons" },
-	{ "MunifTanjim/nui.nvim" },
 	{ "tpope/vim-repeat" },
 
 	-- which key
@@ -179,7 +178,9 @@ require("lazy").setup({
 	-- status line at bottom
 	{
 		"nvim-lualine/lualine.nvim",
+		dependencies = { "chrisgrieser/nvim-recorder" },
 		config = function()
+			local recorder = require("recorder")
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
@@ -222,8 +223,8 @@ require("lazy").setup({
 						},
 					},
 					lualine_x = { "encoding", "fileformat", "filetype" },
-					lualine_y = { "progress", { require("recorder").displaySlots } },
-					lualine_z = { "location", { require("recorder").recordingStatus } },
+					lualine_y = { "progress", { recorder.displaySlots } },
+					lualine_z = { "location", { recorder.recordingStatus } },
 				},
 				inactive_sections = {
 					lualine_a = {},
@@ -247,12 +248,14 @@ require("lazy").setup({
 	-- git indicators on the left
 	{
 		"lewis6991/gitsigns.nvim",
+		event = { "BufReadPre", "BufNewFile" },
 		config = true,
 	},
 
 	-- indentation indicators on the left
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("ibl").setup({
 				enabled = true,
@@ -269,6 +272,7 @@ require("lazy").setup({
 	-- highlight TODOs
 	{
 		"folke/todo-comments.nvim",
+		event = "VeryLazy",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {
 			keywords = {
@@ -283,6 +287,7 @@ require("lazy").setup({
 	-- highlight all occurences of a word
 	{
 		"echasnovski/mini.cursorword",
+		event = "VeryLazy",
 		config = true,
 	},
 
@@ -385,9 +390,17 @@ require("lazy").setup({
 	-- close buffers
 	{
 		"echasnovski/mini.bufremove",
+		keys = {
+			{
+				"<leader>bc",
+				function()
+					pcall(MiniBufremove.delete)
+				end,
+				desc = "close buffer",
+			},
+		},
 		config = function()
 			require("mini.bufremove").setup()
-			vim.keymap.set("n", "<leader>bc", "<cmd>lua pcall(MiniBufremove.delete)<cr>")
 		end,
 	},
 
@@ -495,8 +508,10 @@ require("lazy").setup({
 	},
 
 	-- yanky: clipboard history (replaces neoclip). <leader>ty uses snacks picker via vim.ui.select.
+	-- Must load early (VeryLazy) so TextYankPost hooks are registered at startup.
 	{
 		"gbprod/yanky.nvim",
+		event = "VeryLazy",
 		opts = {
 			ring = {
 				history_length = 100,
@@ -579,7 +594,16 @@ require("lazy").setup({
 
 	-- LSP: mason installs servers; nvim-lspconfig ships the per-server default
 	-- configs as lsp/<name>.lua on the runtimepath, consumed by vim.lsp.config.
-	{ "williamboman/mason.nvim", config = true },
+	{
+		"williamboman/mason.nvim",
+		opts = {
+			-- Crashdummyy registry provides the `roslyn` LSP package used by roslyn.nvim.
+			registries = {
+				"github:mason-org/mason-registry",
+				"github:Crashdummyy/mason-registry",
+			},
+		},
+	},
 	{ "neovim/nvim-lspconfig" },
 	{
 		"williamboman/mason-lspconfig.nvim",
@@ -589,7 +613,8 @@ require("lazy").setup({
 			"saghen/blink.cmp",
 		},
 		config = function()
-			local servers = { "gopls", "pyright", "clangd", "omnisharp", "lua_ls", "bashls" }
+			-- C# is handled separately by roslyn.nvim (not listed here).
+			local servers = { "gopls", "pyright", "clangd", "lua_ls", "bashls" }
 
 			-- Defaults applied to every server (blink.cmp capabilities).
 			vim.lsp.config("*", {
@@ -647,8 +672,8 @@ require("lazy").setup({
 				sh = { "shfmt" },
 				bash = { "shfmt" },
 				zsh = { "shfmt" },
-				cpp = { "clang-format" },
-				c = { "clang-format" },
+				cpp = { "clang_format" },
+				c = { "clang_format" },
 				cs = { "csharpier" },
 			},
 			format_on_save = function(bufnr)
@@ -660,7 +685,7 @@ require("lazy").setup({
 		},
 	},
 
-	-- mason-tool-installer: ensure formatters/linters installed via Mason
+	-- mason-tool-installer: ensure formatters/linters/LSPs installed via Mason
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		dependencies = { "williamboman/mason.nvim" },
@@ -673,7 +698,16 @@ require("lazy").setup({
 				"shfmt",
 				"clang-format",
 				"csharpier",
+				"roslyn", -- C# LSP, consumed by roslyn.nvim
 			},
 		},
+	},
+
+	-- roslyn.nvim: Microsoft's Roslyn-based C# LSP (replaces omnisharp).
+	-- Auto-discovers the server installed by Mason via the Crashdummyy registry.
+	{
+		"seblyng/roslyn.nvim",
+		ft = "cs",
+		opts = {},
 	},
 })
