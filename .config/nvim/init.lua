@@ -291,9 +291,9 @@ require("lazy").setup({
 		config = true,
 	},
 
-	-- automatic closing brackets
+	-- automatic closing brackets (blink.cmp-aware, LazyVim default)
 	{
-		"windwp/nvim-autopairs",
+		"echasnovski/mini.pairs",
 		event = "InsertEnter",
 		config = true,
 	},
@@ -384,23 +384,6 @@ require("lazy").setup({
 				-- Clears all macros-slots on startup.
 				clear = true,
 			})
-		end,
-	},
-
-	-- close buffers
-	{
-		"echasnovski/mini.bufremove",
-		keys = {
-			{
-				"<leader>bc",
-				function()
-					pcall(MiniBufremove.delete)
-				end,
-				desc = "close buffer",
-			},
-		},
-		config = function()
-			require("mini.bufremove").setup()
 		end,
 	},
 
@@ -504,6 +487,13 @@ require("lazy").setup({
 				end,
 				desc = "notifications",
 			},
+			{
+				"<leader>bc",
+				function()
+					Snacks.bufdelete()
+				end,
+				desc = "close buffer",
+			},
 		},
 	},
 
@@ -584,12 +574,32 @@ require("lazy").setup({
 				},
 			},
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+				providers = {
+					lazydev = {
+						name = "LazyDev",
+						module = "lazydev.integrations.blink",
+						score_offset = 100, -- show lazydev matches above LSP
+					},
+				},
 			},
 			signature = { enabled = true },
 			cmdline = { enabled = true },
 		},
 		opts_extend = { "sources.default" },
+	},
+
+	-- lazydev: auto-configures lua_ls workspace library when editing nvim config.
+	-- Only activates on lua buffers. Feeds completions into blink.cmp via the source above.
+	{
+		"folke/lazydev.nvim",
+		ft = "lua",
+		opts = {
+			library = {
+				-- luvit types for vim.uv.* completions
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+			},
+		},
 	},
 
 	-- LSP: mason installs servers; nvim-lspconfig ships the per-server default
