@@ -56,7 +56,7 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
 fi
 
 # Color
-alias ls='eza'
+alias ls='eza --icons=auto'
 
 # Keybindings
 bindkey -e
@@ -77,14 +77,14 @@ accept-line() {
     # path (not inside the zle widget, where external command output is unreliable).
     # Leading space + hist_ignore_space keeps this out of history.
     if [[ -z $BUFFER ]]; then
-        BUFFER=" clear && eza"
+        BUFFER=" clear && eza --icons=auto"
     fi
     zle ".$WIDGET"
 }
 zle -N accept-line
 
 # cd hook: clear+ls on every directory change
-chpwd() { clear && eza; }
+chpwd() { clear && eza --icons=auto; }
 
 # tmux window title
 _tmux_precmd() {
@@ -100,8 +100,8 @@ preexec_functions+=(_tmux_preexec)
 
 # general aliases
 alias e='exit'
-alias ll='eza -la --git'
-alias lt='eza --tree --level=2'
+alias ll='eza -la --git --icons=auto'
+alias lt='eza --tree --level=3 --icons=auto'
 alias f='open .'
 alias rm='trash'
 alias mkdir='mkdir -p'
