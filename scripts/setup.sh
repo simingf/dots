@@ -22,6 +22,9 @@ stow --dir="$DOTS" --target="$HOME" .
 step "Homebrew bundle"
 brew bundle install --file="$DOTS/Brewfile"
 
+step "Default file handlers (duti → VS Code)"
+duti "$DOTS/scripts/duti.conf"
+
 echo ""
 echo "Done. Manual steps remaining:"
 echo "  - Alfred themes: import from $DOTS/manual/alfred/themes/ via Alfred Preferences → Appearance"
