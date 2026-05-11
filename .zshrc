@@ -55,9 +55,6 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
     eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 fi
 
-# Color
-alias ls='eza --icons=auto'
-
 # Keybindings
 bindkey -e
 bindkey '^p' history-search-backward
@@ -100,8 +97,9 @@ preexec_functions+=(_tmux_preexec)
 
 # general aliases
 alias e='exit'
-alias ll='eza -la --git --icons=auto'
-alias lt='eza --tree --level=3 --icons=auto'
+alias ls='eza --icons=auto --hyperlink'
+alias ll='eza -la --git --icons=auto --hyperlink'
+alias lt='eza --tree --level=2 -a --git-ignore --icons=auto --hyperlink'
 alias f='open .'
 alias rm='trash'
 alias mkdir='mkdir -p'
