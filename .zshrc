@@ -129,7 +129,7 @@ alias zup="zinit self-update && zinit update --all && zinit cclear"
 alias cf="builtin cd ~/.config"
 # zsh config
 alias zrc="nvim ~/.zshrc"
-alias rs="clear && source ~/.zshrc"
+alias rs="clear && exec zsh"
 alias ch="rm -f ~/.zsh_history && clear"
 # ghostty config
 alias grc="nvim ~/.config/ghostty/config"
