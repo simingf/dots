@@ -1,7 +1,7 @@
 # Homebrew
-if [[ -f "/opt/homebrew/bin/brew" ]] then
-  # If you're using macOS, you'll want this enabled
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ -f "/opt/homebrew/bin/brew" ]]; then
+    # If you're using macOS, you'll want this enabled
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # Preferred editor for local and remote sessions
@@ -28,8 +28,8 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 # Download Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then
-   mkdir -p "$(dirname $ZINIT_HOME)"
-   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+    mkdir -p "$(dirname $ZINIT_HOME)"
+    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
 # Source/Load zinit
@@ -52,7 +52,7 @@ zinit cdreplay -q
 
 # Oh My Posh prompt
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+    eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 fi
 
 # Color
@@ -87,8 +87,14 @@ zle -N accept-line
 chpwd() { clear && ls -G; }
 
 # tmux window title
-_tmux_precmd()  { [[ -n "$TMUX" ]] || return; printf '\033k%s\033\\' "$(basename "$PWD")"; }
-_tmux_preexec() { [[ -n "$TMUX" ]] || return; printf '\033k%s\033\\' "$1"; }
+_tmux_precmd() {
+    [[ -n "$TMUX" ]] || return
+    printf '\033k%s\033\\' "$(basename "$PWD")"
+}
+_tmux_preexec() {
+    [[ -n "$TMUX" ]] || return
+    printf '\033k%s\033\\' "$1"
+}
 precmd_functions+=(_tmux_precmd)
 preexec_functions+=(_tmux_preexec)
 
@@ -134,27 +140,26 @@ alias arc="nvim ~/.config/aerospace/aerospace.toml"
 
 # nvim
 alias nrc="nvim ~/.config/nvim/init.lua"
-alias vim='nvim'
 alias v='nvim'
 
 # lazygit
 lg() {
-  local name remote_host
-  name=$(git rev-parse --show-toplevel 2>/dev/null) && name="lg ($(basename "$name"))" || name="lazygit"
-  [[ -n "$TMUX" ]] && printf '\033k%s\033\\' "$name" || printf '\033]0;%s\033\\' "$name"
-  remote_host=$(git remote get-url origin 2>/dev/null | sed 's|https://\([^/]*\)/.*|\1|; s|git@\([^:]*\):.*|\1|')
-  if [[ "$remote_host" == "github.com" ]]; then
-    local token
-    token=$(GH_TOKEN="" gh auth token --user simingf --hostname github.com 2>/dev/null)
-    GH_TOKEN="$token" GH_HOST=github.com lazygit "$@"
-  elif [[ "$remote_host" == "github.rbx.com" ]]; then
-    local token
-    token=$(GH_TOKEN="" gh auth token --user sfeng --hostname github.rbx.com 2>/dev/null)
-    GH_TOKEN="$token" GH_HOST=github.rbx.com lazygit "$@"
-  else
-    lazygit "$@"
-  fi
-  [[ -z "$TMUX" ]] && printf '\033]0;\033\\'
+    local name remote_host
+    name=$(git rev-parse --show-toplevel 2>/dev/null) && name="lg ($(basename "$name"))" || name="lazygit"
+    [[ -n "$TMUX" ]] && printf '\033k%s\033\\' "$name" || printf '\033]0;%s\033\\' "$name"
+    remote_host=$(git remote get-url origin 2>/dev/null | sed 's|https://\([^/]*\)/.*|\1|; s|git@\([^:]*\):.*|\1|')
+    if [[ "$remote_host" == "github.com" ]]; then
+        local token
+        token=$(GH_TOKEN="" gh auth token --user simingf --hostname github.com 2>/dev/null)
+        GH_TOKEN="$token" GH_HOST=github.com lazygit "$@"
+    elif [[ "$remote_host" == "github.rbx.com" ]]; then
+        local token
+        token=$(GH_TOKEN="" gh auth token --user sfeng --hostname github.rbx.com 2>/dev/null)
+        GH_TOKEN="$token" GH_HOST=github.rbx.com lazygit "$@"
+    else
+        lazygit "$@"
+    fi
+    [[ -z "$TMUX" ]] && printf '\033]0;\033\\'
 }
 
 # tmux
@@ -164,25 +169,28 @@ alias tl='tmux list-sessions'
 alias tka='tmux kill-server'
 # tn <name>: create new tmux session, or attach if it already exists
 tn() {
-  [[ -z "$1" ]] && { echo "usage: tn <name>" >&2; return 1; }
-  tmux has-session -t="$1" 2>/dev/null && tmux attach -t "$1" || tmux new -s "$1"
+    [[ -z "$1" ]] && {
+        echo "usage: tn <name>" >&2
+        return 1
+    }
+    tmux has-session -t="$1" 2>/dev/null && tmux attach -t "$1" || tmux new -s "$1"
 }
 # ta [query]: fuzzy-pick a session to attach to (auto-selects if query matches exactly one)
 ta() {
-  local session
-  session=$(tmux list-sessions -F '#{session_name}' | fzf -q "${1:-}" --select-1 --exit-0) || return
-  tmux attach -t "$session"
+    local session
+    session=$(tmux list-sessions -F '#{session_name}' | fzf -q "${1:-}" --select-1 --exit-0) || return
+    tmux attach -t "$session"
 }
 # tk [query]: fuzzy-pick a session to kill (always shows picker, even with exact match)
 tk() {
-  local session
-  session=$(tmux list-sessions -F '#{session_name}' | fzf -q "${1:-}" --exit-0) || return
-  tmux kill-session -t "$session"
+    local session
+    session=$(tmux list-sessions -F '#{session_name}' | fzf -q "${1:-}" --exit-0) || return
+    tmux kill-session -t "$session"
 }
 # rename tmux window to ssh destination; precmd restores on exit
 ssh() {
-  [[ -n "$TMUX" ]] && printf '\033k%s\033\\' "${@: -1}"
-  command ssh "$@"
+    [[ -n "$TMUX" ]] && printf '\033k%s\033\\' "${@: -1}"
+    command ssh "$@"
 }
 
 # ripgrep (modern alternative to grep)
@@ -191,10 +199,10 @@ alias rg="rg --hyperlink-format=kitty"
 
 # sl update
 sup() {
-  echo "➡️ pulling..." && sl pull || return 1
-  echo "➡️ rebasing on newest master..." && sl rebase -d master || true
-  echo "➡️ restacking..." && sl restack || true
-  echo "➡️ submitting prs..." && sl pr submit --stack
+    echo "➡️ pulling..." && sl pull || return 1
+    echo "➡️ rebasing on newest master..." && sl rebase -d master || true
+    echo "➡️ restacking..." && sl restack || true
+    echo "➡️ submitting prs..." && sl pr submit --stack
 }
 
 # work aliases
@@ -210,28 +218,28 @@ alias cpr='make && ./sol'
 
 # goto PR (https://github.rbx.com/Roblox/creator-cu/pull/267/files)
 gotopr() {
-  local url="$1"
-  local repo=$(echo "$url" | sed 's|.*/\([^/]*\)/pull/.*|\1|')
-  local pr=$(echo "$url" | sed 's|.*/pull/\([0-9]*\).*|\1|')
-  local org=$(echo "$url" | sed 's|.*/\([^/]*\)/[^/]*/pull/.*|\1|')
-  local host=$(echo "$url" | sed 's|https://\([^/]*\)/.*|\1|')
+    local url="$1"
+    local repo=$(echo "$url" | sed 's|.*/\([^/]*\)/pull/.*|\1|')
+    local pr=$(echo "$url" | sed 's|.*/pull/\([0-9]*\).*|\1|')
+    local org=$(echo "$url" | sed 's|.*/\([^/]*\)/[^/]*/pull/.*|\1|')
+    local host=$(echo "$url" | sed 's|https://\([^/]*\)/.*|\1|')
 
-  echo "➡️ PR #$pr in $host/$org/$repo"
+    echo "➡️ PR #$pr in $host/$org/$repo"
 
-  echo "➡️ cd ~/git..."
-  cd ~/git
+    echo "➡️ cd ~/git..."
+    cd ~/git
 
-  if [ -d "$repo" ]; then
-    echo "➡️ Repo found, fetching latest..."
-    cd "$repo" && git fetch --prune
-  else
-    echo "➡️ Repo not found, cloning $repo..."
-    git clone "https://${host}/${org}/${repo}.git"
-    cd "$repo"
-  fi
+    if [ -d "$repo" ]; then
+        echo "➡️ Repo found, fetching latest..."
+        cd "$repo" && git fetch --prune
+    else
+        echo "➡️ Repo not found, cloning $repo..."
+        git clone "https://${host}/${org}/${repo}.git"
+        cd "$repo"
+    fi
 
-  echo "➡️ Checking out PR #$pr..."
-  gh pr checkout "$pr"
+    echo "➡️ Checking out PR #$pr..."
+    gh pr checkout "$pr"
 }
 
 # vscode/cursor
@@ -266,7 +274,7 @@ _conda_load() {
     fi
     unset __conda_setup
 }
-conda() { _conda_load && conda "$@" }
+conda() { _conda_load && conda "$@"; }
 
 # conda shorthand
 c() {
@@ -291,12 +299,12 @@ _nvm_load() {
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 }
-nvm()  { _nvm_load && nvm "$@" }
-node() { _nvm_load && node "$@" }
-npm()  { _nvm_load && npm "$@" }
-npx()  { _nvm_load && npx "$@" }
-yarn() { _nvm_load && yarn "$@" }
-pnpm() { _nvm_load && pnpm "$@" }
+nvm() { _nvm_load && nvm "$@"; }
+node() { _nvm_load && node "$@"; }
+npm() { _nvm_load && npm "$@"; }
+npx() { _nvm_load && npx "$@"; }
+yarn() { _nvm_load && yarn "$@"; }
+pnpm() { _nvm_load && pnpm "$@"; }
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/git/skills-cli/bin:$PATH"
 
@@ -305,4 +313,4 @@ path+=/Library/TeX/texbin
 
 # Shell integrations
 source <(fzf --zsh)
-(( ! ${+functions[__zoxide_hook]} )) && eval "$(zoxide init --cmd cd zsh)"
+((!${+functions[__zoxide_hook]})) && eval "$(zoxide init --cmd cd zsh)"
