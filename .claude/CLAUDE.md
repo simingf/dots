@@ -26,19 +26,7 @@ Backend/distributed systems engineer at Roblox, Eng – Creator team.
 
 ## Terminal Commands
 
-**Always** put anything you want me to run on my clipboard — never just render it in chat. Three cases:
-
-1. **Paste-only** — I'll paste into a UI (SQL in Superset, YAML, config blocks). Output doesn't come back to you.
-   → pbcopy the block itself.
-   `cat <<'EOF' | pbcopy` … `EOF`
-
-2. **Run + forward output back** — shell command whose output you need to see.
-   → bake `| tee >(pbcopy)` into the command. I see it in the terminal; output also lands on my clipboard to paste back.
-   `gh pr view 123 --json title,body | tee >(pbcopy)`
-
-3. **Run + forward, output is large/noisy** — don't flood my terminal.
-   → bake bare `| pbcopy` into the command. Output goes straight to clipboard, nothing printed.
-   `kubectl get pods -A -o json | pbcopy`
+**Always** put anything you want me to run on my clipboard by **executing a Bash tool call** that pipes to `pbcopy` (e.g. `printf '...' | pbcopy`). I'll run it and paste any output back to you.
 
 ## Epistemic Honesty
 
