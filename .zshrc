@@ -74,14 +74,14 @@ accept-line() {
     # path (not inside the zle widget, where external command output is unreliable).
     # Leading space + hist_ignore_space keeps this out of history.
     if [[ -z $BUFFER ]]; then
-        BUFFER=" clear && eza --icons=auto"
+        BUFFER=" clear && eza --icons=auto --hyperlink"
     fi
     zle ".$WIDGET"
 }
 zle -N accept-line
 
 # cd hook: clear+ls on every directory change
-chpwd() { clear && eza --icons=auto; }
+chpwd() { clear && eza --icons=auto --hyperlink; }
 
 # tmux window title
 _tmux_precmd() {
