@@ -226,15 +226,15 @@ gotopr() {
     echo "➡️ PR #$pr in $host/$org/$repo"
 
     echo "➡️ cd ~/git..."
-    cd ~/git
+    builtin cd ~/git
 
     if [ -d "$repo" ]; then
         echo "➡️ Repo found, fetching latest..."
-        cd "$repo" && git fetch --prune
+        builtin cd "$repo" && git fetch --prune
     else
         echo "➡️ Repo not found, cloning $repo..."
         git clone "https://${host}/${org}/${repo}.git"
-        cd "$repo"
+        builtin cd "$repo"
     fi
 
     echo "➡️ Checking out PR #$pr..."
