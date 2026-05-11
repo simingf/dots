@@ -56,7 +56,7 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
 fi
 
 # Color
-alias ls='ls -G'
+alias ls='eza'
 
 # Keybindings
 bindkey -e
@@ -73,18 +73,18 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls -G $realpath'
 
 # Execute on Enter
 accept-line() {
+    # On empty enter, inject `clear && eza` so it runs via the normal accept-line
+    # path (not inside the zle widget, where external command output is unreliable).
+    # Leading space + hist_ignore_space keeps this out of history.
     if [[ -z $BUFFER ]]; then
-        zle -I
-        # command to run when enter pressed
-        clear && ls -G
-    else
-        zle ".$WIDGET"
+        BUFFER=" clear && eza"
     fi
+    zle ".$WIDGET"
 }
 zle -N accept-line
 
 # cd hook: clear+ls on every directory change
-chpwd() { clear && ls -G; }
+chpwd() { clear && eza; }
 
 # tmux window title
 _tmux_precmd() {
@@ -100,11 +100,12 @@ preexec_functions+=(_tmux_preexec)
 
 # general aliases
 alias e='exit'
-alias ll='ls -la'
+alias ll='eza -la --git'
+alias lt='eza --tree --level=2'
 alias f='open .'
-alias rm='rm -r'
+alias rm='trash'
 alias mkdir='mkdir -p'
-alias pwd='pwd && pwd | pbcopy'
+alias pwd='pwd | tee >(pbcopy)'
 alias npmg='npm list -g --depth 0'
 alias icat="kitten icat"
 alias top="btop"
