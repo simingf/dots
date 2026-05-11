@@ -10,7 +10,7 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 
 step "Hide Dock"
 defaults write com.apple.dock autohide-delay -float 1000
-killall Dock
+killall Dock 2>/dev/null || true
 
 step "git-lfs system install"
 git lfs install --system
