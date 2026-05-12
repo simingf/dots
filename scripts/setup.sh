@@ -22,8 +22,78 @@ stow --dir="$DOTS" --target="$HOME" .
 step "Homebrew bundle"
 brew bundle install --file="$DOTS/Brewfile"
 
-step "Default file handlers (duti → VS Code)"
-duti "$DOTS/scripts/duti.conf"
+step "Default file handlers (Launch Services plist)"
+# We patch ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist
+# directly instead of shelling out to `duti`, for two reasons:
+#
+# 1. `duti` only writes LSHandlerRoleEditor, but macOS resolves defaults using
+#    LSHandlerRoleAll first. If a competing app (e.g. Cursor) declares itself
+#    as RoleAll, duti's RoleEditor write is silently ignored and the competitor
+#    keeps winning. We write RoleAll directly.
+#
+# 2. Many extensions (.toml/.lua/.conf/.go/.tsx/.jsx/.ini/.env) have no stable
+#    public UTI, so macOS synthesizes a dynamic one like `dyn.ah62d4rv4ge80s52`.
+#    `duti` guesses a *different* dynamic UTI than what real files get tagged
+#    with, so the setting silently misses. We probe the real UTI with `mdls`
+#    on a throwaway tempfile.
+#
+# One case we can't fix here: Cursor's Info.plist declares `LSHandlerRank: Owner`
+# for .json, which outranks any user preference. `.json` keeps opening in Cursor
+# unless we edit and re-sign Cursor's bundle — not worth it for one extension.
+python3 - "$DOTS/scripts/duti.conf" <<'PY'
+import plistlib, subprocess, sys, tempfile, os
+from pathlib import Path
+
+conf = Path(sys.argv[1])
+plist = Path.home() / "Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist"
+
+exts, urls = {}, {}
+for line in conf.read_text().splitlines():
+    fields = line.split("#", 1)[0].split()
+    if not fields:
+        continue
+    if len(fields) == 2:      # `bundle_id  url_scheme`
+        urls[fields[1]] = fields[0]
+    elif len(fields) == 3:    # `bundle_id  extension  role`
+        exts[fields[1]] = fields[0]
+
+def uti_for(ext):
+    fd, path = tempfile.mkstemp(suffix="." + ext)
+    os.close(fd)
+    try:
+        return subprocess.check_output(
+            ["mdls", "-name", "kMDItemContentType", "-raw", path],
+            text=True,
+        ).strip()
+    finally:
+        os.remove(path)
+
+plist.parent.mkdir(parents=True, exist_ok=True)
+data = plistlib.loads(plist.read_bytes()) if plist.exists() else {}
+handlers = data.setdefault("LSHandlers", [])
+
+def upsert(match_key, match_val, bundle_id, role_keys):
+    entry = next((h for h in handlers if h.get(match_key) == match_val), None)
+    if entry is None:
+        entry = {match_key: match_val}
+        handlers.append(entry)
+    for rk in role_keys:
+        entry[rk] = bundle_id
+
+for ext, bid in exts.items():
+    upsert("LSHandlerContentType", uti_for(ext), bid,
+           ["LSHandlerRoleAll", "LSHandlerRoleEditor"])
+for scheme, bid in urls.items():
+    upsert("LSHandlerURLScheme", scheme, bid, ["LSHandlerRoleAll"])
+
+with open(plist, "wb") as f:
+    plistlib.dump(data, f, fmt=plistlib.FMT_BINARY)
+print(f"  patched {len(exts)} extensions and {len(urls)} URL schemes")
+PY
+
+# Reload cfprefsd + Launch Services so changes take effect without a relogin
+killall cfprefsd 2>/dev/null || true
+/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -seed 2>/dev/null || true
 
 echo ""
 echo "Done. Manual steps remaining:"
