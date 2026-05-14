@@ -22,6 +22,7 @@ tap "nikitabobko/tap"
 # ---- Formulae ----
 brew "black"
 brew "btop"
+brew "duti"
 brew "eza"
 brew "fd"
 brew "ffmpeg"
