@@ -1,6 +1,6 @@
 {
   // ── WORKBENCH ─────────────────────────────────
-  "workbench.colorTheme": "Dark Modern",
+  "workbench.colorTheme": "Rosé Pine",
   "workbench.iconTheme": "vscode-icons",
   "window.title": " ",
   "window.commandCenter": false,
@@ -73,7 +73,7 @@
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
   },
 
   // Accessibility
@@ -97,28 +97,28 @@
   "C_Cpp.default.cppStandard": "c++20",
   "python.defaultInterpreterPath": "/opt/homebrew/Caskroom/miniconda/base",
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[typescript]": {
     "editor.formatOnSave": false,
-    "editor.formatOnPaste": false
+    "editor.formatOnPaste": false,
   },
   "[typescriptreact]": {
     "editor.formatOnSave": false,
-    "editor.formatOnPaste": false
+    "editor.formatOnPaste": false,
   },
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
 
   // ── EXTENSIONS ────────────────────────────────
@@ -147,12 +147,12 @@
   // Misc
   "liveServer.settings.donotShowInfoMsg": true,
   "workbench.editorAssociations": {
-    "*.copilotmd": "vscode.markdown.preview.editor"
+    "*.copilotmd": "vscode.markdown.preview.editor",
   },
   "remote.SSH.remotePlatform": {
-    "coder-vscode.dev.rbx.com--sfeng--sfeng-dev.dev": "linux"
+    "coder-vscode.dev.rbx.com--sfeng--sfeng-dev.dev": "linux",
   },
   "remote.SSH.connectTimeout": 1800,
   "remote.SSH.serverShutdownTimeout": 28800,
-  "security.promptForRemoteFileProtocolHandling": false
+  "security.promptForRemoteFileProtocolHandling": false,
 }
