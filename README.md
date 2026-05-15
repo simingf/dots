@@ -40,6 +40,7 @@ brew bundle install --file=~/dots/Brewfile
 ## Manual Setup
 
 - **Alfred themes** — import from `manual/alfred/themes/` via Alfred Preferences → Appearance
+- **Alfred terminal custom setup** — paste contents of `manual/alfred/terminal_custom.applescript` into Alfred Preferences → Features → Terminal/Shell → Application: Custom (launches Ghostty)
 - **Enhancer for YouTube** — import `manual/enhancer_for_youtube/config.json` via extension settings
 - **Iris CE layout** — import `manual/iris_ce/iris_ce_rev__1.layout.json` via VIA configurator (https://caniusevia.com/)
 
