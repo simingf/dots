@@ -173,13 +173,24 @@ tn() {
         echo "usage: tn <name>" >&2
         return 1
     }
-    tmux has-session -t="$name" 2>/dev/null && tmux attach -t "$name" || tmux new -s "$name"
+    if ! tmux has-session -t="$name" 2>/dev/null; then
+        tmux new-session -d -s "$name"
+    fi
+    if [[ -n "$TMUX" ]]; then
+        tmux switch-client -t "$name"
+    else
+        tmux attach -t "$name"
+    fi
 }
 # ta [query...]: fuzzy-pick a session to attach to (auto-selects if query matches exactly one)
 ta() {
     local session
     session=$(tmux list-sessions -F '#{session_name}' | fzf -q "$*" --select-1 --exit-0) || return
-    tmux attach -t "$session"
+    if [[ -n "$TMUX" ]]; then
+        tmux switch-client -t "$session"
+    else
+        tmux attach -t "$session"
+    fi
 }
 # tk [query...]: fuzzy-pick a session to kill (always shows picker, even with exact match)
 tk() {
