@@ -198,6 +198,24 @@ tk() {
     session=$(tmux list-sessions -F '#{session_name}' | fzf -q "$*" --exit-0) || return
     tmux kill-session -t "$session"
 }
+# runall <cmd...>: send <cmd> + Enter to every zsh pane across all tmux sessions
+runall() {
+    if [[ -z "$*" ]]; then
+        echo "usage: runall <command>" >&2
+        return 1
+    fi
+    if ! command -v tmux >/dev/null 2>&1 || ! tmux info >/dev/null 2>&1; then
+        echo "runall: no running tmux server" >&2
+        return 1
+    fi
+    local cmd="$*"
+    tmux list-panes -a -F '#{pane_current_command} #{pane_id}' |
+        awk '$1=="zsh"{print $2}' |
+        while read -r pane; do
+            tmux send-keys -t "$pane" "$cmd" Enter
+        done
+}
+alias rsa='runall rs'
 # rename tmux window to ssh destination; precmd restores on exit
 ssh() {
     [[ -n "$TMUX" ]] && printf '\033k%s\033\\' "${@: -1}"
