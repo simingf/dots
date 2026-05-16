@@ -107,12 +107,14 @@ tn() {
 }
 ta() {
   local session
-  session=$(tmux list-sessions -F '#{session_name}#{?session_attached, (attached),}' | fzf -q "${1:-}" --select-1 --exit-0 | sed 's/ (attached)$//') || return
+  session=$(tmux list-sessions -F '#{session_name}#{?session_attached, (attached),}' | fzf -q "${1:-}" --select-1 --exit-0 --reverse | sed 's/ (attached)$//')
+  [[ -z "$session" ]] && return
   tmux attach -t "$session"
 }
 tk() {
   local session
-  session=$(tmux list-sessions -F '#{session_name}#{?session_attached, (attached),}' | fzf -q "${1:-}" --exit-0 | sed 's/ (attached)$//') || return
+  session=$(tmux list-sessions -F '#{session_name}#{?session_attached, (attached),}' | fzf -q "${1:-}" --exit-0 --reverse | sed 's/ (attached)$//')
+  [[ -z "$session" ]] && return
   tmux kill-session -t "$session"
 }
 
