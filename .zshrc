@@ -164,7 +164,7 @@ lg() {
 # tmux
 alias trc='nvim ~/.tmux.conf'
 alias trs="tmux source ~/.tmux.conf"
-alias tl='tmux list-sessions'
+alias tl="tmux list-sessions -F '#{session_name}#{?session_attached, (attached),}'"
 alias tka='tmux kill-server'
 # tn <name...>: create new tmux session, or attach if it already exists
 tn() {
@@ -185,7 +185,7 @@ tn() {
 # ta [query...]: fuzzy-pick a session to attach to (auto-selects if query matches exactly one)
 ta() {
     local session
-    session=$(tmux list-sessions -F '#{session_name}' | fzf -q "$*" --select-1 --exit-0) || return
+    session=$(tmux list-sessions -F '#{session_name}#{?session_attached, (attached),}' | fzf -q "$*" --select-1 --exit-0 | sed 's/ (attached)$//') || return
     if [[ -n "$TMUX" ]]; then
         tmux switch-client -t "$session"
     else
@@ -195,7 +195,7 @@ ta() {
 # tk [query...]: fuzzy-pick a session to kill (always shows picker, even with exact match)
 tk() {
     local session
-    session=$(tmux list-sessions -F '#{session_name}' | fzf -q "$*" --exit-0) || return
+    session=$(tmux list-sessions -F '#{session_name}#{?session_attached, (attached),}' | fzf -q "$*" --exit-0 | sed 's/ (attached)$//') || return
     tmux kill-session -t "$session"
 }
 # runall <cmd...>: send <cmd> + Enter to every zsh pane across all tmux sessions

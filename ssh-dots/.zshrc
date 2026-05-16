@@ -103,7 +103,7 @@ alias lg='echo -ne "\033]0;$(basename $(git rev-parse --show-toplevel 2>/dev/nul
 # tmux
 alias trc='nvim ~/.tmux.conf'
 alias trs='tmux source ~/.tmux.conf'
-alias tl='tmux list-sessions'
+alias tl="tmux list-sessions -F '#{session_name}#{?session_attached, (attached),}'"
 alias tka='tmux kill-server'
 
 tn() {
@@ -112,12 +112,12 @@ tn() {
 }
 ta() {
   local session
-  session=$(tmux list-sessions -F '#{session_name}' | fzf -q "${1:-}" --select-1 --exit-0) || return
+  session=$(tmux list-sessions -F '#{session_name}#{?session_attached, (attached),}' | fzf -q "${1:-}" --select-1 --exit-0 | sed 's/ (attached)$//') || return
   tmux attach -t "$session"
 }
 tk() {
   local session
-  session=$(tmux list-sessions -F '#{session_name}' | fzf -q "${1:-}" --exit-0) || return
+  session=$(tmux list-sessions -F '#{session_name}#{?session_attached, (attached),}' | fzf -q "${1:-}" --exit-0 | sed 's/ (attached)$//') || return
   tmux kill-session -t "$session"
 }
 
