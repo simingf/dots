@@ -68,11 +68,8 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -G $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls -G $realpath'
 
-# Execute on Enter
+# Execute on Enter: empty enter → clear+ls (via accept-line widget so it runs as a real command)
 accept-line() {
-    # On empty enter, inject `clear && eza` so it runs via the normal accept-line
-    # path (not inside the zle widget, where external command output is unreliable).
-    # Leading space + hist_ignore_space keeps this out of history.
     if [[ -z $BUFFER ]]; then
         BUFFER=" clear && eza --icons=auto --hyperlink"
     fi
@@ -94,6 +91,20 @@ _tmux_preexec() {
 }
 precmd_functions+=(_tmux_precmd)
 preexec_functions+=(_tmux_preexec)
+
+# pbcopy stderr from failed commands (best-effort: tee subprocess is async,
+# so very fast commands' output may not flush before precmd fires).
+_zsh_err_buf=$(mktemp -t zsh-err)
+trap 'rm -f "$_zsh_err_buf"' EXIT
+exec 2> >(tee -a "$_zsh_err_buf" >&2)
+_pbcopy_on_error() {
+    local rc=$?
+    if (( rc != 0 )) && [[ -s "$_zsh_err_buf" ]]; then
+        pbcopy < "$_zsh_err_buf"
+    fi
+    : > "$_zsh_err_buf"
+}
+precmd_functions+=(_pbcopy_on_error)
 
 # general aliases
 alias e='exit'
@@ -242,7 +253,9 @@ alias swarprun='swarp run --watch'
 alias pps='portpal serve'
 alias kk='declawd --no-extra-output --dangerously-skip-permissions'
 alias kkr='declawd --no-extra-output --dangerously-skip-permissions --resume'
-alias sshdev='ssh sfeng-dev.coder'
+sshdev() {
+    ~/dots/scripts/push-ssh-dots.sh sfeng-dev.coder && ssh sfeng-dev.coder "$@"
+}
 
 # competitive programming
 alias cpr='make && ./sol'
@@ -344,4 +357,4 @@ path+=/Library/TeX/texbin
 
 # Shell integrations
 source <(fzf --zsh)
-((!${+functions[__zoxide_hook]})) && eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init --cmd cd zsh)"
